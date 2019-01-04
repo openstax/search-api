@@ -17,6 +17,9 @@ gem 'openstax_healthcheck'
 # For installing secrets on deploy
 gem "aws-sdk-ssm"
 
+# For indexing releases
+gem "aws-sdk-s3"
+
 # Versioned API tools
 gem "versionist"
 
