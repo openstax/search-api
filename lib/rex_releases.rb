@@ -16,7 +16,7 @@ class RexReleases
 
   def load_releases
     release_folders =
-      s3_client.list_objects(bucket: "sandbox-unified-web-primary",
+      s3_client.list_objects(bucket: rex_release_bucket_name,
                              prefix: "rex/releases/",
                              delimiter: "/")
                             .common_prefixes
@@ -26,7 +26,7 @@ class RexReleases
 
     release_folders.each do |release_folder|
       begin
-        release_json_object = s3_client.get_object(bucket: rex_release_bucket,
+        release_json_object = s3_client.get_object(bucket: rex_release_bucket_name,
                                                    key: "#{release_folder}rex/release.json")
 
         release_id = release_folder.match(/rex\/releases\/(.*)\//)[1]
@@ -43,12 +43,12 @@ class RexReleases
     @s3_client ||= Aws::S3::Client.new(region: rex_release_bucket_region)
   end
 
-  def rex_release_bucket
-    "sandbox-unified-web-primary"
+  def rex_release_bucket_name
+    Rails.application.secrets.rex_release_bucket[:name]
   end
 
   def rex_release_bucket_region
-    "us-east-1"
+    Rails.application.secrets.rex_release_bucket[:region]
   end
 
 end
