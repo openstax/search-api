@@ -1,0 +1,4 @@
+class ReleaseBookIndexStatus
+
+
+end
