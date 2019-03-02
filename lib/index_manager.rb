@@ -34,11 +34,11 @@ class IndexManager
   end
 
   def current_releases
-    @current_releases = RexReleases.new
+    @current_releases ||= RexReleases.new
   end
 
   def current_release_ids
-    @current_relese_ids = current_releases.map(&:id)
+    @current_relese_ids ||= current_releases.map(&:id)
   end
 
   def indexed_release_ids
