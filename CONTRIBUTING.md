@@ -4,20 +4,18 @@ See [openstax/CONTRIBUTING.md](https://github.com/openstax/napkin-notes/blob/mas
 
 # Creating a Pull Request or Issue
 
-- add either `Needs Code` or `Needs Review` label
-- if it is waiting on input from someone add the `blocked` label
+- add a Reviewer
 - if it is linked to another Issue or Pull Request, link the Issue/PR number by editing the Issue/PR **body**
 - link to the Ticket/Issue in the Issue/PR **body**
 
 ### Creating a hotfix
 
 1. Find the commit SHA to base the hotfix on
-2. create a `hotfix-*` branch
-3. make a Pull request to `master` (note: it may have merge conflicts)
-4. add the `HOTFIX` label
-5. deploy the hotfix
-6. merge master in (**DO NOT REBASE!** It is important to make sure the deployed commit is in master for undoability)
-7. merge the Pull request
+1. create a `hotfix-*` branch
+1. make a Pull request to `master` (note: it may have merge conflicts)
+1. deploy the hotfix
+1. merge master in (**DO NOT REBASE!** It is important to make sure the deployed commit is in master for undoability)
+1. merge the Pull request
 
 # Code to Include
 
@@ -29,4 +27,5 @@ See [openstax/CONTRIBUTING.md](https://github.com/openstax/napkin-notes/blob/mas
 
 # Merging or Closing a Pull Request
 
+- Once everyone has reviewed, use `[Squash and Merge]` by default
 - delete the branch
