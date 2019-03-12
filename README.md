@@ -1,24 +1,26 @@
-# README
+# OpenStax Open Search
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[![Build Status](https://travis-ci.com/openstax/open-search.svg?branch=master)](https://travis-ci.com/openstax/open-search)
 
-Things you may want to cover:
+A search app supporting OpenStax's unified reading experience.
 
-* Ruby version
+## Dependencies
 
-* System dependencies
+This app proxies Elasticsearch and is intended to be deployed to AWS, where it uses DynamoDB and SQS.  It indexes OpenStax book and exercise content.
 
-* Configuration
+## Setup
 
-* Database creation
+```
+$> bundle install
+```
 
-* Database initialization
+TBD instructions for installing and configuring Elasticsearch.
 
-* How to run the test suite
+## Tests
 
-* Services (job queues, cache servers, search engines, etc.)
+Run the tests with `rspec` or `rake`.
 
-* Deployment instructions
+## Contributing
 
-* ...
+See [CONTRIBUTING.md](https://github.com/openstax/open-search/CONTRIBUTING.md)
+
