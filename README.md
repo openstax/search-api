@@ -22,5 +22,5 @@ Run the tests with `rspec` or `rake`.
 
 ## Contributing
 
-See [CONTRIBUTING.md](https://github.com/openstax/open-search/CONTRIBUTING.md)
+See [CONTRIBUTING.md](./CONTRIBUTING.md)
 
