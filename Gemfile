@@ -14,6 +14,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # Gives 200 OK from /ping
 gem 'openstax_healthcheck'
 
+# Per-request global storage
+gem 'request_store'
+
 # For installing secrets on deploy
 gem "aws-sdk-ssm"
 
@@ -50,6 +53,9 @@ gem 'sentry-raven'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+  gem 'pry-rails'
+
   gem 'rspec-rails', '~> 3.8'
 
   # Stubs HTTP requests
