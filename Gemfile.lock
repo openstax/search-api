@@ -67,6 +67,7 @@ GEM
       msgpack (~> 1.0)
     builder (3.2.3)
     byebug (10.0.2)
+    coderay (1.1.2)
     concurrent-ruby (1.1.4)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
@@ -118,6 +119,11 @@ GEM
       mini_portile2 (~> 2.4.0)
     openstax_healthcheck (0.0.3)
       rails (>= 3.0)
+    pry (0.12.2)
+      coderay (~> 1.1.0)
+      method_source (~> 0.9.0)
+    pry-rails (0.3.9)
+      pry (>= 0.10.4)
     public_suffix (3.0.2)
     puma (3.12.0)
     rack (2.0.6)
@@ -151,6 +157,8 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
+    request_store (1.4.1)
+      rack (>= 1.4)
     rspec-core (3.8.0)
       rspec-support (~> 3.8.0)
     rspec-expectations (3.8.2)
@@ -212,8 +220,10 @@ DEPENDENCIES
   elasticsearch (~> 6.1.0)
   listen (>= 3.0.5, < 3.2)
   openstax_healthcheck
+  pry-rails
   puma (~> 3.11)
   rails (~> 5.2.2)
+  request_store
   rspec-rails (~> 3.8)
   spring
   spring-watcher-listen (~> 2.0.0)

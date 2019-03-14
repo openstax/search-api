@@ -27,7 +27,7 @@ VCR.configure do |c|
   # be found out), but for safety's sake we do it anyway.
 
   c.filter_sensitive_data('<SignatureValue>') do |interaction|
-    (interaction.request.headers["Authorization"] || []).first.match(/Signature=([a-f0-9]+)/)
+    (interaction.request.headers["Authorization"] || []).first.try(:match, /Signature=([a-f0-9]+)/)
     $1
   end
 
@@ -44,5 +44,6 @@ end
 VCR_OPTS = {
   # This should default to :none
   record: ENV['VCR_OPTS_RECORD'].try!(:to_sym) || :none,
-  allow_unused_http_interactions: false
+  allow_unused_http_interactions: false,
+  record: :new_episodes
 }
