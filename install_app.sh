@@ -13,7 +13,7 @@ gem install --conservative bundler
 echo Installing gems
 bundle install --without development test
 
-echo Installing JS packages
-yarn install
+echo Updating crontab
+whenever --update-crontab
 
 echo Done!
