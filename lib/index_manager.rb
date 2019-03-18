@@ -1,5 +1,4 @@
 require 'aws-sdk-s3'
-
 class IndexManager
 
   def initialize
