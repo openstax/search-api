@@ -10,8 +10,8 @@ RSpec.describe 'whenever schedule' do
   let(:rake) { Rake.application }
   let(:schedule) { Whenever::Test::Schedule.new(file: 'config/schedule.rb') }
 
-  context "admin node" do
-    before { allow(Rails.application).to receive(:is_admin_node?) { true } }
+  context "manager node" do
+    before { allow(Rails.application).to receive(:is_manager_node?) { true } }
 
     it 'calls enqueue_index_jobs.rake' do
       expect(scheduled_rake_tasks("enqueue_index_jobs").length).to eq 1

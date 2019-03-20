@@ -32,8 +32,8 @@ module OpenSearch
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
 
-    def is_admin_node?
-      ENV['NODE_TYPE'] == 'admin'
+    def is_manager_node?
+      ENV['NODE_TYPE'] == 'manager'
     end
 
     def is_api_node?
