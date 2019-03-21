@@ -19,7 +19,10 @@ BUNDLER_VERSION=`grep -A 2 "BUNDLED WITH" Gemfile.lock | tail -1`
 gem install --conservative bundler -v $BUNDLER_VERSION
 
 echo Installing gems
+# After install do an rbenv rehash to make sure newly installed executables
+# have shims available
 bundle install --without development test
+rbenv rehash
 
 echo Updating crontab
 # Note that this update's the user crontab which lives in /var/spool and isn't
