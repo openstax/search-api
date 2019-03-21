@@ -25,6 +25,11 @@ gem "versionist"
 
 gem "elasticsearch", '~> 6.1.0'
 
+gem "whenever"
+
+# Unlike in most of our projects, this is used in production (to set the node type)
+gem 'dotenv-rails'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -36,7 +41,7 @@ group :development, :test do
   # Records HTTP requests
   gem 'vcr'
 
-  gem 'dotenv-rails'
+  gem 'whenever-test'
 end
 
 group :development do

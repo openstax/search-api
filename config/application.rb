@@ -17,7 +17,7 @@ require "action_controller/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module SearchApi
+module OpenSearch
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
@@ -31,5 +31,17 @@ module SearchApi
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    def is_manager_node?
+      ENV['NODE_TYPE'] == 'manager'
+    end
+
+    def is_api_node?
+      ENV['NODE_TYPE'] == 'api'
+    end
+
+    def is_worker_node?
+      ENV['NODE_TYPE'] == 'worker'
+    end
   end
 end
