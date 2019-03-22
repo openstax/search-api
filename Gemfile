@@ -20,6 +20,9 @@ gem "aws-sdk-ssm"
 # For indexing releases
 gem "aws-sdk-s3"
 
+# For accessing dynamoDB tables
+gem "aws-sdk-dynamodb"
+
 # Versioned API tools
 gem "versionist"
 
