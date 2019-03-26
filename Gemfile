@@ -23,6 +23,9 @@ gem "aws-sdk-s3"
 # For accessing dynamoDB tables
 gem "aws-sdk-dynamodb"
 
+# Managing index job queues
+gem "aws-sdk-sqs"
+
 # Versioned API tools
 gem "versionist"
 
