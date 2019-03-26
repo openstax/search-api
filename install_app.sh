@@ -24,12 +24,4 @@ echo Installing gems
 bundle install --without development test
 rbenv rehash
 
-echo Updating crontab
-# Note that this update's the user crontab which lives in /var/spool and isn't
-# saved in an AWS AMI.  However, since our AWS launch configurations call this
-# script, the crontab will be set up again when the AMI is launched in an instance.
-whenever --set "job_template=sudo -H -i -u ubuntu bash -c '. ~/rbenv-init; :job' \
-               &cron_log=$PWD/log/whenever.log" \
-         --update-crontab
-
 echo Done!
