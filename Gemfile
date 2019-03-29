@@ -29,7 +29,11 @@ gem "aws-sdk-sqs"
 # Versioned API tools
 gem "versionist"
 
+# Access elasticsearch (with signed requests)
 gem "elasticsearch", '~> 6.1.0'
+gem 'patron'
+gem 'faraday_middleware'
+gem 'faraday_middleware-aws-sigv4'
 
 gem "whenever"
 
@@ -50,6 +54,12 @@ group :development, :test do
   gem 'vcr'
 
   gem 'whenever-test'
+
+  # For creating ES domains in tests
+  gem 'aws-sdk-elasticsearchservice'
+
+  # For getting information about AWS users in tests
+  gem 'aws-sdk-iam'
 end
 
 group :development do

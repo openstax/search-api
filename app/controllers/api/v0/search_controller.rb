@@ -17,7 +17,7 @@ class Api::V0::SearchController < ApplicationController
         }
     }
 
-    response = es_client.search body: query.to_json
+    response = ElasticsearchClient.instance.search body: query.to_json
     render json: response
   end
 
@@ -39,7 +39,7 @@ class Api::V0::SearchController < ApplicationController
       rescue JSON::ParserError
         next
       end
-      es_client.index  index: 'pages', type: 'page', id: page_id, body: page_hash
+      ElasticsearchClient.instance.index  index: 'pages', type: 'page', id: page_id, body: page_hash
     end
 
   end

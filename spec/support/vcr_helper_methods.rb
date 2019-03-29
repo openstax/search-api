@@ -44,4 +44,19 @@ module VcrHelperMethods
     uuids
   end
 
+  def do_not_record_or_playback
+    # Pass blocks of code to this that do not want to record and that we later
+    # do not want to run during playback (things we need to do for the spec
+    # to run the first time but that aren't important to have in the cassette)
+
+    return if !VCR.current_cassette.try(:recording?) # in playback
+
+    begin
+      ENV['VCR_IGNORE_REQUESTS_TEMPORARILY'] = 'true'
+      yield
+    ensure
+      ENV.delete('VCR_IGNORE_REQUESTS_TEMPORARILY')
+    end
+  end
+
 end

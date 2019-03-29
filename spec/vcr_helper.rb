@@ -9,6 +9,7 @@ VCR.configure do |c|
   c.allow_http_connections_when_no_cassette = false
   c.ignore_localhost = true
   c.preserve_exact_body_bytes { |http_message| !http_message.body.valid_encoding? }
+  # c.debug_logger = $stderr
 
   # Turn on debug logging, works in Travis too tho in full runs results
   # in Travis build logs that are too large and cause a Travis error
@@ -27,7 +28,7 @@ VCR.configure do |c|
   # be found out), but for safety's sake we do it anyway.
 
   c.filter_sensitive_data('<SignatureValue>') do |interaction|
-    (interaction.request.headers["Authorization"] || []).first.match(/Signature=([a-f0-9]+)/)
+    (interaction.request.headers["Authorization"] || [""]).first.match(/Signature=([a-f0-9]+)/)
     $1
   end
 
@@ -46,3 +47,23 @@ VCR_OPTS = {
   record: ENV['VCR_OPTS_RECORD'].try!(:to_sym) || :none,
   allow_unused_http_interactions: false
 }
+
+# VCR can update content length headers to solve various problems caused
+# by recording and playing back requests and responses.  The update process
+# happens in a before_playback hook.  Filtering senstive data also occurs
+# in before hooks.  Since there isn't a way to make sure that the content
+# length update happens after filtering senstive data (and since filtering
+# data can mess with the content length), we end up not getting the benefit
+# out of the update_content_length_header hook that we are shooting for.
+# This monkey patch fixes this by forcing a content length update after
+# every filtering of sensitive data.  This does more work than we need
+# but it is also fast so it isn't that big of a deal.
+
+class VCR::HTTPInteraction::HookAware
+  alias_method :orig_filter!, :filter!
+
+  def filter!(text, replacement_text)
+    orig_filter!(text, replacement_text)
+    response.update_content_length_header
+  end
+end
