@@ -24,6 +24,17 @@ RSpec.describe Search::BookVersions::I1::IndexingStrategy do
     end
   end
 
+  describe "#index_row" do
+    subject(:strategy ) { described_class.new }
+    let(:index_name) { 'test' }
+
+    it 'creates the row successfully in elastic search' do
+      allow(ElasticsearchClient.instance).to receive(:index)
+      strategy.index_document(element: element, index_name: index_name)
+      expect(ElasticsearchClient.instance).to have_received(:index)
+    end
+  end
+
   describe "#desired_page_elements" do
     subject(:desired_page_elements ) { described_class.new.desired_page_elements }
 
