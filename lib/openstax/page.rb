@@ -1,62 +1,43 @@
 module Openstax
+  # A Openstax::Page is the object that "represents" a page in a book.
+  #
+  # An desired-page-elements is injected in order to determine what sub-page
+  # elements a page should be concerned about.
   class Page
-    MATCH_PARAGRAPH = '//p[@id]'
-    MATCH_FIGURE = '//figure'
-    MATCH_SELECTOR_PARAGRAPH = 'p'
-    MATCH_SELECTOR_FIGURE = 'figure'
-    MATCH_FIGURE_VISIBLE_TEXT = './/figcaption'
-    MATCH_FIGURE_HIDDEN_TEXT = './/*[@data-alt]'
-
-    MATCH_ALL_ELEMENTS = [
-      MATCH_PARAGRAPH,
-      MATCH_FIGURE
-    ].join(' | ')
-
-    attr_reader :indexable_elements
-
-    def initialize(id:, data:)
+    def initialize(id:, data:, desired_page_elements:)
       @id = id
       @data = data
-      @indexable_elements = []
+      @desired_page_elements = desired_page_elements
+      @indexable_elements
     end
 
-    def process_for_indexable_objects
-      content_dom.xpath(MATCH_ALL_ELEMENTS).each_with_index do | xpath_element, index |
-        indexable_element = create_element(xpath_element, index+1)
-        @indexable_elements << indexable_element if indexable_element
-      end
+    def indexable_elements
+      @indexable_elements ||= process_for_indexable_objects
     end
 
     private
 
-    def create_element(ordered_element, page_position)
-      if ordered_element.matches?(MATCH_SELECTOR_PARAGRAPH)
-        return create_paragraph(ordered_element, page_position)
+    def process_for_indexable_objects
+      # This join is important to OR together all the xpaths in order to determine
+      # the matched element's order inside the page. Xpath does this for us.
+      match_all_elements = @desired_page_elements.map(&:matcher).join(' | ')
+
+      working_element_index = []
+
+      # Match on all the elements. With a match, call create on it w/ the xpath node
+      # to create an indexable element.
+      #
+      # The indexable element is later iterated to send to ElasticSearch.
+      content_dom.xpath(match_all_elements).each_with_index do | xpath_element, order_in_page |
+        indexable_page_element = @desired_page_elements.detect do | elem |
+          elem.matches?(xpath_element)
+        end
+
+        indexable_element = indexable_page_element.create(xpath_element, order_in_page+1)
+        working_element_index << indexable_element if indexable_element
       end
 
-      if ordered_element.matches?(MATCH_SELECTOR_FIGURE)
-        return create_figure(ordered_element, page_position)
-      end
-    end
-
-    def create_paragraph(paragraph_match, page_position)
-      visible_content = paragraph_match.text
-
-      IndexableElement.new(type: IndexableElement::ELEMENT_TYPE_PARAGRAPH,
-                           page_id: @id,
-                           page_position: page_position,
-                           visible_content: visible_content)
-    end
-
-    def create_figure(figure_match, page_position)
-      visible_content = figure_match.xpath('.//figcaption').first.try(:text)
-      hidden_content = figure_match.xpath('.//*[@data-alt]').first.try(:text)
-
-      IndexableElement.new(type: IndexableElement::ELEMENT_TYPE_FIGURE,
-                           page_id: @id,
-                           page_position: page_position,
-                           visible_content: visible_content,
-                           hidden_content: hidden_content)
+      working_element_index
     end
 
     def content_dom

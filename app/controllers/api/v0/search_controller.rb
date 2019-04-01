@@ -1,6 +1,7 @@
 class Api::V0::SearchController < ApplicationController
 
   def search
+    # TODO generalize
     query = {
       "size": 25,
       "query": {
@@ -17,13 +18,14 @@ class Api::V0::SearchController < ApplicationController
         }
     }
 
-    response = es_client.search body: query.to_json
+    response = ElasticsearchClient.instance.search body: query.to_json
     render json: response
   end
 
   def temp_build_index
-    physics_json_url = "https://archive.cnx.org/contents/405335a3-7cff-4df2-a9ad-29062a4af261@7.1.json"
+    # TODO remove later in cleanup
 
+    physics_json_url = "https://archive.cnx.org/contents/405335a3-7cff-4df2-a9ad-29062a4af261@7.1.json"
 
     uri = URI(physics_json_url)
     response = Net::HTTP.get(uri)
@@ -39,9 +41,7 @@ class Api::V0::SearchController < ApplicationController
       rescue JSON::ParserError
         next
       end
-      es_client.index  index: 'pages', type: 'page', id: page_id, body: page_hash
+      ElasticsearchClient.instance.index  index: 'pages', type: 'page', id: page_id, body: page_hash
     end
-
   end
-
 end
