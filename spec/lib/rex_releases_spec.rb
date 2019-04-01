@@ -1,9 +1,9 @@
 require 'rails_helper'
 require 'vcr_helper'
 
-require 'rex_releases'
+require 'openstax/rex_releases'
 
-RSpec.describe RexReleases, vcr: VCR_OPTS do
+RSpec.describe Openstax::RexReleases, vcr: VCR_OPTS do
 
   let(:fake_bucket_name) { "spec-bucket-#{SecureRandom.hex(7)}" }
 

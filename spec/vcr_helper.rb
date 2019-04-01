@@ -45,8 +45,7 @@ end
 VCR_OPTS = {
   # This should default to :none
   record: ENV['VCR_OPTS_RECORD'].try!(:to_sym) || :none,
-  allow_unused_http_interactions: false,
-  record: :new_episodes
+  allow_unused_http_interactions: false
 }
 
 # VCR can update content length headers to solve various problems caused

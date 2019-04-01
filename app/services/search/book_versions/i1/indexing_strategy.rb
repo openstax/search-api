@@ -1,16 +1,17 @@
 module Search::BookVersions::I1
-  class IndexMapping
-    INDEXING_STRATEGY = "I1"
+  # The indexing strategy is the encapsulation for the index's structure and
+  # metadata (including index settings & mappings).
+  #
+  # The strategy also declares what page element objects it wants indexed.
+  class IndexingStrategy
+    VERSION = "I1"
     NUM_SHARDS = 1
     NUM_REPLICAS = 1
-    ELEMENT_TYPE_MAPPINGS = [
-      Search::BookVersions::I1::PageElementType,
-    ]
 
-    attr_reader :strategy
+    attr_reader :version
 
     def initialize
-      @strategy = INDEXING_STRATEGY
+      @version = VERSION
     end
 
     def index_metadata
@@ -18,6 +19,13 @@ module Search::BookVersions::I1
         metadata_hashes = [settings, mappings]
         metadata_hashes.inject({}) { |aggregate, hash| aggregate.merge! hash }
       end
+    end
+
+    def desired_page_elements
+       [
+         Openstax::ParagraphElement.new,
+         Openstax::FigureElement.new
+       ]
     end
 
     private
@@ -37,7 +45,7 @@ module Search::BookVersions::I1
     end
 
     def mappings
-      { mappings: {} }.merge(Search::BookVersions::I1::PageElementType.mapping)
+      { mappings: {} }.merge(PageElementType.mapping)
     end
   end
 end
