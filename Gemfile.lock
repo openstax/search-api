@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/openstax/path_prefixer.git
+  revision: eb239c532941f61c4060f89dc29a9ace825aca55
+  ref: eb239c532941f
+  specs:
+    openstax_path_prefixer (0.0.1)
+      rails (>= 3.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -225,6 +233,7 @@ DEPENDENCIES
   elasticsearch (~> 6.1.0)
   listen (>= 3.0.5, < 3.2)
   openstax_healthcheck
+  openstax_path_prefixer!
   puma (~> 3.11)
   rails (~> 5.2.2)
   rspec-rails (~> 3.8)
