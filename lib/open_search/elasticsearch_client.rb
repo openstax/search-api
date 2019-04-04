@@ -1,6 +1,6 @@
 require 'elasticsearch'
 
-class ElasticsearchClient
+class OpenSearch::ElasticsearchClient
 
   delegate_missing_to :@internal_client
 
@@ -8,7 +8,7 @@ class ElasticsearchClient
     Thread.current[:es_client] ||= begin
       secrets = Rails.application.secrets.elasticsearch
 
-      ElasticsearchClient.new(
+      new(
         url: "#{secrets[:protocol]}://#{secrets[:endpoint]}",
         sign_aws_requests: Rails.env.production?
       )
