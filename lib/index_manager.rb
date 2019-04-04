@@ -1,5 +1,8 @@
 require 'aws-sdk-s3'
 
+# May or may not need a class like this.  If we need it, it needs to be changed
+# from thinking about indexing releases to indexing books within a release
+
 class IndexManager
 
   def initialize
