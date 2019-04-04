@@ -63,6 +63,12 @@ GEM
     aws-sdk-dynamodb (1.21.0)
       aws-sdk-core (~> 3, >= 3.39.0)
       aws-sigv4 (~> 1.0)
+    aws-sdk-elasticsearchservice (1.15.0)
+      aws-sdk-core (~> 3, >= 3.39.0)
+      aws-sigv4 (~> 1.0)
+    aws-sdk-iam (1.13.0)
+      aws-sdk-core (~> 3, >= 3.39.0)
+      aws-sigv4 (~> 1.0)
     aws-sdk-kms (1.13.0)
       aws-sdk-core (~> 3, >= 3.39.0)
       aws-sigv4 (~> 1.0)
@@ -102,6 +108,11 @@ GEM
     erubi (1.8.0)
     faraday (0.15.3)
       multipart-post (>= 1.2, < 3)
+    faraday_middleware (0.13.1)
+      faraday (>= 0.7.4, < 1.0)
+    faraday_middleware-aws-sigv4 (0.2.4)
+      aws-sigv4 (~> 1.0)
+      faraday (>= 0.9)
     ffi (1.9.25)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
@@ -133,6 +144,7 @@ GEM
       mini_portile2 (~> 2.4.0)
     openstax_healthcheck (0.0.3)
       rails (>= 3.0)
+    patron (0.13.1)
     public_suffix (3.0.2)
     puma (3.12.0)
     rack (2.0.6)
@@ -224,6 +236,8 @@ PLATFORMS
 
 DEPENDENCIES
   aws-sdk-dynamodb
+  aws-sdk-elasticsearchservice
+  aws-sdk-iam
   aws-sdk-s3
   aws-sdk-sqs
   aws-sdk-ssm
@@ -231,9 +245,12 @@ DEPENDENCIES
   byebug
   dotenv-rails
   elasticsearch (~> 6.1.0)
+  faraday_middleware
+  faraday_middleware-aws-sigv4
   listen (>= 3.0.5, < 3.2)
   openstax_healthcheck
   openstax_path_prefixer!
+  patron
   puma (~> 3.11)
   rails (~> 5.2.2)
   rspec-rails (~> 3.8)
