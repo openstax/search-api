@@ -1,33 +1,30 @@
 module Openstax
-  class FigureElement
+  class FigureElement < Element
+
     MATCH_FIGURE = '//figure'
     MATCH_SELECTOR_FIGURE = 'figure'
-    MATCH_FIGURE_VISIBLE_TEXT = './/figcaption'
-    MATCH_FIGURE_HIDDEN_TEXT = './/*[@data-alt]'
+    MATCH_FIGURE_CAPTION = './/figcaption'
+    MATCH_FIGURE_ALT_TEXT = './/*[@data-alt]'
 
-    def matcher
+    def initialize(node:)
+      super(node)
+    end
+
+    def caption
+      node.xpath(MATCH_FIGURE_CAPTION).first.try(:text)
+    end
+
+    def alt_text
+      node.xpath(MATCH_FIGURE_ALT_TEXT).first.try(:text)
+    end
+
+    def self.matcher
       MATCH_FIGURE
     end
 
-    def create(element, page_position)
-      create_figure(element, page_position)
+    def self.matches?(node)
+      node.matches?(MATCH_SELECTOR_FIGURE)
     end
 
-    def matches?(element)
-      element.matches?(MATCH_SELECTOR_FIGURE)
-    end
-
-    private
-
-    def create_figure(figure_match, page_position)
-      visible_content = figure_match.xpath(MATCH_FIGURE_VISIBLE_TEXT).first.try(:text)
-      hidden_content = figure_match.xpath(MATCH_FIGURE_HIDDEN_TEXT).first.try(:text)
-
-      IndexableElement.new(type: IndexableElement::ELEMENT_TYPE_FIGURE,
-                           page_id: @id,
-                           page_position: page_position,
-                           visible_content: visible_content,
-                           hidden_content: hidden_content)
-    end
   end
 end

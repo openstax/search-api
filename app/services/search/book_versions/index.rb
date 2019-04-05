@@ -29,18 +29,12 @@ module Search::BookVersions
       starting = Time.now
 
       book = Openstax::Book.new(uuid: @book_guid,
-                                version: @book_version,
-                                indexing_strategy: @indexing_strategy)
-      book.pages.each do |page|
-        page.indexable_elements.each do |element|
-          ElasticsearchClient.instance.index(index: name,
-                                             type: PageElementType.index_type,
-                                             body: element.to_h)
-        end
-      end
+                                version: @book_version)
+
+      @indexing_strategy.index(book: book)
 
       time_took = Time.at(Time.now - starting).utc.strftime("%H:%M:%S")
-      Rails.logger.info("OpenSearch: Indexing book #{index_name} #{book.pages.count} pages took #{time_took} time")
+      Rails.logger.info("OpenSearch: Indexing book #{index_name} took #{time_took} time")
     rescue => ex
       # TODO record data on a book's indexing
       #   * indexing time spent for book
@@ -61,8 +55,6 @@ module Search::BookVersions
     rescue => ex
       Rails.logger.error "OpenSearch (error): Unable to delete index for book #{index_name}: #{ex.message}"
     end
-
-    private
 
     def name
       "#{@book_guid}@#{@book_version}_#{@indexing_strategy.version.downcase}"
