@@ -42,6 +42,9 @@ gem 'dotenv-rails'
 
 gem "openstax_path_prefixer", github: "openstax/path_prefixer", ref: "eb239c532941f"
 
+# More concise, one-liner logs (better for production)
+gem "lograge"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
