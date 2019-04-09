@@ -45,6 +45,8 @@ gem "openstax_path_prefixer", github: "openstax/path_prefixer", ref: "eb239c5329
 # More concise, one-liner logs (better for production)
 gem "lograge"
 
+gem 'sentry-raven'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -63,6 +65,8 @@ group :development, :test do
 
   # For getting information about AWS users in tests
   gem 'aws-sdk-iam'
+
+  gem 'rubocop'
 end
 
 group :development do
