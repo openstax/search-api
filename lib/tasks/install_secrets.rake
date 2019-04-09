@@ -5,6 +5,10 @@ desc <<-DESC.strip_heredoc
   Store and use them to write the secrets.yml
 DESC
 task :install_secrets, [] do
+  # Load the system-wide and local env vars here since the Rails application isn't loaded
+  # for this rake task
+  Dotenv.load('/etc/.env', '.env')
+
   # Secrets live in the AWS Parameter Store under a /env_name/parameter_namespace/
   # hierarchy.  Several environment variables are set by the AWS cloudformation scripts.
   #

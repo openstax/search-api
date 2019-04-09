@@ -13,7 +13,9 @@ Rails.application.routes.draw do
 
       get :temp_build_index, to: 'search#temp_build_index'
 
+      resources :diagnostics, only: [] do
+        get :exception, on: :collection
+      end
     end
   end
-
 end

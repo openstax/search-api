@@ -96,4 +96,6 @@ end
 
 Raven.configure do |config|
   config.dsn = Rails.application.secrets.sentry[:dsn]
+  config.current_environment = ENV['ENV_NAME'] || config.current_environment
+  config.server_name = ENV['NICKNAME'] || config.server_name
 end

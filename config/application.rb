@@ -45,3 +45,6 @@ module OpenSearch
     end
   end
 end
+
+# Load system-wide env vars, will be set on EC2 instances, ignored otherwise
+Dotenv.load('/etc/.env')
