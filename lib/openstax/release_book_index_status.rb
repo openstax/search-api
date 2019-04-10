@@ -1,4 +1,4 @@
-module Openstax
+module OpenStax
   class ReleaseBookIndexStatus
 
   end
