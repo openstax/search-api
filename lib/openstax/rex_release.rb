@@ -1,6 +1,6 @@
 require 'json'
 
-module Openstax
+module OpenStax
   class RexRelease
 
     attr_reader :id, :data
@@ -16,9 +16,8 @@ module Openstax
 
     def books
       @books ||= @data["books"].map do |uuid, info|
-        Book.new(uuid: uuid, version: info["defaultVersion"])
+        "#{uuid}@#{info["defaultVersion"]}"
       end
     end
-
   end
 end

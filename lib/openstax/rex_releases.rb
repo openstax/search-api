@@ -1,4 +1,4 @@
-module Openstax
+module OpenStax
   class RexReleases
     include Enumerable
     extend Forwardable

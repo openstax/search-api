@@ -3,7 +3,7 @@ require 'vcr_helper'
 
 require 'openstax/rex_releases'
 
-RSpec.describe Openstax::RexReleases, vcr: VCR_OPTS do
+RSpec.describe OpenStax::RexReleases, vcr: VCR_OPTS do
 
   let(:fake_bucket_name) { "spec-bucket-#{SecureRandom.hex(7)}" }
 
