@@ -15,6 +15,11 @@ port        ENV.fetch("PORT") { 4003 }
 #
 environment ENV.fetch("RAILS_ENV") { "development" }
 
+# CloudFront uses a 60 second timeout on idle connections, set this just above to
+# prevent puma from closing the connection on AWS
+#
+persistent_timeout 62
+
 # Specifies the number of `workers` to boot in clustered mode.
 # Workers are forked webserver processes. If using threads and workers together
 # the concurrency of the application would be max `threads` * `workers`.
