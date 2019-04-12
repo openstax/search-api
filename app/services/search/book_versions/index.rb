@@ -19,9 +19,7 @@ module Search::BookVersions
     end
 
     def create
-      ElasticsearchClient.instance.indices.create(index: name, body: @indexing_strategy.index_metadata)
-    rescue => ex
-      Rails.logger.error "OpenSearch (error): unable to create index #{name}: #{ex.message}"
+      OpenSearch::ElasticsearchClient.instance.indices.create(index: name, body: @indexing_strategy.index_metadata)
     end
 
     # This method populates the index with pages from the book
@@ -32,13 +30,6 @@ module Search::BookVersions
 
       time_took = Time.at(Time.now - starting).utc.strftime("%H:%M:%S")
       Rails.logger.info("OpenSearch: Indexing book index #{name} took #{time_took} time")
-    rescue => ex
-      # TODO record data on a book's indexing
-      #   * indexing time spent for book
-      #   * indexing failure if any
-      #   * send to Sentry
-      Rails.logger.error "OpenSearch (error): Unable to populate index #{name}: #{[ex.message, *ex.backtrace].join($/)}"
-      # raise custom exception OpenSearchIndexingFailed?
     end
 
     def recreate
@@ -48,9 +39,7 @@ module Search::BookVersions
     end
 
     def delete
-      ElasticsearchClient.instance.indices.delete(index: name)
-    rescue => ex
-      Rails.logger.error "OpenSearch (error): Unable to delete index for book #{name}: #{ex.message}"
+      OpenSearch::ElasticsearchClient.instance.indices.delete(index: name)
     end
 
     def name

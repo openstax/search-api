@@ -32,17 +32,6 @@ module Search::BookVersions::I1
 
     private
 
-    # See lib/openstax/book.rb for a description of "parts"
-    # def index_part(part:)
-    #   if part.is_chapter?
-    #     # Don't care about chapters in this strategy, so recur
-    #     part.pages.each{ |page| index_page(page: page) }
-    #   else
-    #     # Don't care about units in this strategy, so recur
-    #     part.parts.each{ |part| index_part(part: part) }
-    #   end
-    # end
-
     def index_page(page:, index_name:)
       page.elements(element_classes: DESIRED_ELEMENTS_TO_DOCUMENTS.keys).each_with_index do |element, page_position|
         document_class = DESIRED_ELEMENTS_TO_DOCUMENTS[element.class]
@@ -50,7 +39,7 @@ module Search::BookVersions::I1
                                       page_position: page_position,
                                       page_id: page.id)
 
-        ElasticsearchClient.instance.index(index: index_name,
+        OpenSearch::ElasticsearchClient.instance.index(index: index_name,
                                            type: document.type,
                                            body: document.body)
       end
