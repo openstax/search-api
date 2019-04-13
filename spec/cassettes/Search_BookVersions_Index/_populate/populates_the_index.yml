@@ -1,6 +1,60 @@
 ---
 http_interactions:
 - request:
+    method: head
+    uri: http://localhost:9200/14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1_i1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '0'
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    http_version: 
+  recorded_at: Sat, 13 Apr 2019 11:44:12 GMT
+- request:
+    method: put
+    uri: http://localhost:9200/14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1_i1
+    body:
+      encoding: UTF-8
+      string: '{"settings":{"index":{"number_of_shards":1,"number_of_replicas":1},"analysis":{"analyzer":"simple"}},"mappings":{},"page_element":{"properties":{"element_type":{"type":"text"},"page_id":{"type":"text"},"page_position":{"type":"integer"},"title":{"type":"text"},"visible_content":{"type":"text"},"hidden_content":{"type":"text"}}}}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '103'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"acknowledged":true,"shards_acknowledged":true,"index":"14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1_i1"}'
+    http_version: 
+  recorded_at: Sat, 13 Apr 2019 11:44:12 GMT
+- request:
     method: get
     uri: https://archive.cnx.org/contents/14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1:ada35081-9ec4-4eb8-98b2-3ce350d5427f@6
     body:
@@ -29,11 +83,11 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Wed, 10 Apr 2019 21:57:35 GMT
+      - Fri, 12 Apr 2019 22:22:59 GMT
       Etag:
       - '"9vglANUbGmbpLniTZ3JESQ"'
       Expires:
-      - Thu, 09 Apr 2020 21:57:35 GMT
+      - Sat, 11 Apr 2020 22:22:59 GMT
       Link:
       - <https://cnx.org/contents/14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22:ada35081-9ec4-4eb8-98b2-3ce350d5427f/Overview-of-Anatomy-and-Physiology>
         ;rel="Canonical"
@@ -42,13 +96,13 @@ http_interactions:
       X-Varnish-Status:
       - cacheable - Cache-Control in backend response
       X-Varnish-Backend:
-      - prod07_archive0
+      - prod08_archive4
       X-Varnish-Ttl:
       - '31536000.000'
       X-Varnish:
-      - 21794093 10529496
+      - 2361596 1052788
       Age:
-      - '155847'
+      - '48073'
       Via:
       - 1.1 varnish-v4
       X-Varnish-Cache:
@@ -218,5 +272,396 @@ http_interactions:
         "Anatomy and Physiology", "suffix": "", "firstname": "CNX", "title": "", "fullname":
         "CNX Anatomy and Physiology", "id": "cnxap"}}]}'
     http_version: 
-  recorded_at: Fri, 12 Apr 2019 17:15:03 GMT
+  recorded_at: Sat, 13 Apr 2019 11:44:12 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","page_id":"ada35081-9ec4-4eb8-98b2-3ce350d5427f@6","page_position":0,"title":null,"visible_content":"Human
+        anatomy is the scientific study of the body’s structures. Some of these structures
+        are very small and can only be observed and analyzed with the assistance of
+        a microscope. Other larger structures can readily be seen, manipulated, measured,
+        and weighed. The word “anatomy” comes from a Greek root that means “to cut
+        apart.” Human anatomy was first studied by observing the exterior of the body
+        and observing the wounds of soldiers and other injuries. Later, physicians
+        were allowed to dissect bodies of the dead to augment their knowledge. When
+        a body is dissected, its structures are cut apart in order to observe their
+        physical attributes and their relationships to one another. Dissection is
+        still used in medical schools, anatomy courses, and in pathology labs. In
+        order to observe structures in living people, however, a number of imaging
+        techniques have been developed. These techniques allow clinicians to visualize
+        structures inside the living body such as a cancerous tumor or a fractured
+        bone.","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22%4015.1_i1/page_element/_LGDFmoB6ivOLIBTHdMg"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '219'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_index":"14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1_i1","_type":"page_element","_id":"_LGDFmoB6ivOLIBTHdMg","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":0,"_primary_term":1}'
+    http_version: 
+  recorded_at: Sat, 13 Apr 2019 11:44:12 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","page_id":"ada35081-9ec4-4eb8-98b2-3ce350d5427f@6","page_position":1,"title":null,"visible_content":"Like
+        most scientific disciplines, anatomy has areas of specialization. Gross anatomy
+        is the study of the larger structures of the body, those visible without the
+        aid of magnification (Figure 1.2a). Macro- means “large,” thus, gross anatomy
+        is also referred to as macroscopic anatomy. In contrast, micro- means “small,”
+        and microscopic anatomy is the study of structures that can be observed only
+        with the use of a microscope or other magnification devices (Figure 1.2b).
+        Microscopic anatomy includes cytology, the study of cells and histology, the
+        study of tissues. As the technology of microscopes has advanced, anatomists
+        have been able to observe smaller and smaller structures of the body, from
+        slices of large structures like the heart, to the three-dimensional structures
+        of large molecules in the body.","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22%4015.1_i1/page_element/_bGDFmoB6ivOLIBTHdNM"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '219'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_index":"14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1_i1","_type":"page_element","_id":"_bGDFmoB6ivOLIBTHdNM","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":1,"_primary_term":1}'
+    http_version: 
+  recorded_at: Sat, 13 Apr 2019 11:44:12 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"figure","page_id":"ada35081-9ec4-4eb8-98b2-3ce350d5427f@6","page_position":2,"title":null,"visible_content":"Figure
+        1.2 Gross and Microscopic Anatomy (a) Gross anatomy considers large structures
+        such as the brain. (b) Microscopic anatomy can deal with the same structures,
+        though at a different scale. This is a micrograph of nerve cells from the
+        brain. LM × 1600. (credit a: “WriterHound”/Wikimedia Commons; credit b: Micrograph
+        provided by the Regents of University of Michigan Medical School © 2012)","hidden_content":"Photo
+        A shows an entire human brain which has a lumpy and deeply striated appearance.
+        Photo B is a micrograph of neural tissue. It contains two roughly diamond-shaped
+        cells with dark nuclei. The cells are embedded in a light colored tissue containing
+        smaller cells and fiber strands."}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22%4015.1_i1/page_element/_rGDFmoB6ivOLIBTHdNh"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '219'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_index":"14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1_i1","_type":"page_element","_id":"_rGDFmoB6ivOLIBTHdNh","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":2,"_primary_term":1}'
+    http_version: 
+  recorded_at: Sat, 13 Apr 2019 11:44:12 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","page_id":"ada35081-9ec4-4eb8-98b2-3ce350d5427f@6","page_position":3,"title":null,"visible_content":"Anatomists
+        take two general approaches to the study of the body’s structures: regional
+        and systemic. Regional anatomy is the study of the interrelationships of all
+        of the structures in a specific body region, such as the abdomen. Studying
+        regional anatomy helps us appreciate the interrelationships of body structures,
+        such as how muscles, nerves, blood vessels, and other structures work together
+        to serve a particular body region. In contrast, systemic anatomy is the study
+        of the structures that make up a discrete body system—that is, a group of
+        structures that work together to perform a unique body function. For example,
+        a systemic anatomical study of the muscular system would consider all of the
+        skeletal muscles of the body.","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22%4015.1_i1/page_element/_7GDFmoB6ivOLIBTHdOC"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '219'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_index":"14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1_i1","_type":"page_element","_id":"_7GDFmoB6ivOLIBTHdOC","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":3,"_primary_term":1}'
+    http_version: 
+  recorded_at: Sat, 13 Apr 2019 11:44:12 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","page_id":"ada35081-9ec4-4eb8-98b2-3ce350d5427f@6","page_position":4,"title":null,"visible_content":"Whereas
+        anatomy is about structure, physiology is about function. Human physiology
+        is the scientific study of the chemistry and physics of the structures of
+        the body and the ways in which they work together to support the functions
+        of life. Much of the study of physiology centers on the body’s tendency toward
+        homeostasis. Homeostasis is the state of steady internal conditions maintained
+        by living things. The study of physiology certainly includes observation,
+        both with the naked eye and with microscopes, as well as manipulations and
+        measurements. However, current advances in physiology usually depend on carefully
+        designed laboratory experiments that reveal the functions of the many structures
+        and chemical compounds that make up the human body.","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22%4015.1_i1/page_element/ALGDFmoB6ivOLIBTHdSR"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '219'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_index":"14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1_i1","_type":"page_element","_id":"ALGDFmoB6ivOLIBTHdSR","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":4,"_primary_term":1}'
+    http_version: 
+  recorded_at: Sat, 13 Apr 2019 11:44:12 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","page_id":"ada35081-9ec4-4eb8-98b2-3ce350d5427f@6","page_position":5,"title":null,"visible_content":"Like
+        anatomists, physiologists typically specialize in a particular branch of physiology.
+        For example, neurophysiology is the study of the brain, spinal cord, and nerves
+        and how these work together to perform functions as complex and diverse as
+        vision, movement, and thinking. Physiologists may work from the organ level
+        (exploring, for example, what different parts of the brain do) to the molecular
+        level (such as exploring how an electrochemical signal travels along nerves).","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22%4015.1_i1/page_element/AbGDFmoB6ivOLIBTHdSj"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '219'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_index":"14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1_i1","_type":"page_element","_id":"AbGDFmoB6ivOLIBTHdSj","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":5,"_primary_term":1}'
+    http_version: 
+  recorded_at: Sat, 13 Apr 2019 11:44:12 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","page_id":"ada35081-9ec4-4eb8-98b2-3ce350d5427f@6","page_position":6,"title":null,"visible_content":"Form
+        is closely related to function in all living things. For example, the thin
+        flap of your eyelid can snap down to clear away dust particles and almost
+        instantaneously slide back up to allow you to see again. At the microscopic
+        level, the arrangement and function of the nerves and muscles that serve the
+        eyelid allow for its quick action and retreat. At a smaller level of analysis,
+        the function of these nerves and muscles likewise relies on the interactions
+        of specific molecules and ions. Even the three-dimensional structure of certain
+        molecules is essential to their function.","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22%4015.1_i1/page_element/ArGDFmoB6ivOLIBTHdSz"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '219'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_index":"14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1_i1","_type":"page_element","_id":"ArGDFmoB6ivOLIBTHdSz","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":6,"_primary_term":1}'
+    http_version: 
+  recorded_at: Sat, 13 Apr 2019 11:44:12 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","page_id":"ada35081-9ec4-4eb8-98b2-3ce350d5427f@6","page_position":7,"title":null,"visible_content":"Your
+        study of anatomy and physiology will make more sense if you continually relate
+        the form of the structures you are studying to their function. In fact, it
+        can be somewhat frustrating to attempt to study anatomy without an understanding
+        of the physiology that a body structure supports. Imagine, for example, trying
+        to appreciate the unique arrangement of the bones of the human hand if you
+        had no conception of the function of the hand. Fortunately, your understanding
+        of how the human hand manipulates tools—from pens to cell phones—helps you
+        appreciate the unique alignment of the thumb in opposition to the four fingers,
+        making your hand a structure that allows you to pinch and grasp objects and
+        type text messages.","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22%4015.1_i1/page_element/A7GDFmoB6ivOLIBTHdTC"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '219'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_index":"14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1_i1","_type":"page_element","_id":"A7GDFmoB6ivOLIBTHdTC","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":7,"_primary_term":1}'
+    http_version: 
+  recorded_at: Sat, 13 Apr 2019 11:44:12 GMT
+- request:
+    method: get
+    uri: http://localhost:9200/14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1_i1/_count
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '71'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"count":8,"_shards":{"total":1,"successful":1,"skipped":0,"failed":0}}'
+    http_version: 
+  recorded_at: Sat, 13 Apr 2019 11:44:13 GMT
+- request:
+    method: head
+    uri: http://localhost:9200/14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1_i1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '0'
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    http_version: 
+  recorded_at: Sat, 13 Apr 2019 11:44:13 GMT
+- request:
+    method: delete
+    uri: http://localhost:9200/14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1_i1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '21'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"acknowledged":true}'
+    http_version: 
+  recorded_at: Sat, 13 Apr 2019 11:44:13 GMT
 recorded_with: VCR 4.0.0

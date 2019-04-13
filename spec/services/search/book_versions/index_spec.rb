@@ -11,7 +11,7 @@ require 'vcr_helper'
 #          -v elasticsearch:/usr/share/elasticsearch/data
 #          -e "discovery.type=single-node"
 #          docker.elastic.co/elasticsearch/elasticsearch:6.3.2
-RSpec.describe Search::BookVersions::Index, type: :external, vcr: VCR_OPTS do
+RSpec.describe Search::BookVersions::Index, vcr: VCR_OPTS do
   let(:cnx_book_id) { '14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22' }
   let(:book_version) { "15.1" }
   let(:test_book_json) { JSON.parse(file_fixture('mini.json').read) }
@@ -19,10 +19,8 @@ RSpec.describe Search::BookVersions::Index, type: :external, vcr: VCR_OPTS do
   subject(:index) { described_class.new(book_guid: cnx_book_id, book_version: book_version) }
 
   def delete_index
-    VCR.use_cassette("Search_BookVersions_Index") do
-      if OpenSearch::ElasticsearchClient.instance.indices.exists? index: index.name
-        OpenSearch::ElasticsearchClient.instance.indices.delete index: index.name
-      end
+    if OpenSearch::ElasticsearchClient.instance.indices.exists? index: index.name
+      OpenSearch::ElasticsearchClient.instance.indices.delete index: index.name
     end
   end
 
@@ -52,7 +50,7 @@ RSpec.describe Search::BookVersions::Index, type: :external, vcr: VCR_OPTS do
     it 'populates the index' do
       index.create
       index.populate
-      sleep 1   # necessary evil to get the doc count
+      sleep 1 if VCR.current_cassette.try!(:recording?)  # wait for ES to finish
 
       expect(OpenSearch::ElasticsearchClient.instance.count(index: index.name)["count"]).to eq 8
     end
