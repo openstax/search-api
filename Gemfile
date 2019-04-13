@@ -47,9 +47,16 @@ gem "lograge"
 
 gem 'sentry-raven'
 
+gem 'nokogiri'
+
+gem 'openstax_cnx', github: 'openstax/cnx-ruby', ref: '0c7b2f0'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+  gem 'pry-rails'
+
   gem 'rspec-rails', '~> 3.8'
 
   # Stubs HTTP requests
