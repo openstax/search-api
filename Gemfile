@@ -40,7 +40,7 @@ gem "whenever"
 # Unlike in most of our projects, this is used in production (to set the node type)
 gem 'dotenv-rails'
 
-gem "openstax_path_prefixer", github: "openstax/path_prefixer", ref: "eb239c532941f"
+gem "openstax_path_prefixer", github: "openstax/path_prefixer", ref: "b6d8f45d8"
 
 # More concise, one-liner logs (better for production)
 gem "lograge"
