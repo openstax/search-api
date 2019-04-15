@@ -12,17 +12,17 @@ http_interactions:
       Accept-Encoding:
       - ''
       User-Agent:
-      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin17 aws-sdk-elasticsearchservice/1.15.0
+      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-elasticsearchservice/1.15.0
       Host:
       - es.us-east-1.amazonaws.com
       X-Amz-Date:
-      - 20190329T040911Z
+      - 20190422T213545Z
       X-Amz-Security-Token:
       - AWS_SESSION_TOKEN
       X-Amz-Content-Sha256:
-      - c8b810ce7e812c4727d7df6459454b496b0a8a63b5dc0e9fedf269a312e95b28
+      - 889ee7be41f38eb070fdea6c756f8df666b93bd2223a1d2378f687653f7f97e7
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190329/us-east-1/es/aws4_request,
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190422/us-east-1/es/aws4_request,
         SignedHeaders=host;x-amz-content-sha256;x-amz-date;x-amz-security-token, Signature=<SignatureValue>
       Content-Length:
       - '577'
@@ -34,19 +34,19 @@ http_interactions:
       message: OK
     headers:
       X-Amzn-Requestid:
-      - 6830e03e-51d8-11e9-b2a0-cf5ff1b8519b
+      - 96572473-6546-11e9-941a-21ac48b0c41e
       Content-Type:
       - application/json
       Content-Length:
-      - '1583'
+      - '1522'
       Date:
-      - Fri, 29 Mar 2019 04:09:13 GMT
+      - Mon, 22 Apr 2019 21:35:47 GMT
     body:
       encoding: UTF-8
       string: '{"DomainStatus":{"ARN":"arn:aws:es:us-east-1:AWS_ACCOUNT_ID:domain/some_esdomain_name","AccessPolicies":"{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Principal\":{\"AWS\":\"AWS_MY_ARN\"},\"Action\":[\"es:ESHttpDelete\",\"es:ESHttpGet\",\"es:ESHttpHead\",\"es:ESHttpPost\",\"es:ESHttpPut\"],\"Resource\":\"arn:aws:es:us-east-1:AWS_ACCOUNT_ID:domain/some_esdomain_name/*\"}]}","AdvancedOptions":{"rest.action.multi.allow_explicit_index":"true"},"CognitoOptions":{"Enabled":false,"IdentityPoolId":null,"RoleArn":null,"UserPoolId":null},"Created":true,"Deleted":false,"DomainId":"AWS_ACCOUNT_ID/some_esdomain_name","DomainName":"some_esdomain_name","EBSOptions":{"EBSEnabled":true,"Iops":null,"VolumeSize":10,"VolumeType":"gp2"},"ElasticsearchClusterConfig":{"DedicatedMasterCount":null,"DedicatedMasterEnabled":false,"DedicatedMasterType":null,"InstanceCount":1,"InstanceType":"m4.xlarge.elasticsearch","ZoneAwarenessConfig":null,"ZoneAwarenessEnabled":false},"ElasticsearchVersion":"6.4","EncryptionAtRestOptions":{"Enabled":false,"KmsKeyId":null},"Endpoint":null,"Endpoints":null,"LogPublishingOptions":null,"NodeToNodeEncryptionOptions":{"Enabled":false},"Processing":true,"ServiceSoftwareOptions":{"AutomatedUpdateDate":0.0,"Cancellable":false,"CurrentVersion":"","Description":"There
         is no software update available for this domain.","NewVersion":"","UpdateAvailable":false,"UpdateStatus":"COMPLETED"},"SnapshotOptions":{"AutomatedSnapshotStartHour":0},"UpgradeProcessing":false,"VPCOptions":null}}'
     http_version: 
-  recorded_at: Fri, 29 Mar 2019 04:09:13 GMT
+  recorded_at: Mon, 22 Apr 2019 21:35:48 GMT
 - request:
     method: get
     uri: https://es.us-east-1.amazonaws.com/2015-01-01/es/domain/some_esdomain_name
@@ -59,17 +59,17 @@ http_interactions:
       Accept-Encoding:
       - ''
       User-Agent:
-      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin17 aws-sdk-elasticsearchservice/1.15.0
+      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-elasticsearchservice/1.15.0
       Host:
       - es.us-east-1.amazonaws.com
       X-Amz-Date:
-      - 20190329T041854Z
+      - 20190422T214502Z
       X-Amz-Security-Token:
       - AWS_SESSION_TOKEN
       X-Amz-Content-Sha256:
       - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190329/us-east-1/es/aws4_request,
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190422/us-east-1/es/aws4_request,
         SignedHeaders=host;x-amz-content-sha256;x-amz-date;x-amz-security-token, Signature=<SignatureValue>
       Content-Length:
       - '0'
@@ -81,19 +81,19 @@ http_interactions:
       message: OK
     headers:
       X-Amzn-Requestid:
-      - c3cc9bb3-51d9-11e9-aeb1-19d7fdcfe9cf
+      - e27f2eef-6547-11e9-840f-b5913b98c9fc
       Content-Type:
       - application/json
       Content-Length:
-      - '1690'
+      - '1616'
       Date:
-      - Fri, 29 Mar 2019 04:18:53 GMT
+      - Mon, 22 Apr 2019 21:45:03 GMT
     body:
       encoding: UTF-8
-      string: '{"DomainStatus":{"ARN":"arn:aws:es:us-east-1:AWS_ACCOUNT_ID:domain/some_esdomain_name","AccessPolicies":"{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Principal\":{\"AWS\":\"AWS_MY_ARN\"},\"Action\":[\"es:ESHttpDelete\",\"es:ESHttpGet\",\"es:ESHttpHead\",\"es:ESHttpPost\",\"es:ESHttpPut\"],\"Resource\":\"arn:aws:es:us-east-1:AWS_ACCOUNT_ID:domain/some_esdomain_name/*\"}]}","AdvancedOptions":{"rest.action.multi.allow_explicit_index":"true"},"CognitoOptions":{"Enabled":false,"IdentityPoolId":null,"RoleArn":null,"UserPoolId":null},"Created":true,"Deleted":false,"DomainId":"AWS_ACCOUNT_ID/some_esdomain_name","DomainName":"some_esdomain_name","EBSOptions":{"EBSEnabled":true,"Iops":null,"VolumeSize":10,"VolumeType":"gp2"},"ElasticsearchClusterConfig":{"DedicatedMasterCount":null,"DedicatedMasterEnabled":false,"DedicatedMasterType":null,"InstanceCount":1,"InstanceType":"m4.xlarge.elasticsearch","ZoneAwarenessConfig":null,"ZoneAwarenessEnabled":false},"ElasticsearchVersion":"6.4","EncryptionAtRestOptions":{"Enabled":false,"KmsKeyId":null},"Endpoint":"search-some_esdomain_name-randompartofendpoint.us-east-1.es.amazonaws.com","Endpoints":null,"LogPublishingOptions":null,"NodeToNodeEncryptionOptions":{"Enabled":false},"Processing":false,"ServiceSoftwareOptions":{"AutomatedUpdateDate":1.554978104E9,"Cancellable":false,"CurrentVersion":"R20190113","Description":"There
+      string: '{"DomainStatus":{"ARN":"arn:aws:es:us-east-1:AWS_ACCOUNT_ID:domain/some_esdomain_name","AccessPolicies":"{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Principal\":{\"AWS\":\"AWS_MY_ARN\"},\"Action\":[\"es:ESHttpDelete\",\"es:ESHttpGet\",\"es:ESHttpHead\",\"es:ESHttpPost\",\"es:ESHttpPut\"],\"Resource\":\"arn:aws:es:us-east-1:AWS_ACCOUNT_ID:domain/some_esdomain_name/*\"}]}","AdvancedOptions":{"rest.action.multi.allow_explicit_index":"true"},"CognitoOptions":{"Enabled":false,"IdentityPoolId":null,"RoleArn":null,"UserPoolId":null},"Created":true,"Deleted":false,"DomainId":"AWS_ACCOUNT_ID/some_esdomain_name","DomainName":"some_esdomain_name","EBSOptions":{"EBSEnabled":true,"Iops":null,"VolumeSize":10,"VolumeType":"gp2"},"ElasticsearchClusterConfig":{"DedicatedMasterCount":null,"DedicatedMasterEnabled":false,"DedicatedMasterType":null,"InstanceCount":1,"InstanceType":"m4.xlarge.elasticsearch","ZoneAwarenessConfig":null,"ZoneAwarenessEnabled":false},"ElasticsearchVersion":"6.4","EncryptionAtRestOptions":{"Enabled":false,"KmsKeyId":null},"Endpoint":"search-some_esdomain_name-randompartofendpoint.us-east-1.es.amazonaws.com","Endpoints":null,"LogPublishingOptions":null,"NodeToNodeEncryptionOptions":{"Enabled":false},"Processing":false,"ServiceSoftwareOptions":{"AutomatedUpdateDate":1.556645481E9,"Cancellable":false,"CurrentVersion":"R20190221-P1","Description":"There
         is no software update available for this domain.","NewVersion":"","UpdateAvailable":false,"UpdateStatus":"COMPLETED"},"SnapshotOptions":{"AutomatedSnapshotStartHour":0},"UpgradeProcessing":false,"VPCOptions":null}}'
     http_version: 
-  recorded_at: Fri, 29 Mar 2019 04:18:54 GMT
+  recorded_at: Mon, 22 Apr 2019 21:45:03 GMT
 - request:
     method: get
     uri: https://search-some_esdomain_name-randompartofendpoint.us-east-1.es.amazonaws.com/_search?q=test
@@ -108,13 +108,13 @@ http_interactions:
       Host:
       - search-some_esdomain_name-randompartofendpoint.us-east-1.es.amazonaws.com
       X-Amz-Date:
-      - 20190329T041854Z
+      - 20190422T214503Z
       X-Amz-Security-Token:
       - AWS_SESSION_TOKEN
       X-Amz-Content-Sha256:
       - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190329/us-east-1/es/aws4_request,
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190422/us-east-1/es/aws4_request,
         SignedHeaders=content-type;host;user-agent;x-amz-content-sha256;x-amz-date;x-amz-security-token,
         Signature=<SignatureValue>
       Expect:
@@ -125,7 +125,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 29 Mar 2019 04:18:55 GMT
+      - Mon, 22 Apr 2019 21:45:03 GMT
       Content-Type:
       - application/json; charset=UTF-8
       Content-Length:
@@ -136,9 +136,9 @@ http_interactions:
       - "*"
     body:
       encoding: ASCII-8BIT
-      string: '{"took":10,"timed_out":false,"_shards":{"total":0,"successful":0,"skipped":0,"failed":0},"hits":{"total":0,"max_score":0.0,"hits":[]}}'
+      string: '{"took":11,"timed_out":false,"_shards":{"total":0,"successful":0,"skipped":0,"failed":0},"hits":{"total":0,"max_score":0.0,"hits":[]}}'
     http_version: 
-  recorded_at: Fri, 29 Mar 2019 04:18:55 GMT
+  recorded_at: Mon, 22 Apr 2019 21:45:03 GMT
 - request:
     method: get
     uri: https://search-some_esdomain_name-randompartofendpoint.us-east-1.es.amazonaws.com/_search?q=test
@@ -158,7 +158,7 @@ http_interactions:
       message: Forbidden
     headers:
       Date:
-      - Fri, 29 Mar 2019 04:18:56 GMT
+      - Mon, 22 Apr 2019 21:45:04 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -166,14 +166,120 @@ http_interactions:
       Connection:
       - keep-alive
       X-Amzn-Requestid:
-      - c4b0b999-51d9-11e9-b21b-3b3abb008d03
+      - e36aee7f-6547-11e9-92d1-f932ba30e753
       Access-Control-Allow-Origin:
       - "*"
     body:
       encoding: ASCII-8BIT
       string: '{"Message":"User: anonymous is not authorized to perform: es:ESHttpGet"}'
     http_version: 
-  recorded_at: Fri, 29 Mar 2019 04:18:56 GMT
+  recorded_at: Mon, 22 Apr 2019 21:45:04 GMT
+- request:
+    method: post
+    uri: https://dynamodb.us-east-2.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Content-Type:
+      - application/x-amz-json-1.0
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-dynamodb/1.21.0
+      X-Amz-Target:
+      - DynamoDB_20120810.ListTables
+      Host:
+      - dynamodb.us-east-2.amazonaws.com
+      X-Amz-Date:
+      - 20190422T214504Z
+      X-Amz-Content-Sha256:
+      - 44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190422/us-east-2/dynamodb/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date;x-amz-target,
+        Signature=<SignatureValue>
+      Content-Length:
+      - '2'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Server
+      Date:
+      - Mon, 22 Apr 2019 21:45:04 GMT
+      Content-Type:
+      - application/x-amz-json-1.0
+      Content-Length:
+      - '17'
+      Connection:
+      - keep-alive
+      X-Amzn-Requestid:
+      - U2UT96NQEFRMM83SVTGH3H0R3NVV4KQNSO5AEMVJF66Q9ASUAAJG
+      X-Amz-Crc32:
+      - '1315925753'
+    body:
+      encoding: UTF-8
+      string: '{"TableNames":[]}'
+    http_version: 
+  recorded_at: Mon, 22 Apr 2019 21:45:05 GMT
+- request:
+    method: post
+    uri: https://dynamodb.us-east-2.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Content-Type:
+      - application/x-amz-json-1.0
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-dynamodb/1.21.0
+      X-Amz-Target:
+      - DynamoDB_20120810.ListTables
+      Host:
+      - dynamodb.us-east-2.amazonaws.com
+      X-Amz-Date:
+      - 20190422T214505Z
+      X-Amz-Content-Sha256:
+      - 44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190422/us-east-2/dynamodb/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date;x-amz-target,
+        Signature=<SignatureValue>
+      Content-Length:
+      - '2'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Server
+      Date:
+      - Mon, 22 Apr 2019 21:45:05 GMT
+      Content-Type:
+      - application/x-amz-json-1.0
+      Content-Length:
+      - '17'
+      Connection:
+      - keep-alive
+      X-Amzn-Requestid:
+      - JABEF48PGJ9GAD7J1QCQESJOVFVV4KQNSO5AEMVJF66Q9ASUAAJG
+      X-Amz-Crc32:
+      - '1315925753'
+    body:
+      encoding: UTF-8
+      string: '{"TableNames":[]}'
+    http_version: 
+  recorded_at: Mon, 22 Apr 2019 21:45:05 GMT
 - request:
     method: delete
     uri: https://es.us-east-1.amazonaws.com/2015-01-01/es/domain/some_esdomain_name
@@ -186,17 +292,17 @@ http_interactions:
       Accept-Encoding:
       - ''
       User-Agent:
-      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin17 aws-sdk-elasticsearchservice/1.15.0
+      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-elasticsearchservice/1.15.0
       Host:
       - es.us-east-1.amazonaws.com
       X-Amz-Date:
-      - 20190329T041901Z
+      - 20190422T214505Z
       X-Amz-Security-Token:
       - AWS_SESSION_TOKEN
       X-Amz-Content-Sha256:
       - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190329/us-east-1/es/aws4_request,
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190422/us-east-1/es/aws4_request,
         SignedHeaders=host;x-amz-content-sha256;x-amz-date;x-amz-security-token, Signature=<SignatureValue>
       Content-Length:
       - '0'
@@ -208,17 +314,17 @@ http_interactions:
       message: OK
     headers:
       X-Amzn-Requestid:
-      - c83f85ad-51d9-11e9-8b96-f7c2339e0758
+      - e4bdad54-6547-11e9-b80f-bbafec056997
       Content-Type:
       - application/json
       Content-Length:
-      - '1688'
+      - '1614'
       Date:
-      - Fri, 29 Mar 2019 04:19:01 GMT
+      - Mon, 22 Apr 2019 21:45:06 GMT
     body:
       encoding: UTF-8
-      string: '{"DomainStatus":{"ARN":"arn:aws:es:us-east-1:AWS_ACCOUNT_ID:domain/some_esdomain_name","AccessPolicies":"{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Principal\":{\"AWS\":\"AWS_MY_ARN\"},\"Action\":[\"es:ESHttpDelete\",\"es:ESHttpGet\",\"es:ESHttpHead\",\"es:ESHttpPost\",\"es:ESHttpPut\"],\"Resource\":\"arn:aws:es:us-east-1:AWS_ACCOUNT_ID:domain/some_esdomain_name/*\"}]}","AdvancedOptions":{"rest.action.multi.allow_explicit_index":"true"},"CognitoOptions":{"Enabled":false,"IdentityPoolId":null,"RoleArn":null,"UserPoolId":null},"Created":true,"Deleted":true,"DomainId":"AWS_ACCOUNT_ID/some_esdomain_name","DomainName":"some_esdomain_name","EBSOptions":{"EBSEnabled":true,"Iops":null,"VolumeSize":10,"VolumeType":"gp2"},"ElasticsearchClusterConfig":{"DedicatedMasterCount":null,"DedicatedMasterEnabled":false,"DedicatedMasterType":null,"InstanceCount":1,"InstanceType":"m4.xlarge.elasticsearch","ZoneAwarenessConfig":null,"ZoneAwarenessEnabled":false},"ElasticsearchVersion":"6.4","EncryptionAtRestOptions":{"Enabled":false,"KmsKeyId":null},"Endpoint":"search-some_esdomain_name-randompartofendpoint.us-east-1.es.amazonaws.com","Endpoints":null,"LogPublishingOptions":null,"NodeToNodeEncryptionOptions":{"Enabled":false},"Processing":true,"ServiceSoftwareOptions":{"AutomatedUpdateDate":1.554978104E9,"Cancellable":false,"CurrentVersion":"R20190113","Description":"There
+      string: '{"DomainStatus":{"ARN":"arn:aws:es:us-east-1:AWS_ACCOUNT_ID:domain/some_esdomain_name","AccessPolicies":"{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Principal\":{\"AWS\":\"AWS_MY_ARN\"},\"Action\":[\"es:ESHttpDelete\",\"es:ESHttpGet\",\"es:ESHttpHead\",\"es:ESHttpPost\",\"es:ESHttpPut\"],\"Resource\":\"arn:aws:es:us-east-1:AWS_ACCOUNT_ID:domain/some_esdomain_name/*\"}]}","AdvancedOptions":{"rest.action.multi.allow_explicit_index":"true"},"CognitoOptions":{"Enabled":false,"IdentityPoolId":null,"RoleArn":null,"UserPoolId":null},"Created":true,"Deleted":true,"DomainId":"AWS_ACCOUNT_ID/some_esdomain_name","DomainName":"some_esdomain_name","EBSOptions":{"EBSEnabled":true,"Iops":null,"VolumeSize":10,"VolumeType":"gp2"},"ElasticsearchClusterConfig":{"DedicatedMasterCount":null,"DedicatedMasterEnabled":false,"DedicatedMasterType":null,"InstanceCount":1,"InstanceType":"m4.xlarge.elasticsearch","ZoneAwarenessConfig":null,"ZoneAwarenessEnabled":false},"ElasticsearchVersion":"6.4","EncryptionAtRestOptions":{"Enabled":false,"KmsKeyId":null},"Endpoint":"search-some_esdomain_name-randompartofendpoint.us-east-1.es.amazonaws.com","Endpoints":null,"LogPublishingOptions":null,"NodeToNodeEncryptionOptions":{"Enabled":false},"Processing":true,"ServiceSoftwareOptions":{"AutomatedUpdateDate":1.556645481E9,"Cancellable":false,"CurrentVersion":"R20190221-P1","Description":"There
         is no software update available for this domain.","NewVersion":"","UpdateAvailable":false,"UpdateStatus":"COMPLETED"},"SnapshotOptions":{"AutomatedSnapshotStartHour":0},"UpgradeProcessing":false,"VPCOptions":null}}'
     http_version: 
-  recorded_at: Fri, 29 Mar 2019 04:19:02 GMT
+  recorded_at: Mon, 22 Apr 2019 21:45:07 GMT
 recorded_with: VCR 4.0.0

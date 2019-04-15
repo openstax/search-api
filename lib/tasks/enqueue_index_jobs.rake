@@ -3,8 +3,9 @@ desc <<-DESC.strip_heredoc
   that workers are available to work them.
 DESC
 task enqueue_index_jobs: :environment do
-
   Rails.logger.info { "Ran placeholder enqueue_index_jobs task!" }
+
+  EnqueueIndexJobs.new.process_rex_releases
 
   # This rake task should implement
   # https://app.zenhub.com/workspaces/openstax-unified-5b71aabe3815ff014b102258/issues/openstax/unified/197
@@ -22,5 +23,4 @@ task enqueue_index_jobs: :environment do
   # sure it can handle simultaneous runs (which could happen if one run is slow or if
   # a developer runs it manually while cron is still enabled).
   #
-
 end

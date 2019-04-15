@@ -5,7 +5,7 @@ module OpenStax
 
     attr_reader :releases
 
-    def_delegators :@releases, :each, :size, :count, :first, :last
+    def_delegators :@releases, :each, :map, :size, :count, :first, :last
 
     def initialize
       load_releases

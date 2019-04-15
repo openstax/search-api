@@ -1,0 +1,3 @@
+class DeadLetterJobsQueue < BaseQueue
+
+end
