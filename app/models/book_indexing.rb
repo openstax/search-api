@@ -1,16 +1,18 @@
 class BookIndexing
   include Dynamoid::Document
 
-  VALID_STATES = [ # what's an invalid state?  Just call STATES?
-    PENDING = "pending",
-    DELETE_PENDING = "delete pending",
-    STARTED = "started",
-    INDEXED = "indexed",
-    DELETED = "deleted"
+  table name: Rails.application.secrets.dynamodb[:index_state_table_name].parameterize.underscore.to_sym
+
+  STATES = [
+    STATE_PENDING = "pending",
+    STATE_DELETE_PENDING = "delete pending",
+    STATE_STARTED = "started",
+    STATE_INDEXED = "indexed",
+    STATE_DELETED = "deleted"
   ]
   VALID_INDEXING_STRATEGIES = %w(I1)
 
-  validates :state, inclusion: { in: VALID_STATES }
+  validates :state, inclusion: { in: STATES }
   validates :indexing_version, inclusion: { in: VALID_INDEXING_STRATEGIES }
 
   field :state
@@ -21,18 +23,13 @@ class BookIndexing
   field :finished_time, :datetime, store_as_string: true
   field :message
 
-  def initialize
-    self.in_demand = false
-    self.state = VALID_STATES::PENDING
-  end
+  attr_reader :in_demand
 
-  # #create is used to add a book indexing dynamoid document to represent
-  # the enqueueing of a "job" to the SQS indexing pipeline
-  def self.create(book_version_id:, indexing_version:, state: PENDING)
+  def self.create_new_indexing(book_version_id:, indexing_version:)
     Rails.logger.info "Creating book version #{@book_version_id} #{@indexing_version} in dynamodb"
 
-    BookIndexing.new.tap do |job|
-      job.state = state
+    new.tap do |job|
+      job.state = STATE_PENDING
       job.book_version_id = book_version_id
       job.indexing_version = indexing_version
       job.enqueued_time = DateTime.now
@@ -40,8 +37,23 @@ class BookIndexing
     end
   end
 
-  def self.valid_book_indexings
-    where('state.not_contains': [DELETE_PENDING, DELETED])
+  def self.live_book_indexings
+    all.reject{ |doc| doc.deleting? }
+  end
+
+  def initialize(*args)
+    super
+    self.in_demand = false
+  end
+
+  def deleting?
+    [STATE_DELETED, STATE_DELETE_PENDING].include?(self.state)
+  end
+
+  def queue_to_delete
+    self.state = STATE_DELETE_PENDING
+    self.enqueued_time = DateTime.now
+    save!
   end
 
   # #save is used to update a book indexing dynamoid document to represent

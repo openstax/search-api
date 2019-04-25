@@ -8,7 +8,7 @@ class TodoJobsQueue < BaseQueue
   end
 
   def read
-    message = raw_queue.receive_messages()
-    message.size == 0 ? nil : IndexingJob.new(message)
+    # message = raw_queue.receive_messages()
+    # message.size == 0 ? nil : IndexingJob.new(message)
   end
 end

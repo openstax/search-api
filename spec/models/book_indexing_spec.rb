@@ -9,26 +9,51 @@ RSpec.describe BookIndexing, vcr: VCR_OPTS do
 
   subject(:book_indexing) { described_class }
 
-  describe ".create" do
+  describe ".create_new_indexing" do
     it 'creates the a document row in the dynamo db table' do
       TempAwsEnv.make do |env|
         env.create_dynamodb_tables
 
-        book_indexing.create(book_version_id: book_id, indexing_version: indexing_version)
+        book_indexing.create_new_indexing(book_version_id: book_id, indexing_version: indexing_version)
         expect(BookIndexing.where(book_version_id: book_id).count).to eq 1
       end
     end
+  end
 
-    it 'creates only one document for a started book indexing job' do
+  describe ".live_book_indexings" do
+    let(:book_id1) { 'book@1'}
+    let(:book_id2) { 'book@2'}
+    let(:book_id3) { 'book@3'}
+
+    def init_test
+      book_indexing.new(state: BookIndexing::STATE_PENDING, book_version_id: book_id1, indexing_version: indexing_version).save!
+      book_indexing.new(state: BookIndexing::STATE_DELETE_PENDING, book_version_id: book_id1, indexing_version: indexing_version).save!
+      book_indexing.new(state: BookIndexing::STATE_DELETED, book_version_id: book_id1, indexing_version: indexing_version).save!
+    end
+
+    it 'finds only live documents, not the deleting ones' do
+      TempAwsEnv.make do |env|
+        env.create_dynamodb_tables
+        init_test
+
+        expect(BookIndexing.all.count).to eq 3   # BookIndexing.count doesnt work
+        expect(BookIndexing.live_book_indexings.count).to eq 1
+      end
+    end
+  end
+
+  describe "#queue_to_delete" do
+    let(:live_indexing) do
+      book_indexing.create_new_indexing(book_version_id: book_id, indexing_version: indexing_version)
+    end
+
+    it 'updates the document to be deleted' do
       TempAwsEnv.make do |env|
         env.create_dynamodb_tables
 
-        book_indexing.create(book_version_id: book_id, indexing_version: indexing_version)
-        expect{
-          book_indexing.create(book_version_id: book_id, indexing_version: indexing_version)
-        }.to raise_error(Dynamoid::Errors::DocumentNotValid)
-
-        expect(BookIndexing.where(book_version_id: book_id).count).to eq 1
+        expect(live_indexing.state).to eq BookIndexing::STATE_PENDING
+        live_indexing.queue_to_delete
+        expect(live_indexing.state).to eq BookIndexing::STATE_DELETE_PENDING
       end
     end
   end

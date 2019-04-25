@@ -5,272 +5,7 @@ http_interactions:
     uri: https://dynamodb.us-east-2.amazonaws.com/
     body:
       encoding: UTF-8
-      string: '{"TableName":"open_search_bookindexings"}'
-    headers:
-      Content-Type:
-      - application/x-amz-json-1.0
-      Accept-Encoding:
-      - ''
-      User-Agent:
-      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-dynamodb/1.21.0
-      X-Amz-Target:
-      - DynamoDB_20120810.DescribeTable
-      Host:
-      - dynamodb.us-east-2.amazonaws.com
-      X-Amz-Date:
-      - 20190422T214521Z
-      X-Amz-Content-Sha256:
-      - 9ee068ab340af7caabc45136ab98c74475c14aa214fe1f2cf5b0650a7ec3fa96
-      Authorization:
-      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190422/us-east-2/dynamodb/aws4_request,
-        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date;x-amz-target,
-        Signature=<SignatureValue>
-      Content-Length:
-      - '41'
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - Server
-      Date:
-      - Mon, 22 Apr 2019 21:45:21 GMT
-      Content-Type:
-      - application/x-amz-json-1.0
-      Content-Length:
-      - '502'
-      Connection:
-      - keep-alive
-      X-Amzn-Requestid:
-      - 2LI84FUBPLUVTC115IUART51OFVV4KQNSO5AEMVJF66Q9ASUAAJG
-      X-Amz-Crc32:
-      - '1161382380'
-    body:
-      encoding: UTF-8
-      string: '{"Table":{"AttributeDefinitions":[{"AttributeName":"id","AttributeType":"S"}],"CreationDateTime":1.555969515459E9,"ItemCount":0,"KeySchema":[{"AttributeName":"id","KeyType":"HASH"}],"ProvisionedThroughput":{"NumberOfDecreasesToday":0,"ReadCapacityUnits":100,"WriteCapacityUnits":20},"TableArn":"arn:aws:dynamodb:us-east-2:AWS_ACCOUNT_ID:table/open_search_bookindexings","TableId":"a6dabc4e-acca-480e-931a-4d41e717e8b2","TableName":"open_search_bookindexings","TableSizeBytes":0,"TableStatus":"ACTIVE"}}'
-    http_version: 
-  recorded_at: Mon, 22 Apr 2019 21:45:21 GMT
-- request:
-    method: post
-    uri: https://dynamodb.us-east-2.amazonaws.com/
-    body:
-      encoding: UTF-8
-      string: '{"TableName":"open_search_bookindexings","ScanFilter":{"book_version_id":{"ComparisonOperator":"EQ","AttributeValueList":[{"S":"14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1"}]},"indexing_version":{"ComparisonOperator":"EQ","AttributeValueList":[{"S":"I1"}]}}}'
-    headers:
-      Content-Type:
-      - application/x-amz-json-1.0
-      Accept-Encoding:
-      - ''
-      User-Agent:
-      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-dynamodb/1.21.0
-      X-Amz-Target:
-      - DynamoDB_20120810.Scan
-      Host:
-      - dynamodb.us-east-2.amazonaws.com
-      X-Amz-Date:
-      - 20190422T214521Z
-      X-Amz-Content-Sha256:
-      - f816fcfb464f3a9c3f6a40a8d5f898edd9b64370185eb3558b7f27f1b3813519
-      Authorization:
-      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190422/us-east-2/dynamodb/aws4_request,
-        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date;x-amz-target,
-        Signature=<SignatureValue>
-      Content-Length:
-      - '256'
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - Server
-      Date:
-      - Mon, 22 Apr 2019 21:45:21 GMT
-      Content-Type:
-      - application/x-amz-json-1.0
-      Content-Length:
-      - '39'
-      Connection:
-      - keep-alive
-      X-Amzn-Requestid:
-      - HFF4LF914O0QJGTPVHSP8K224JVV4KQNSO5AEMVJF66Q9ASUAAJG
-      X-Amz-Crc32:
-      - '3413411624'
-    body:
-      encoding: UTF-8
-      string: '{"Count":0,"Items":[],"ScannedCount":0}'
-    http_version: 
-  recorded_at: Mon, 22 Apr 2019 21:45:21 GMT
-- request:
-    method: post
-    uri: https://dynamodb.us-east-2.amazonaws.com/
-    body:
-      encoding: UTF-8
-      string: '{"TableName":"open_search_bookindexings","Item":{"id":{"S":"b7cb17c7-f6d9-49b2-a1d8-22c6a72b317b"},"state":{"S":"pending"},"book_version_id":{"S":"14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1"},"indexing_version":{"S":"I1"},"enqueued_time":{"S":"2019-04-22T21:45:21+00:00"}},"Expected":{"id":{"Exists":false}}}'
-    headers:
-      Content-Type:
-      - application/x-amz-json-1.0
-      Accept-Encoding:
-      - ''
-      User-Agent:
-      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-dynamodb/1.21.0
-      X-Amz-Target:
-      - DynamoDB_20120810.PutItem
-      Host:
-      - dynamodb.us-east-2.amazonaws.com
-      X-Amz-Date:
-      - 20190422T214521Z
-      X-Amz-Content-Sha256:
-      - 1e88e7c7990715ec9b33661cd85b0a41188166889da11a69cc9baeeef9d7f6e0
-      Authorization:
-      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190422/us-east-2/dynamodb/aws4_request,
-        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date;x-amz-target,
-        Signature=<SignatureValue>
-      Content-Length:
-      - '307'
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - Server
-      Date:
-      - Mon, 22 Apr 2019 21:45:22 GMT
-      Content-Type:
-      - application/x-amz-json-1.0
-      Content-Length:
-      - '2'
-      Connection:
-      - keep-alive
-      X-Amzn-Requestid:
-      - D1CHKD4ORMCBDP73K9IROPUOQ7VV4KQNSO5AEMVJF66Q9ASUAAJG
-      X-Amz-Crc32:
-      - '2745614147'
-    body:
-      encoding: UTF-8
-      string: "{}"
-    http_version: 
-  recorded_at: Mon, 22 Apr 2019 21:45:22 GMT
-- request:
-    method: post
-    uri: https://dynamodb.us-east-2.amazonaws.com/
-    body:
-      encoding: UTF-8
-      string: '{"Select":"COUNT","TableName":"open_search_bookindexings","ScanFilter":{"book_version_id":{"ComparisonOperator":"EQ","AttributeValueList":[{"S":"14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1"}]}}}'
-    headers:
-      Content-Type:
-      - application/x-amz-json-1.0
-      Accept-Encoding:
-      - ''
-      User-Agent:
-      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-dynamodb/1.21.0
-      X-Amz-Target:
-      - DynamoDB_20120810.Scan
-      Host:
-      - dynamodb.us-east-2.amazonaws.com
-      X-Amz-Date:
-      - 20190422T214522Z
-      X-Amz-Content-Sha256:
-      - 23982165ec7af10e7141a5496fe4921f215fbf56cefa5f6b7c8959af0e0cc629
-      Authorization:
-      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190422/us-east-2/dynamodb/aws4_request,
-        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date;x-amz-target,
-        Signature=<SignatureValue>
-      Content-Length:
-      - '192'
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - Server
-      Date:
-      - Mon, 22 Apr 2019 21:45:22 GMT
-      Content-Type:
-      - application/x-amz-json-1.0
-      Content-Length:
-      - '28'
-      Connection:
-      - keep-alive
-      X-Amzn-Requestid:
-      - FPRO7438C68A7COQOEC2DI677JVV4KQNSO5AEMVJF66Q9ASUAAJG
-      X-Amz-Crc32:
-      - '788233591'
-    body:
-      encoding: UTF-8
-      string: '{"Count":1,"ScannedCount":1}'
-    http_version: 
-  recorded_at: Mon, 22 Apr 2019 21:45:22 GMT
-- request:
-    method: post
-    uri: https://dynamodb.us-east-2.amazonaws.com/
-    body:
-      encoding: UTF-8
-      string: "{}"
-    headers:
-      Content-Type:
-      - application/x-amz-json-1.0
-      Accept-Encoding:
-      - ''
-      User-Agent:
-      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-dynamodb/1.21.0
-      X-Amz-Target:
-      - DynamoDB_20120810.ListTables
-      Host:
-      - dynamodb.us-east-2.amazonaws.com
-      X-Amz-Date:
-      - 20190422T214522Z
-      X-Amz-Content-Sha256:
-      - 44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a
-      Authorization:
-      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190422/us-east-2/dynamodb/aws4_request,
-        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date;x-amz-target,
-        Signature=<SignatureValue>
-      Content-Length:
-      - '2'
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - Server
-      Date:
-      - Mon, 22 Apr 2019 21:45:22 GMT
-      Content-Type:
-      - application/x-amz-json-1.0
-      Content-Length:
-      - '44'
-      Connection:
-      - keep-alive
-      X-Amzn-Requestid:
-      - RSK6GBGVI4BA02V0IHPDG12BFFVV4KQNSO5AEMVJF66Q9ASUAAJG
-      X-Amz-Crc32:
-      - '2067029082'
-    body:
-      encoding: UTF-8
-      string: '{"TableNames":["open_search_bookindexings"]}'
-    http_version: 
-  recorded_at: Mon, 22 Apr 2019 21:45:23 GMT
-- request:
-    method: post
-    uri: https://dynamodb.us-east-2.amazonaws.com/
-    body:
-      encoding: UTF-8
-      string: '{"TableName":"open_search_bookindexings"}'
+      string: '{"TableName":"test_indexing"}'
     headers:
       Content-Type:
       - application/x-amz-json-1.0
@@ -283,15 +18,15 @@ http_interactions:
       Host:
       - dynamodb.us-east-2.amazonaws.com
       X-Amz-Date:
-      - 20190422T214523Z
+      - 20190430T205601Z
       X-Amz-Content-Sha256:
-      - 9ee068ab340af7caabc45136ab98c74475c14aa214fe1f2cf5b0650a7ec3fa96
+      - b769faf39a6d0d44a0e395242dec7e6988e15b38ec5ad2735c8e20b1cb6c56c3
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190422/us-east-2/dynamodb/aws4_request,
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190430/us-east-2/dynamodb/aws4_request,
         SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date;x-amz-target,
         Signature=<SignatureValue>
       Content-Length:
-      - '41'
+      - '29'
       Accept:
       - "*/*"
   response:
@@ -302,22 +37,22 @@ http_interactions:
       Server:
       - Server
       Date:
-      - Mon, 22 Apr 2019 21:45:23 GMT
+      - Tue, 30 Apr 2019 20:56:01 GMT
       Content-Type:
       - application/x-amz-json-1.0
       Content-Length:
-      - '357'
+      - '333'
       Connection:
       - keep-alive
       X-Amzn-Requestid:
-      - GR3FAM27U9G0CTNMB7AJRVNPU7VV4KQNSO5AEMVJF66Q9ASUAAJG
+      - O0B2VFST47P9IBT5TU4FUHUSANVV4KQNSO5AEMVJF66Q9ASUAAJG
       X-Amz-Crc32:
-      - '1218265387'
+      - '219742040'
     body:
       encoding: UTF-8
-      string: '{"TableDescription":{"ItemCount":0,"ProvisionedThroughput":{"NumberOfDecreasesToday":0,"ReadCapacityUnits":100,"WriteCapacityUnits":20},"TableArn":"arn:aws:dynamodb:us-east-2:AWS_ACCOUNT_ID:table/open_search_bookindexings","TableId":"a6dabc4e-acca-480e-931a-4d41e717e8b2","TableName":"open_search_bookindexings","TableSizeBytes":0,"TableStatus":"DELETING"}}'
+      string: '{"TableDescription":{"ItemCount":0,"ProvisionedThroughput":{"NumberOfDecreasesToday":0,"ReadCapacityUnits":100,"WriteCapacityUnits":20},"TableArn":"arn:aws:dynamodb:us-east-2:AWS_ACCOUNT_ID:table/test_indexing","TableId":"dd62f268-f6ae-49b3-aa5f-4c792f8aa9b9","TableName":"test_indexing","TableSizeBytes":0,"TableStatus":"DELETING"}}'
     http_version: 
-  recorded_at: Mon, 22 Apr 2019 21:45:23 GMT
+  recorded_at: Tue, 30 Apr 2019 20:56:01 GMT
 - request:
     method: post
     uri: https://dynamodb.us-east-2.amazonaws.com/
@@ -336,11 +71,11 @@ http_interactions:
       Host:
       - dynamodb.us-east-2.amazonaws.com
       X-Amz-Date:
-      - 20190429T182113Z
+      - 20190430T210228Z
       X-Amz-Content-Sha256:
       - 44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190429/us-east-2/dynamodb/aws4_request,
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190430/us-east-2/dynamodb/aws4_request,
         SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date;x-amz-target,
         Signature=<SignatureValue>
       Content-Length:
@@ -355,28 +90,81 @@ http_interactions:
       Server:
       - Server
       Date:
-      - Mon, 29 Apr 2019 18:21:13 GMT
+      - Tue, 30 Apr 2019 21:02:28 GMT
       Content-Type:
       - application/x-amz-json-1.0
       Content-Length:
-      - '17'
+      - '59'
       Connection:
       - keep-alive
       X-Amzn-Requestid:
-      - 3J2R9J5AD7C68JFC4LPH21IB7RVV4KQNSO5AEMVJF66Q9ASUAAJG
+      - 2OK4K24MB7M9JTVSV5I1148MBNVV4KQNSO5AEMVJF66Q9ASUAAJG
       X-Amz-Crc32:
-      - '1315925753'
+      - '2355711749'
     body:
       encoding: UTF-8
-      string: '{"TableNames":[]}'
+      string: '{"TableNames":["open_search_dev_indexing","test_indexing"]}'
     http_version: 
-  recorded_at: Mon, 29 Apr 2019 18:21:13 GMT
+  recorded_at: Tue, 30 Apr 2019 21:02:28 GMT
 - request:
     method: post
     uri: https://dynamodb.us-east-2.amazonaws.com/
     body:
       encoding: UTF-8
-      string: '{"TableName":"open_search_fake","ProvisionedThroughput":{"ReadCapacityUnits":100,"WriteCapacityUnits":20},"KeySchema":[{"AttributeName":"id","KeyType":"HASH"}],"AttributeDefinitions":[{"AttributeName":"id","AttributeType":"S"}]}'
+      string: "{}"
+    headers:
+      Content-Type:
+      - application/x-amz-json-1.0
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-dynamodb/1.21.0
+      X-Amz-Target:
+      - DynamoDB_20120810.ListTables
+      Host:
+      - dynamodb.us-east-2.amazonaws.com
+      X-Amz-Date:
+      - 20190430T210243Z
+      X-Amz-Content-Sha256:
+      - 44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190430/us-east-2/dynamodb/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date;x-amz-target,
+        Signature=<SignatureValue>
+      Content-Length:
+      - '2'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Server
+      Date:
+      - Tue, 30 Apr 2019 21:02:44 GMT
+      Content-Type:
+      - application/x-amz-json-1.0
+      Content-Length:
+      - '43'
+      Connection:
+      - keep-alive
+      X-Amzn-Requestid:
+      - 78VDHFN2H4LK8EQ36IB97PL4PNVV4KQNSO5AEMVJF66Q9ASUAAJG
+      X-Amz-Crc32:
+      - '2698652359'
+    body:
+      encoding: UTF-8
+      string: '{"TableNames":["open_search_dev_indexing"]}'
+    http_version: 
+  recorded_at: Tue, 30 Apr 2019 21:02:44 GMT
+- request:
+    method: post
+    uri: https://dynamodb.us-east-2.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: '{"TableName":"test_indexing","ProvisionedThroughput":{"ReadCapacityUnits":100,"WriteCapacityUnits":20},"KeySchema":[{"AttributeName":"id","KeyType":"HASH"}],"AttributeDefinitions":[{"AttributeName":"id","AttributeType":"S"}]}'
     headers:
       Content-Type:
       - application/x-amz-json-1.0
@@ -389,15 +177,15 @@ http_interactions:
       Host:
       - dynamodb.us-east-2.amazonaws.com
       X-Amz-Date:
-      - 20190429T182113Z
+      - 20190430T210244Z
       X-Amz-Content-Sha256:
-      - a99b1719b1159ac43ac17ec3d291f3b3b571f4ee45c702cd849cade86321b4a3
+      - cc4741e1cc8068b421b49b3285c5618157ea09ca79bd6a55cfa53c16bf3886c2
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190429/us-east-2/dynamodb/aws4_request,
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190430/us-east-2/dynamodb/aws4_request,
         SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date;x-amz-target,
         Signature=<SignatureValue>
       Content-Length:
-      - '228'
+      - '225'
       Accept:
       - "*/*"
   response:
@@ -408,28 +196,28 @@ http_interactions:
       Server:
       - Server
       Date:
-      - Mon, 29 Apr 2019 18:21:13 GMT
+      - Tue, 30 Apr 2019 21:02:44 GMT
       Content-Type:
       - application/x-amz-json-1.0
       Content-Length:
-      - '497'
+      - '491'
       Connection:
       - keep-alive
       X-Amzn-Requestid:
-      - 99H6LT7SN31S7TL4NOCOBD3CBJVV4KQNSO5AEMVJF66Q9ASUAAJG
+      - ANDS0IGRO15V9CSNN6U12EU75NVV4KQNSO5AEMVJF66Q9ASUAAJG
       X-Amz-Crc32:
-      - '3788940545'
+      - '722256050'
     body:
       encoding: UTF-8
-      string: '{"TableDescription":{"AttributeDefinitions":[{"AttributeName":"id","AttributeType":"S"}],"CreationDateTime":1.556562073591E9,"ItemCount":0,"KeySchema":[{"AttributeName":"id","KeyType":"HASH"}],"ProvisionedThroughput":{"NumberOfDecreasesToday":0,"ReadCapacityUnits":100,"WriteCapacityUnits":20},"TableArn":"arn:aws:dynamodb:us-east-2:AWS_ACCOUNT_ID:table/open_search_fake","TableId":"9795f5e4-f1bc-429b-af95-0111c692a47b","TableName":"open_search_fake","TableSizeBytes":0,"TableStatus":"CREATING"}}'
+      string: '{"TableDescription":{"AttributeDefinitions":[{"AttributeName":"id","AttributeType":"S"}],"CreationDateTime":1.556658164679E9,"ItemCount":0,"KeySchema":[{"AttributeName":"id","KeyType":"HASH"}],"ProvisionedThroughput":{"NumberOfDecreasesToday":0,"ReadCapacityUnits":100,"WriteCapacityUnits":20},"TableArn":"arn:aws:dynamodb:us-east-2:AWS_ACCOUNT_ID:table/test_indexing","TableId":"8820796c-f4d6-45ce-ae08-faecb7f0b183","TableName":"test_indexing","TableSizeBytes":0,"TableStatus":"CREATING"}}'
     http_version: 
-  recorded_at: Mon, 29 Apr 2019 18:21:13 GMT
+  recorded_at: Tue, 30 Apr 2019 21:02:44 GMT
 - request:
     method: post
     uri: https://dynamodb.us-east-2.amazonaws.com/
     body:
       encoding: UTF-8
-      string: '{"TableName":"open_search_fake"}'
+      string: '{"TableName":"test_indexing"}'
     headers:
       Content-Type:
       - application/x-amz-json-1.0
@@ -442,15 +230,15 @@ http_interactions:
       Host:
       - dynamodb.us-east-2.amazonaws.com
       X-Amz-Date:
-      - 20190429T182115Z
+      - 20190430T210246Z
       X-Amz-Content-Sha256:
-      - 6c14ec811854c777956678f89c48b495c10f4239efeca1ff74a60a18cce475da
+      - b769faf39a6d0d44a0e395242dec7e6988e15b38ec5ad2735c8e20b1cb6c56c3
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190429/us-east-2/dynamodb/aws4_request,
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190430/us-east-2/dynamodb/aws4_request,
         SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date;x-amz-target,
         Signature=<SignatureValue>
       Content-Length:
-      - '32'
+      - '29'
       Accept:
       - "*/*"
   response:
@@ -461,28 +249,28 @@ http_interactions:
       Server:
       - Server
       Date:
-      - Mon, 29 Apr 2019 18:21:16 GMT
+      - Tue, 30 Apr 2019 21:02:47 GMT
       Content-Type:
       - application/x-amz-json-1.0
       Content-Length:
-      - '486'
+      - '480'
       Connection:
       - keep-alive
       X-Amzn-Requestid:
-      - 2PP5U4HK23UNOT7S4OVU23GGF3VV4KQNSO5AEMVJF66Q9ASUAAJG
+      - 88JLCT89DLP3T6620U1LRQ44GFVV4KQNSO5AEMVJF66Q9ASUAAJG
       X-Amz-Crc32:
-      - '3716935166'
+      - '2529233588'
     body:
       encoding: UTF-8
-      string: '{"Table":{"AttributeDefinitions":[{"AttributeName":"id","AttributeType":"S"}],"CreationDateTime":1.556562073591E9,"ItemCount":0,"KeySchema":[{"AttributeName":"id","KeyType":"HASH"}],"ProvisionedThroughput":{"NumberOfDecreasesToday":0,"ReadCapacityUnits":100,"WriteCapacityUnits":20},"TableArn":"arn:aws:dynamodb:us-east-2:AWS_ACCOUNT_ID:table/open_search_fake","TableId":"9795f5e4-f1bc-429b-af95-0111c692a47b","TableName":"open_search_fake","TableSizeBytes":0,"TableStatus":"CREATING"}}'
+      string: '{"Table":{"AttributeDefinitions":[{"AttributeName":"id","AttributeType":"S"}],"CreationDateTime":1.556658164679E9,"ItemCount":0,"KeySchema":[{"AttributeName":"id","KeyType":"HASH"}],"ProvisionedThroughput":{"NumberOfDecreasesToday":0,"ReadCapacityUnits":100,"WriteCapacityUnits":20},"TableArn":"arn:aws:dynamodb:us-east-2:AWS_ACCOUNT_ID:table/test_indexing","TableId":"8820796c-f4d6-45ce-ae08-faecb7f0b183","TableName":"test_indexing","TableSizeBytes":0,"TableStatus":"CREATING"}}'
     http_version: 
-  recorded_at: Mon, 29 Apr 2019 18:21:16 GMT
+  recorded_at: Tue, 30 Apr 2019 21:02:47 GMT
 - request:
     method: post
     uri: https://dynamodb.us-east-2.amazonaws.com/
     body:
       encoding: UTF-8
-      string: '{"TableName":"open_search_fake"}'
+      string: '{"TableName":"test_indexing"}'
     headers:
       Content-Type:
       - application/x-amz-json-1.0
@@ -495,15 +283,15 @@ http_interactions:
       Host:
       - dynamodb.us-east-2.amazonaws.com
       X-Amz-Date:
-      - 20190429T182118Z
+      - 20190430T210249Z
       X-Amz-Content-Sha256:
-      - 6c14ec811854c777956678f89c48b495c10f4239efeca1ff74a60a18cce475da
+      - b769faf39a6d0d44a0e395242dec7e6988e15b38ec5ad2735c8e20b1cb6c56c3
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190429/us-east-2/dynamodb/aws4_request,
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190430/us-east-2/dynamodb/aws4_request,
         SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date;x-amz-target,
         Signature=<SignatureValue>
       Content-Length:
-      - '32'
+      - '29'
       Accept:
       - "*/*"
   response:
@@ -514,81 +302,28 @@ http_interactions:
       Server:
       - Server
       Date:
-      - Mon, 29 Apr 2019 18:21:18 GMT
+      - Tue, 30 Apr 2019 21:02:49 GMT
       Content-Type:
       - application/x-amz-json-1.0
       Content-Length:
-      - '484'
+      - '480'
       Connection:
       - keep-alive
       X-Amzn-Requestid:
-      - HGIORLIP6TPG8US8V4T8JE8VC3VV4KQNSO5AEMVJF66Q9ASUAAJG
+      - T7TQK4ORED2TTVP8VB167PKNPJVV4KQNSO5AEMVJF66Q9ASUAAJG
       X-Amz-Crc32:
-      - '1002300518'
+      - '2529233588'
     body:
       encoding: UTF-8
-      string: '{"Table":{"AttributeDefinitions":[{"AttributeName":"id","AttributeType":"S"}],"CreationDateTime":1.556562073591E9,"ItemCount":0,"KeySchema":[{"AttributeName":"id","KeyType":"HASH"}],"ProvisionedThroughput":{"NumberOfDecreasesToday":0,"ReadCapacityUnits":100,"WriteCapacityUnits":20},"TableArn":"arn:aws:dynamodb:us-east-2:AWS_ACCOUNT_ID:table/open_search_fake","TableId":"9795f5e4-f1bc-429b-af95-0111c692a47b","TableName":"open_search_fake","TableSizeBytes":0,"TableStatus":"ACTIVE"}}'
+      string: '{"Table":{"AttributeDefinitions":[{"AttributeName":"id","AttributeType":"S"}],"CreationDateTime":1.556658164679E9,"ItemCount":0,"KeySchema":[{"AttributeName":"id","KeyType":"HASH"}],"ProvisionedThroughput":{"NumberOfDecreasesToday":0,"ReadCapacityUnits":100,"WriteCapacityUnits":20},"TableArn":"arn:aws:dynamodb:us-east-2:AWS_ACCOUNT_ID:table/test_indexing","TableId":"8820796c-f4d6-45ce-ae08-faecb7f0b183","TableName":"test_indexing","TableSizeBytes":0,"TableStatus":"CREATING"}}'
     http_version: 
-  recorded_at: Mon, 29 Apr 2019 18:21:19 GMT
+  recorded_at: Tue, 30 Apr 2019 21:02:50 GMT
 - request:
     method: post
     uri: https://dynamodb.us-east-2.amazonaws.com/
     body:
       encoding: UTF-8
-      string: '{"TableName":"open_search_fake","Item":{"created_at":{"N":"1556562079.855713"},"updated_at":{"N":"1556562079.85596"},"id":{"S":"6139270c-5600-4063-a40f-21c336547afc"},"state":{"S":"pending"},"book_version_id":{"S":"14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1"},"indexing_version":{"S":"I1"},"enqueued_time":{"S":"2019-04-29T18:21:19+00:00"}},"Expected":{"id":{"Exists":false}}}'
-    headers:
-      Content-Type:
-      - application/x-amz-json-1.0
-      Accept-Encoding:
-      - ''
-      User-Agent:
-      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-dynamodb/1.21.0
-      X-Amz-Target:
-      - DynamoDB_20120810.PutItem
-      Host:
-      - dynamodb.us-east-2.amazonaws.com
-      X-Amz-Date:
-      - 20190429T182119Z
-      X-Amz-Content-Sha256:
-      - b1b153198e80cd90d3b6441ae2e8d790b0755b163f0d5d5a23c8e61a3dc23000
-      Authorization:
-      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190429/us-east-2/dynamodb/aws4_request,
-        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date;x-amz-target,
-        Signature=<SignatureValue>
-      Content-Length:
-      - '375'
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - Server
-      Date:
-      - Mon, 29 Apr 2019 18:21:20 GMT
-      Content-Type:
-      - application/x-amz-json-1.0
-      Content-Length:
-      - '2'
-      Connection:
-      - keep-alive
-      X-Amzn-Requestid:
-      - ICMUVSN9D3TFNRH03ERO0JED2FVV4KQNSO5AEMVJF66Q9ASUAAJG
-      X-Amz-Crc32:
-      - '2745614147'
-    body:
-      encoding: UTF-8
-      string: "{}"
-    http_version: 
-  recorded_at: Mon, 29 Apr 2019 18:21:20 GMT
-- request:
-    method: post
-    uri: https://dynamodb.us-east-2.amazonaws.com/
-    body:
-      encoding: UTF-8
-      string: '{"TableName":"open_search_fake"}'
+      string: '{"TableName":"test_indexing"}'
     headers:
       Content-Type:
       - application/x-amz-json-1.0
@@ -601,15 +336,15 @@ http_interactions:
       Host:
       - dynamodb.us-east-2.amazonaws.com
       X-Amz-Date:
-      - 20190429T182120Z
+      - 20190430T210252Z
       X-Amz-Content-Sha256:
-      - 6c14ec811854c777956678f89c48b495c10f4239efeca1ff74a60a18cce475da
+      - b769faf39a6d0d44a0e395242dec7e6988e15b38ec5ad2735c8e20b1cb6c56c3
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190429/us-east-2/dynamodb/aws4_request,
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190430/us-east-2/dynamodb/aws4_request,
         SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date;x-amz-target,
         Signature=<SignatureValue>
       Content-Length:
-      - '32'
+      - '29'
       Accept:
       - "*/*"
   response:
@@ -620,75 +355,22 @@ http_interactions:
       Server:
       - Server
       Date:
-      - Mon, 29 Apr 2019 18:21:20 GMT
+      - Tue, 30 Apr 2019 21:02:52 GMT
       Content-Type:
       - application/x-amz-json-1.0
       Content-Length:
-      - '484'
+      - '478'
       Connection:
       - keep-alive
       X-Amzn-Requestid:
-      - V70EIRM2VRC7SIUNJD98PM3M3BVV4KQNSO5AEMVJF66Q9ASUAAJG
+      - QB9LGJOIN4C3FSJVRUT4HHL77JVV4KQNSO5AEMVJF66Q9ASUAAJG
       X-Amz-Crc32:
-      - '1002300518'
+      - '204707204'
     body:
       encoding: UTF-8
-      string: '{"Table":{"AttributeDefinitions":[{"AttributeName":"id","AttributeType":"S"}],"CreationDateTime":1.556562073591E9,"ItemCount":0,"KeySchema":[{"AttributeName":"id","KeyType":"HASH"}],"ProvisionedThroughput":{"NumberOfDecreasesToday":0,"ReadCapacityUnits":100,"WriteCapacityUnits":20},"TableArn":"arn:aws:dynamodb:us-east-2:AWS_ACCOUNT_ID:table/open_search_fake","TableId":"9795f5e4-f1bc-429b-af95-0111c692a47b","TableName":"open_search_fake","TableSizeBytes":0,"TableStatus":"ACTIVE"}}'
+      string: '{"Table":{"AttributeDefinitions":[{"AttributeName":"id","AttributeType":"S"}],"CreationDateTime":1.556658164679E9,"ItemCount":0,"KeySchema":[{"AttributeName":"id","KeyType":"HASH"}],"ProvisionedThroughput":{"NumberOfDecreasesToday":0,"ReadCapacityUnits":100,"WriteCapacityUnits":20},"TableArn":"arn:aws:dynamodb:us-east-2:AWS_ACCOUNT_ID:table/test_indexing","TableId":"8820796c-f4d6-45ce-ae08-faecb7f0b183","TableName":"test_indexing","TableSizeBytes":0,"TableStatus":"ACTIVE"}}'
     http_version: 
-  recorded_at: Mon, 29 Apr 2019 18:21:20 GMT
-- request:
-    method: post
-    uri: https://dynamodb.us-east-2.amazonaws.com/
-    body:
-      encoding: UTF-8
-      string: '{"Select":"COUNT","TableName":"open_search_fake","ScanFilter":{"book_version_id":{"ComparisonOperator":"EQ","AttributeValueList":[{"S":"14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1"}]}}}'
-    headers:
-      Content-Type:
-      - application/x-amz-json-1.0
-      Accept-Encoding:
-      - ''
-      User-Agent:
-      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-dynamodb/1.21.0
-      X-Amz-Target:
-      - DynamoDB_20120810.Scan
-      Host:
-      - dynamodb.us-east-2.amazonaws.com
-      X-Amz-Date:
-      - 20190429T182120Z
-      X-Amz-Content-Sha256:
-      - 7ef3a089cb7e17cb422142eb239e8ea287901b6cdf6b0f67f5fd5305c5dd63ce
-      Authorization:
-      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190429/us-east-2/dynamodb/aws4_request,
-        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date;x-amz-target,
-        Signature=<SignatureValue>
-      Content-Length:
-      - '183'
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - Server
-      Date:
-      - Mon, 29 Apr 2019 18:21:20 GMT
-      Content-Type:
-      - application/x-amz-json-1.0
-      Content-Length:
-      - '28'
-      Connection:
-      - keep-alive
-      X-Amzn-Requestid:
-      - D0CD3INGNRRJH63V9FPDBOAL5BVV4KQNSO5AEMVJF66Q9ASUAAJG
-      X-Amz-Crc32:
-      - '788233591'
-    body:
-      encoding: UTF-8
-      string: '{"Count":1,"ScannedCount":1}'
-    http_version: 
-  recorded_at: Mon, 29 Apr 2019 18:21:21 GMT
+  recorded_at: Tue, 30 Apr 2019 21:02:52 GMT
 - request:
     method: post
     uri: https://dynamodb.us-east-2.amazonaws.com/
@@ -707,11 +389,11 @@ http_interactions:
       Host:
       - dynamodb.us-east-2.amazonaws.com
       X-Amz-Date:
-      - 20190429T182121Z
+      - 20190430T210252Z
       X-Amz-Content-Sha256:
       - 44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190429/us-east-2/dynamodb/aws4_request,
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190430/us-east-2/dynamodb/aws4_request,
         SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date;x-amz-target,
         Signature=<SignatureValue>
       Content-Length:
@@ -726,28 +408,349 @@ http_interactions:
       Server:
       - Server
       Date:
-      - Mon, 29 Apr 2019 18:21:21 GMT
+      - Tue, 30 Apr 2019 21:02:53 GMT
       Content-Type:
       - application/x-amz-json-1.0
       Content-Length:
-      - '35'
+      - '59'
       Connection:
       - keep-alive
       X-Amzn-Requestid:
-      - S7IHT6ALTN7K2O3MB3H60MB2HJVV4KQNSO5AEMVJF66Q9ASUAAJG
+      - 0163B303LS5VC0BCQF8BRNJ1F3VV4KQNSO5AEMVJF66Q9ASUAAJG
       X-Amz-Crc32:
-      - '286914455'
+      - '2355711749'
     body:
       encoding: UTF-8
-      string: '{"TableNames":["open_search_fake"]}'
+      string: '{"TableNames":["open_search_dev_indexing","test_indexing"]}'
     http_version: 
-  recorded_at: Mon, 29 Apr 2019 18:21:21 GMT
+  recorded_at: Tue, 30 Apr 2019 21:02:53 GMT
 - request:
     method: post
     uri: https://dynamodb.us-east-2.amazonaws.com/
     body:
       encoding: UTF-8
-      string: '{"TableName":"open_search_fake"}'
+      string: '{"TableName":"test_indexing","Item":{"created_at":{"N":"1556658173.140446"},"updated_at":{"N":"1556658173.140539"},"id":{"S":"ec6cc9e3-3a40-4d5d-8e98-6f523d9fdaae"},"state":{"S":"pending"},"book_version_id":{"S":"book@1"},"indexing_version":{"S":"I1"}},"Expected":{"id":{"Exists":false}}}'
+    headers:
+      Content-Type:
+      - application/x-amz-json-1.0
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-dynamodb/1.21.0
+      X-Amz-Target:
+      - DynamoDB_20120810.PutItem
+      Host:
+      - dynamodb.us-east-2.amazonaws.com
+      X-Amz-Date:
+      - 20190430T210253Z
+      X-Amz-Content-Sha256:
+      - c6db1c12508ac63d17a7bf180e740db35698a48232fc4ae020fb7e5f414e4674
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190430/us-east-2/dynamodb/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date;x-amz-target,
+        Signature=<SignatureValue>
+      Content-Length:
+      - '288'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Server
+      Date:
+      - Tue, 30 Apr 2019 21:02:53 GMT
+      Content-Type:
+      - application/x-amz-json-1.0
+      Content-Length:
+      - '2'
+      Connection:
+      - keep-alive
+      X-Amzn-Requestid:
+      - VII7T4LTHLNBBS5P19B6QCQCVRVV4KQNSO5AEMVJF66Q9ASUAAJG
+      X-Amz-Crc32:
+      - '2745614147'
+    body:
+      encoding: UTF-8
+      string: "{}"
+    http_version: 
+  recorded_at: Tue, 30 Apr 2019 21:02:53 GMT
+- request:
+    method: post
+    uri: https://dynamodb.us-east-2.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: '{"TableName":"test_indexing","Item":{"created_at":{"N":"1556658173.432867"},"updated_at":{"N":"1556658173.432989"},"id":{"S":"b7072599-6835-4566-8ca7-b433b240878b"},"state":{"S":"delete
+        pending"},"book_version_id":{"S":"book@1"},"indexing_version":{"S":"I1"}},"Expected":{"id":{"Exists":false}}}'
+    headers:
+      Content-Type:
+      - application/x-amz-json-1.0
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-dynamodb/1.21.0
+      X-Amz-Target:
+      - DynamoDB_20120810.PutItem
+      Host:
+      - dynamodb.us-east-2.amazonaws.com
+      X-Amz-Date:
+      - 20190430T210253Z
+      X-Amz-Content-Sha256:
+      - 2adde5f92c2c99e993b5cfc02edb26f323dc4249d4b32edd29f509dfabcdef41
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190430/us-east-2/dynamodb/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date;x-amz-target,
+        Signature=<SignatureValue>
+      Content-Length:
+      - '295'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Server
+      Date:
+      - Tue, 30 Apr 2019 21:02:53 GMT
+      Content-Type:
+      - application/x-amz-json-1.0
+      Content-Length:
+      - '2'
+      Connection:
+      - keep-alive
+      X-Amzn-Requestid:
+      - 3BHEAM7OVFGLTDG0T3CE46N6GJVV4KQNSO5AEMVJF66Q9ASUAAJG
+      X-Amz-Crc32:
+      - '2745614147'
+    body:
+      encoding: UTF-8
+      string: "{}"
+    http_version: 
+  recorded_at: Tue, 30 Apr 2019 21:02:53 GMT
+- request:
+    method: post
+    uri: https://dynamodb.us-east-2.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: '{"TableName":"test_indexing","Item":{"created_at":{"N":"1556658173.908417"},"updated_at":{"N":"1556658173.908542"},"id":{"S":"2bda6dc0-147f-422f-a931-c0c71ac1e9f4"},"state":{"S":"deleted"},"book_version_id":{"S":"book@1"},"indexing_version":{"S":"I1"}},"Expected":{"id":{"Exists":false}}}'
+    headers:
+      Content-Type:
+      - application/x-amz-json-1.0
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-dynamodb/1.21.0
+      X-Amz-Target:
+      - DynamoDB_20120810.PutItem
+      Host:
+      - dynamodb.us-east-2.amazonaws.com
+      X-Amz-Date:
+      - 20190430T210253Z
+      X-Amz-Content-Sha256:
+      - 5f133a6705166d4cf502d6b3de09b69d741efa4729b517fec3dbb7672e46fb51
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190430/us-east-2/dynamodb/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date;x-amz-target,
+        Signature=<SignatureValue>
+      Content-Length:
+      - '288'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Server
+      Date:
+      - Tue, 30 Apr 2019 21:02:54 GMT
+      Content-Type:
+      - application/x-amz-json-1.0
+      Content-Length:
+      - '2'
+      Connection:
+      - keep-alive
+      X-Amzn-Requestid:
+      - 9UOI0U0R97GUBI9OVQ109V3K5JVV4KQNSO5AEMVJF66Q9ASUAAJG
+      X-Amz-Crc32:
+      - '2745614147'
+    body:
+      encoding: UTF-8
+      string: "{}"
+    http_version: 
+  recorded_at: Tue, 30 Apr 2019 21:02:54 GMT
+- request:
+    method: post
+    uri: https://dynamodb.us-east-2.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: '{"TableName":"test_indexing"}'
+    headers:
+      Content-Type:
+      - application/x-amz-json-1.0
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-dynamodb/1.21.0
+      X-Amz-Target:
+      - DynamoDB_20120810.DescribeTable
+      Host:
+      - dynamodb.us-east-2.amazonaws.com
+      X-Amz-Date:
+      - 20190430T210254Z
+      X-Amz-Content-Sha256:
+      - b769faf39a6d0d44a0e395242dec7e6988e15b38ec5ad2735c8e20b1cb6c56c3
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190430/us-east-2/dynamodb/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date;x-amz-target,
+        Signature=<SignatureValue>
+      Content-Length:
+      - '29'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Server
+      Date:
+      - Tue, 30 Apr 2019 21:02:54 GMT
+      Content-Type:
+      - application/x-amz-json-1.0
+      Content-Length:
+      - '478'
+      Connection:
+      - keep-alive
+      X-Amzn-Requestid:
+      - D45SQ7SQSRR9ONA4R89HJVSHHBVV4KQNSO5AEMVJF66Q9ASUAAJG
+      X-Amz-Crc32:
+      - '204707204'
+    body:
+      encoding: UTF-8
+      string: '{"Table":{"AttributeDefinitions":[{"AttributeName":"id","AttributeType":"S"}],"CreationDateTime":1.556658164679E9,"ItemCount":0,"KeySchema":[{"AttributeName":"id","KeyType":"HASH"}],"ProvisionedThroughput":{"NumberOfDecreasesToday":0,"ReadCapacityUnits":100,"WriteCapacityUnits":20},"TableArn":"arn:aws:dynamodb:us-east-2:AWS_ACCOUNT_ID:table/test_indexing","TableId":"8820796c-f4d6-45ce-ae08-faecb7f0b183","TableName":"test_indexing","TableSizeBytes":0,"TableStatus":"ACTIVE"}}'
+    http_version: 
+  recorded_at: Tue, 30 Apr 2019 21:02:54 GMT
+- request:
+    method: post
+    uri: https://dynamodb.us-east-2.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: '{"TableName":"test_indexing","ScanFilter":{}}'
+    headers:
+      Content-Type:
+      - application/x-amz-json-1.0
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-dynamodb/1.21.0
+      X-Amz-Target:
+      - DynamoDB_20120810.Scan
+      Host:
+      - dynamodb.us-east-2.amazonaws.com
+      X-Amz-Date:
+      - 20190430T210254Z
+      X-Amz-Content-Sha256:
+      - fa367b39423b3c7d2c1dc1c973fa658c3d085ee3123624f53579fdc2b8d8f0ce
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190430/us-east-2/dynamodb/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date;x-amz-target,
+        Signature=<SignatureValue>
+      Content-Length:
+      - '45'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Server
+      Date:
+      - Tue, 30 Apr 2019 21:02:54 GMT
+      Content-Type:
+      - application/x-amz-json-1.0
+      Content-Length:
+      - '696'
+      Connection:
+      - keep-alive
+      X-Amzn-Requestid:
+      - EI6JV76G39GGHG45U2CB7MBJS3VV4KQNSO5AEMVJF66Q9ASUAAJG
+      X-Amz-Crc32:
+      - '3602969965'
+    body:
+      encoding: UTF-8
+      string: '{"Count":3,"Items":[{"updated_at":{"N":"1556658173.908542"},"indexing_version":{"S":"I1"},"created_at":{"N":"1556658173.908417"},"id":{"S":"2bda6dc0-147f-422f-a931-c0c71ac1e9f4"},"book_version_id":{"S":"book@1"},"state":{"S":"deleted"}},{"updated_at":{"N":"1556658173.432989"},"indexing_version":{"S":"I1"},"created_at":{"N":"1556658173.432867"},"id":{"S":"b7072599-6835-4566-8ca7-b433b240878b"},"book_version_id":{"S":"book@1"},"state":{"S":"delete
+        pending"}},{"updated_at":{"N":"1556658173.140539"},"indexing_version":{"S":"I1"},"created_at":{"N":"1556658173.140446"},"id":{"S":"ec6cc9e3-3a40-4d5d-8e98-6f523d9fdaae"},"book_version_id":{"S":"book@1"},"state":{"S":"pending"}}],"ScannedCount":3}'
+    http_version: 
+  recorded_at: Tue, 30 Apr 2019 21:02:55 GMT
+- request:
+    method: post
+    uri: https://dynamodb.us-east-2.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: '{"TableName":"test_indexing","ScanFilter":{}}'
+    headers:
+      Content-Type:
+      - application/x-amz-json-1.0
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-dynamodb/1.21.0
+      X-Amz-Target:
+      - DynamoDB_20120810.Scan
+      Host:
+      - dynamodb.us-east-2.amazonaws.com
+      X-Amz-Date:
+      - 20190430T210255Z
+      X-Amz-Content-Sha256:
+      - fa367b39423b3c7d2c1dc1c973fa658c3d085ee3123624f53579fdc2b8d8f0ce
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190430/us-east-2/dynamodb/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date;x-amz-target,
+        Signature=<SignatureValue>
+      Content-Length:
+      - '45'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Server
+      Date:
+      - Tue, 30 Apr 2019 21:02:55 GMT
+      Content-Type:
+      - application/x-amz-json-1.0
+      Content-Length:
+      - '696'
+      Connection:
+      - keep-alive
+      X-Amzn-Requestid:
+      - JI7H85UUGLT52BPO9534JI2AMFVV4KQNSO5AEMVJF66Q9ASUAAJG
+      X-Amz-Crc32:
+      - '3602969965'
+    body:
+      encoding: UTF-8
+      string: '{"Count":3,"Items":[{"updated_at":{"N":"1556658173.908542"},"indexing_version":{"S":"I1"},"created_at":{"N":"1556658173.908417"},"id":{"S":"2bda6dc0-147f-422f-a931-c0c71ac1e9f4"},"book_version_id":{"S":"book@1"},"state":{"S":"deleted"}},{"updated_at":{"N":"1556658173.432989"},"indexing_version":{"S":"I1"},"created_at":{"N":"1556658173.432867"},"id":{"S":"b7072599-6835-4566-8ca7-b433b240878b"},"book_version_id":{"S":"book@1"},"state":{"S":"delete
+        pending"}},{"updated_at":{"N":"1556658173.140539"},"indexing_version":{"S":"I1"},"created_at":{"N":"1556658173.140446"},"id":{"S":"ec6cc9e3-3a40-4d5d-8e98-6f523d9fdaae"},"book_version_id":{"S":"book@1"},"state":{"S":"pending"}}],"ScannedCount":3}'
+    http_version: 
+  recorded_at: Tue, 30 Apr 2019 21:02:55 GMT
+- request:
+    method: post
+    uri: https://dynamodb.us-east-2.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: '{"TableName":"test_indexing"}'
     headers:
       Content-Type:
       - application/x-amz-json-1.0
@@ -760,15 +763,15 @@ http_interactions:
       Host:
       - dynamodb.us-east-2.amazonaws.com
       X-Amz-Date:
-      - 20190429T182121Z
+      - 20190430T210255Z
       X-Amz-Content-Sha256:
-      - 6c14ec811854c777956678f89c48b495c10f4239efeca1ff74a60a18cce475da
+      - b769faf39a6d0d44a0e395242dec7e6988e15b38ec5ad2735c8e20b1cb6c56c3
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190429/us-east-2/dynamodb/aws4_request,
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190430/us-east-2/dynamodb/aws4_request,
         SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date;x-amz-target,
         Signature=<SignatureValue>
       Content-Length:
-      - '32'
+      - '29'
       Accept:
       - "*/*"
   response:
@@ -779,20 +782,20 @@ http_interactions:
       Server:
       - Server
       Date:
-      - Mon, 29 Apr 2019 18:21:21 GMT
+      - Tue, 30 Apr 2019 21:02:55 GMT
       Content-Type:
       - application/x-amz-json-1.0
       Content-Length:
-      - '339'
+      - '333'
       Connection:
       - keep-alive
       X-Amzn-Requestid:
-      - AAT20JA5976SNJ0PE9IQI2NBFFVV4KQNSO5AEMVJF66Q9ASUAAJG
+      - 1I96D0RVIMBKTHKJDBPQ63DJ2NVV4KQNSO5AEMVJF66Q9ASUAAJG
       X-Amz-Crc32:
-      - '1904188888'
+      - '2104280769'
     body:
       encoding: UTF-8
-      string: '{"TableDescription":{"ItemCount":0,"ProvisionedThroughput":{"NumberOfDecreasesToday":0,"ReadCapacityUnits":100,"WriteCapacityUnits":20},"TableArn":"arn:aws:dynamodb:us-east-2:AWS_ACCOUNT_ID:table/open_search_fake","TableId":"9795f5e4-f1bc-429b-af95-0111c692a47b","TableName":"open_search_fake","TableSizeBytes":0,"TableStatus":"DELETING"}}'
+      string: '{"TableDescription":{"ItemCount":0,"ProvisionedThroughput":{"NumberOfDecreasesToday":0,"ReadCapacityUnits":100,"WriteCapacityUnits":20},"TableArn":"arn:aws:dynamodb:us-east-2:AWS_ACCOUNT_ID:table/test_indexing","TableId":"8820796c-f4d6-45ce-ae08-faecb7f0b183","TableName":"test_indexing","TableSizeBytes":0,"TableStatus":"DELETING"}}'
     http_version: 
-  recorded_at: Mon, 29 Apr 2019 18:21:21 GMT
+  recorded_at: Tue, 30 Apr 2019 21:02:55 GMT
 recorded_with: VCR 4.0.0

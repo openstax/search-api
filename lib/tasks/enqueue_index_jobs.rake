@@ -5,7 +5,7 @@ DESC
 task enqueue_index_jobs: :environment do
   Rails.logger.info { "Ran placeholder enqueue_index_jobs task!" }
 
-  EnqueueIndexJobs.new.process_rex_releases
+  EnqueueIndexJobs.new.call
 
   # This rake task should implement
   # https://app.zenhub.com/workspaces/openstax-unified-5b71aabe3815ff014b102258/issues/openstax/unified/197

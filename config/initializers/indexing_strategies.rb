@@ -1,5 +1,5 @@
 ACTIVE_INDEXING_STRATEGIES = [
-  Search::BookVersions::I1::IndexingStrategy
+  "I1"
 ]
 
 INACTIVE_INDEXING_STRATEGIES = [

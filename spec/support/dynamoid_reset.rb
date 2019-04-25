@@ -1,50 +1,45 @@
 module DynamoidReset
-  def self.create_all
-    Dynamoid.included_models.each { |m| m.create_table(sync: true) }
+  def self.create
+    tries = 0
+    until table_deleted? || tries >= 5 do
+      Rails.logger.debug("Waiting for #{tablename} to be deleted. #{tries} tries")
+      sleep(15)
+      tries += 1
+    end
+
+    BookIndexing.create_table(sync: true)  #there is no sync: true for delete tho....
 
     tries = 0
-    do_not_record_or_playback do
-      until tables_created? || tries >= 5 do
-        Rails.logger.debug("Waiting for dynamo tables to be created. #{tries} tries.")
-        sleep(3)
-        tries +=1
-      end
+    until table_created? || tries >= 5 do
+      Rails.logger.debug("Waiting for #{tablename} to be created. #{tries} tries.")
+      sleep(5)
+      tries +=1
     end
   end
 
-  def self.delete_all
-    Dynamoid.adapter.list_tables.each do |table|
-      if table =~ /^#{Dynamoid::Config.namespace}/
-        Dynamoid.adapter.delete_table(table)
-      end
-    end
-    Dynamoid.adapter.tables.clear
-
-    tries = 0
-    do_not_record_or_playback do
-      until tables_deleted? || tries >= 5 do
-        Rails.logger.debug("Waiting for dynamo tables to be deleted. #{tries} tries")
-        sleep(3)
-        tries += 1
-      end
-    end
-  end
-
-  def self.tables_created?
-    Dynamoid.included_models.all? do |m|
-      Dynamoid.adapter.list_tables.include? m.table_name
-    end
+  def self.table_created?
+    tables = Dynamoid.adapter.list_tables
+    puts "Checking for table_created? found Dynamo tables - '#{tables.join(', ')}'"
+    tables.include? BookIndexing.table_name
   rescue
     false
   end
 
-  def self.tables_deleted?
-    tables_found = Dynamoid.adapter.list_tables.count do |table|
-      table =~ /^#{Dynamoid::Config.namespace}/
-    end
-    tables_found == 0
+  def self.table_deleted?
+    tables = Dynamoid.adapter.list_tables
+    puts "Checking for table_deleted? found Dynamo tables - '#{tables.join(', ')}'"
+    tables.exclude? BookIndexing.table_name
   rescue
     false
+  end
+
+  def self.delete
+    Dynamoid.adapter.delete_table(tablename)
+    Dynamoid.adapter.tables.clear    #clear the table cache
+  end
+
+  def self.tablename
+    Rails.application.secrets.dynamodb[:index_state_table_name]
   end
 end
 

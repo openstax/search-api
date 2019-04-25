@@ -1186,59 +1186,6 @@ http_interactions:
   recorded_at: Wed, 24 Apr 2019 20:18:02 GMT
 - request:
     method: post
-    uri: https://dynamodb.us-east-2.amazonaws.com/
-    body:
-      encoding: UTF-8
-      string: "{}"
-    headers:
-      Content-Type:
-      - application/x-amz-json-1.0
-      Accept-Encoding:
-      - ''
-      User-Agent:
-      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-dynamodb/1.21.0
-      X-Amz-Target:
-      - DynamoDB_20120810.ListTables
-      Host:
-      - dynamodb.us-east-2.amazonaws.com
-      X-Amz-Date:
-      - 20190424T201803Z
-      X-Amz-Content-Sha256:
-      - 44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a
-      Authorization:
-      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190424/us-east-2/dynamodb/aws4_request,
-        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date;x-amz-target,
-        Signature=<SignatureValue>
-      Content-Length:
-      - '2'
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - Server
-      Date:
-      - Wed, 24 Apr 2019 20:18:03 GMT
-      Content-Type:
-      - application/x-amz-json-1.0
-      Content-Length:
-      - '17'
-      Connection:
-      - keep-alive
-      X-Amzn-Requestid:
-      - EBK32222E4TCKGJUDH07ALSSGFVV4KQNSO5AEMVJF66Q9ASUAAJG
-      X-Amz-Crc32:
-      - '1315925753'
-    body:
-      encoding: UTF-8
-      string: '{"TableNames":[]}'
-    http_version: 
-  recorded_at: Wed, 24 Apr 2019 20:18:03 GMT
-- request:
-    method: post
     uri: https://sqs.us-east-2.amazonaws.com/AWS_ACCOUNT_ID/test-XQADCQBO
     body:
       encoding: UTF-8
@@ -1284,53 +1231,6 @@ http_interactions:
       string: <?xml version="1.0"?><DeleteQueueResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><ResponseMetadata><RequestId>8dd04cd5-68fa-5d79-b8c4-19efae469431</RequestId></ResponseMetadata></DeleteQueueResponse>
     http_version: 
   recorded_at: Wed, 24 Apr 2019 20:18:04 GMT
-- request:
-    method: post
-    uri: https://sqs.us-east-2.amazonaws.com/
-    body:
-      encoding: UTF-8
-      string: Action=CreateQueue&QueueName=test-EBQUJLXF&Version=2012-11-05
-    headers:
-      Content-Type:
-      - application/x-www-form-urlencoded; charset=utf-8
-      Accept-Encoding:
-      - ''
-      User-Agent:
-      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-sqs/1.10.0
-      Host:
-      - sqs.us-east-2.amazonaws.com
-      X-Amz-Date:
-      - 20190424T201853Z
-      X-Amz-Security-Token:
-      - AWS_SESSION_TOKEN
-      X-Amz-Content-Sha256:
-      - fd85a8c2715e5332018d03b6d4b6c2aeb30d9f178cb3555c88c668c2b20f1473
-      Authorization:
-      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190424/us-east-2/sqs/aws4_request,
-        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date;x-amz-security-token,
-        Signature=<SignatureValue>
-      Content-Length:
-      - '61'
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      X-Amzn-Requestid:
-      - 66ab4c30-26ea-53a2-93e4-190ae007ef9a
-      Date:
-      - Wed, 24 Apr 2019 20:18:53 GMT
-      Content-Type:
-      - text/xml
-      Content-Length:
-      - '335'
-    body:
-      encoding: UTF-8
-      string: <?xml version="1.0"?><CreateQueueResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><CreateQueueResult><QueueUrl>https://sqs.us-east-2.amazonaws.com/AWS_ACCOUNT_ID/test-EBQUJLXF</QueueUrl></CreateQueueResult><ResponseMetadata><RequestId>66ab4c30-26ea-53a2-93e4-190ae007ef9a</RequestId></ResponseMetadata></CreateQueueResponse>
-    http_version: 
-  recorded_at: Wed, 24 Apr 2019 20:18:53 GMT
 - request:
     method: post
     uri: https://sqs.us-east-2.amazonaws.com/AWS_ACCOUNT_ID/test-EBQUJLXF
@@ -1427,112 +1327,6 @@ http_interactions:
   recorded_at: Wed, 24 Apr 2019 20:18:54 GMT
 - request:
     method: post
-    uri: https://dynamodb.us-east-2.amazonaws.com/
-    body:
-      encoding: UTF-8
-      string: "{}"
-    headers:
-      Content-Type:
-      - application/x-amz-json-1.0
-      Accept-Encoding:
-      - ''
-      User-Agent:
-      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-dynamodb/1.21.0
-      X-Amz-Target:
-      - DynamoDB_20120810.ListTables
-      Host:
-      - dynamodb.us-east-2.amazonaws.com
-      X-Amz-Date:
-      - 20190424T201854Z
-      X-Amz-Content-Sha256:
-      - 44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a
-      Authorization:
-      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190424/us-east-2/dynamodb/aws4_request,
-        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date;x-amz-target,
-        Signature=<SignatureValue>
-      Content-Length:
-      - '2'
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - Server
-      Date:
-      - Wed, 24 Apr 2019 20:18:55 GMT
-      Content-Type:
-      - application/x-amz-json-1.0
-      Content-Length:
-      - '17'
-      Connection:
-      - keep-alive
-      X-Amzn-Requestid:
-      - U6RIDON9GGL2TGFVGAB1CP8RQFVV4KQNSO5AEMVJF66Q9ASUAAJG
-      X-Amz-Crc32:
-      - '1315925753'
-    body:
-      encoding: UTF-8
-      string: '{"TableNames":[]}'
-    http_version: 
-  recorded_at: Wed, 24 Apr 2019 20:18:55 GMT
-- request:
-    method: post
-    uri: https://dynamodb.us-east-2.amazonaws.com/
-    body:
-      encoding: UTF-8
-      string: "{}"
-    headers:
-      Content-Type:
-      - application/x-amz-json-1.0
-      Accept-Encoding:
-      - ''
-      User-Agent:
-      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-dynamodb/1.21.0
-      X-Amz-Target:
-      - DynamoDB_20120810.ListTables
-      Host:
-      - dynamodb.us-east-2.amazonaws.com
-      X-Amz-Date:
-      - 20190424T201855Z
-      X-Amz-Content-Sha256:
-      - 44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a
-      Authorization:
-      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190424/us-east-2/dynamodb/aws4_request,
-        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date;x-amz-target,
-        Signature=<SignatureValue>
-      Content-Length:
-      - '2'
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - Server
-      Date:
-      - Wed, 24 Apr 2019 20:18:55 GMT
-      Content-Type:
-      - application/x-amz-json-1.0
-      Content-Length:
-      - '17'
-      Connection:
-      - keep-alive
-      X-Amzn-Requestid:
-      - NPUI6TUABNT3V7ESBM727P825FVV4KQNSO5AEMVJF66Q9ASUAAJG
-      X-Amz-Crc32:
-      - '1315925753'
-    body:
-      encoding: UTF-8
-      string: '{"TableNames":[]}'
-    http_version: 
-  recorded_at: Wed, 24 Apr 2019 20:18:55 GMT
-- request:
-    method: post
     uri: https://sqs.us-east-2.amazonaws.com/AWS_ACCOUNT_ID/test-EBQUJLXF
     body:
       encoding: UTF-8
@@ -1578,4 +1372,257 @@ http_interactions:
       string: <?xml version="1.0"?><DeleteQueueResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><ResponseMetadata><RequestId>ad159aa8-4216-5608-8389-cf9284e6da89</RequestId></ResponseMetadata></DeleteQueueResponse>
     http_version: 
   recorded_at: Wed, 24 Apr 2019 20:18:56 GMT
+- request:
+    method: post
+    uri: https://sqs.us-east-2.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: Action=CreateQueue&QueueName=test-ONDMALKY&Version=2012-11-05
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-sqs/1.10.0
+      Host:
+      - sqs.us-east-2.amazonaws.com
+      X-Amz-Date:
+      - 20190425T210240Z
+      X-Amz-Security-Token:
+      - AWS_SESSION_TOKEN
+      X-Amz-Content-Sha256:
+      - 8f60d30a9b917791bb1360ddbf30725eddf066fc51d7ffbcbfffe42bd7ac746b
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190425/us-east-2/sqs/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date;x-amz-security-token,
+        Signature=<SignatureValue>
+      Content-Length:
+      - '61'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amzn-Requestid:
+      - 1ec53fb0-75dc-5028-9aea-6a8c576d6bed
+      Date:
+      - Thu, 25 Apr 2019 21:02:41 GMT
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '335'
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0"?><CreateQueueResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><CreateQueueResult><QueueUrl>https://sqs.us-east-2.amazonaws.com/AWS_ACCOUNT_ID/test-ONDMALKY</QueueUrl></CreateQueueResult><ResponseMetadata><RequestId>1ec53fb0-75dc-5028-9aea-6a8c576d6bed</RequestId></ResponseMetadata></CreateQueueResponse>
+    http_version: 
+  recorded_at: Thu, 25 Apr 2019 21:02:41 GMT
+- request:
+    method: post
+    uri: https://dynamodb.us-east-2.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Content-Type:
+      - application/x-amz-json-1.0
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-dynamodb/1.21.0
+      X-Amz-Target:
+      - DynamoDB_20120810.ListTables
+      Host:
+      - dynamodb.us-east-2.amazonaws.com
+      X-Amz-Date:
+      - 20190425T210241Z
+      X-Amz-Content-Sha256:
+      - 44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190425/us-east-2/dynamodb/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date;x-amz-target,
+        Signature=<SignatureValue>
+      Content-Length:
+      - '2'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Server
+      Date:
+      - Thu, 25 Apr 2019 21:02:41 GMT
+      Content-Type:
+      - application/x-amz-json-1.0
+      Content-Length:
+      - '43'
+      Connection:
+      - keep-alive
+      X-Amzn-Requestid:
+      - CGP9D8TRLR1LPIN6TAR4C3717FVV4KQNSO5AEMVJF66Q9ASUAAJG
+      X-Amz-Crc32:
+      - '2698652359'
+    body:
+      encoding: UTF-8
+      string: '{"TableNames":["open_search_dev_indexing"]}'
+    http_version: 
+  recorded_at: Thu, 25 Apr 2019 21:02:41 GMT
+- request:
+    method: post
+    uri: https://dynamodb.us-east-2.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Content-Type:
+      - application/x-amz-json-1.0
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-dynamodb/1.21.0
+      X-Amz-Target:
+      - DynamoDB_20120810.ListTables
+      Host:
+      - dynamodb.us-east-2.amazonaws.com
+      X-Amz-Date:
+      - 20190425T210241Z
+      X-Amz-Content-Sha256:
+      - 44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190425/us-east-2/dynamodb/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date;x-amz-target,
+        Signature=<SignatureValue>
+      Content-Length:
+      - '2'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Server
+      Date:
+      - Thu, 25 Apr 2019 21:02:42 GMT
+      Content-Type:
+      - application/x-amz-json-1.0
+      Content-Length:
+      - '43'
+      Connection:
+      - keep-alive
+      X-Amzn-Requestid:
+      - RUT3JJL7KUDPBNVUBLJF3H93KFVV4KQNSO5AEMVJF66Q9ASUAAJG
+      X-Amz-Crc32:
+      - '2698652359'
+    body:
+      encoding: UTF-8
+      string: '{"TableNames":["open_search_dev_indexing"]}'
+    http_version: 
+  recorded_at: Thu, 25 Apr 2019 21:02:42 GMT
+- request:
+    method: post
+    uri: https://dynamodb.us-east-2.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: '{"TableName":"open_search_dev_indexing"}'
+    headers:
+      Content-Type:
+      - application/x-amz-json-1.0
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-dynamodb/1.21.0
+      X-Amz-Target:
+      - DynamoDB_20120810.DeleteTable
+      Host:
+      - dynamodb.us-east-2.amazonaws.com
+      X-Amz-Date:
+      - 20190425T210242Z
+      X-Amz-Content-Sha256:
+      - f6082c7de275352ad9b7b7be5bd78a6a15696b8d4dce3b3921b2503c64fd0fff
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190425/us-east-2/dynamodb/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date;x-amz-target,
+        Signature=<SignatureValue>
+      Content-Length:
+      - '40'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Server
+      Date:
+      - Thu, 25 Apr 2019 21:02:42 GMT
+      Content-Type:
+      - application/x-amz-json-1.0
+      Content-Length:
+      - '352'
+      Connection:
+      - keep-alive
+      X-Amzn-Requestid:
+      - 5KSGLVBPKM65K2B2H498IMJ3R7VV4KQNSO5AEMVJF66Q9ASUAAJG
+      X-Amz-Crc32:
+      - '3488429427'
+    body:
+      encoding: UTF-8
+      string: '{"TableDescription":{"ItemCount":0,"ProvisionedThroughput":{"NumberOfDecreasesToday":0,"ReadCapacityUnits":5,"WriteCapacityUnits":5},"TableArn":"arn:aws:dynamodb:us-east-2:AWS_ACCOUNT_ID:table/open_search_dev_indexing","TableId":"defb16a2-d2c0-490e-806b-565392e77bde","TableName":"open_search_dev_indexing","TableSizeBytes":0,"TableStatus":"DELETING"}}'
+    http_version: 
+  recorded_at: Thu, 25 Apr 2019 21:02:42 GMT
+- request:
+    method: post
+    uri: https://sqs.us-east-2.amazonaws.com/AWS_ACCOUNT_ID/test-ONDMALKY
+    body:
+      encoding: UTF-8
+      string: Action=DeleteQueue&QueueUrl=https%3A%2F%2Fsqs.us-east-2.amazonaws.com%2FAWS_ACCOUNT_ID%2Ftest-ONDMALKY&Version=2012-11-05
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-sqs/1.10.0
+      Host:
+      - sqs.us-east-2.amazonaws.com
+      X-Amz-Date:
+      - 20190425T210247Z
+      X-Amz-Security-Token:
+      - AWS_SESSION_TOKEN
+      X-Amz-Content-Sha256:
+      - bde2c67aa6b400a5385f39418c580c9b22b31a484452fe468a78a1e33484cbb9
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190425/us-east-2/sqs/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date;x-amz-security-token,
+        Signature=<SignatureValue>
+      Content-Length:
+      - '119'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amzn-Requestid:
+      - 2f3d0480-75a1-5608-9f88-51bc57167954
+      Date:
+      - Thu, 25 Apr 2019 21:02:47 GMT
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '211'
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0"?><DeleteQueueResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><ResponseMetadata><RequestId>2f3d0480-75a1-5608-9f88-51bc57167954</RequestId></ResponseMetadata></DeleteQueueResponse>
+    http_version: 
+  recorded_at: Thu, 25 Apr 2019 21:02:48 GMT
 recorded_with: VCR 4.0.0

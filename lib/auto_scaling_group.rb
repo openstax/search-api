@@ -1,4 +1,6 @@
 class AutoScalingGroup
+  attr_reader :raw_asg
+
   delegate_missing_to :@raw_asg
 
   def initialize(name)
@@ -9,10 +11,9 @@ class AutoScalingGroup
   end
 
   def increase_desired_capacity(by:)
-    raw_asg.set_desired_capacity(raw_asg.get_desired_capacity() + by)
+    raw_asg.set_desired_capacity(
+      {
+        desired_capacity: raw_asg.desired_capacity() + by
+      })
   end
-
-  protected
-
-  attr :raw_asg
 end
