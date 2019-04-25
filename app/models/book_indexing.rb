@@ -1,7 +1,7 @@
 class BookIndexing
   include Dynamoid::Document
 
-  VALID_STATES = [
+  VALID_STATES = [ # what's an invalid state?  Just call STATES?
     PENDING = "pending",
     DELETE_PENDING = "delete pending",
     STARTED = "started",
@@ -23,6 +23,7 @@ class BookIndexing
 
   def initialize
     self.in_demand = false
+    self.state = VALID_STATES::PENDING
   end
 
   # #create is used to add a book indexing dynamoid document to represent

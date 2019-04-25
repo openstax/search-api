@@ -4,67 +4,80 @@
 class EnqueueIndexJobs
   def initialize
     @todo_jobs_queue = TodoJobsQueue.new
+    @new_create_index_jobs = 0
+    @new_delete_index_jobs = 0
+    @worker_asg = AutoScalingGroup.new(worker_asg_name)
   end
 
-  def process_rex_releases
-    rex_releases = OpenStax::RexReleases.new
-    books_ids = rex_releases.map{ |release| release.books }.flatten
-
-    books_ids.each do |book_id|
+  def execute
+    released_books_ids.each do |book_id|
       ACTIVE_INDEXING_STRATEGIES.each do |indexing_strategy|
-        process_book(book_id, indexing_strategy.new.version)
+        existing_book_indexing = find_book_indexing(book_id, indexing_strategy)
+
+        if existing_book_indexing
+          # this book is still needed in elastic search
+          existing_book_indexing.in_demand = true
+        else
+          # Isn't indexed so let's get that process started!
+          enqueue_create_index_job(book_id, indexing_strategy)
+        end
       end
     end
 
-    check_for_books_to_delete
+    # Find the indexes that are no longer needed, and enqueue work to delete them
 
-    AutoScaling.set_desired_capacity(group_name: asg_name, desired_capacity: @todo_jobs_queue.count)
+    in_demand_book_indexings, unneeded_book_indexings = book_indexings.partition(&:in_demand)
+
+    unneeded_book_indexings.each do |unneeded_book_indexing|
+      enqueue_delete_index_job(unneeded_book_indexing)
+    end
+
+    @worker_asg.increase_desired_capacity(by: new_jobs)
   end
 
   private
 
   def book_indexings
-    @book_indexings ||= BookIndexing.valid_book_indexings
+    @book_indexings ||= BookIndexing.active_book_indexings
   end
 
-  def asg_name
+  def find_book_indexing(book_id, indexing_strategy)
+    @fast_lookup_hash ||= book_indexings.each_with_object({}) do |book_indexing, hash|
+      hash["#{book_indexing.book_id}#{book_indexing.indexing_strategy}"] = book_indexing
+    end
+
+    @fast_lookup_hash["#{book_id}#{indexing_strategy}"]
+  end
+
+  def worker_asg_name
     Rails.application.secrets.search_worker_asg_name
   end
 
-  def process_book(book_id, indexing_version)
-    book_found_in_indexing = find_book_in_indexing(book_id, indexing_version)
-
-    book_found_in_indexing.in_demand = true    # this book is still needed in elastic search
-
-    unless book_found_in_indexing
-      job = IndexingJob.new(book_version_id: book_id, indexing_version: indexing_version)
-      enqueue_book(job, BookIndexing::PENDING)
-    end
-  end
-
-  def check_for_books_to_delete
-    books_to_be_deleted = book_indexings.select do |book_indexing|
-      book_indexing.in_demand == false
-    end
-
-    books_to_be_deleted.each do ||
-      job = DeletingJob.new(book_version_id: book_id, indexing_version: indexing_version)
-      enqueue_book(job, BookIndexing::DELETE_PENDING)
-    end
-  end
-
-  def find_book_in_indexing(book_id, indexing_version)
-    book_indexings.detect do |book_indexing|
-      book_indexing.book_version_id == book_id &&
-         book_indexing.indexing_version == indexing_version
-    end
-  end
-
-  def enqueue_book(job, state)
+  def enqueue_create_index_job(book_id, indexing_version)
+    job = IndexingJob.new(book_version_id: book_id, indexing_version: indexing_version)
     @todo_jobs_queue.write(job)
 
-    BookIndexing.create(book_version_id: book_id, indexing_version: indexing_version, state: state)
+    BookIndexing.create(book_version_id: book_id, indexing_version: indexing_version)
+
+    @new_create_index_jobs += 1
 
     Rails.logger.info "Open-Search: Book version #{book_id} #{indexing_version} loaded into todo_job_queue"
+  end
+
+  def enqueue_delete_index_job(book_indexing)
+    # write DeleteIndexJob to todo queue
+    # mark book_indexing as pending delete
+    @new_delete_index_jobs += 1
+  end
+
+  def released_book_ids
+    @released_book_ids ||= begin
+      rex_releases = OpenStax::RexReleases.new
+      rex_releases.map{ |release| release.books }.flatten
+    end
+  end
+
+  def new_jobs
+    @new_delete_index_jobs + @new_create_index_jobs
   end
 end
