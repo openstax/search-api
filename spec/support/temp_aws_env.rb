@@ -34,8 +34,9 @@ class TempAwsEnv
     end
   end
 
-  def create_dynamodb_tables
-    DynamoidReset.create
+  def create_dynamodb_table
+    @dynamo = DynamoidReset.new
+    @dynamo.create
   end
 
   def create_sqs
@@ -88,7 +89,7 @@ class TempAwsEnv
   def cleanup!
     @buckets.each{|bucket| bucket.delete!}
 
-    DynamoidReset.delete
+    @dynamo.try(:delete)
 
     Sqs.delete_test_queue(@sqs_queue_url) if @sqs_queue_url
 

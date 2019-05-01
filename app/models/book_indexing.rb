@@ -1,7 +1,22 @@
+# BookIndexing represents the dynamodb documents ORM
+#
+# PK (used for internal sharding) is:
+#    hash_key: book_version_id + range_key: indexing_version
 class BookIndexing
   include Dynamoid::Document
 
-  table name: Rails.application.secrets.dynamodb[:index_state_table_name].parameterize.underscore.to_sym
+  table name: Rails.application.secrets.dynamodb[:index_state_table_name].parameterize.underscore.to_sym,
+        key: :book_version_id
+
+  range :indexing_version
+
+  field :state
+  field :enqueued_time, :datetime, store_as_string: true
+  field :started_time,  :datetime, store_as_string: true
+  field :finished_time, :datetime, store_as_string: true
+  field :updated_at,    :datetime, store_as_string: true
+  field :created_at,    :datetime, store_as_string: true
+  field :message
 
   STATES = [
     STATE_PENDING = "pending",
@@ -14,14 +29,6 @@ class BookIndexing
 
   validates :state, inclusion: { in: STATES }
   validates :indexing_version, inclusion: { in: VALID_INDEXING_STRATEGIES }
-
-  field :state
-  field :book_version_id
-  field :indexing_version
-  field :enqueued_time, :datetime, store_as_string: true
-  field :started_time,  :datetime, store_as_string: true
-  field :finished_time, :datetime, store_as_string: true
-  field :message
 
   attr_reader :in_demand
 

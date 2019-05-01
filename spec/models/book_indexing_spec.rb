@@ -12,7 +12,7 @@ RSpec.describe BookIndexing, vcr: VCR_OPTS do
   describe ".create_new_indexing" do
     it 'creates the a document row in the dynamo db table' do
       TempAwsEnv.make do |env|
-        env.create_dynamodb_tables
+        env.create_dynamodb_table
 
         book_indexing.create_new_indexing(book_version_id: book_id, indexing_version: indexing_version)
         expect(BookIndexing.where(book_version_id: book_id).count).to eq 1
@@ -26,14 +26,23 @@ RSpec.describe BookIndexing, vcr: VCR_OPTS do
     let(:book_id3) { 'book@3'}
 
     def init_test
-      book_indexing.new(state: BookIndexing::STATE_PENDING, book_version_id: book_id1, indexing_version: indexing_version).save!
-      book_indexing.new(state: BookIndexing::STATE_DELETE_PENDING, book_version_id: book_id1, indexing_version: indexing_version).save!
-      book_indexing.new(state: BookIndexing::STATE_DELETED, book_version_id: book_id1, indexing_version: indexing_version).save!
+      book_indexing.new(state: BookIndexing::STATE_PENDING,
+                        book_version_id: book_id1,
+                        indexing_version: indexing_version,
+                        message: 'message 1').save!
+      book_indexing.new(state: BookIndexing::STATE_DELETE_PENDING,
+                        book_version_id: book_id2,
+                        indexing_version: indexing_version,
+                        message: 'message 2').save!
+      book_indexing.new(state: BookIndexing::STATE_DELETED,
+                        book_version_id: book_id3,
+                        indexing_version: indexing_version,
+                        message: 'message 3').save!
     end
 
     it 'finds only live documents, not the deleting ones' do
       TempAwsEnv.make do |env|
-        env.create_dynamodb_tables
+        env.create_dynamodb_table
         init_test
 
         expect(BookIndexing.all.count).to eq 3   # BookIndexing.count doesnt work
@@ -49,7 +58,7 @@ RSpec.describe BookIndexing, vcr: VCR_OPTS do
 
     it 'updates the document to be deleted' do
       TempAwsEnv.make do |env|
-        env.create_dynamodb_tables
+        env.create_dynamodb_table
 
         expect(live_indexing.state).to eq BookIndexing::STATE_PENDING
         live_indexing.queue_to_delete
