@@ -6,7 +6,7 @@ require 'openstax/rex_releases'
 RSpec.describe TodoJobsQueue, vcr: VCR_OPTS do
   let(:indexing_version) { "I1" }
   let(:book_version_id) { "foo@1" }
-  let(:job_data) { IndexingJob.new(book_version_id: book_version_id, indexing_version: indexing_version) }
+  let(:job_data) { CreateIndexJob.new(book_version_id: book_version_id, indexing_version: indexing_version) }
 
   it 'reads the release IDs from S3' do
     TempAwsEnv.make do |env|

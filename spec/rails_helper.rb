@@ -46,4 +46,10 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+end
+
+# Placed here, (not in spec_helper) because rails environment is needed first
+if Rails.application.secrets.dynamodb.nil?
+  Rails.application.secrets[:dynamodb] = { index_state_table_name: 'test_indexing' }
 end

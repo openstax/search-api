@@ -2,7 +2,7 @@ module DynamoidReset
   def self.create
     tries = 0
     until table_deleted? || tries >= 5 do
-      Rails.logger.debug("Waiting for #{tablename} to be deleted. #{tries} tries")
+      puts("Sleeping for #{tablename} to be deleted. #{tries} tries")
       sleep(15)
       tries += 1
     end
@@ -11,7 +11,7 @@ module DynamoidReset
 
     tries = 0
     until table_created? || tries >= 5 do
-      Rails.logger.debug("Waiting for #{tablename} to be created. #{tries} tries.")
+      puts("Sleeping for #{tablename} to be created. #{tries} tries.")
       sleep(5)
       tries +=1
     end
