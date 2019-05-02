@@ -1,9 +1,13 @@
 require 'rails_helper'
 require 'vcr_helper'
 
+amazon_api_header_matcher = lambda do |request_1, request_2|
+  request_1.headers["X-Amz-Target"] == request_2.headers["X-Amz-Target"]
+end
+
 # A BookIndexing model is the ORM to the AWS dynamo db.  This table records
 # book indexing jobs enqueuing, starting, and finishing.
-RSpec.describe BookIndexing, vcr: VCR_OPTS do
+RSpec.describe BookIndexing, vcr: VCR_OPTS.merge!({match_requests_on: [:method, :uri, amazon_api_header_matcher]}) do
   let(:book_id) { '14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1' }
   let(:indexing_version) { 'I1' }
 

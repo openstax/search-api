@@ -40,6 +40,20 @@ VCR.configure do |c|
     'true' == ENV['VCR_IGNORE_REQUESTS_TEMPORARILY']
   end
 
+  c.before_playback do |interaction|
+    # Some AWS SDK code checks a checksum header on responses and if it doesn't match initiates
+    # a request retry.  Since we are filtering secrets from requests and responses, we are
+    # messing with the data on which the checksum was calculate and causing a mismatch, which
+    # in turn creates extra requests.  In VCR recorded specs, these extra requests are not
+    # recorded and then tests fail.  The code below simply replaces the checksum in the played-back
+    # response with the checksum value computed on the played-back response so that the checksum
+    # check doesn't fail.
+
+    if interaction.response.headers.has_key?("X-Amz-Crc32")
+      interaction.response.headers["X-Amz-Crc32"] = [Zlib.crc32(interaction.response.body).to_s]
+    end
+  end
+
 end
 
 VCR_OPTS = {
