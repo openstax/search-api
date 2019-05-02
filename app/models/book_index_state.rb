@@ -1,8 +1,8 @@
-# BookIndexing represents the dynamodb documents ORM
+# BookIndexState represents the dynamodb documents ORM
 #
 # PK (used for internal sharding) is:
 #    hash_key: book_version_id + range_key: indexing_version
-class BookIndexing
+class BookIndexState
   include Dynamoid::Document
 
   table name: Rails.application.secrets.dynamodb[:index_state_table_name].parameterize.underscore.to_sym,
@@ -19,10 +19,9 @@ class BookIndexing
   field :message
 
   STATES = [
-    STATE_PENDING = "pending",
+    STATE_CREATE_PENDING = "create pending",
     STATE_DELETE_PENDING = "delete pending",
-    STATE_STARTED = "started",
-    STATE_INDEXED = "indexed",
+    STATE_CREATED = "created",
     STATE_DELETED = "deleted"
   ]
   VALID_INDEXING_STRATEGIES = %w(I1)
@@ -30,13 +29,11 @@ class BookIndexing
   validates :state, inclusion: { in: STATES }
   validates :indexing_version, inclusion: { in: VALID_INDEXING_STRATEGIES }
 
-  attr_reader :in_demand
+  attr_accessor :in_demand
 
-  def self.create_new_indexing(book_version_id:, indexing_version:)
-    Rails.logger.info "Creating book version #{@book_version_id} #{@indexing_version} in dynamodb"
-
+  def self.create(book_version_id:, indexing_version:, state: STATE_CREATE_PENDING)
     new.tap do |job|
-      job.state = STATE_PENDING
+      job.state = state
       job.book_version_id = book_version_id
       job.indexing_version = indexing_version
       job.enqueued_time = DateTime.now
@@ -53,14 +50,14 @@ class BookIndexing
     self.in_demand = false
   end
 
-  def deleting?
-    [STATE_DELETED, STATE_DELETE_PENDING].include?(self.state)
-  end
-
-  def queue_to_delete
+  def mark_queued_for_deletion
     self.state = STATE_DELETE_PENDING
     self.enqueued_time = DateTime.now
     save!
+  end
+
+  def deleting?
+    [STATE_DELETED, STATE_DELETE_PENDING].include?(self.state)
   end
 
   # #save is used to update a book indexing dynamoid document to represent
@@ -73,7 +70,5 @@ class BookIndexing
   def finish(book_version_id:)
   end
 
-  def in_demand=(value)
-    @in_demand = value
-  end
+  private :initialize
 end

@@ -17,12 +17,12 @@ RSpec.describe EnqueueIndexJobs, vcr: VCR_OPTS do
       allow_any_instance_of(OpenStax::RexReleases).to receive(:map).and_return(book_ids)
       allow_any_instance_of(OpenStax::RexReleases).to receive(:load_releases)
       allow_any_instance_of(TodoJobsQueue).to receive(:count).and_return(2)
-      allow(BookIndexing).to receive(:live_book_indexings).and_return([book1_to_index, book2_to_index])
+      allow(BookIndexState).to receive(:live_book_indexings).and_return([book1_to_index, book2_to_index])
     end
 
     describe "#call" do
-      it 'sends expected messages to the BookIndexing, TodoJobsQueue, and asg objects' do
-        expect(BookIndexing).to receive(:create_new_indexing).twice
+      it 'sends expected messages to the BookIndexState, TodoJobsQueue, and asg objects' do
+        expect(BookIndexState).to receive(:create).twice
 
         todo_jobs_receive_count = 0
         allow_any_instance_of(TodoJobsQueue).to receive(:write) { todo_jobs_receive_count += 1 }
@@ -40,18 +40,18 @@ RSpec.describe EnqueueIndexJobs, vcr: VCR_OPTS do
   context "enqueued book listings not existing in rex releases" do
     let(:released_book_ids) {%w(foo@1)}
     let(:book1_to_index) { double(book_version_id: 'foo@1', in_demand: true, indexing_version: 'i1') }
-    let(:now_inactive_book) { double(book_version_id: 'foo@2', in_demand: false, indexing_version: 'i1', queue_to_delete: nil) }
+    let(:now_inactive_book) { double(book_version_id: 'foo@2', in_demand: false, indexing_version: 'i1', mark_queued_for_deletion: nil) }
 
     before do
       allow_any_instance_of(OpenStax::RexReleases).to receive(:map).and_return(released_book_ids)
       allow_any_instance_of(OpenStax::RexReleases).to receive(:load_releases)
       allow_any_instance_of(TodoJobsQueue).to receive(:count).and_return(2)
-      allow(BookIndexing).to receive(:live_book_indexings).and_return([book1_to_index, now_inactive_book])
+      allow(BookIndexState).to receive(:live_book_indexings).and_return([book1_to_index, now_inactive_book])
     end
 
     describe "#call" do
       it 'enqueues one delete job, one index job and updates the auto scaling group by this amount' do
-        expect(BookIndexing).to receive(:create_new_indexing).once
+        expect(BookIndexState).to receive(:create).once
 
         expect_any_instance_of(TodoJobsQueue).to receive(:write).with(instance_of(DeleteIndexJob)).once
         expect_any_instance_of(TodoJobsQueue).to receive(:write).with(instance_of(CreateIndexJob)).once

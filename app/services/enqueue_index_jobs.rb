@@ -9,7 +9,7 @@ class EnqueueIndexJobs
 
   def call
     released_book_ids.each do |book_id|
-      ACTIVE_INDEXING_STRATEGIES.each do |indexing_version|
+      ACTIVE_INDEXING_VERSIONS.each do |indexing_version|
         existing_book_indexing = find_book_indexing(book_id, indexing_version)
 
         if existing_book_indexing
@@ -28,13 +28,20 @@ class EnqueueIndexJobs
 
     @worker_asg.increase_desired_capacity(by: new_jobs)
 
-    [@new_delete_index_jobs, @new_create_index_jobs]
+    stats
   end
 
   private
 
+  def stats
+    {
+      num_delete_index_jobs: @new_delete_index_jobs,
+      num_create_index_jobs: @new_create_index_jobs
+    }
+  end
+
   def book_indexings
-    @book_indexings ||= BookIndexing.live_book_indexings
+    @book_indexings ||= BookIndexState.live_book_indexings
   end
 
   def find_book_indexing(book_id, indexing_version)
@@ -54,8 +61,8 @@ class EnqueueIndexJobs
                              indexing_version: indexing_version)
     @todo_jobs_queue.write(job)
 
-    BookIndexing.create_new_indexing(book_version_id: book_id,
-                                     indexing_version: indexing_version)
+    BookIndexState.create(book_version_id:  book_id,
+                          indexing_version: indexing_version)
 
     @new_create_index_jobs += 1
 
@@ -64,10 +71,10 @@ class EnqueueIndexJobs
 
   def enqueue_delete_index_job(book_indexing)
     job = DeleteIndexJob.new(book_version_id: book_indexing.book_version_id,
-                          indexing_version: book_indexing.indexing_version)
+                             indexing_version: book_indexing.indexing_version)
     @todo_jobs_queue.write(job)
 
-    book_indexing.queue_to_delete
+    book_indexing.mark_queued_for_deletion
 
     @new_delete_index_jobs += 1
 
@@ -77,7 +84,7 @@ class EnqueueIndexJobs
   def released_book_ids
     @released_book_ids ||= begin
       rex_releases = OpenStax::RexReleases.new
-      rex_releases.map{ |release| release.books }.flatten
+      rex_releases.map(&:books).flatten.uniq
     end
   end
 

@@ -1,7 +1,6 @@
 module Sqs
   def self.create_test_queue
-    random_queue_name = "test-#{(0...8).map { (65 + rand(26)).chr }.join}"
-    response = client.create_queue(queue_name: random_queue_name)
+    response = client.create_queue(queue_name: "test-open-search")
     response.queue_url
   end
 

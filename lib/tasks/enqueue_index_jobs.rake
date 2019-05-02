@@ -3,7 +3,7 @@ desc <<-DESC.strip_heredoc
   that workers are available to work them.
 DESC
 task enqueue_index_jobs: :environment do
-  Rails.logger.info { "Ran placeholder enqueue_index_jobs task!" }
+  Rails.logger.info { "Starting enqueue_index_jobs" }
 
   EnqueueIndexJobs.new.call
 

@@ -3,8 +3,8 @@ class TodoJobsQueue < BaseQueue
     super(url)
   end
 
-  def write(indexing_job)
-    raw_queue.send_message( message_body: indexing_job.to_json )
+  def write(index_job)
+    raw_queue.send_message( message_body: index_job.to_json )
   end
 
   def read
