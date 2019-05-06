@@ -2,6 +2,8 @@
 #
 # PK (used for internal sharding) is:
 #    hash_key: book_version_id + range_key: indexing_version
+#
+# To created this table in development, run:  rake dynamoid:create_tables
 class BookIndexState
   include Dynamoid::Document
 
@@ -11,23 +13,23 @@ class BookIndexState
   range :indexing_version
 
   field :state
+  # todo replace these timestamp fields with a status log
   field :enqueued_time, :datetime, store_as_string: true
-  field :started_time,  :datetime, store_as_string: true
-  field :finished_time, :datetime, store_as_string: true
+
   field :updated_at,    :datetime, store_as_string: true
   field :created_at,    :datetime, store_as_string: true
   field :message
 
-  STATES = [
+  STATES                  = [
     STATE_CREATE_PENDING = "create pending",
     STATE_DELETE_PENDING = "delete pending",
     STATE_CREATED = "created",
     STATE_DELETED = "deleted"
   ]
-  VALID_INDEXING_STRATEGIES = %w(I1)
+  VALID_INDEXING_VERSIONS = %w(I1)
 
   validates :state, inclusion: { in: STATES }
-  validates :indexing_version, inclusion: { in: VALID_INDEXING_STRATEGIES }
+  validates :indexing_version, inclusion: { in: VALID_INDEXING_VERSIONS }
 
   attr_accessor :in_demand
 
@@ -41,7 +43,7 @@ class BookIndexState
     end
   end
 
-  def self.live_book_indexings
+  def self.live
     all.reject{ |doc| doc.deleting? }
   end
 
@@ -58,16 +60,6 @@ class BookIndexState
 
   def deleting?
     [STATE_DELETED, STATE_DELETE_PENDING].include?(self.state)
-  end
-
-  # #save is used to update a book indexing dynamoid document to represent
-  # the actual processing of a "job" in the SQS indexing pipeline
-  def start(book_version_id:)
-  end
-
-  # #finish is used to update a book indexing dynamoid document to represent
-  # the completion a "job" in the SQS indexing pipeline
-  def finish(book_version_id:)
   end
 
   private :initialize

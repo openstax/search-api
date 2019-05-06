@@ -50,7 +50,7 @@ RSpec.describe BookIndexState, vcr: VCR_OPTS.merge!({match_requests_on: [:method
         init_test
 
         expect(BookIndexState.all.count).to eq 3   # BookIndexState.count doesnt work
-        expect(BookIndexState.live_book_indexings.count).to eq 1
+        expect(BookIndexState.live.count).to eq 1
       end
     end
   end

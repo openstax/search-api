@@ -17,7 +17,7 @@ RSpec.describe EnqueueIndexJobs, vcr: VCR_OPTS do
       allow_any_instance_of(OpenStax::RexReleases).to receive(:map).and_return(book_ids)
       allow_any_instance_of(OpenStax::RexReleases).to receive(:load_releases)
       allow_any_instance_of(TodoJobsQueue).to receive(:count).and_return(2)
-      allow(BookIndexState).to receive(:live_book_indexings).and_return([book1_to_index, book2_to_index])
+      allow(BookIndexState).to receive(:live).and_return([book1_to_index, book2_to_index])
     end
 
     describe "#call" do
@@ -46,7 +46,7 @@ RSpec.describe EnqueueIndexJobs, vcr: VCR_OPTS do
       allow_any_instance_of(OpenStax::RexReleases).to receive(:map).and_return(released_book_ids)
       allow_any_instance_of(OpenStax::RexReleases).to receive(:load_releases)
       allow_any_instance_of(TodoJobsQueue).to receive(:count).and_return(2)
-      allow(BookIndexState).to receive(:live_book_indexings).and_return([book1_to_index, now_inactive_book])
+      allow(BookIndexState).to receive(:live).and_return([book1_to_index, now_inactive_book])
     end
 
     describe "#call" do

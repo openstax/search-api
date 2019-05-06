@@ -20,7 +20,7 @@ class EnqueueIndexJobs
       end
     end
 
-    _, unneeded_book_indexings = book_indexings.partition(&:in_demand)
+    _, unneeded_book_indexings = index_states.partition(&:in_demand)
 
     unneeded_book_indexings.each do |unneeded_book_indexing|
       enqueue_delete_index_job(unneeded_book_indexing)
@@ -40,12 +40,12 @@ class EnqueueIndexJobs
     }
   end
 
-  def book_indexings
-    @book_indexings ||= BookIndexState.live_book_indexings
+  def index_states
+    @index_states ||= BookIndexState.live
   end
 
   def find_book_indexing(book_id, indexing_version)
-    @fast_lookup_hash ||= book_indexings.each_with_object({}) do |book_indexing, hash|
+    @fast_lookup_hash ||= index_states.each_with_object({}) do |book_indexing, hash|
       hash["#{book_indexing.book_version_id}#{book_indexing.indexing_version}"] = book_indexing
     end
 
