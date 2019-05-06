@@ -64,6 +64,12 @@ GEM
     ast (2.4.0)
     aws-eventstream (1.0.1)
     aws-partitions (1.126.0)
+    aws-sdk-autoscaling (1.15.0)
+      aws-sdk-core (~> 3, >= 3.39.0)
+      aws-sigv4 (~> 1.0)
+    aws-sdk-autoscalingplans (1.9.0)
+      aws-sdk-core (~> 3, >= 3.39.0)
+      aws-sigv4 (~> 1.0)
     aws-sdk-core (3.44.1)
       aws-eventstream (~> 1.0)
       aws-partitions (~> 1.0)
@@ -107,6 +113,11 @@ GEM
     dotenv-rails (2.5.0)
       dotenv (= 2.5.0)
       railties (>= 3.2, < 6.0)
+    dynamoid (3.1.0)
+      activemodel (>= 4)
+      aws-sdk-dynamodb (~> 1)
+      concurrent-ruby (>= 1.0)
+      null-logger
     elasticsearch (6.1.0)
       elasticsearch-api (= 6.1.0)
       elasticsearch-transport (= 6.1.0)
@@ -158,6 +169,7 @@ GEM
     nio4r (2.3.1)
     nokogiri (1.9.1)
       mini_portile2 (~> 2.4.0)
+    null-logger (0.1.5)
     openstax_healthcheck (0.0.3)
       rails (>= 3.0)
     parallel (1.17.0)
@@ -275,6 +287,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aws-sdk-autoscaling
+  aws-sdk-autoscalingplans
   aws-sdk-dynamodb
   aws-sdk-elasticsearchservice
   aws-sdk-iam
@@ -284,6 +298,7 @@ DEPENDENCIES
   bootsnap (>= 1.1.0)
   byebug
   dotenv-rails
+  dynamoid
   elasticsearch (~> 6.1.0)
   faraday_middleware
   faraday_middleware-aws-sigv4

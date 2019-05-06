@@ -29,6 +29,9 @@ gem "aws-sdk-sqs"
 # Versioned API tools
 gem "versionist"
 
+# Access AWS dynamo db
+gem 'dynamoid'
+
 # Access elasticsearch (with signed requests)
 gem "elasticsearch", '~> 6.1.0'
 gem 'patron'
@@ -67,8 +70,8 @@ group :development, :test do
 
   gem 'whenever-test'
 
-  # For creating ES domains in tests
   gem 'aws-sdk-elasticsearchservice'
+  gem 'aws-sdk-autoscaling'
 
   # For getting information about AWS users in tests
   gem 'aws-sdk-iam'

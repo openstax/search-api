@@ -6,6 +6,8 @@ class TempAwsEnv
 
   @@have_switched_to_temporary_credentials = false
 
+  attr_reader :sqs_queue_url
+
   def self.make
     switch_to_temporary_credentials
 
@@ -30,6 +32,15 @@ class TempAwsEnv
       bucket.create
       @buckets.push(bucket)
     end
+  end
+
+  def create_dynamodb_table
+    @dynamo = DynamoidReset.new
+    @dynamo.create
+  end
+
+  def create_sqs
+    @sqs_queue_url ||= Sqs.create_test_queue
   end
 
   def create_elasticsearch_domain(name:, region: @region, restrict_access_to_me: true, filter: true)
@@ -64,8 +75,8 @@ class TempAwsEnv
 
     do_not_record_or_playback do
       until es_domain_created?(region: region, name: name) do
-        sleep(30)
         Rails.logger.debug("Waiting for #{name} ES domain to create")
+        sleep(30)
       end
     end
 
@@ -77,6 +88,11 @@ class TempAwsEnv
 
   def cleanup!
     @buckets.each{|bucket| bucket.delete!}
+
+    @dynamo.try(:delete)
+
+    Sqs.delete_test_queue(@sqs_queue_url) if @sqs_queue_url
+
     @es_domain_names_to_regions.each do |domain_name, region|
       aws_es_client(region).delete_elasticsearch_domain(domain_name: domain_name)
     end
@@ -144,5 +160,4 @@ class TempAwsEnv
   def es_domain_status(region:, name:)
     aws_es_client(region).describe_elasticsearch_domain(domain_name: name).domain_status
   end
-
 end
