@@ -5,6 +5,8 @@ task work_index_job: :environment do
 
   Rails.logger.info { "Ran placeholder work_index_job task!" }
 
+  ProcessIndexJobs.new.call
+
   # Things to do in this code:
   #
   #   When the work is complete, we want this instance to self-terminate

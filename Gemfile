@@ -34,7 +34,7 @@ gem 'dynamoid'
 
 # Access elasticsearch (with signed requests)
 gem "elasticsearch", '~> 6.1.0'
-gem 'patron'
+gem 'typhoeus'
 gem 'faraday_middleware'
 gem 'faraday_middleware-aws-sigv4'
 

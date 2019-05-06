@@ -27,6 +27,7 @@ module Search::BookVersions::I1
     end
 
     def index(book:, index_name:)
+      Rails.logger.info("OpenSearch: indexing #{index_name} with #{book.root_book_part.pages.count} pages")
       book.root_book_part.pages.each {|page| index_page(page: page, index_name: index_name) }
     end
 

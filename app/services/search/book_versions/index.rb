@@ -19,17 +19,16 @@ module Search::BookVersions
     end
 
     def create
-      OpenSearch::ElasticsearchClient.instance.indices.create(index: name, body: @indexing_strategy.index_metadata)
+      if !OpenSearch::ElasticsearchClient.instance.indices.exists?(index: name)
+        OpenSearch::ElasticsearchClient.instance.indices.create(index: name, body: @indexing_strategy.index_metadata)
+      end
     end
 
     # This method populates the index with pages from the book
     def populate
-      starting = Time.now
-
       @indexing_strategy.index(book: book, index_name: name)
 
-      time_took = Time.at(Time.now - starting).utc.strftime("%H:%M:%S")
-      Rails.logger.info("OpenSearch: Indexing book index #{name} took #{time_took} time")
+      index_stats
     end
 
     def recreate
@@ -39,7 +38,9 @@ module Search::BookVersions
     end
 
     def delete
-      OpenSearch::ElasticsearchClient.instance.indices.delete(index: name)
+      if OpenSearch::ElasticsearchClient.instance.indices.exists?(index: name)
+        OpenSearch::ElasticsearchClient.instance.indices.delete(index: name)
+      end
     end
 
     def name
@@ -47,6 +48,15 @@ module Search::BookVersions
     end
 
     private
+    def index_stats
+      es_stats = OpenSearch::ElasticsearchClient.instance.indices.stats(index: name)
+      {
+        num_docs_in_index: es_stats["indices"][name]['primaries']['docs']['count'],
+        index_name: name
+        # todo more stats?
+      }
+    end
+
     def get_version
       book.version
     end

@@ -66,7 +66,7 @@ class EnqueueIndexJobs
 
     @new_create_index_jobs += 1
 
-    Rails.logger.info "Open-Search: Book version #{book_id} #{indexing_version} enqueued for indexing"
+    Rails.logger.info "OpenSearch: Book version '#{book_id} #{indexing_version}' enqueued for indexing"
   end
 
   def enqueue_delete_index_job(book_indexing)
@@ -78,7 +78,7 @@ class EnqueueIndexJobs
 
     @new_delete_index_jobs += 1
 
-    Rails.logger.info "Open-Search: Book version #{book_indexing.book_version_id} #{book_indexing.indexing_version} enqueued for deleting"
+    Rails.logger.info "OpenSearch: Book version '#{book_indexing.book_version_id} #{book_indexing.indexing_version}' enqueued for deleting"
   end
 
   def released_book_ids

@@ -1,5 +1,6 @@
 class BaseQueue
   def initialize(url)
+    @url = url
     @raw_queue = Aws::SQS::Queue.new(url, client)
   end
 
