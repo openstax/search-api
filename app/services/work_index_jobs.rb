@@ -13,10 +13,12 @@ class WorkIndexJobs
 
   def call
     loop do
-      job = @todo_jobs_queue.read
-      break if job.nil?
-
       begin
+        job = @todo_jobs_queue.read
+        break if job.nil?
+
+        validate_indexing_version(job)
+
         starting = Time.now
         es_stats = job.call
         time_took = Time.at(Time.now - starting).utc.strftime("%H:%M:%S")
@@ -24,38 +26,43 @@ class WorkIndexJobs
         Rails.logger.info("OpenSearch: WorkIndexJobs job #{job.class.to_s} took #{time_took} time. json #{job.to_json}")
 
         enqueue_done_job(job: job,
-                         status: DoneIndexJob::Status::STATUS_SUCCESSFUL,
+                         status: DoneIndexJob::Results::STATUS_SUCCESSFUL,
                          es_stats: es_stats,
                          time_took: time_took)
-      rescue BaseIndexJob::InvalidIndexingVersion
+
+        job.when_completed
+      rescue InvalidIndexingVersion
         enqueue_done_job(job: job,
-                         status: DoneIndexJob::Status::STATUS_INVALID_INDEXING_VERSION)
+                         status: DoneIndexJob::Results::STATUS_INVALID_INDEXING_VERSION)
       rescue => ex   # TODO review error handling with JP
         enqueue_done_job(job: job,
-                         status: DoneIndexJob::Status::STATUS_OTHER_ERROR,
+                         status: DoneIndexJob::Results::STATUS_OTHER_ERROR,
                          message: ex.message)
-      ensure
-        job.when_completed
       end
 
       record_job_stat(job)
     end
-
-    # TODO will redo to work with JP's aws instance layer above
-    # @worker_asg_instance.terminate_instance
 
     job_stats
   end
 
   private
 
-  def enqueue_done_job(job:, status:, message: nil, time_took: nil, es_stats: nil)
-    done_job_status = DoneIndexJob::Status.new(status: status,
-                                          message: message,
-                                          time_took: time_took,
-                                          es_stats: es_stats)
+  class InvalidIndexingVersion < StandardError; end
 
-    done_job = DoneIndexJob.new( status: done_job_status,
+  def validate_indexing_version(job)
+    unless ACTIVE_INDEXING_VERSIONS.include?(job.indexing_version)
+      raise InvalidIndexingVersion
+    end
+  end
+
+  def enqueue_done_job(job:, status:, message: nil, time_took: nil, es_stats: nil)
+    done_job_results = DoneIndexJob::Results.new(status: status,
+                                                message: message,
+                                                time_took: time_took,
+                                                es_stats: es_stats)
+
+    done_job = DoneIndexJob.new( results: done_job_results,
                             book_version_id: job.book_version_id,
                             indexing_version:job.indexing_version)
 

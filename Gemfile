@@ -61,6 +61,7 @@ group :development, :test do
   gem 'pry-rails'
 
   gem 'rspec-rails', '~> 3.8'
+  gem 'rspec-json_expectations'
 
   # Stubs HTTP requests
   gem 'webmock'

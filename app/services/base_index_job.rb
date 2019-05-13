@@ -4,10 +4,6 @@ class BaseIndexJob
               :type
 
   def initialize(book_version_id:, indexing_version:, when_completed_proc: nil)
-    unless ACTIVE_INDEXING_VERSIONS.include?(indexing_version)
-      raise InvalidIndexingVersion
-    end
-
     @when_completed_proc = when_completed_proc
 
     @type = self.class.to_s
@@ -19,9 +15,6 @@ class BaseIndexJob
 
   def when_completed
     @when_completed_proc.try(:call)
-  end
-
-  class InvalidIndexingVersion < StandardError
   end
 
   protected

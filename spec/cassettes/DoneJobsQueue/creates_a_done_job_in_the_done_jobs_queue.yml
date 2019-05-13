@@ -16,11 +16,11 @@ http_interactions:
       Host:
       - sqs.us-east-2.amazonaws.com
       X-Amz-Date:
-      - 20190502T221250Z
+      - 20190513T223109Z
       X-Amz-Content-Sha256:
       - ff8037827640dc7e29a9605ac3a7ae1d88671adfa6803ff7faf6f7d026d1fe51
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190502/us-east-2/sqs/aws4_request,
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190513/us-east-2/sqs/aws4_request,
         SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date, Signature=<SignatureValue>
       Content-Length:
       - '64'
@@ -32,24 +32,24 @@ http_interactions:
       message: OK
     headers:
       X-Amzn-Requestid:
-      - 88441a41-02fe-5027-9d40-4f046f5cb798
+      - da2463da-ec23-587e-bf20-36891e4e30ba
       Date:
-      - Thu, 02 May 2019 22:12:50 GMT
+      - Mon, 13 May 2019 22:31:09 GMT
       Content-Type:
       - text/xml
       Content-Length:
       - '338'
     body:
       encoding: UTF-8
-      string: <?xml version="1.0"?><CreateQueueResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><CreateQueueResult><QueueUrl>https://sqs.us-east-2.amazonaws.com/AWS_ACCOUNT_ID/test-open-search</QueueUrl></CreateQueueResult><ResponseMetadata><RequestId>88441a41-02fe-5027-9d40-4f046f5cb798</RequestId></ResponseMetadata></CreateQueueResponse>
+      string: <?xml version="1.0"?><CreateQueueResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><CreateQueueResult><QueueUrl>https://sqs.us-east-2.amazonaws.com/AWS_ACCOUNT_ID/test-open-search</QueueUrl></CreateQueueResult><ResponseMetadata><RequestId>da2463da-ec23-587e-bf20-36891e4e30ba</RequestId></ResponseMetadata></CreateQueueResponse>
     http_version: 
-  recorded_at: Thu, 02 May 2019 22:12:50 GMT
+  recorded_at: Mon, 13 May 2019 22:31:09 GMT
 - request:
     method: post
     uri: https://sqs.us-east-2.amazonaws.com/AWS_ACCOUNT_ID/test-open-search
     body:
       encoding: UTF-8
-      string: Action=SendMessage&MessageBody=%7B%22type%22%3A%22CreateIndexJob%22%2C%22book_version_id%22%3A%22foo%401%22%2C%22indexing_version%22%3A%22I1%22%7D&QueueUrl=https%3A%2F%2Fsqs.us-east-2.amazonaws.com%2FAWS_ACCOUNT_ID%2Ftest-open-search&Version=2012-11-05
+      string: Action=SendMessage&MessageBody=%7B%22type%22%3A%22DoneIndexJob%22%2C%22book_version_id%22%3A%22foo%401%22%2C%22indexing_version%22%3A%22I1%22%2C%22status%22%3A%22successful%22%7D&QueueUrl=https%3A%2F%2Fsqs.us-east-2.amazonaws.com%2FAWS_ACCOUNT_ID%2Ftest-open-search&Version=2012-11-05
     headers:
       Content-Type:
       - application/x-www-form-urlencoded; charset=utf-8
@@ -60,14 +60,14 @@ http_interactions:
       Host:
       - sqs.us-east-2.amazonaws.com
       X-Amz-Date:
-      - 20190502T221250Z
+      - 20190513T223109Z
       X-Amz-Content-Sha256:
-      - e87bcd7343e1e760d0d344d3ebe3f9ef167d684aab8dcefb758bc91038dcf562
+      - 3a524b3b8dcbd09d12e4c75c540014b19eff6daa1f0fcea45eee8c31d1136b61
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190502/us-east-2/sqs/aws4_request,
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190513/us-east-2/sqs/aws4_request,
         SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date, Signature=<SignatureValue>
       Content-Length:
-      - '250'
+      - '282'
       Accept:
       - "*/*"
   response:
@@ -76,18 +76,18 @@ http_interactions:
       message: OK
     headers:
       X-Amzn-Requestid:
-      - f061c8fd-4887-5124-b965-9db825248fe7
+      - 27157e4a-9009-5bee-ae22-2b1962672c96
       Date:
-      - Thu, 02 May 2019 22:12:51 GMT
+      - Mon, 13 May 2019 22:31:10 GMT
       Content-Type:
       - text/xml
       Content-Length:
       - '378'
     body:
       encoding: UTF-8
-      string: <?xml version="1.0"?><SendMessageResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><SendMessageResult><MessageId>606f0d3a-d9ea-44c7-a905-02c25d1be82c</MessageId><MD5OfMessageBody>bbce21feb6ec036ea9a440a13c9e19bb</MD5OfMessageBody></SendMessageResult><ResponseMetadata><RequestId>f061c8fd-4887-5124-b965-9db825248fe7</RequestId></ResponseMetadata></SendMessageResponse>
+      string: <?xml version="1.0"?><SendMessageResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><SendMessageResult><MessageId>30e26bdc-89b1-4e77-8544-054f92164185</MessageId><MD5OfMessageBody>e77cf57bddaa54ee30e45512ca083600</MD5OfMessageBody></SendMessageResult><ResponseMetadata><RequestId>27157e4a-9009-5bee-ae22-2b1962672c96</RequestId></ResponseMetadata></SendMessageResponse>
     http_version: 
-  recorded_at: Thu, 02 May 2019 22:12:51 GMT
+  recorded_at: Mon, 13 May 2019 22:31:10 GMT
 - request:
     method: post
     uri: https://sqs.us-east-2.amazonaws.com/AWS_ACCOUNT_ID/test-open-search
@@ -104,11 +104,11 @@ http_interactions:
       Host:
       - sqs.us-east-2.amazonaws.com
       X-Amz-Date:
-      - 20190502T221251Z
+      - 20190513T223110Z
       X-Amz-Content-Sha256:
       - 4f6b6a8b8f4ae5334a7361de8c052e2b6a85a7838cb7de549d8e54bb202e10df
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190502/us-east-2/sqs/aws4_request,
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190513/us-east-2/sqs/aws4_request,
         SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date, Signature=<SignatureValue>
       Content-Length:
       - '149'
@@ -120,18 +120,18 @@ http_interactions:
       message: OK
     headers:
       X-Amzn-Requestid:
-      - 3a3eb7e0-6210-5660-a659-e2a50fb3f0da
+      - 010be9bc-8f82-56b4-9a88-bcef7dec5394
       Date:
-      - Thu, 02 May 2019 22:12:51 GMT
+      - Mon, 13 May 2019 22:31:10 GMT
       Content-Type:
       - text/xml
       Content-Length:
       - '1172'
     body:
       encoding: UTF-8
-      string: <?xml version="1.0"?><GetQueueAttributesResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><GetQueueAttributesResult><Attribute><Name>QueueArn</Name><Value>arn:aws:sqs:us-east-2:AWS_ACCOUNT_ID:test-open-search</Value></Attribute><Attribute><Name>ApproximateNumberOfMessages</Name><Value>1</Value></Attribute><Attribute><Name>ApproximateNumberOfMessagesNotVisible</Name><Value>0</Value></Attribute><Attribute><Name>ApproximateNumberOfMessagesDelayed</Name><Value>0</Value></Attribute><Attribute><Name>CreatedTimestamp</Name><Value>1556835170</Value></Attribute><Attribute><Name>LastModifiedTimestamp</Name><Value>1556835170</Value></Attribute><Attribute><Name>VisibilityTimeout</Name><Value>30</Value></Attribute><Attribute><Name>MaximumMessageSize</Name><Value>262144</Value></Attribute><Attribute><Name>MessageRetentionPeriod</Name><Value>345600</Value></Attribute><Attribute><Name>DelaySeconds</Name><Value>0</Value></Attribute><Attribute><Name>ReceiveMessageWaitTimeSeconds</Name><Value>0</Value></Attribute></GetQueueAttributesResult><ResponseMetadata><RequestId>3a3eb7e0-6210-5660-a659-e2a50fb3f0da</RequestId></ResponseMetadata></GetQueueAttributesResponse>
+      string: <?xml version="1.0"?><GetQueueAttributesResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><GetQueueAttributesResult><Attribute><Name>QueueArn</Name><Value>arn:aws:sqs:us-east-2:AWS_ACCOUNT_ID:test-open-search</Value></Attribute><Attribute><Name>ApproximateNumberOfMessages</Name><Value>1</Value></Attribute><Attribute><Name>ApproximateNumberOfMessagesNotVisible</Name><Value>0</Value></Attribute><Attribute><Name>ApproximateNumberOfMessagesDelayed</Name><Value>0</Value></Attribute><Attribute><Name>CreatedTimestamp</Name><Value>1557786669</Value></Attribute><Attribute><Name>LastModifiedTimestamp</Name><Value>1557786669</Value></Attribute><Attribute><Name>VisibilityTimeout</Name><Value>30</Value></Attribute><Attribute><Name>MaximumMessageSize</Name><Value>262144</Value></Attribute><Attribute><Name>MessageRetentionPeriod</Name><Value>345600</Value></Attribute><Attribute><Name>DelaySeconds</Name><Value>0</Value></Attribute><Attribute><Name>ReceiveMessageWaitTimeSeconds</Name><Value>0</Value></Attribute></GetQueueAttributesResult><ResponseMetadata><RequestId>010be9bc-8f82-56b4-9a88-bcef7dec5394</RequestId></ResponseMetadata></GetQueueAttributesResponse>
     http_version: 
-  recorded_at: Thu, 02 May 2019 22:12:51 GMT
+  recorded_at: Mon, 13 May 2019 22:31:10 GMT
 - request:
     method: post
     uri: https://sqs.us-east-2.amazonaws.com/AWS_ACCOUNT_ID/test-open-search
@@ -148,11 +148,11 @@ http_interactions:
       Host:
       - sqs.us-east-2.amazonaws.com
       X-Amz-Date:
-      - 20190502T221251Z
+      - 20190513T223110Z
       X-Amz-Content-Sha256:
       - 83fa9b5f2ac1be272c33d67a77d9e4e0217f87e969daaf90a6089c551562b46f
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190502/us-east-2/sqs/aws4_request,
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190513/us-east-2/sqs/aws4_request,
         SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date, Signature=<SignatureValue>
       Content-Length:
       - '122'
@@ -164,16 +164,16 @@ http_interactions:
       message: OK
     headers:
       X-Amzn-Requestid:
-      - 724633f3-8f15-513d-bda0-66b6e2b10a5e
+      - 55f76cf0-6abb-55b6-9d3f-39a398d41c68
       Date:
-      - Thu, 02 May 2019 22:12:52 GMT
+      - Mon, 13 May 2019 22:31:11 GMT
       Content-Type:
       - text/xml
       Content-Length:
       - '211'
     body:
       encoding: UTF-8
-      string: <?xml version="1.0"?><DeleteQueueResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><ResponseMetadata><RequestId>724633f3-8f15-513d-bda0-66b6e2b10a5e</RequestId></ResponseMetadata></DeleteQueueResponse>
+      string: <?xml version="1.0"?><DeleteQueueResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><ResponseMetadata><RequestId>55f76cf0-6abb-55b6-9d3f-39a398d41c68</RequestId></ResponseMetadata></DeleteQueueResponse>
     http_version: 
-  recorded_at: Thu, 02 May 2019 22:12:52 GMT
+  recorded_at: Mon, 13 May 2019 22:31:11 GMT
 recorded_with: VCR 4.0.0

@@ -1,7 +1,6 @@
 require 'rails_helper'
-require 'vcr_helper'
 
-RSpec.describe EnqueueIndexJobs, vcr: VCR_OPTS do
+RSpec.describe EnqueueIndexJobs do
   let(:indexing_version) { 'I1' }
   let(:book_ids) {%w(foo@1 foo@2)}
   let(:book1_to_index) { double(book_version_id: 'foo@1', in_demand: true, indexing_version: 'i1') }
@@ -26,21 +25,18 @@ RSpec.describe EnqueueIndexJobs, vcr: VCR_OPTS do
 
         todo_jobs_receive_count = 0
         allow_any_instance_of(TodoJobsQueue).to receive(:write) { todo_jobs_receive_count += 1 }
-        asg_receive_count = 0
-        allow_any_instance_of(AutoScalingGroup).to receive(:increase_desired_capacity) { asg_receive_count += 1 }
 
         enqueue_index_job.call
 
         expect(todo_jobs_receive_count).to eq 2
-        expect(asg_receive_count).to eq 1
       end
     end
   end
 
   context "enqueued book listings not existing in rex releases" do
     let(:released_book_ids) {%w(foo@1)}
-    let(:book1_to_index) { double(book_version_id: 'foo@1', in_demand: true, indexing_version: 'i1') }
-    let(:now_inactive_book) { double(book_version_id: 'foo@2', in_demand: false, indexing_version: 'i1', mark_queued_for_deletion: nil) }
+    let(:book1_to_index) { double(book_version_id: 'foo@1', in_demand: true, indexing_version: 'I1') }
+    let(:now_inactive_book) { double(book_version_id: 'foo@2', in_demand: false, indexing_version: 'I1') }
 
     before do
       allow_any_instance_of(OpenStax::RexReleases).to receive(:map).and_return(released_book_ids)
@@ -50,12 +46,10 @@ RSpec.describe EnqueueIndexJobs, vcr: VCR_OPTS do
     end
 
     describe "#call" do
-      it 'enqueues one delete job, one index job and updates the auto scaling group by this amount' do
-        expect(BookIndexState).to receive(:create).once
-
+      it 'enqueues one delete job: one book state (foo@1) is already indexed & one (foo@2) is now inactive' do
         expect_any_instance_of(TodoJobsQueue).to receive(:write).with(instance_of(DeleteIndexJob)).once
-        expect_any_instance_of(TodoJobsQueue).to receive(:write).with(instance_of(CreateIndexJob)).once
-        expect_any_instance_of(AutoScalingGroup).to receive(:increase_desired_capacity).with(by: 2).once
+        expect(book1_to_index).to receive(:in_demand=).with(true).once
+        expect(now_inactive_book).to receive(:mark_queued_for_deletion).once
 
         enqueue_index_job.call
       end
