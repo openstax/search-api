@@ -1,9 +1,9 @@
-# Process the Index jobs SQS queue
+# Work the Index jobs SQS queue
 #
 # There are 2 types of work to do from this queue:
 # (1) CreateIndexJob - will (re)build the search index for this book version and indexing version
 # (2) DeleteIndexJob - will delete the search indexed for this unneeded book
-class ProcessIndexJobs
+class WorkIndexJobs
   def initialize
     @todo_jobs_queue = TodoJobsQueue.new
     @done_jobs_queue = DoneJobsQueue.new
@@ -21,7 +21,7 @@ class ProcessIndexJobs
         es_stats = job.call
         time_took = Time.at(Time.now - starting).utc.strftime("%H:%M:%S")
 
-        Rails.logger.info("OpenSearch: ProcessIndexJobs job #{job.class.to_s} took #{time_took} time. json #{job.to_json}")
+        Rails.logger.info("OpenSearch: WorkIndexJobs job #{job.class.to_s} took #{time_took} time. json #{job.to_json}")
 
         enqueue_done_job(job: job,
                          status: DoneIndexJob::Status::STATUS_SUCCESSFUL,
@@ -34,12 +34,15 @@ class ProcessIndexJobs
         enqueue_done_job(job: job,
                          status: DoneIndexJob::Status::STATUS_OTHER_ERROR,
                          message: ex.message)
+      ensure
+        job.when_completed
       end
 
       record_job_stat(job)
     end
 
-    @worker_asg_instance.terminate_instance
+    # TODO will redo to work with JP's aws instance layer above
+    # @worker_asg_instance.terminate_instance
 
     job_stats
   end

@@ -42,14 +42,12 @@ class OpenSearch::ElasticsearchClient
 
   protected
 
-  # setting the faraday timeout to 15 seconds here.  it times out very often
-  # if using the default of 1.5 seconds.
   def elasticsearch_client_options(url)
     {
       url: url,
       log: false,
       transport_options: {
-        request: { timeout: 15 }
+        request: { timeout: 5 }
       }
     }
   end

@@ -26,7 +26,8 @@ class EnqueueIndexJobs
       enqueue_delete_index_job(unneeded_book_indexing)
     end
 
-    @worker_asg.increase_desired_capacity(by: new_jobs)
+    # TODO will redo to work with JP's aws instance layer above
+    # @worker_asg.increase_desired_capacity(by: new_jobs)
 
     stats
   end

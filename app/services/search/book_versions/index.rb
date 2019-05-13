@@ -19,9 +19,7 @@ module Search::BookVersions
     end
 
     def create
-      if !OpenSearch::ElasticsearchClient.instance.indices.exists?(index: name)
-        OpenSearch::ElasticsearchClient.instance.indices.create(index: name, body: @indexing_strategy.index_metadata)
-      end
+      OpenSearch::ElasticsearchClient.instance.indices.create(index: name, body: @indexing_strategy.index_metadata)
     end
 
     # This method populates the index with pages from the book
@@ -32,15 +30,13 @@ module Search::BookVersions
     end
 
     def recreate
-      delete
+      delete rescue Elasticsearch::Transport::Transport::Errors::NotFound
       create
       populate
     end
 
     def delete
-      if OpenSearch::ElasticsearchClient.instance.indices.exists?(index: name)
-        OpenSearch::ElasticsearchClient.instance.indices.delete(index: name)
-      end
+      OpenSearch::ElasticsearchClient.instance.indices.delete(index: name)
     end
 
     def name
@@ -48,6 +44,11 @@ module Search::BookVersions
     end
 
     private
+
+    def indices
+      @indices ||= OpenSearch::ElasticsearchClient.instance.indices
+    end
+
     def index_stats
       es_stats = OpenSearch::ElasticsearchClient.instance.indices.stats(index: name)
       {

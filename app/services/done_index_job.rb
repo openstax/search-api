@@ -1,10 +1,11 @@
 class DoneIndexJob < BaseIndexJob
   attr_reader :status
 
-  def self.build_object(body)
+  def self.build_object(body:, when_completed_proc:)
     new(status: body[:status],
         book_version_id: body[:book_version_id],
-        indexing_version: body[:indexing_version])
+        indexing_version: body[:indexing_version],
+        when_completed_proc: when_completed_proc)
   end
 
   def initialize(status:, **opts)
@@ -18,10 +19,10 @@ class DoneIndexJob < BaseIndexJob
 
   def as_json(*)
     {
-      "type" => @type,
-      "book_version_id" => @book_version_id,
-      "indexing_version" => @indexing_version,
-      "status" => @status
+      type: type,
+      book_version_id: book_version_id,
+      indexing_version: indexing_version,
+      status: status
     }
   end
 

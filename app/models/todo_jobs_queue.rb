@@ -13,15 +13,15 @@ class TodoJobsQueue < BaseQueue
 
     parsed_message = JSON.parse(messages.first.body).with_indifferent_access
     msg_type = parsed_message[:type].constantize
-    new_job = msg_type.build_object(parsed_message)
 
-    #should this be here, or at end of process_index_job#call?
-    delete_message(messages.first.receipt_handle)
+    receipt_handle = messages.first.receipt_handle
+    when_completed_proc = -> {
+      raw_queue.delete_messages({entries: [{id: SecureRandom.uuid,
+                                            receipt_handle: receipt_handle}]})
+    }
+    new_job = msg_type.build_object(body: parsed_message,
+                                    when_completed_proc: when_completed_proc)
 
     new_job
-  end
-
-  def delete_message(receipt_handle)
-    client.delete_message(queue_url: @url, receipt_handle:receipt_handle)
   end
 end
