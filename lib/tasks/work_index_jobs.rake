@@ -5,7 +5,9 @@ task work_index_jobs: :environment do
 
   Rails.logger.info { "Ran placeholder work_index_jobs task!" }
 
-  WorkIndexJobs.new.call
+  OpenStax::Aws::AutoScalingInstance.me.unless_waiting_for_termination(hook_name: 'TerminationHook') do
+    WorkIndexJobs.new.call
+  end
 
   # Things to do in this code:
   #
