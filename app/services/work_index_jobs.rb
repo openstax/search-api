@@ -4,6 +4,8 @@
 # (1) CreateIndexJob - will (re)build the search index for this book version and indexing version
 # (2) DeleteIndexJob - will delete the search indexed for this unneeded book
 class WorkIndexJobs
+  include Enumerable
+
   def initialize
     @todo_jobs_queue = TodoJobsQueue.new
     @done_jobs_queue = DoneJobsQueue.new
@@ -11,39 +13,42 @@ class WorkIndexJobs
     @worker_asg_instance = AutoScalingInstance.new
   end
 
-  def call
-    loop do
-      begin
-        job = @todo_jobs_queue.read
-        break if job.nil?
-
-        validate_indexing_version(job)
-
-        starting = Time.now
-        es_stats = job.call
-        time_took = Time.at(Time.now - starting).utc.strftime("%H:%M:%S")
-
-        Rails.logger.info("OpenSearch: WorkIndexJobs job #{job.class.to_s} took #{time_took} time. json #{job.to_json}")
-
-        enqueue_done_job(job: job,
-                         status: DoneIndexJob::Results::STATUS_SUCCESSFUL,
-                         es_stats: es_stats,
-                         time_took: time_took)
-
-        job.when_completed
-      rescue InvalidIndexingVersion
-        enqueue_done_job(job: job,
-                         status: DoneIndexJob::Results::STATUS_INVALID_INDEXING_VERSION)
-      rescue => ex   # TODO review error handling with JP
-        enqueue_done_job(job: job,
-                         status: DoneIndexJob::Results::STATUS_OTHER_ERROR,
-                         message: ex.message)
-      end
-
-      record_job_stat(job)
+  def each(&block)
+    while job = @todo_jobs_queue.read
+      @performing = false
+      block.call(job)
+      break unless @performing
     end
+  end
+
+  def perform(job)
+    @performing = true
+
+    validate_indexing_version(job)
+
+    starting = Time.now
+    es_stats = job.call
+    time_took = Time.at(Time.now - starting).utc.strftime("%H:%M:%S")
+
+    Rails.logger.info("OpenSearch: WorkIndexJobs job #{job.class.to_s} took #{time_took} time. json #{job.to_json}")
+
+    enqueue_done_job(job: job,
+                     status: DoneIndexJob::Results::STATUS_SUCCESSFUL,
+                     es_stats: es_stats,
+                     time_took: time_took)
+
+    job.when_completed
+
+    record_job_stat(job)
 
     job_stats
+  rescue InvalidIndexingVersion
+    enqueue_done_job(job: job,
+                     status: DoneIndexJob::Results::STATUS_INVALID_INDEXING_VERSION)
+  rescue => ex   # TODO review error handling with JP
+    enqueue_done_job(job: job,
+                     status: DoneIndexJob::Results::STATUS_OTHER_ERROR,
+                     message: ex.message)
   end
 
   private

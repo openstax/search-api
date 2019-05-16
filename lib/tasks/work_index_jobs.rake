@@ -5,9 +5,16 @@ task work_index_jobs: :environment do
 
   Rails.logger.info { "Ran placeholder work_index_jobs task!" }
 
-  OpenStax::Aws::AutoScalingInstance.me.unless_waiting_for_termination(hook_name: 'TerminationHook') do
-    WorkIndexJobs.new.call
+  work_the_jobs = WorkIndexJobs.new
+  instance = OpenStax::Aws::AutoScalingInstance.me
+
+  work_the_jobs.each do |job|
+    instance.unless_waiting_for_termination(hook_name: 'TerminationHook') do
+      work_the_jobs.perform(job)
+    end
   end
+
+  instance.terminate(continue_hook_name: "TerminationHook", should_decrement_desired_capacity: true)
 
   # Things to do in this code:
   #

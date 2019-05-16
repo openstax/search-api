@@ -7,17 +7,40 @@
 class BookIndexState
   include Dynamoid::Document
 
+  class Status
+    ACTIONS = [
+      ACTION_CREATED = 'enqueued_created'
+    ]
+
+    attr_reader :action, :at
+
+    def initialize(action:, at: DateTime.now)
+      @action = action
+      @at = at
+    end
+
+    def dynamoid_dump
+      {
+        action: @action,
+        at: @at
+      }.to_json
+    end
+
+    def self.dynamoid_load(serialized_str)
+      values = JSON.parse(serialized_str)
+      new(action: values['action'], at: values['at'])
+    end
+  end
+
   table name: Rails.application.secrets.dynamodb[:index_state_table_name].parameterize.underscore.to_sym,
         key: :book_version_id
 
   range :indexing_version
 
   field :state
-  # todo replace these timestamp fields with a status log
-  field :enqueued_time, :datetime, store_as_string: true
-
-  field :updated_at,    :datetime, store_as_string: true
-  field :created_at,    :datetime, store_as_string: true
+  field :status_log,:array,     of: Status
+  field :updated_at,:datetime,  store_as_string: true
+  field :created_at,:datetime,  store_as_string: true
   field :message
 
   STATES                  = [
@@ -34,12 +57,13 @@ class BookIndexState
   attr_accessor :in_demand
 
   def self.create(book_version_id:, indexing_version:, state: STATE_CREATE_PENDING)
-    new.tap do |job|
-      job.state = state
-      job.book_version_id = book_version_id
-      job.indexing_version = indexing_version
-      job.enqueued_time = DateTime.now
-      job.save!
+    new.tap do |boo_index_state|
+      boo_index_state.state = state
+      boo_index_state.book_version_id = book_version_id
+      boo_index_state.indexing_version = indexing_version
+      new_status = Status.new(action: Status::ACTION_CREATED)
+      boo_index_state.status_log = [ new_status ]
+      boo_index_state.save!
     end
   end
 

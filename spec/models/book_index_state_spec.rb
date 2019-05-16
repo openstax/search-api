@@ -14,12 +14,17 @@ RSpec.describe BookIndexState, vcr: VCR_OPTS.merge!({match_requests_on: [:method
   subject(:book_index_state) { described_class }
 
   describe ".create" do
-    it 'creates the a document row in the dynamo db table' do
+    it 'creates the a document row in the dynamo db table with correct status' do
       TempAwsEnv.make do |env|
         env.create_dynamodb_table
 
         book_index_state.create(book_version_id: book_id, indexing_version: indexing_version)
-        expect(BookIndexState.where(book_version_id: book_id).count).to eq 1
+        created_book_arel = BookIndexState.where(book_version_id: book_id)
+        expect(created_book_arel.count).to eq 1
+
+        book_status_log = created_book_arel.first.status_log
+        expect(book_status_log.count).to eq 1
+        expect(book_status_log.first.action).to eq BookIndexState::Status::ACTION_CREATED
       end
     end
   end
