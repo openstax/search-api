@@ -18,11 +18,11 @@ RSpec.describe BookIndexState, vcr: VCR_OPTS.merge!({match_requests_on: [:method
       TempAwsEnv.make do |env|
         env.create_dynamodb_table
 
-        book_index_state.create(book_version_id: book_id, indexing_version: indexing_version)
+        book = book_index_state.create(book_version_id: book_id, indexing_version: indexing_version)
         created_book_arel = BookIndexState.where(book_version_id: book_id)
         expect(created_book_arel.count).to eq 1
 
-        book_status_log = created_book_arel.first.status_log
+        book_status_log = book.status_log
         expect(book_status_log.count).to eq 1
         expect(book_status_log.first.action).to eq BookIndexState::Status::ACTION_CREATED
       end
@@ -73,18 +73,6 @@ RSpec.describe BookIndexState, vcr: VCR_OPTS.merge!({match_requests_on: [:method
         live_indexing.mark_queued_for_deletion
         expect(live_indexing.state).to eq BookIndexState::STATE_DELETE_PENDING
       end
-    end
-  end
-
-  describe "#start" do
-    it 'starts the a document row in the dynamo db table' do
-      # TODO
-    end
-  end
-
-  describe ".finish" do
-    it 'finishes the a document row in the dynamo db table' do
-      # TODO
     end
   end
 end

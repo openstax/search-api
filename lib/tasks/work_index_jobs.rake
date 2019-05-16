@@ -5,16 +5,20 @@ task work_index_jobs: :environment do
 
   Rails.logger.info { "Ran placeholder work_index_jobs task!" }
 
-  work_the_jobs = WorkIndexJobs.new
   instance = OpenStax::Aws::AutoScalingInstance.me
+  work_index_job = WorkIndexJob.new
 
-  work_the_jobs.each do |job|
-    instance.unless_waiting_for_termination(hook_name: 'TerminationHook') do
-      work_the_jobs.perform(job)
+  while true do
+    if instance.terminating_wait?
+      instance.continue_to_termination(hook_name: "TerminationHook")
+      break
+    elsif work_index_job.fuzzy_check_out_of_work?
+      instance.terminate(should_decrement_capacity: true, continue_hook_name: "TerminationHook")
+      break
+    else
+      work_index_job.call # reads from queue, works the job, writes to done queue
     end
   end
-
-  instance.terminate(continue_hook_name: "TerminationHook", should_decrement_desired_capacity: true)
 
   # Things to do in this code:
   #

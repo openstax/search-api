@@ -9,7 +9,8 @@ class BookIndexState
 
   class Status
     ACTIONS = [
-      ACTION_CREATED = 'enqueued_created'
+      ACTION_CREATED = 'enqueued_created',
+      ACTION_DELETED = 'enqueued_deletion'
     ]
 
     attr_reader :action, :at
@@ -78,7 +79,7 @@ class BookIndexState
 
   def mark_queued_for_deletion
     self.state = STATE_DELETE_PENDING
-    self.enqueued_time = DateTime.now
+    self.status_log << Status.new(action: Status::ACTION_DELETED)
     save!
   end
 
