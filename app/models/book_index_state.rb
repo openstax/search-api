@@ -39,9 +39,9 @@ class BookIndexState
   range :indexing_version
 
   field :state
-  field :status_log,:array,     of: Status
-  field :updated_at,:datetime,  store_as_string: true
-  field :created_at,:datetime,  store_as_string: true
+  field :status_log, :array,     of: Status
+  field :updated_at, :datetime,  store_as_string: true
+  field :created_at, :datetime,  store_as_string: true
   field :message
 
   STATES                  = [
@@ -58,13 +58,13 @@ class BookIndexState
   attr_accessor :in_demand
 
   def self.create(book_version_id:, indexing_version:, state: STATE_CREATE_PENDING)
-    new.tap do |boo_index_state|
-      boo_index_state.state = state
-      boo_index_state.book_version_id = book_version_id
-      boo_index_state.indexing_version = indexing_version
+    new.tap do |book_index_state|
+      book_index_state.state = state
+      book_index_state.book_version_id = book_version_id
+      book_index_state.indexing_version = indexing_version
       new_status = Status.new(action: Status::ACTION_CREATED)
-      boo_index_state.status_log = [ new_status ]
-      boo_index_state.save!
+      book_index_state.status_log = [ new_status ]
+      book_index_state.save!
     end
   end
 
