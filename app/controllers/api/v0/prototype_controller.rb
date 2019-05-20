@@ -1,4 +1,4 @@
-class Api::V0::PrototypeController < ApplicationController
+class Api::V0::PrototypeController < Api::V0::BaseController
 
   def search
     # TODO generalize

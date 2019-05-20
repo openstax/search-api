@@ -9,6 +9,8 @@ Rails.application.routes.draw do
       default: true
     ) do
 
+      get :swagger, to: 'swagger/docs#json'
+
       get :prototype, to: 'prototype#search'
       get :temp_build_index, to: 'prototype#temp_build_index'
 
