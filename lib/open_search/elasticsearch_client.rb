@@ -16,12 +16,13 @@ class OpenSearch::ElasticsearchClient
   end
 
   def initialize(url:, sign_aws_requests: false)
-    @internal_client = Elasticsearch::Client.new(url: url, log: false) do |f|
+    @internal_client = Elasticsearch::Client.new(elasticsearch_client_options(url)) do |f|
       if sign_aws_requests
         # Borrowed from https://github.com/elastic/elasticsearch-ruby/issues/232#issuecomment-168479765
         # and modified for the new version of the middleware
 
-        require 'patron'
+        require 'typhoeus'
+        require 'typhoeus/adapters/faraday'
         require 'faraday_middleware'
         require 'faraday_middleware/aws_sigv4'
 
@@ -29,12 +30,27 @@ class OpenSearch::ElasticsearchClient
                   credentials: aws_credentials,
                   service: 'es',
                   region: aws_elasticsearch_region(url)
-        f.adapter :patron
+        f.adapter :typhoeus
+      else
+        require 'typhoeus'
+        require 'typhoeus/adapters/faraday'
+
+        f.adapter :typhoeus
       end
     end
   end
 
   protected
+
+  def elasticsearch_client_options(url)
+    {
+      url: url,
+      log: false,
+      transport_options: {
+        request: { timeout: 5 }
+      }
+    }
+  end
 
   def aws_credentials
     # Use credentials from the environment first; if those aren't present, fallback

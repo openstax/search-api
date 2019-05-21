@@ -1,6 +1,6 @@
 module Sqs
-  def self.create_test_queue
-    response = client.create_queue(queue_name: "test-open-search")
+  def self.create_test_queue(name: 'test-open-search')
+    response = client.create_queue(queue_name: name)
     response.queue_url
   end
 

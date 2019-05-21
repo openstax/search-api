@@ -39,7 +39,7 @@ module OpenStax
     end
 
     def s3_client
-      @s3_client ||= Aws::S3::Client.new(region: rex_release_bucket_region)
+      @s3_client ||= ::Aws::S3::Client.new(region: rex_release_bucket_region)
     end
 
     def rex_release_bucket_name

@@ -34,7 +34,7 @@ gem 'dynamoid'
 
 # Access elasticsearch (with signed requests)
 gem "elasticsearch", '~> 6.1.0'
-gem 'patron'
+gem 'typhoeus'
 gem 'faraday_middleware'
 gem 'faraday_middleware-aws-sigv4'
 
@@ -45,6 +45,8 @@ gem 'dotenv-rails'
 
 gem "openstax_path_prefixer", github: "openstax/path_prefixer", ref: "b6d8f45d8"
 
+gem "openstax_aws", github: "openstax/aws-ruby", ref: 'c139dbf3c20398'
+
 # More concise, one-liner logs (better for production)
 gem "lograge"
 
@@ -52,7 +54,7 @@ gem 'sentry-raven'
 
 gem 'nokogiri'
 
-gem 'openstax_cnx', github: 'openstax/cnx-ruby', ref: '0c7b2f0'
+gem 'openstax_cnx', github: 'openstax/cnx-ruby', ref: '4dad4ea04d2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -61,6 +63,7 @@ group :development, :test do
   gem 'pry-rails'
 
   gem 'rspec-rails', '~> 3.8'
+  gem 'rspec-json_expectations'
 
   # Stubs HTTP requests
   gem 'webmock'

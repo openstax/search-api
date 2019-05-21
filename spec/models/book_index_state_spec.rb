@@ -9,17 +9,22 @@ end
 # book indexing jobs enqueuing, starting, and finishing.
 RSpec.describe BookIndexState, vcr: VCR_OPTS.merge!({match_requests_on: [:method, :uri, amazon_api_header_matcher]}) do
   let(:book_id) { '14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1' }
-  let(:indexing_version) { 'I1' }
+  let(:indexing_strategy_name) { 'I1' }
 
   subject(:book_index_state) { described_class }
 
   describe ".create" do
-    it 'creates the a document row in the dynamo db table' do
+    it 'creates a document item in the dynamo db table with correct status' do
       TempAwsEnv.make do |env|
         env.create_dynamodb_table
 
-        book_index_state.create(book_version_id: book_id, indexing_version: indexing_version)
-        expect(BookIndexState.where(book_version_id: book_id).count).to eq 1
+        book = book_index_state.create(book_version_id: book_id, indexing_strategy_name: indexing_strategy_name)
+        created_book_arel = BookIndexState.where(book_version_id: book_id)
+        expect(created_book_arel.count).to eq 1
+
+        book_status_log = book.status_log
+        expect(book_status_log.count).to eq 1
+        expect(book_status_log.first.action).to eq BookIndexState::Status::ACTION_CREATE
       end
     end
   end
@@ -30,18 +35,18 @@ RSpec.describe BookIndexState, vcr: VCR_OPTS.merge!({match_requests_on: [:method
     let(:book_id3) { 'book@3' }
 
     def init_test
-      book_index_state.new(state:            BookIndexState::STATE_CREATE_PENDING,
-                           book_version_id:  book_id1,
-                           indexing_version: indexing_version,
-                           message:          'message 1').save!
-      book_index_state.new(state:            BookIndexState::STATE_DELETE_PENDING,
-                           book_version_id:  book_id2,
-                           indexing_version: indexing_version,
-                           message:          'message 2').save!
-      book_index_state.new(state:            BookIndexState::STATE_DELETED,
-                           book_version_id:  book_id3,
-                           indexing_version: indexing_version,
-                           message:          'message 3').save!
+      book_index_state.new(state: BookIndexState::STATE_CREATE_PENDING,
+                           book_version_id: book_id1,
+                           indexing_strategy_name: indexing_strategy_name,
+                           message: 'message 1').save!
+      book_index_state.new(state: BookIndexState::STATE_DELETE_PENDING,
+                           book_version_id: book_id2,
+                           indexing_strategy_name: indexing_strategy_name,
+                           message: 'message 2').save!
+      book_index_state.new(state: BookIndexState::STATE_DELETED,
+                           book_version_id: book_id3,
+                           indexing_strategy_name: indexing_strategy_name,
+                           message: 'message 3').save!
     end
 
     it 'finds only live documents, not the deleting ones' do
@@ -57,7 +62,7 @@ RSpec.describe BookIndexState, vcr: VCR_OPTS.merge!({match_requests_on: [:method
 
   describe "#mark_queued_for_deletion" do
     let(:live_indexing) do
-      book_index_state.create(book_version_id: book_id, indexing_version: indexing_version)
+      book_index_state.create(book_version_id: book_id, indexing_strategy_name: indexing_strategy_name)
     end
 
     it 'updates the document to be deleted' do
@@ -68,18 +73,6 @@ RSpec.describe BookIndexState, vcr: VCR_OPTS.merge!({match_requests_on: [:method
         live_indexing.mark_queued_for_deletion
         expect(live_indexing.state).to eq BookIndexState::STATE_DELETE_PENDING
       end
-    end
-  end
-
-  describe "#start" do
-    it 'starts the a document row in the dynamo db table' do
-      # TODO
-    end
-  end
-
-  describe ".finish" do
-    it 'finishes the a document row in the dynamo db table' do
-      # TODO
     end
   end
 end

@@ -39,8 +39,8 @@ class TempAwsEnv
     @dynamo.create
   end
 
-  def create_sqs
-    @sqs_queue_url ||= Sqs.create_test_queue
+  def create_sqs(name: 'test')
+    @sqs_queue_url ||= Sqs.create_test_queue(name: name)
   end
 
   def create_elasticsearch_domain(name:, region: @region, restrict_access_to_me: true, filter: true)
