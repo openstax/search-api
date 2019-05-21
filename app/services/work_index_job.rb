@@ -26,12 +26,13 @@ class WorkIndexJob
 
     begin
       validate_indexing_strategy_name(job)
+      Rails.logger.info("WorkIndexJob: job #{job.class.to_s} #{job.to_json} started...")
 
       starting = Time.now
       es_stats = job.call
       time_took = Time.at(Time.now - starting).utc.strftime("%H:%M:%S")
 
-      Rails.logger.info("WorkIndexJob: job #{job.class.to_s} took #{time_took} time. json #{job.to_json}")
+      Rails.logger.info("WorkIndexJob: job #{job.class.to_s} #{job.to_json} took #{time_took} time.")
 
       enqueue_done_job(job: job,
                        status: DoneIndexJob::Results::STATUS_SUCCESSFUL,

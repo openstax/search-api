@@ -54,7 +54,7 @@ gem 'sentry-raven'
 
 gem 'nokogiri'
 
-gem 'openstax_cnx', github: 'openstax/cnx-ruby', ref: '0c7b2f0'
+gem 'openstax_cnx', github: 'openstax/cnx-ruby', ref: '4dad4ea04d2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
