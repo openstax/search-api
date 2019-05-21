@@ -7,14 +7,14 @@ class DynamoidReset
 
   KEY_SCHEMA =
     [
-      { attribute_name: 'book_version_id',  key_type: 'HASH' },
-      { attribute_name: 'indexing_version', key_type: 'RANGE' }
+      { attribute_name: 'book_version_id',        key_type: 'HASH' },
+      { attribute_name: 'indexing_strategy_name', key_type: 'RANGE' }
     ]
 
   ATTRIBUTE_DEFINITIONS =
     [
-      { attribute_name: "book_version_id",  attribute_type: "S" },
-      { attribute_name: "indexing_version", attribute_type: "S" },
+      { attribute_name: "book_version_id",        attribute_type: "S" },
+      { attribute_name: "indexing_strategy_name", attribute_type: "S" },
     ]
 
   REQUEST =

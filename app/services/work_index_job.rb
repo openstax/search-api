@@ -5,33 +5,33 @@
 # (2) DeleteIndexJob - will delete the search indexed for this unneeded book
 class WorkIndexJob
   def initialize
-    @todo_jobs_queue = TodoJobsQueue.new
-    @done_jobs_queue = DoneJobsQueue.new
-    @stats = { DeleteIndexJob => 0, CreateIndexJob => 0 }
-    @out_of_work = false
+    @todo_jobs_queue        = TodoJobsQueue.new
+    @done_jobs_queue        = DoneJobsQueue.new
+    @stats                  = { DeleteIndexJob => 0, CreateIndexJob => 0 }
+    @definitely_out_of_work = false
   end
 
-  def fuzzy_check_out_of_work?
-    @out_of_work
+  def definitely_out_of_work?
+    @definitely_out_of_work
   end
 
   def call
     job = @todo_jobs_queue.read
     if job.nil?
-      @out_of_work = true
+      @definitely_out_of_work = true
       return job_stats
     else
-      @out_of_work = false
+      @definitely_out_of_work = false
     end
 
     begin
-      validate_indexing_version(job)
+      validate_indexing_strategy_name(job)
 
       starting = Time.now
       es_stats = job.call
       time_took = Time.at(Time.now - starting).utc.strftime("%H:%M:%S")
 
-      Rails.logger.info("OpenSearch: WorkIndexJob job #{job.class.to_s} took #{time_took} time. json #{job.to_json}")
+      Rails.logger.info("WorkIndexJob: job #{job.class.to_s} took #{time_took} time. json #{job.to_json}")
 
       enqueue_done_job(job: job,
                        status: DoneIndexJob::Results::STATUS_SUCCESSFUL,
@@ -39,9 +39,9 @@ class WorkIndexJob
                        time_took: time_took)
 
       job.when_completed
-    rescue InvalidIndexingVersion
+    rescue InvalidIndexingStrategy
       enqueue_done_job(job: job,
-                       status: DoneIndexJob::Results::STATUS_INVALID_INDEXING_VERSION)
+                       status: DoneIndexJob::Results::STATUS_INVALID_INDEXING_STRATEGY)
     rescue => ex
       enqueue_done_job(job: job,
                        status: DoneIndexJob::Results::STATUS_OTHER_ERROR,
@@ -53,23 +53,23 @@ class WorkIndexJob
 
   private
 
-  class InvalidIndexingVersion < StandardError; end
+  class InvalidIndexingStrategy < StandardError; end
 
-  def validate_indexing_version(job)
-    unless ACTIVE_INDEXING_VERSIONS.include?(job.indexing_version)
-      raise InvalidIndexingVersion
+  def validate_indexing_strategy_name(job)
+    unless ACTIVE_INDEXING_STRATEGY_NAMES.include?(job.indexing_strategy_name)
+      raise InvalidIndexingStrategy
     end
   end
 
   def enqueue_done_job(job:, status:, message: nil, time_took: nil, es_stats: nil)
     done_job_results = DoneIndexJob::Results.new(status: status,
-                                                message: message,
-                                                time_took: time_took,
-                                                es_stats: es_stats)
+                                                 message: message,
+                                                 time_took: time_took,
+                                                 es_stats: es_stats)
 
     done_job = DoneIndexJob.new( results: done_job_results,
-                            book_version_id: job.book_version_id,
-                            indexing_version:job.indexing_version)
+                                 book_version_id: job.book_version_id,
+                                 indexing_strategy_name:job.indexing_strategy_name)
 
     enqueue_to_done(done_job)
 
@@ -89,9 +89,5 @@ class WorkIndexJob
       num_index_jobs_processed: @stats[CreateIndexJob],
       num_delete_index_jobs_processed: @stats[DeleteIndexJob]
     }
-  end
-
-  def worker_asg_name
-    Rails.application.secrets.search_worker_asg_name
   end
 end

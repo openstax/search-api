@@ -1,16 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe EnqueueIndexJobs do
-  let(:indexing_version) { 'I1' }
+  let(:indexing_strategy_name) { 'I1' }
   let(:book_ids) {%w(foo@1 foo@2)}
-  let(:book1_to_index) { double(book_version_id: 'foo@1', in_demand: true, indexing_version: 'i1') }
-  let(:book2_to_index) { double(book_version_id: 'foo@2', in_demand: true, indexing_version: 'i1') }
+  let(:book1_to_index) { double(book_version_id: 'foo@1', in_demand: true, indexing_strategy_name: 'i1') }
+  let(:book2_to_index) { double(book_version_id: 'foo@2', in_demand: true, indexing_strategy_name: 'i1') }
 
   subject(:enqueue_index_job) { described_class.new }
 
   context "new book listings" do
-    let(:book1_to_index) { double(book_version_id: 'foo@1', in_demand: true, indexing_version: 'i1') }
-    let(:book2_to_index) { double(book_version_id: 'foo@2', in_demand: true, indexing_version: 'i1') }
+    let(:book1_to_index) { double(book_version_id: 'foo@1', in_demand: true, indexing_strategy_name: 'i1') }
+    let(:book2_to_index) { double(book_version_id: 'foo@2', in_demand: true, indexing_strategy_name: 'i1') }
 
     before do
       allow_any_instance_of(OpenStax::RexReleases).to receive(:map).and_return(book_ids)
@@ -35,8 +35,8 @@ RSpec.describe EnqueueIndexJobs do
 
   context "enqueued book listings not existing in rex releases" do
     let(:released_book_ids) {%w(foo@1)}
-    let(:book1_to_index) { double(book_version_id: 'foo@1', in_demand: true, indexing_version: 'I1') }
-    let(:now_inactive_book) { double(book_version_id: 'foo@2', in_demand: false, indexing_version: 'I1') }
+    let(:book1_to_index) { double(book_version_id: 'foo@1', in_demand: true, indexing_strategy_name: 'I1') }
+    let(:now_inactive_book) { double(book_version_id: 'foo@2', in_demand: false, indexing_strategy_name: 'I1') }
 
     before do
       allow_any_instance_of(OpenStax::RexReleases).to receive(:map).and_return(released_book_ids)

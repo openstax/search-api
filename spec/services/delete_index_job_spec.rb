@@ -5,7 +5,7 @@ RSpec.describe DeleteIndexJob do
     {
       type: "DeleteIndexJob",
       book_version_id: "foo@1",
-      indexing_version: "I1"
+      indexing_strategy_name: "I1"
     }
   }
   subject(:delete_index_job) { described_class.build_object(body: body, when_completed_proc: nil) }

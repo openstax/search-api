@@ -8,7 +8,7 @@ RSpec.describe DoneIndexJob do
       type: "DoneIndexJob",
       book_version_id: "foo@1",
       results: results,
-      indexing_version: "I1"
+      indexing_strategy_name: "I1"
     }
   }
   subject(:done_index_job) { described_class.build_object(body: body, when_completed_proc: nil) }

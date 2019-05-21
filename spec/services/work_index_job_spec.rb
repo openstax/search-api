@@ -3,11 +3,11 @@ require 'rails_helper'
 RSpec.describe WorkIndexJob do
   subject(:work_index_job) { described_class.new }
 
-  let(:indexing_version) { 'I1' }
+  let(:indexing_strategy_name) { 'I1' }
   let(:job_body) {
     {
       book_version_id: 'foo',
-      indexing_version: indexing_version
+      indexing_strategy_name: indexing_strategy_name
     }
   }
   let(:create_job) { CreateIndexJob.build_object(body: job_body, when_completed_proc: nil) }
@@ -19,15 +19,15 @@ RSpec.describe WorkIndexJob do
     end
 
     it 'signals correct out of work or not out of work' do
-      expect(work_index_job.fuzzy_check_out_of_work?).to be_falsey
+      expect(work_index_job.definitely_out_of_work?).to be_falsey
 
       allow_any_instance_of(TodoJobsQueue).to receive(:read).and_return(nil)
       work_index_job.call
-      expect(work_index_job.fuzzy_check_out_of_work?).to be_truthy
+      expect(work_index_job.definitely_out_of_work?).to be_truthy
 
       allow_any_instance_of(TodoJobsQueue).to receive(:read).and_return(create_job)
       work_index_job.call
-      expect(work_index_job.fuzzy_check_out_of_work?).to be_falsey
+      expect(work_index_job.definitely_out_of_work?).to be_falsey
     end
   end
 
@@ -57,7 +57,7 @@ RSpec.describe WorkIndexJob do
     end
 
     context 'the job has an invalid indexing version' do
-      let(:indexing_version) { 'invalid' }
+      let(:indexing_strategy_name) { 'invalid' }
 
       before do
         allow_any_instance_of(TodoJobsQueue).to receive(:read).and_return(create_job)

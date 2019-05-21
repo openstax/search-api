@@ -2,8 +2,7 @@ desc <<-DESC.strip_heredoc
   Pulls an index job from an SQS queue and works it.
 DESC
 task work_index_jobs: :environment do
-
-  Rails.logger.info { "Ran placeholder work_index_jobs task!" }
+  Rails.logger.info { "Starting work_index_jobs..." }
 
   instance = OpenStax::Aws::AutoScalingInstance.me
   work_index_job = WorkIndexJob.new
@@ -12,7 +11,7 @@ task work_index_jobs: :environment do
     if instance.terminating_wait?
       instance.continue_to_termination(hook_name: "TerminationHook")
       break
-    elsif work_index_job.fuzzy_check_out_of_work?
+    elsif work_index_job.definitely_out_of_work?
       instance.terminate(should_decrement_capacity: true, continue_hook_name: "TerminationHook")
       break
     else
