@@ -56,7 +56,7 @@ gem 'nokogiri'
 
 gem 'openstax_cnx', github: 'openstax/cnx-ruby', ref: '4dad4ea04d2'
 
-gem "openstax_swagger", github: 'openstax/swagger-rails', ref: '27bb0d5190'
+gem "openstax_swagger", github: 'openstax/swagger-rails', ref: 'fc98bf983'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

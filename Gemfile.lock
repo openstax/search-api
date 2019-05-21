@@ -31,8 +31,8 @@ GIT
 
 GIT
   remote: https://github.com/openstax/swagger-rails.git
-  revision: 27bb0d519026707b249fde2fb101f981e508389c
-  ref: 27bb0d5190
+  revision: fc98bf9834857283ce0fea99c5f8957d23ecc107
+  ref: fc98bf983
   specs:
     openstax_swagger (0.1.0)
       oj
@@ -348,11 +348,7 @@ DEPENDENCIES
   openstax_cnx!
   openstax_healthcheck
   openstax_path_prefixer!
-<<<<<<< HEAD
-=======
   openstax_swagger!
-  patron
->>>>>>> swagger models and start of controller docs
   pry-rails
   puma (~> 3.11)
   rails (~> 5.2.2)

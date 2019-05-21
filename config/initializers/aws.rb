@@ -23,7 +23,7 @@ end
 # environment, because the code tries to load the instance profile credentials and that
 # has to timeout before failing.
 
-if use_aws? do
+if use_aws?
   Aws.config.update({
     region: ENV.fetch('REGION'),
     credentials: aws_creds

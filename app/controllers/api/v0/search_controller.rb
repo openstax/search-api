@@ -26,6 +26,13 @@ class Api::V0::SearchController < Api::V0::BaseController
         key :required, true
         key :type, :string
       end
+      parameter do
+        key :name, :search_strategy
+        key :in, :query
+        key :description, 'name of the search strategy to use when searching'
+        key :required, true
+        key :type, :string
+      end
       key :tags, [
         'Search'
       ]
@@ -40,25 +47,18 @@ class Api::V0::SearchController < Api::V0::BaseController
   end
 
   def search
-    # TODO generalize
-    query = {
-      "size": 25,
-      "query": {
-        "multi_match": {
-          "query": params['q']
-          # "fields": ["fields.title^4", "fields.plot^2", "fields.actors", "fields.directors"]
-        }
-      },
-      "_source": ["id"],
-       "highlight": {
-          "fields": {
-            "content": {}
-          }
-        }
-    }
+    search_strategy_instance = Search::BookVersions::SearchStrategies::Factory.build(
+      book_version_id: params[:book],
+      index_strategy: params[:index_strategy],
+      search_strategy: params[:search_strategy],
+      options: params # passthrough for other options the search strategy may need
+    )
 
-    response = OpenSearch::ElasticsearchClient.instance.search body: query.to_json
-    render json: response
+    raw_results = search_strategy_instance.search(params[:q])
+
+    response = Api::V0::Bindings::SearchResult.new(raw_results: raw_results)
+
+    render json: response, status: :ok
   end
 
 end
