@@ -7,10 +7,11 @@
 class BookIndexState
   include Dynamoid::Document
 
-  class Status
+  class StatusLog
     ACTIONS = [
       ACTION_CREATE  = 'enqueued_create',
-      ACTION_DELETED = 'enqueued_deletion'
+      ACTION_CREATED = 'index_created',
+      ACTION_DELETE_PENDING = "index_delete_pending"
     ]
 
     attr_reader :action, :at
@@ -39,7 +40,7 @@ class BookIndexState
   range :indexing_strategy_name
 
   field :state
-  field :status_log, :array, of: Status
+  field :status_log, :array, of: StatusLog
   field :updated_at, :datetime, store_as_string: true
   field :created_at, :datetime, store_as_string: true
   field :message
@@ -47,8 +48,7 @@ class BookIndexState
   STATES = [
     STATE_CREATE_PENDING = "create pending",
     STATE_DELETE_PENDING = "delete pending",
-    STATE_CREATED = "created",
-    STATE_DELETED = "deleted"
+    STATE_CREATED = "created"
   ]
   VALID_INDEXING_STRATEGY_NAMES = %w(I1)
 
@@ -62,7 +62,7 @@ class BookIndexState
       state: state,
       book_version_id: book_version_id,
       indexing_strategy_name: indexing_strategy_name,
-      status_log: [Status.new(action: Status::ACTION_CREATE)]
+      status_log: [StatusLog.new(action: StatusLog::ACTION_CREATE)]
     ).save!
   end
 
@@ -75,14 +75,20 @@ class BookIndexState
     self.in_demand = false
   end
 
+  def mark_created
+    self.state = STATE_CREATED
+    self.status_log << StatusLog.new(action: StatusLog::ACTION_CREATED)
+    save!
+  end
+
   def mark_queued_for_deletion
     self.state = STATE_DELETE_PENDING
-    self.status_log << Status.new(action: Status::ACTION_DELETED)
+    self.status_log << StatusLog.new(action: StatusLog::ACTION_DELETE_PENDING)
     save!
   end
 
   def deleting?
-    [STATE_DELETED, STATE_DELETE_PENDING].include?(self.state)
+    [STATE_DELETE_PENDING].include?(self.state)
   end
 
   private :initialize

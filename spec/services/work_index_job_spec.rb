@@ -10,8 +10,8 @@ RSpec.describe WorkIndexJob do
       indexing_strategy_name: indexing_strategy_name
     }
   }
-  let(:create_job) { CreateIndexJob.build_object(body: job_body, when_completed_proc: nil) }
-  let(:delete_job) { DeleteIndexJob.build_object(body: job_body, when_completed_proc: nil) }
+  let(:create_job) { CreateIndexJob.build_object(params: job_body, cleanup_after_call: nil) }
+  let(:delete_job) { DeleteIndexJob.build_object(params: job_body, cleanup_after_call: nil) }
 
   describe '#out_of_work?' do
     before do

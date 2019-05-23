@@ -24,7 +24,7 @@ RSpec.describe BookIndexState, vcr: VCR_OPTS.merge!({match_requests_on: [:method
 
         book_status_log = book.status_log
         expect(book_status_log.count).to eq 1
-        expect(book_status_log.first.action).to eq BookIndexState::Status::ACTION_CREATE
+        expect(book_status_log.first.action).to eq BookIndexState::StatusLog::ACTION_CREATE
       end
     end
   end

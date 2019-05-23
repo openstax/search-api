@@ -11,7 +11,7 @@ RSpec.describe CreateIndexJob do
       time_took: '00:05:00'
     }
   }
-  subject(:create_index_job) { described_class.build_object(body: body, when_completed_proc: nil) }
+  subject(:create_index_job) { described_class.build_object(body: body, cleanup_after_call: nil) }
 
   describe '#call' do
     it "recreates the index" do

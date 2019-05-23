@@ -6,11 +6,7 @@ require 'openstax/rex_releases'
 RSpec.describe DoneJobsQueue, vcr: VCR_OPTS do
   let(:indexing_strategy_name) { "I1" }
   let(:book_version_id) { "foo@1" }
-  let(:done_job_results) { DoneIndexJob::Results::STATUS_SUCCESSFUL }
-  let(:job_data) {
-    DoneIndexJob.new(results: done_job_results,
-                     book_version_id: book_version_id, indexing_strategy_name: indexing_strategy_name)
-  }
+  let(:job_data) { DoneIndexJob.new }
 
   it 'writes a done job in the done jobs queue' do
     TempAwsEnv.make do |env|

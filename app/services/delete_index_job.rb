@@ -1,12 +1,10 @@
 class DeleteIndexJob < BaseIndexJob
-  def self.build_object(body:, when_completed_proc:)
-    new(book_version_id: body[:book_version_id],
-        indexing_strategy_name: body[:indexing_strategy_name],
-        when_completed_proc: when_completed_proc)
-  end
-
   def call
     index.delete
+  end
+
+  def cleanup_when_done
+    remove_associated_book_index
   end
 
   def as_json(*)
