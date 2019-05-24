@@ -43,6 +43,10 @@ module Search::BookVersions
       "#{@book_guid}@#{@book_version}_#{@indexing_strategy.version.downcase}"
     end
 
+    def exists?
+      OpenSearch::ElasticsearchClient.instance.indices.exists?(index: name)
+    end
+
     private
 
     def indices

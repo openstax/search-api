@@ -1,14 +1,13 @@
 module Search::BookVersions::SearchStrategies
   class Base
 
-    attr_reader :name
-
-    def initialize(name:, index_name:)
-      @index_name
+    def initialize(index_names:)
+      @index_names = index_names
     end
 
     def search(query_string:)
       OpenSearch::ElasticsearchClient.instance.search(
+        index: @index_names.join(','),
         body: search_body(query_string).to_json
       )
     end

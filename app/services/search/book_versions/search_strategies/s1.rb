@@ -2,9 +2,14 @@ module Search::BookVersions::SearchStrategies
   class S1 < Base
 
     SUPPORTED_INDEX_STRATEGIES = %w(i1)
+    MAX_SEARCH_RESULTS = 50
 
-    def initialize(index_name:, options: {})
-      super(index_name: index_name, name: "s1")
+    def self.short_name
+      "s1"
+    end
+
+    def initialize(index_names:, options: {})
+      super(index_names: index_names)
     end
 
     def self.supports_index_strategy?(name)
@@ -14,17 +19,24 @@ module Search::BookVersions::SearchStrategies
     protected
 
     def search_body(query_string)
+      # query_string = single_quotes_to_double(query_string)
+
       {
-        "size": 25,
-        "query": {
-          "multi_match": {
-            "query": query_string
+        size: MAX_SEARCH_RESULTS,
+        query: {
+          simple_query_string: {
+            fields: %w(title visible_content hidden_content),
+            query: query_string,
+            flags: "WHITESPACE|PHRASE",
+            minimum_should_match: "100%",
+            default_operator: "AND"
           }
         },
-        "_source": ["id"],
-        "highlight": {
-          "fields": {
-            "content": {}
+        _source: %w(element_type page_id page_position),
+        highlight: {
+          fields: {
+            title: {},
+            visible_content: {}
           }
         }
       }

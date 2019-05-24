@@ -1,7 +1,7 @@
 =begin
 #OpenStax Open-Search API
 
-#A search engine for OpenStax open content.  Requests to this API should include `application/json` in the `Accept` header.  The desired API version is specified in the request URL, e.g. `[domain]/v0/search`.        While the API does support a default version, that version will change over        time and therefore should not be used in production code! 
+#A search engine for OpenStax open content.  Requests to this API should include `application/json` in the `Accept` header.  The desired API version is specified in the request URL, e.g. `[domain]/open-search/api/v0/search`.        While the API does support a default version, that version will change over        time and therefore should not be used in production code! 
 
 OpenAPI spec version: 0.1.0
 

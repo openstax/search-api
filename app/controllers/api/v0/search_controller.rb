@@ -1,5 +1,16 @@
 class Api::V0::SearchController < Api::V0::BaseController
 
+  EXCEPTIONS_422 = [
+    Search::BookVersions::SearchStrategies::UnknownSearchStrategy,
+    Search::BookVersions::SearchStrategies::IncompatibleStrategies
+  ].freeze
+
+  EXCEPTIONS_422.each do |exception_class|
+    rescue_from_unless_local exception_class do |exception|
+      render json: binding_error(status_code: 422, messages: [exception.message]), status: 422
+    end
+  end
+
   swagger_path '/search' do
     operation :get do
       key :summary, 'Run a search query'
@@ -13,11 +24,14 @@ class Api::V0::SearchController < Api::V0::BaseController
         key :type, :string
       end
       parameter do
-        key :name, :book
+        key :name, :books
         key :in, :query
-        key :description, 'UUID@version of the book to search'
+        key :description, 'List of comma-separate UUID@version for the books to search'
         key :required, true
-        key :type, :string
+        key :type, :array
+        items do
+          key :type, :string
+        end
       end
       parameter do
         key :name, :index_strategy
@@ -42,19 +56,20 @@ class Api::V0::SearchController < Api::V0::BaseController
           key :'$ref', :SearchResult
         end
       end
+      extend Api::V0::Swagger::ErrorResponses::UnprocessableEntityError
       extend Api::V0::Swagger::ErrorResponses::ServerError
     end
   end
 
   def search
     search_strategy_instance = Search::BookVersions::SearchStrategies::Factory.build(
-      book_version_id: params[:book],
-      index_strategy: params[:index_strategy],
-      search_strategy: params[:search_strategy],
+      book_version_ids: params.require(:books).split(','),
+      index_strategy: params.require(:index_strategy),
+      search_strategy: params.require(:search_strategy),
       options: params # passthrough for other options the search strategy may need
     )
 
-    raw_results = search_strategy_instance.search(params[:q])
+    raw_results = search_strategy_instance.search(query_string: params[:q])
 
     response = Api::V0::Bindings::SearchResult.new(raw_results: raw_results)
 

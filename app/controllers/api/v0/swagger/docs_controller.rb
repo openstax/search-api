@@ -4,6 +4,7 @@ class Api::V0::Swagger::DocsController < ApplicationController
   include ::Swagger::Blocks
 
   ACCEPT_HEADER = 'application/json'
+  BASE_PATH = '/open-search/api/v0'
 
   swagger_root do
     key :swagger, '2.0'
@@ -15,7 +16,7 @@ class Api::V0::Swagger::DocsController < ApplicationController
 
         Requests to this API should include `#{ACCEPT_HEADER}` in the `Accept` header.
 
-        The desired API version is specified in the request URL, e.g. `[domain]/v0/search`.\
+        The desired API version is specified in the request URL, e.g. `[domain]#{BASE_PATH}/search`.\
         While the API does support a default version, that version will change over\
         time and therefore should not be used in production code!
       DESC
@@ -28,10 +29,10 @@ class Api::V0::Swagger::DocsController < ApplicationController
       end
     end
     tag do
-      key :name, 'Apps'
+      key :name, 'Search'
       key :description, 'Search query and status endpoints'
     end
-    key :basePath, '/api/v0'
+    key :basePath, BASE_PATH
     key :consumes, [ACCEPT_HEADER]
     key :produces, ['application/json']
   end
