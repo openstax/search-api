@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/openstax/aws-ruby.git
-  revision: c139dbf3c203989f7fe8a584cb5cb23d89baedcd
-  ref: c139dbf3c20398
+  revision: 80f2fa9972420e6d2ebe84a5bb7702e768d845fb
+  ref: 80f2fa99724
   specs:
     openstax_aws (0.1.0)
       activesupport
@@ -15,10 +15,11 @@ GIT
 
 GIT
   remote: https://github.com/openstax/cnx-ruby.git
-  revision: 4dad4ea04d2cd45407a28ef381d70061189a1704
-  ref: 4dad4ea04d2
+  revision: c26fe3bc76cba7c29c726dfc23489e2869b1a6fb
+  ref: c26fe3bc76cb
   specs:
     openstax_cnx (0.1.0)
+      addressable
       nokogiri
 
 GIT
