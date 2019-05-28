@@ -15,6 +15,8 @@ RSpec.describe OpenStax::RexReleases, vcr: VCR_OPTS do
 
       bucket.put_object(key: "rex/releases/alpha/rex/release.json", body: {whatever: 'here'}.to_json)
       bucket.put_object(key: "rex/releases/beta/rex/release.json", body: {whatever: 'here'}.to_json)
+      # to see if explodes...
+      bucket.put_object(key: "rex/releases/gamma/rex/not_release.json", body: {whatever: 'here'}.to_json)
 
       instance = described_class.new
 

@@ -32,7 +32,7 @@ module OpenStax
 
           @releases.push(RexRelease.new(id: release_id,
                                         data: release_json_object.body.read))
-        rescue Aws::S3::Errors::NoSuchKey => ee
+        rescue ::Aws::S3::Errors::NoSuchKey => ee
           next
         end
       end
