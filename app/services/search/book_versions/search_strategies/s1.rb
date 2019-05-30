@@ -25,7 +25,7 @@ module Search::BookVersions::SearchStrategies
         size: MAX_SEARCH_RESULTS,
         query: {
           simple_query_string: {
-            fields: %w(title visible_content hidden_content),
+            fields: %w(title visible_content),
             query: query_string,
             flags: "WHITESPACE|PHRASE",
             minimum_should_match: "100%",
