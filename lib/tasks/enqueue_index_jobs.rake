@@ -3,19 +3,20 @@ desc <<-DESC.strip_heredoc
   that workers are available to work them.
 DESC
 task enqueue_index_jobs: :environment do
-  Rails.logger.info { "Starting enqueue_index_jobs..." }
+  stats = EnqueueIndexJobs.new.call
 
-  EnqueueIndexJobs.new.call
+  worker_asg = OpenStax::Aws::AutoScalingGroup.new(
+    name: Rails.application.secrets.search_worker_asg_name,
+    region: ENV.fetch('REGION')
+  )
 
-  # This rake task should implement
-  # https://app.zenhub.com/workspaces/openstax-unified-5b71aabe3815ff014b102258/issues/openstax/unified/197
+  num_new_jobs = stats[:num_delete_index_jobs] + stats[:num_create_index_jobs]
 
-  # Notes:
-  #
-  # For getting releases we can use
-  #
-  #   current_releases = RexReleases.new
-  #
+  if num_new_jobs > 0
+    Rails.logger.info("#{EnqueueIndexJobs.log_prefix} increasing worker ASG capacity by up to #{num_new_jobs} nodes")
+    worker_asg.increase_desired_capacity(by: num_new_jobs)
+  end
+
   # Should we ensure that only one of these jobs is running at one time?  E.g. with
   # https://stackoverflow.com/a/4327524 ?
   #

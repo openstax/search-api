@@ -20,17 +20,6 @@ task work_index_jobs: :environment do
   end
 
   # Things to do in this code:
-  #
-  #   When the work is complete, we want this instance to self-terminate
-  #   and simultaneously decrement the desired capacity of the autoscaling
-  #   group in which it lives.  (Decrementing the capacity ensures that when
-  #   this instance self-terminates, AWS doesn't try to spin up another in its
-  #   place.)  This can be done via either of the following tho the first looks
-  #   more clear:
-  #
-  #   - https://docs.aws.amazon.com/sdkforruby/api/Aws/AutoScaling/Instance.html#terminate-instance_method
-  #   - https://docs.aws.amazon.com/autoscaling/ec2/userguide/detach-instance-asg.html
-  #
   #   It'd also be nice to have a failsafe that terminates this instance no
   #   matter what happens after a defined period (e.g. which could come into play if
   #   this rake task explodes and the "terminate and decrement ASG capacity" code
@@ -44,5 +33,4 @@ task work_index_jobs: :environment do
   #   this scheduled shutdown (`sudo shutdown -c`) and reset it for 60 minutes later when
   #   the worker sees more work to do, just in case we have workers that are really
   #   working for that long.
-
 end

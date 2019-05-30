@@ -45,7 +45,7 @@ gem 'dotenv-rails'
 
 gem "openstax_path_prefixer", github: "openstax/path_prefixer", ref: "b6d8f45d8"
 
-gem "openstax_aws", github: "openstax/aws-ruby", ref: '80f2fa99724'
+gem "openstax_aws", github: "openstax/aws-ruby", ref: '1554be9d36'
 
 # More concise, one-liner logs (better for production)
 gem "lograge"

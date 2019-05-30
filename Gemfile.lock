@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/openstax/aws-ruby.git
-  revision: 80f2fa9972420e6d2ebe84a5bb7702e768d845fb
-  ref: 80f2fa99724
+  revision: 1554be9d36df9f812933ab855a47948a7a161698
+  ref: 1554be9d36
   specs:
     openstax_aws (0.1.0)
       activesupport
