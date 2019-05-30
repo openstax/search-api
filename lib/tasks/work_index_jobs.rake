@@ -12,7 +12,7 @@ task work_index_jobs: :environment do
       instance.continue_to_termination(hook_name: "TerminationHook")
       break
     elsif work_index_job.definitely_out_of_work?
-      instance.terminate(should_decrement_capacity: true, continue_hook_name: "TerminationHook")
+      instance.terminate(should_decrement_desired_capacity: true, continue_hook_name: "TerminationHook")
       break
     else
       work_index_job.call # reads from queue, works the job, writes to done queue
