@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe WorkIndexJob do
-  subject(:work_index_job) { described_class.new }
+RSpec.describe WorkIndexJobs do
+  subject(:work_index_jobs) { described_class.new }
 
   let(:indexing_strategy_name) { 'I1' }
   let(:job_body) {
@@ -19,15 +19,15 @@ RSpec.describe WorkIndexJob do
     end
 
     it 'signals correct out of work or not out of work' do
-      expect(work_index_job.definitely_out_of_work?).to be_falsey
+      expect(work_index_jobs.definitely_out_of_work?).to be_falsey
 
       allow_any_instance_of(TodoJobsQueue).to receive(:read).and_return(nil)
-      work_index_job.call
-      expect(work_index_job.definitely_out_of_work?).to be_truthy
+      work_index_jobs.call
+      expect(work_index_jobs.definitely_out_of_work?).to be_truthy
 
       allow_any_instance_of(TodoJobsQueue).to receive(:read).and_return(create_job)
-      work_index_job.call
-      expect(work_index_job.definitely_out_of_work?).to be_falsey
+      work_index_jobs.call
+      expect(work_index_jobs.definitely_out_of_work?).to be_falsey
     end
   end
 
@@ -40,7 +40,7 @@ RSpec.describe WorkIndexJob do
       it 'calls to create elasticsearch index & then adds to done queue' do
         expect_any_instance_of(CreateIndexJob).to receive(:call).once
         expect_any_instance_of(DoneJobsQueue).to receive(:write).once
-        work_index_job.call
+        work_index_jobs.call
       end
     end
 
@@ -52,7 +52,7 @@ RSpec.describe WorkIndexJob do
       it 'calls to delete elasticsearch index & then adds to done queue' do
         expect_any_instance_of(DeleteIndexJob).to receive(:call).once
         expect_any_instance_of(DoneJobsQueue).to receive(:write).once
-        work_index_job.call
+        work_index_jobs.call
       end
     end
 
@@ -66,11 +66,8 @@ RSpec.describe WorkIndexJob do
       it 'doesnt call createindexjob & adds to the done queue' do
         expect_any_instance_of(CreateIndexJob).to_not receive(:call)
         expect_any_instance_of(DoneJobsQueue).to receive(:write).once
-        work_index_job.call
+        work_index_jobs.call
       end
     end
   end
 end
-
-
-

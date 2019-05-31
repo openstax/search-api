@@ -19,30 +19,43 @@ class BaseIndexJob
     @indexing_strategy_name = indexing_strategy_name
   end
 
-  def cleanup_after_call
+  def call
+    _call
     @cleanup_after_call.try(:call)
   end
 
   def cleanup_when_done
   end
 
-  def remove_associated_book_index
-    book_index = find_associated_book_index
-    book_index.destroy!
+  def to_hash
+    JSON.parse(to_json)
   end
 
-  def metadata
-    internal_data = JSON.parse(to_json)
-    book_index = find_associated_book_index
-    internal_data.merge(JSON.parse((book_index || {}).to_json))
+  def remove_associated_book_index_state
+    book_index_state = find_associated_book_index_state
+    book_index_state.destroy!
   end
 
-  def find_associated_book_index
+  def inspect
+    to_hash.merge(find_associated_book_index_state.to_hash)
+  end
+
+  def find_associated_book_index_state
     BookIndexState.where(book_version_id: book_version_id,
                          indexing_strategy_name: indexing_strategy_name).first
   end
 
   def index
     @index ||= Search::BookVersions::Index.new( book_version: @book_version_id)
+  end
+
+  def cleanup_after_call
+    @cleanup_after_call.try(:call)
+  end
+
+  private
+
+  def _call
+    raise "Implement _call in any derived class!"
   end
 end

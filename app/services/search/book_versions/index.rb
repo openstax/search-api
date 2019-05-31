@@ -2,7 +2,7 @@ module Search::BookVersions
   # Search::BookVersions::Index is the main interface into indexing a book version.
   #
   # It uses a IndexingStrategy that defines what is indexed including the
-  # index's metadata.
+  # index's inspect.
   #
   # This class perf gueorms the "crud" actions on a book's index.
   class Index

@@ -1,9 +1,9 @@
-# Work an Index job from the SQS queue
+# Work Index jobs from the SQS queue
 #
 # There are 2 types of work to do from this queue:
 # (1) CreateIndexJob - will (re)build the search index for this book version and indexing version
 # (2) DeleteIndexJob - will delete the search indexed for this unneeded book
-class WorkIndexJob
+class WorkIndexJobs
   def initialize
     @todo_jobs_queue        = TodoJobsQueue.new
     @done_jobs_queue        = DoneJobsQueue.new
@@ -26,20 +26,18 @@ class WorkIndexJob
 
     begin
       validate_indexing_strategy_name(job)
-      Rails.logger.info("WorkIndexJob: job #{job.class.to_s} #{job.to_json} started...")
+      Rails.logger.info("WorkIndexJobs: job #{job.class.to_s} #{job.to_json} started...")
 
       starting = Time.now
       es_stats = job.call
       time_took = Time.at(Time.now - starting).utc.strftime("%H:%M:%S")
 
-      Rails.logger.info("WorkIndexJob: job #{job.class.to_s} #{job.to_json} took #{time_took} time.")
+      Rails.logger.info("WorkIndexJobs: job #{job.class.to_s} #{job.to_json} took #{time_took} time.")
 
       enqueue_done_job(job: job,
                        status: DoneIndexJob::STATUS_SUCCESSFUL,
                        es_stats: es_stats,
                        time_took: time_took)
-
-      job.cleanup_after_call
     rescue InvalidIndexingStrategy
       enqueue_done_job(job: job,
                        status: DoneIndexJob::STATUS_INVALID_INDEXING_STRATEGY)
@@ -52,7 +50,7 @@ class WorkIndexJob
     job_stats
   end
 
-  # private
+  private
 
   class InvalidIndexingStrategy < StandardError; end
 

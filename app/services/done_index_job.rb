@@ -1,5 +1,11 @@
 class DoneIndexJob < BaseIndexJob
-  attr_reader :status, :ran_job, :es_stats, :time_took, :message
+  attr_reader :status,
+              :ran_job,
+              :es_stats,
+              :time_took,
+              :message,
+              :book_version_id,
+              :indexing_strategy_name
 
   STATUS = [
     STATUS_SUCCESSFUL                = "successful",
@@ -31,19 +37,12 @@ class DoneIndexJob < BaseIndexJob
     @time_took = time_took
     @message = message
     @ran_job = ran_job
+    @book_version_id = ran_job.book_version_id
+    @indexing_strategy_name = ran_job.indexing_strategy_name
   end
 
   def successful?
     status == STATUS_SUCCESSFUL
-  end
-
-  def call
-    if successful?
-      ran_job.cleanup_when_done
-    else
-      Raven.capture_message("Job in Error Found in Done Queue", :extra => metadata)
-      ran_job.remove_associated_book_index
-    end
   end
 
   def as_json(*)
@@ -57,8 +56,14 @@ class DoneIndexJob < BaseIndexJob
     }
   end
 
-  def find_associated_book_index
-    BookIndexState.where(book_version_id: ran_job.book_version_id,
-                         indexing_strategy_name: ran_job.indexing_strategy_name).first
+  private
+
+  def _call
+    if successful?
+      ran_job.cleanup_when_done
+    else
+      Raven.capture_message("Job in Error Found in Done Queue", :extra => inspect)
+      ran_job.remove_associated_book_index_state
+    end
   end
 end

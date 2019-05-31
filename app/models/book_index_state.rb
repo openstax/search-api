@@ -91,5 +91,9 @@ class BookIndexState
     [STATE_DELETE_PENDING].include?(self.state)
   end
 
+  def to_hash
+    JSON.parse(to_json)
+  end
+
   private :initialize
 end
