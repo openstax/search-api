@@ -22,13 +22,14 @@ RSpec.describe 'api v0 search requests', type: :request, api: :v0, vcr: VCR_OPTS
       expect(response).to have_http_status(:ok)
 
       json = json_response
-      expect(json[:raw_results][:hits][:total]).to eq 1
-      expect(json[:raw_results][:hits][:hits][0][:_source]).to include(
+      expect(json[:overall_took]).not_to be_nil
+      expect(json[:hits][:total]).to eq 1
+      expect(json[:hits][:hits][0][:_source]).to include(
         page_id: "2c60e072-7665-49b9-a2c9-2736b72b533c@8",
         element_type: "paragraph",
         page_position: 3
       )
-      expect(json[:raw_results][:hits][:hits][0][:highlight][:visible_content][0]).to start_with "<em>Recall</em>"
+      expect(json[:hits][:hits][0][:highlight][:visible_content][0]).to start_with "<em>Recall</em>"
     end
 
     context "client errors" do

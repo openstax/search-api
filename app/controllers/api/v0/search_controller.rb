@@ -62,6 +62,8 @@ class Api::V0::SearchController < Api::V0::BaseController
   end
 
   def search
+    started_at = Time.now
+
     search_strategy_instance = Search::BookVersions::SearchStrategies::Factory.build(
       book_version_ids: params.require(:books).split(','),
       index_strategy: params.require(:index_strategy),
@@ -71,7 +73,9 @@ class Api::V0::SearchController < Api::V0::BaseController
 
     raw_results = search_strategy_instance.search(query_string: params[:q])
 
-    response = Api::V0::Bindings::SearchResult.new(raw_results: raw_results)
+    response = Api::V0::Bindings::SearchResult.new.build_from_hash(raw_results.with_indifferent_access)
+
+    response.overall_took = ((Time.now - started_at)*1000).round
 
     render json: response, status: :ok
   end

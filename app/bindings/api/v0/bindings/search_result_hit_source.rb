@@ -14,41 +14,53 @@ require 'date'
 
 module Api::V0::Bindings
 
-  class SearchResult
-    # How long the request took inside Open-Search, including ES 'took' (ms)
-    attr_accessor :overall_took
+  class SearchResultHitSource
+    # The page UUID@version containing the hit
+    attr_accessor :page_id
 
-    # How long the request took inside Elasticsearch (ms)
-    attr_accessor :took
+    # The element type of the hit.  One of [\"paragraph\"]
+    attr_accessor :element_type
 
-    # Whether the request in Elasticsearch timed out
-    attr_accessor :timed_out
+    # A number used to sort element hits within one page
+    attr_accessor :page_position
 
-    # Shard stats from Elasticsearch
-    attr_accessor :_shards
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
 
-    attr_accessor :hits
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
 
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'overall_took' => :'overall_took',
-        :'took' => :'took',
-        :'timed_out' => :'timed_out',
-        :'_shards' => :'_shards',
-        :'hits' => :'hits'
+        :'page_id' => :'page_id',
+        :'element_type' => :'element_type',
+        :'page_position' => :'page_position'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'overall_took' => :'Integer',
-        :'took' => :'Integer',
-        :'timed_out' => :'BOOLEAN',
-        :'_shards' => :'Object',
-        :'hits' => :'SearchResultHits'
+        :'page_id' => :'String',
+        :'element_type' => :'String',
+        :'page_position' => :'Integer'
       }
     end
 
@@ -60,24 +72,16 @@ module Api::V0::Bindings
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'overall_took')
-        self.overall_took = attributes[:'overall_took']
+      if attributes.has_key?(:'page_id')
+        self.page_id = attributes[:'page_id']
       end
 
-      if attributes.has_key?(:'took')
-        self.took = attributes[:'took']
+      if attributes.has_key?(:'element_type')
+        self.element_type = attributes[:'element_type']
       end
 
-      if attributes.has_key?(:'timed_out')
-        self.timed_out = attributes[:'timed_out']
-      end
-
-      if attributes.has_key?(:'_shards')
-        self._shards = attributes[:'_shards']
-      end
-
-      if attributes.has_key?(:'hits')
-        self.hits = attributes[:'hits']
+      if attributes.has_key?(:'page_position')
+        self.page_position = attributes[:'page_position']
       end
 
     end
@@ -92,7 +96,19 @@ module Api::V0::Bindings
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      element_type_validator = EnumAttributeValidator.new('String', ["paragraph"])
+      return false unless element_type_validator.valid?(@element_type)
       return true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] element_type Object to be assigned
+    def element_type=(element_type)
+      validator = EnumAttributeValidator.new('String', ["paragraph"])
+      unless validator.valid?(element_type)
+        fail ArgumentError, "invalid value for 'element_type', must be one of #{validator.allowable_values}."
+      end
+      @element_type = element_type
     end
 
     # Checks equality by comparing each attribute.
@@ -100,11 +116,9 @@ module Api::V0::Bindings
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          overall_took == o.overall_took &&
-          took == o.took &&
-          timed_out == o.timed_out &&
-          _shards == o._shards &&
-          hits == o.hits
+          page_id == o.page_id &&
+          element_type == o.element_type &&
+          page_position == o.page_position
     end
 
     # @see the `==` method
@@ -116,7 +130,7 @@ module Api::V0::Bindings
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [overall_took, took, timed_out, _shards, hits].hash
+      [page_id, element_type, page_position].hash
     end
 
     # Builds the object from hash

@@ -14,41 +14,22 @@ require 'date'
 
 module Api::V0::Bindings
 
-  class SearchResult
-    # How long the request took inside Open-Search, including ES 'took' (ms)
-    attr_accessor :overall_took
-
-    # How long the request took inside Elasticsearch (ms)
-    attr_accessor :took
-
-    # Whether the request in Elasticsearch timed out
-    attr_accessor :timed_out
-
-    # Shard stats from Elasticsearch
-    attr_accessor :_shards
-
-    attr_accessor :hits
+  class SearchResultHitHighlight
+    # The highlights in visible content
+    attr_accessor :visible_content
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'overall_took' => :'overall_took',
-        :'took' => :'took',
-        :'timed_out' => :'timed_out',
-        :'_shards' => :'_shards',
-        :'hits' => :'hits'
+        :'visible_content' => :'visible_content'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'overall_took' => :'Integer',
-        :'took' => :'Integer',
-        :'timed_out' => :'BOOLEAN',
-        :'_shards' => :'Object',
-        :'hits' => :'SearchResultHits'
+        :'visible_content' => :'Array<String>'
       }
     end
 
@@ -60,24 +41,10 @@ module Api::V0::Bindings
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'overall_took')
-        self.overall_took = attributes[:'overall_took']
-      end
-
-      if attributes.has_key?(:'took')
-        self.took = attributes[:'took']
-      end
-
-      if attributes.has_key?(:'timed_out')
-        self.timed_out = attributes[:'timed_out']
-      end
-
-      if attributes.has_key?(:'_shards')
-        self._shards = attributes[:'_shards']
-      end
-
-      if attributes.has_key?(:'hits')
-        self.hits = attributes[:'hits']
+      if attributes.has_key?(:'visible_content')
+        if (value = attributes[:'visible_content']).is_a?(Array)
+          self.visible_content = value
+        end
       end
 
     end
@@ -100,11 +67,7 @@ module Api::V0::Bindings
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          overall_took == o.overall_took &&
-          took == o.took &&
-          timed_out == o.timed_out &&
-          _shards == o._shards &&
-          hits == o.hits
+          visible_content == o.visible_content
     end
 
     # @see the `==` method
@@ -116,7 +79,7 @@ module Api::V0::Bindings
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [overall_took, took, timed_out, _shards, hits].hash
+      [visible_content].hash
     end
 
     # Builds the object from hash

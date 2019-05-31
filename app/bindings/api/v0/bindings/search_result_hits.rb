@@ -14,29 +14,22 @@ require 'date'
 
 module Api::V0::Bindings
 
-  class SearchResult
-    # How long the request took inside Open-Search, including ES 'took' (ms)
-    attr_accessor :overall_took
+  class SearchResultHits
+    # The number of hits
+    attr_accessor :total
 
-    # How long the request took inside Elasticsearch (ms)
-    attr_accessor :took
+    # The largest hit score
+    attr_accessor :max_score
 
-    # Whether the request in Elasticsearch timed out
-    attr_accessor :timed_out
-
-    # Shard stats from Elasticsearch
-    attr_accessor :_shards
-
+    # Elasticsearch search hits
     attr_accessor :hits
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'overall_took' => :'overall_took',
-        :'took' => :'took',
-        :'timed_out' => :'timed_out',
-        :'_shards' => :'_shards',
+        :'total' => :'total',
+        :'max_score' => :'max_score',
         :'hits' => :'hits'
       }
     end
@@ -44,11 +37,9 @@ module Api::V0::Bindings
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'overall_took' => :'Integer',
-        :'took' => :'Integer',
-        :'timed_out' => :'BOOLEAN',
-        :'_shards' => :'Object',
-        :'hits' => :'SearchResultHits'
+        :'total' => :'Integer',
+        :'max_score' => :'Float',
+        :'hits' => :'Array<SearchResultHit>'
       }
     end
 
@@ -60,24 +51,18 @@ module Api::V0::Bindings
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'overall_took')
-        self.overall_took = attributes[:'overall_took']
+      if attributes.has_key?(:'total')
+        self.total = attributes[:'total']
       end
 
-      if attributes.has_key?(:'took')
-        self.took = attributes[:'took']
-      end
-
-      if attributes.has_key?(:'timed_out')
-        self.timed_out = attributes[:'timed_out']
-      end
-
-      if attributes.has_key?(:'_shards')
-        self._shards = attributes[:'_shards']
+      if attributes.has_key?(:'max_score')
+        self.max_score = attributes[:'max_score']
       end
 
       if attributes.has_key?(:'hits')
-        self.hits = attributes[:'hits']
+        if (value = attributes[:'hits']).is_a?(Array)
+          self.hits = value
+        end
       end
 
     end
@@ -100,10 +85,8 @@ module Api::V0::Bindings
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          overall_took == o.overall_took &&
-          took == o.took &&
-          timed_out == o.timed_out &&
-          _shards == o._shards &&
+          total == o.total &&
+          max_score == o.max_score &&
           hits == o.hits
     end
 
@@ -116,7 +99,7 @@ module Api::V0::Bindings
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [overall_took, took, timed_out, _shards, hits].hash
+      [total, max_score, hits].hash
     end
 
     # Builds the object from hash
