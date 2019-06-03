@@ -7,17 +7,20 @@ module Api::V0::Swagger::Models::Search
   ].map(&:element_type)
 
   swagger_schema :SearchResultHitHighlight do
+    key :required, [:visible_content]
     property :visible_content do
       key :type, :array
       key :description, "The highlights in visible content"
       items do
         key :type, :string
+        key :readOnly, true
         key :description, "A highlight"
       end
     end
   end
 
   swagger_schema :SearchResultHitSource do
+    key :required, [:page_id, :element_type, :page_position]
     property :page_id do
       key :type, :string
       key :readOnly, true
@@ -37,6 +40,7 @@ module Api::V0::Swagger::Models::Search
   end
 
   swagger_schema :SearchResultHit do
+    key :required, [:_index, :_score, :_source]
     property :_index do
       key :type, :string
       key :readOnly, true
@@ -57,6 +61,7 @@ module Api::V0::Swagger::Models::Search
   end
 
   swagger_schema :SearchResult do
+    key :required, [:overall_took, :took, :timed_out, :_shards, :hits]
     property :overall_took do
       key :type, :integer
       key :readOnly, true
@@ -78,6 +83,7 @@ module Api::V0::Swagger::Models::Search
       key :description, "Shard stats from Elasticsearch"
     end
     property :hits do
+      key :required, [:total]
       property :total do
         key :type, :integer
         key :readOnly, true

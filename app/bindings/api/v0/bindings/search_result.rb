@@ -86,12 +86,37 @@ module Api::V0::Bindings
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @overall_took.nil?
+        invalid_properties.push("invalid value for 'overall_took', overall_took cannot be nil.")
+      end
+
+      if @took.nil?
+        invalid_properties.push("invalid value for 'took', took cannot be nil.")
+      end
+
+      if @timed_out.nil?
+        invalid_properties.push("invalid value for 'timed_out', timed_out cannot be nil.")
+      end
+
+      if @_shards.nil?
+        invalid_properties.push("invalid value for '_shards', _shards cannot be nil.")
+      end
+
+      if @hits.nil?
+        invalid_properties.push("invalid value for 'hits', hits cannot be nil.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @overall_took.nil?
+      return false if @took.nil?
+      return false if @timed_out.nil?
+      return false if @_shards.nil?
+      return false if @hits.nil?
       return true
     end
 

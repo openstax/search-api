@@ -90,14 +90,29 @@ module Api::V0::Bindings
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @page_id.nil?
+        invalid_properties.push("invalid value for 'page_id', page_id cannot be nil.")
+      end
+
+      if @element_type.nil?
+        invalid_properties.push("invalid value for 'element_type', element_type cannot be nil.")
+      end
+
+      if @page_position.nil?
+        invalid_properties.push("invalid value for 'page_position', page_position cannot be nil.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @page_id.nil?
+      return false if @element_type.nil?
       element_type_validator = EnumAttributeValidator.new('String', ["paragraph"])
       return false unless element_type_validator.valid?(@element_type)
+      return false if @page_position.nil?
       return true
     end
 

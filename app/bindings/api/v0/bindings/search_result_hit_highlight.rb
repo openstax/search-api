@@ -53,12 +53,17 @@ module Api::V0::Bindings
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @visible_content.nil?
+        invalid_properties.push("invalid value for 'visible_content', visible_content cannot be nil.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @visible_content.nil?
       return true
     end
 

@@ -76,12 +76,27 @@ module Api::V0::Bindings
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @_index.nil?
+        invalid_properties.push("invalid value for '_index', _index cannot be nil.")
+      end
+
+      if @_score.nil?
+        invalid_properties.push("invalid value for '_score', _score cannot be nil.")
+      end
+
+      if @_source.nil?
+        invalid_properties.push("invalid value for '_source', _source cannot be nil.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @_index.nil?
+      return false if @_score.nil?
+      return false if @_source.nil?
       return true
     end
 
