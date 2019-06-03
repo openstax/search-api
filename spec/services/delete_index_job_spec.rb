@@ -8,7 +8,7 @@ RSpec.describe DeleteIndexJob do
       indexing_strategy_name: "I1"
     }
   }
-  subject(:delete_index_job) { described_class.build_object(body: body, cleanup_after_call: nil) }
+  subject(:delete_index_job) { described_class.build_object(params: body, cleanup_after_call: nil) }
 
   describe '#call' do
     it "calls to delete the index" do

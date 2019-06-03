@@ -11,13 +11,25 @@ RSpec.describe CreateIndexJob do
       time_took: '00:05:00'
     }
   }
-  subject(:create_index_job) { described_class.build_object(body: body, cleanup_after_call: nil) }
 
-  describe '#call' do
+  subject(:create_index_job) { described_class.build_object(params: body, cleanup_after_call: nil) }
+
+  describe '#_call' do
     it "recreates the index" do
       expect_any_instance_of(Search::BookVersions::Index).to receive(:recreate).once
 
-      create_index_job.call
+      create_index_job.send(:_call)
+    end
+  end
+
+  describe '#cleanup_when_done' do
+    let(:book_index_state) { double }
+
+    it "marks the book index state as created" do
+      allow(create_index_job).to receive(:find_associated_book_index_state).and_return(book_index_state)
+
+      expect(book_index_state).to receive(:mark_created).once
+      create_index_job.cleanup_when_done
     end
   end
 

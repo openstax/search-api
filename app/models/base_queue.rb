@@ -1,10 +1,6 @@
 class BaseQueue
-  def initialize(url)
+  def initialize(url:)
     @raw_queue = Aws::SQS::Queue.new(url, client)
-  end
-
-  def count
-    raw_queue.attributes['ApproximateNumberOfMessages'].to_i
   end
 
   def read
@@ -23,6 +19,14 @@ class BaseQueue
     }
     msg_type.build_object(params: parsed_message,
                           cleanup_after_call: cleanup_after_call_proc)
+  end
+
+  def write(job)
+    raw_queue.send_message( message_body: job.to_json )
+  end
+
+  def count
+    raw_queue.attributes['ApproximateNumberOfMessages'].to_i
   end
 
   protected
