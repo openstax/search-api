@@ -24,7 +24,7 @@ RSpec.describe BookIndexState, vcr: VCR_OPTS.merge!({match_requests_on: [:method
 
         book_status_log = book.status_log
         expect(book_status_log.count).to eq 1
-        expect(book_status_log.first.action).to eq BookIndexState::Status::ACTION_CREATE
+        expect(book_status_log.first.action).to eq BookIndexState::StatusLog::ACTION_CREATE
       end
     end
   end
@@ -43,7 +43,7 @@ RSpec.describe BookIndexState, vcr: VCR_OPTS.merge!({match_requests_on: [:method
                            book_version_id: book_id2,
                            indexing_strategy_name: indexing_strategy_name,
                            message: 'message 2').save!
-      book_index_state.new(state: BookIndexState::STATE_DELETED,
+      book_index_state.new(state: BookIndexState::STATE_CREATED,
                            book_version_id: book_id3,
                            indexing_strategy_name: indexing_strategy_name,
                            message: 'message 3').save!
@@ -54,8 +54,8 @@ RSpec.describe BookIndexState, vcr: VCR_OPTS.merge!({match_requests_on: [:method
         env.create_dynamodb_table
         init_test
 
-        expect(BookIndexState.all.count).to eq 3   # BookIndexState.count doesnt work
-        expect(BookIndexState.live.count).to eq 1
+        expect(BookIndexState.all.count).to eq 3
+        expect(BookIndexState.live.count).to eq 2
       end
     end
   end
@@ -72,6 +72,23 @@ RSpec.describe BookIndexState, vcr: VCR_OPTS.merge!({match_requests_on: [:method
         expect(live_indexing.state).to eq BookIndexState::STATE_CREATE_PENDING
         live_indexing.mark_queued_for_deletion
         expect(live_indexing.state).to eq BookIndexState::STATE_DELETE_PENDING
+      end
+    end
+  end
+
+  describe "#mark_created" do
+    let(:live_indexing) do
+      book_index_state.create(book_version_id: book_id, indexing_strategy_name: indexing_strategy_name)
+    end
+
+    it 'updates the document to created and updates the status log' do
+      TempAwsEnv.make do |env|
+        env.create_dynamodb_table
+
+        expect(live_indexing.state).to eq BookIndexState::STATE_CREATE_PENDING
+        live_indexing.mark_created
+        expect(live_indexing.state).to eq BookIndexState::STATE_CREATED
+        expect(live_indexing.status_log.last.action).to eq BookIndexState::StatusLog::ACTION_CREATED
       end
     end
   end

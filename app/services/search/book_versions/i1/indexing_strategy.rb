@@ -1,6 +1,6 @@
 module Search::BookVersions::I1
   # The indexing strategy is the encapsulation for the index's structure and
-  # metadata (including index settings & mappings).
+  # inspect (including index settings & mappings).
   #
   # The strategy also declares what page element objects it wants indexed.
   class IndexingStrategy

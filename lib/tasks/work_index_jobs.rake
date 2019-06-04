@@ -5,7 +5,7 @@ task work_index_jobs: :environment do
   Rails.logger.info { "Starting work_index_jobs..." }
 
   instance = OpenStax::Aws::AutoScalingInstance.me
-  work_index_job = WorkIndexJob.new
+  work_index_job = WorkIndexJobs.new
 
   while true do
     if instance.terminating_wait?
@@ -15,9 +15,12 @@ task work_index_jobs: :environment do
       instance.terminate(should_decrement_desired_capacity: true, continue_hook_name: "TerminationHook")
       break
     else
-      work_index_job.call # reads from queue, works the job, writes to done queue
+      stats = work_index_job.call # reads from queue, works the job, writes to done queue
+      Rails.logger.info { "work_index_jobs #call w/ stats #{stats.to_s}" }
     end
   end
+
+  Rails.logger.info { "Ending work_index_jobs" }
 
   # Things to do in this code:
   #   It'd also be nice to have a failsafe that terminates this instance no
