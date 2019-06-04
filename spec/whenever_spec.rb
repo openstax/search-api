@@ -14,7 +14,7 @@ RSpec.describe 'whenever schedule' do
     before { allow(Rails.application).to receive(:is_manager_node?) { true } }
 
     it 'calls enqueue_index_jobs.rake' do
-      expect(scheduled_rake_tasks("enqueue_index_jobs").length).to eq 1
+      expect(scheduled_rake_tasks("all_manager_jobs").length).to eq 1
     end
   end
 

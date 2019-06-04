@@ -12,11 +12,10 @@ require 'vcr_helper'
 #          -e "discovery.type=single-node"
 #          docker.elastic.co/elasticsearch/elasticsearch:6.3.2
 RSpec.describe Search::BookVersions::Index, vcr: VCR_OPTS do
-  let(:cnx_book_id) { '14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22' }
-  let(:book_version) { "15.1" }
+  let(:cnx_book_id) { '14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1' }
   let(:test_book_json) { JSON.parse(file_fixture('mini.json').read) }
 
-  subject(:index) { described_class.new(book_guid: cnx_book_id, book_version: book_version) }
+  subject(:index) { described_class.new(book_version_id: cnx_book_id) }
 
   def delete_index
     if OpenSearch::ElasticsearchClient.instance.indices.exists? index: index.name
@@ -36,7 +35,7 @@ RSpec.describe Search::BookVersions::Index, vcr: VCR_OPTS do
 
   describe "#populate" do
     let(:test_book_url) {
-      "https://archive.cnx.org/contents/#{cnx_book_id}@#{book_version}"
+      "https://archive.cnx.org/contents/#{cnx_book_id}"
     }
     let(:test_page_url) {
       "#{test_book_url}:ada35081-9ec4-4eb8-98b2-3ce350d5427f@6"

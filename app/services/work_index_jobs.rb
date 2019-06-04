@@ -1,9 +1,9 @@
-# Work an Index job from the SQS queue
+# Work Index jobs from the SQS queue
 #
 # There are 2 types of work to do from this queue:
 # (1) CreateIndexJob - will (re)build the search index for this book version and indexing version
 # (2) DeleteIndexJob - will delete the search indexed for this unneeded book
-class WorkIndexJob
+class WorkIndexJobs
   def initialize
     @todo_jobs_queue        = TodoJobsQueue.new
     @done_jobs_queue        = DoneJobsQueue.new
@@ -26,26 +26,24 @@ class WorkIndexJob
 
     begin
       validate_indexing_strategy_name(job)
-      Rails.logger.info("WorkIndexJob: job #{job.class.to_s} #{job.to_json} started...")
+      Rails.logger.info("WorkIndexJobs: job #{job.class.to_s} #{job.to_json} started...")
 
       starting = Time.now
       es_stats = job.call
       time_took = Time.at(Time.now - starting).utc.strftime("%H:%M:%S")
 
-      Rails.logger.info("WorkIndexJob: job #{job.class.to_s} #{job.to_json} took #{time_took} time.")
+      Rails.logger.info("WorkIndexJobs: job #{job.class.to_s} #{job.to_json} took #{time_took} time.")
 
       enqueue_done_job(job: job,
-                       status: DoneIndexJob::Results::STATUS_SUCCESSFUL,
+                       status: DoneIndexJob::STATUS_SUCCESSFUL,
                        es_stats: es_stats,
                        time_took: time_took)
-
-      job.when_completed
     rescue InvalidIndexingStrategy
       enqueue_done_job(job: job,
-                       status: DoneIndexJob::Results::STATUS_INVALID_INDEXING_STRATEGY)
+                       status: DoneIndexJob::STATUS_INVALID_INDEXING_STRATEGY)
     rescue => ex
       enqueue_done_job(job: job,
-                       status: DoneIndexJob::Results::STATUS_OTHER_ERROR,
+                       status: DoneIndexJob::STATUS_OTHER_ERROR,
                        message: ex.message)
     end
 
@@ -63,15 +61,11 @@ class WorkIndexJob
   end
 
   def enqueue_done_job(job:, status:, message: nil, time_took: nil, es_stats: nil)
-    done_job_results = DoneIndexJob::Results.new(status: status,
-                                                 message: message,
-                                                 time_took: time_took,
-                                                 es_stats: es_stats)
-
-    done_job = DoneIndexJob.new( results: done_job_results,
-                                 book_version_id: job.book_version_id,
-                                 indexing_strategy_name:job.indexing_strategy_name)
-
+    done_job = DoneIndexJob.new(status: status,
+                                message: message,
+                                ran_job: job,
+                                time_took: time_took,
+                                es_stats: es_stats)
     enqueue_to_done(done_job)
 
     record_job_stat(job)

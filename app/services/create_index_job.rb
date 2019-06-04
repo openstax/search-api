@@ -1,12 +1,7 @@
 class CreateIndexJob < BaseIndexJob
-  def self.build_object(body:, when_completed_proc:)
-    new(book_version_id: body[:book_version_id],
-        indexing_strategy_name: body[:indexing_strategy_name],
-        when_completed_proc: when_completed_proc)
-  end
-
-  def call
-    index.recreate
+  def cleanup_when_done
+    book_index_state = find_associated_book_index_state
+    book_index_state.mark_created
   end
 
   def as_json(*)
@@ -15,5 +10,11 @@ class CreateIndexJob < BaseIndexJob
       book_version_id: book_version_id,
       indexing_strategy_name: indexing_strategy_name
     }
+  end
+
+  private
+
+  def _call
+    index.recreate
   end
 end
