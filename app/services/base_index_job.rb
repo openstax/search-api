@@ -28,7 +28,7 @@ class BaseIndexJob
   end
 
   def to_hash
-    JSON.parse(to_json)
+    JSON.parse(to_json).with_indifferent_access
   end
 
   def remove_associated_book_index_state

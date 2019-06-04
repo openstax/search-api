@@ -14,7 +14,7 @@ class DoneIndexJob < BaseIndexJob
   ]
 
   def self.build_object(params:, cleanup_after_call:)
-    ran_job_params = JSON.parse(params[:ran_job]).with_indifferent_access
+    ran_job_params = params[:ran_job]
     ran_job_type = ran_job_params[:type].constantize
     ran_job = ran_job_type.build_object(params: ran_job_params)
 
@@ -22,6 +22,7 @@ class DoneIndexJob < BaseIndexJob
         es_stats: params[:es_stats],
         time_took: params[:time_took],
         message: params[:message],
+        cleanup_after_call: cleanup_after_call,
         ran_job: ran_job)
   end
 

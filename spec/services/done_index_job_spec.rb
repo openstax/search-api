@@ -9,7 +9,7 @@ RSpec.describe DoneIndexJob do
       type: "DoneIndexJob",
       status: status,
       book_version_id: "foo@1",
-      ran_job: ran_created_job.to_json,
+      ran_job: ran_created_job.to_hash,
       indexing_strategy_name: "I1"
     }
   }
