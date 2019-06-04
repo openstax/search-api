@@ -92,7 +92,7 @@ class BookIndexState
   end
 
   def to_hash
-    JSON.parse(to_json)
+    JSON.parse(to_json).with_indifferent_access
   end
 
   private :initialize

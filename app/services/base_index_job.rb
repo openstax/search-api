@@ -33,7 +33,7 @@ class BaseIndexJob
 
   def remove_associated_book_index_state
     book_index_state = find_associated_book_index_state
-    book_index_state.destroy!
+    book_index_state&.destroy!
   end
 
   def inspect

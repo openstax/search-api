@@ -26,6 +26,7 @@ class MonitorIndexJobs
       dead_job = @dead_queue.read
       break if dead_job.nil?
 
+      Rails.logger.info("MonitorIndexJobs: Sending job #{dead_job.class.to_s} to dead letter queue")
       Raven.capture_message("Job Found in Dead Letter Queue", :extra => dead_job.inspect)
 
       dead_job.cleanup_after_call   #delete the message so we dont keep sending to Sentry
@@ -49,7 +50,6 @@ class MonitorIndexJobs
     }
   end
 
-  private
   def process_done_jobs
     loop do
       done_job = @done_jobs_queue.read
