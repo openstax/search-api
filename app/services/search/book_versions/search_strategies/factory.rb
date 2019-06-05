@@ -11,8 +11,7 @@ module Search::BookVersions::SearchStrategies
 
     def self.build(book_version_ids:, index_strategy:, search_strategy:, options: {})
       index_names = book_version_ids.map do |book_version_id|
-        book_uuid, book_version = book_version_id.split('@')
-        index = Search::BookVersions::Index.new(book_guid: book_uuid, book_version: book_version)
+        index = Search::BookVersions::Index.new(book_version_id: book_version_id)
         index.name
       end
 
