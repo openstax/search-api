@@ -40,9 +40,16 @@ module Search::BookVersions::I1
                                       page_position: page_position,
                                       page_id: page.id)
 
-        OpenSearch::ElasticsearchClient.instance.index(index: index_name,
-                                           type: document.type,
-                                           body: document.body)
+        if element.ok_to_index?
+          OpenSearch::ElasticsearchClient.instance.index(index: index_name,
+                                                         type: document.type,
+                                                         body: document.body)
+        else
+          message = "Search::BookVersions::I1::IndexingStrategy: unable to index "/
+            "Page id #{element.page_id}, #{element.element_type} due to no element ID"
+          Raven.capture_message(message, :extra => element.to_json)
+          Rails.logger.warn(message)
+        end
       end
     end
 
