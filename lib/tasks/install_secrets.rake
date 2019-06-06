@@ -30,13 +30,17 @@ task :install_secrets, [] do
 
   secrets = {}
 
+  # When we get parameters from the store, we want to ignore the env_name
+  # and the parameter namespace.  Calculate how many levels there are here
+  num_ignored_key_levels = [env_name, namespace].join('/').split('/').count
+
   client = Aws::SSM::Client.new(region: region)
   client.get_parameters_by_path({path: "/#{env_name}/#{namespace}/",
                                  recursive: true,
                                  with_decryption: true}).each do |response|
     response.parameters.each do |parameter|
       # break out the flattened keys and ignore the env name and namespace
-      keys = parameter.name.split('/').reject(&:blank?)[2..-1]
+      keys = parameter.name.split('/').reject(&:blank?)[num_ignored_key_levels..-1]
       deep_populate(secrets, keys, parameter.value)
     end
   end
