@@ -40,7 +40,7 @@ module Search::BookVersions::I1
                                       page_position: page_position,
                                       page_id: page.id)
 
-        if element.ok_to_index?
+        if document.ok_to_index?
           OpenSearch::ElasticsearchClient.instance.index(index: index_name,
                                                          type: document.type,
                                                          body: document.body)

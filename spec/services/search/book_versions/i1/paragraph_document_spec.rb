@@ -6,6 +6,7 @@ RSpec.describe Search::BookVersions::I1::ParagraphDocument do
   let(:element) do
     figure = instance_double(
       "OpenStax::Cnx::V1::Paragraph",
+      id: 0,
       text: text)
   end
 

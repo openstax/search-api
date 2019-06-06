@@ -15,8 +15,8 @@ GIT
 
 GIT
   remote: https://github.com/openstax/cnx-ruby.git
-  revision: 9efbce3473c0560e1d5ccefe9deef853cb0c4766
-  ref: 9efbce3
+  revision: 4f2b08ecf01c85a9acec4ea5696e29db5b59c218
+  ref: 4f2b08e
   specs:
     openstax_cnx (0.1.0)
       addressable

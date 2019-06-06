@@ -7,6 +7,7 @@ RSpec.describe Search::BookVersions::I1::FigureDocument do
     figure = instance_double(
       "OpenStax::Cnx::V1::Figure",
       caption: caption,
+               id: 0,
                alt_text: alt_text)
   end
 
