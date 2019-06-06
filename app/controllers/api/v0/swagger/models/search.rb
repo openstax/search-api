@@ -3,7 +3,8 @@ module Api::V0::Swagger::Models::Search
   include OpenStax::Swagger::SwaggerBlocksExtensions
 
   SUPPORTED_ELEMENT_TYPES = [
-    Search::BookVersions::I1::ParagraphDocument
+    Search::BookVersions::I1::ParagraphDocument,
+    Search::BookVersions::I1::FigureDocument
   ].map(&:element_type)
 
   swagger_schema :SearchResultHitHighlight do
@@ -20,7 +21,7 @@ module Api::V0::Swagger::Models::Search
   end
 
   swagger_schema :SearchResultHitSource do
-    key :required, [:page_id, :element_type, :page_position]
+    key :required, [:page_id, :element_type, :element_id, :page_position]
     property :page_id do
       key :type, :string
       key :readOnly, true
@@ -31,6 +32,11 @@ module Api::V0::Swagger::Models::Search
       key :readOnly, true
       key :enum, SUPPORTED_ELEMENT_TYPES
       key :description, "The element type of the hit.  One of #{SUPPORTED_ELEMENT_TYPES}"
+    end
+    property :element_id do
+      key :type, :string
+      key :readOnly, true
+      key :description, "The element id of the hit."
     end
     property :page_position do
       key :type, :integer

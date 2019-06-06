@@ -54,7 +54,7 @@ gem 'sentry-raven'
 
 gem 'nokogiri'
 
-gem 'openstax_cnx', github: 'openstax/cnx-ruby', ref: 'c26fe3bc76cb'
+gem 'openstax_cnx', github: 'openstax/cnx-ruby', ref: '4f2b08e'
 
 gem "openstax_swagger", github: 'openstax/swagger-rails', ref: '0ad77d306d2'
 

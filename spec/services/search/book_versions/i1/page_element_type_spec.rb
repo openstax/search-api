@@ -1,8 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Search::BookVersions::I1::PageElementDocument do
+  let(:id) { "foo id" }
+
   let(:element) do
-    instance_double("OpenStax::Cnx::V1::Paragraph")
+    instance_double("OpenStax::Cnx::V1::Paragraph",
+                    id: id)
   end
 
   subject(:page_element_document) {
@@ -21,6 +24,22 @@ RSpec.describe Search::BookVersions::I1::PageElementDocument do
   describe ".mapping" do
     it 'builds the page_element properties' do
       expect(described_class.mapping).to include(:page_element)
+    end
+  end
+
+  describe "#initialize" do
+    context "a valid object" do
+      it 'will create a valid object' do
+        expect(page_element_document).to be_a_kind_of(Search::BookVersions::I1::PageElementDocument)
+      end
+    end
+
+    context "element ID is nil" do
+      let(:id) { nil }
+
+      it 'raises an exception of the element id is missing' do
+        expect { page_element_document }.to raise_error(ArgumentError)
+      end
     end
   end
 end

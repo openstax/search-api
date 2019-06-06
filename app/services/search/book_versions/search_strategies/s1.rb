@@ -32,7 +32,7 @@ module Search::BookVersions::SearchStrategies
             default_operator: "AND"
           }
         },
-        _source: %w(element_type page_id page_position),
+        _source: %w(element_type element_id page_id page_position),
         highlight: {
           fields: {
             title: {},
