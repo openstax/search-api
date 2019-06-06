@@ -38,7 +38,7 @@ RSpec.describe Search::BookVersions::I1::PageElementDocument do
       let(:id) { nil }
 
       it 'raises an exception of the element id is missing' do
-        expect { page_element_document }.to raise_error(ArgumentError)
+        expect { page_element_document }.to raise_error(Search::BookVersions::I1::ElementIdMissing)
       end
     end
   end
