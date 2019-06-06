@@ -1,5 +1,11 @@
 module Search::BookVersions::I1
 
+  class ElementIdMissing < StandardError
+    def initialize(element_type:, page_id:)
+      super("page_id #{page_id} missing element id for element #{element_type}")
+    end
+  end
+
   # A PageElementDocument is the index document structure.
   #
   # Note: ElasticSearch is standardizing to the use of one type per index.
@@ -27,6 +33,10 @@ module Search::BookVersions::I1
       @element_type = element_type
       @page_position = page_position
       @page_id = page_id
+
+      if element.id.nil?
+        raise ElementIdMissing.new(element_type: element_type, page_id: page_id)
+      end
       @element_id = element.id
     end
 
@@ -46,14 +56,9 @@ module Search::BookVersions::I1
       }
     end
 
-    def ok_to_index?
-      element_id.present?
-    end
-
     # Override these methods in specific element subclasses if appropriate
     def title;           nil; end # TODO nil or ""?
     def visible_content; nil; end
     def hidden_content;  nil; end
-
   end
 end

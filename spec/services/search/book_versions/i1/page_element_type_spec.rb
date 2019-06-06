@@ -27,18 +27,18 @@ RSpec.describe Search::BookVersions::I1::PageElementDocument do
     end
   end
 
-  describe "#ok_to_index?" do
-    context "there is an id" do
-      it 'is ok to index' do
-        expect(page_element_document.ok_to_index?).to be_truthy
+  describe "#initialize" do
+    context "a valid object" do
+      it 'will create a valid object' do
+        expect(page_element_document).to be_a_kind_of(Search::BookVersions::I1::PageElementDocument)
       end
     end
 
-    context "there is not an id" do
+    context "element ID is nil" do
       let(:id) { nil }
 
-      it 'is not ok to index' do
-        expect(page_element_document.ok_to_index?).to be_falsey
+      it 'raises an exception of the element id is missing' do
+        expect { page_element_document }.to raise_error(ArgumentError)
       end
     end
   end
