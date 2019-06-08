@@ -7,16 +7,29 @@ task work_index_jobs: :environment do
   instance = OpenStax::Aws::AutoScalingInstance.me
   work_index_job = WorkIndexJobs.new
 
+  # If exceptions happen in the loop below, we need to rescue them and keep looping,
+  # because if we don't, our instance will never be able to get out of an eventual
+  # Terminating:Wait state.
+
   while true do
-    if instance.terminating_wait?
-      instance.continue_to_termination(hook_name: "TerminationHook")
-      break
-    elsif work_index_job.definitely_out_of_work?
-      instance.terminate(should_decrement_desired_capacity: true, continue_hook_name: "TerminationHook")
-      break
-    else
-      stats = work_index_job.call # reads from queue, works the job, writes to done queue
-      Rails.logger.info { "work_index_jobs #call w/ stats #{stats.to_s}" }
+    begin
+      if instance.terminating_wait?
+        instance.continue_to_termination(hook_name: "TerminationHook")
+        break
+      elsif work_index_job.definitely_out_of_work?
+        instance.terminate(should_decrement_desired_capacity: true, continue_hook_name: "TerminationHook")
+        break
+      else
+        stats = work_index_job.call # reads from queue, works the job, writes to done queue
+        Rails.logger.info { "work_index_jobs #call w/ stats #{stats.to_s}" }
+      end
+    rescue Aws::AutoScaling::Errors::ScalingActivityInProgress => ee
+      Rails.logger.info { "Termination interrupted because scaling activity in progress.  Will retry in 30 seconds."}
+      sleep(30)
+    rescue => ee
+      Raven.capture_exception(ee)
+      Rails.logger.info { "A #{ee.class.name} exception occurred.  Will continue working in 60 seconds."}
+      sleep(60)
     end
   end
 
