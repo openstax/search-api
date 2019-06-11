@@ -1,8 +1,7 @@
 require 'json'
 
-module OpenStax
-  class RexRelease
-
+module Rex
+  class Release
     attr_reader :id, :data
 
     def initialize(id:, data:)

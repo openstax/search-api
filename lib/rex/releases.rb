@@ -1,5 +1,5 @@
-module OpenStax
-  class RexReleases
+module Rex
+  class Releases
     include Enumerable
     extend Forwardable
 
@@ -14,14 +14,19 @@ module OpenStax
     protected
 
     def load_releases
+      @releases = []
+      load_release_folder(folder_prefix: 'rex/releases/')
+    end
+
+    def load_release_folder(folder_prefix:)
       release_folders =
         s3_client.list_objects(bucket: rex_release_bucket_name,
-                               prefix: "rex/releases/",
+                               prefix: folder_prefix,
                                delimiter: "/")
           .common_prefixes
           .map(&:prefix)
 
-      @releases = []
+      return if release_folders.empty?
 
       release_folders.each do |release_folder|
         begin
@@ -30,10 +35,10 @@ module OpenStax
 
           release_id = release_folder.match(/rex\/releases\/(.*)\//)[1]
 
-          @releases.push(RexRelease.new(id: release_id,
-                                        data: release_json_object.body.read))
+          @releases.push(Release.new(id: release_id,
+                                     data: release_json_object.body.read))
         rescue ::Aws::S3::Errors::NoSuchKey => ee
-          next
+          load_release_folder(folder_prefix: release_folder)
         end
       end
     end
@@ -49,6 +54,5 @@ module OpenStax
     def rex_release_bucket_region
       Rails.application.secrets.rex_release_bucket[:region]
     end
-
   end
 end

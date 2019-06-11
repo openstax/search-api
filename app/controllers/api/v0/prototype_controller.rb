@@ -18,7 +18,7 @@ class Api::V0::PrototypeController < Api::V0::BaseController
         }
     }
 
-    response = OpenSearch::ElasticsearchClient.instance.search body: query.to_json
+    response = OsElasticsearchClient.instance.search body: query.to_json
     render json: response
   end
 
@@ -41,7 +41,7 @@ class Api::V0::PrototypeController < Api::V0::BaseController
       rescue JSON::ParserError
         next
       end
-      OpenSearch::ElasticsearchClient.instance.index  index: 'pages', type: 'page', id: page_id, body: page_hash
+      OsElasticsearchClient.instance.index index: 'pages', type: 'page', id: page_id, body: page_hash
     end
   end
 end

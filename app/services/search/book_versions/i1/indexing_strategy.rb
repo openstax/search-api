@@ -41,9 +41,9 @@ module Search::BookVersions::I1
                                         page_position: page_position,
                                         page_id: page.id)
 
-          OpenSearch::ElasticsearchClient.instance.index(index: index_name,
-                                                         type: document.type,
-                                                         body: document.body)
+          OsElasticsearchClient.instance.index(index: index_name,
+                                               type:  document.type,
+                                               body:  document.body)
         rescue ElementIdMissing => ex
           Raven.capture_message(ex.message, :extra => element.to_json)
           Rails.logger.error(ex)
