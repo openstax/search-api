@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-require 'rex/rex_releases'
+require 'rex/releases'
 
 RSpec.describe DoneJobsQueue do
   let(:indexing_strategy_name) { "I1" }

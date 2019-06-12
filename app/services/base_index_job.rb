@@ -37,7 +37,7 @@ class BaseIndexJob
   end
 
   def inspect
-    to_hash.merge(find_associated_book_index_state.to_hash)
+    to_hash.merge((find_associated_book_index_state || {}).to_hash)
   end
 
   def find_associated_book_index_state

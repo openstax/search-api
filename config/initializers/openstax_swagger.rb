@@ -5,6 +5,3 @@ OpenStax::Swagger.configure do |config|
     )
   }
 end
-
-
-

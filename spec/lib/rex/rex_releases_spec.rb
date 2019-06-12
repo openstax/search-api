@@ -18,7 +18,7 @@ RSpec.describe Rex::Releases, vcr: VCR_OPTS do
     it 'reads the release from S3' do
       stub_secrets
 
-      TempAwsEnv.make do |env|
+      TempAwsEnv.make("one_release") do |env|
         bucket = env.create_bucket(name: fake_bucket_name, region: 'us-east-1')
 
         bucket.put_object(key: "rex/releases/foobar/rex/release.json", body: book_data1)
@@ -33,7 +33,7 @@ RSpec.describe Rex::Releases, vcr: VCR_OPTS do
     it 'reads the releases from S3' do
       stub_secrets
 
-      TempAwsEnv.make do |env|
+      TempAwsEnv.make("multiple_releases") do |env|
         bucket = env.create_bucket(name: fake_bucket_name, region: 'us-east-1')
 
         bucket.put_object(key: "rex/releases/alpha/1/rex/release.json", body: book_data1)
@@ -51,7 +51,7 @@ RSpec.describe Rex::Releases, vcr: VCR_OPTS do
       it 'finds no release' do
         stub_secrets
 
-        TempAwsEnv.make do |env|
+        TempAwsEnv.make("not_a_release") do |env|
           bucket = env.create_bucket(name: fake_bucket_name, region: "us-east-1")
           bucket.put_object(key: "rex/releases/alpha/1/rex/giraffe.json", body: book_data1)
 
@@ -64,7 +64,7 @@ RSpec.describe Rex::Releases, vcr: VCR_OPTS do
       it 'finds no release' do
         stub_secrets
 
-        TempAwsEnv.make do |env|
+        TempAwsEnv.make("finds_no_release") do |env|
           bucket = env.create_bucket(name: fake_bucket_name, region: "us-east-1")
           bucket.put_object(key: "rex/releases/alpha/1/release.json", body: book_data1)
 
