@@ -55,11 +55,16 @@ class MonitorIndexJobs
       done_job = @done_jobs_queue.read
       break if done_job.nil?
 
-      Rails.logger.info("MonitorIndexJobs: job #{done_job.class.to_s} #{done_job.to_json} started...")
+      begin
+        Rails.logger.info("MonitorIndexJobs: job #{done_job.class.to_s} #{done_job.to_json} started...")
 
-      done_job.call
+        done_job.call
 
-      @processed_from_done +=1
+        @processed_from_done +=1
+      rescue => ex
+        Raven.capture_exception(ex)
+        Rails.logger.error("MonitorIndexJobs: done job error #{ex.message} process #{done_job.inspect}")
+      end
     end
   end
 end

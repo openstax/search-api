@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'vcr_helper'
 
-require 'rex/rex_releases'
+require 'rex/releases'
 
 RSpec.describe BaseQueue, vcr: VCR_OPTS do
   let(:indexing_strategy_name) { "I1" }

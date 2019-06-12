@@ -5090,4 +5090,989 @@ http_interactions:
       string: ''
     http_version: 
   recorded_at: Tue, 11 Jun 2019 21:16:51 GMT
+- request:
+    method: put
+    uri: https://some_bucket_name.s3.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-s3/1.30.0
+      Host:
+      - some_bucket_name.s3.amazonaws.com
+      X-Amz-Date:
+      - 20190612T191922Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190612/us-east-1/s3/aws4_request,
+        SignedHeaders=host;user-agent;x-amz-content-sha256;x-amz-date, Signature=<SignatureValue>
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - "+gD5dQLWTmSNVRH8lWaKMT+GZHn4GABe250V9YA+cIxq+Mr1uYXub1tvsEMndoNlA5JtT1HTRJY="
+      X-Amz-Request-Id:
+      - C09533197F5AEFCC
+      Date:
+      - Wed, 12 Jun 2019 19:19:24 GMT
+      Location:
+      - "/some_bucket_name"
+      Content-Length:
+      - '0'
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 12 Jun 2019 19:19:23 GMT
+- request:
+    method: put
+    uri: https://some_bucket_name.s3.amazonaws.com/rex/releases/alpha/1/rex/release.json
+    body:
+      encoding: UTF-8
+      string: '{"books":{"uid1":{"defaultVersion":"1.2"},"uid2":{"defaultVersion":"1.1"}}}'
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-s3/1.30.0
+      Expect:
+      - 100-continue
+      Content-Md5:
+      - SV0iHQHQlJla2U1fH9/WPA==
+      Host:
+      - some_bucket_name.s3.amazonaws.com
+      X-Amz-Date:
+      - 20190612T191923Z
+      X-Amz-Content-Sha256:
+      - 26789e894fe9e1a2350bab23a6605e0225d7adf54e01a875eac8143b0b160ec7
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190612/us-east-1/s3/aws4_request,
+        SignedHeaders=content-md5;expect;host;user-agent;x-amz-content-sha256;x-amz-date,
+        Signature=<SignatureValue>
+      Content-Length:
+      - '75'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - 3k9hJo94sj3KVHCk6sEH+IFKL62+Q1wshgJBHfKJkwmoyqFJGBvklEWYSDHiJtLSuTRLzTs2oKc=
+      X-Amz-Request-Id:
+      - 97D5C844698C3F65
+      Date:
+      - Wed, 12 Jun 2019 19:19:25 GMT
+      Etag:
+      - '"495d221d01d094995ad94d5f1fdfd63c"'
+      Content-Length:
+      - '0'
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 12 Jun 2019 19:19:24 GMT
+- request:
+    method: put
+    uri: https://some_bucket_name.s3.amazonaws.com/rex/releases/beta/foo/2/bar/3/rex/release.json
+    body:
+      encoding: UTF-8
+      string: '{"books":{"uid3":{"defaultVersion":"2.4"}}}'
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-s3/1.30.0
+      Expect:
+      - 100-continue
+      Content-Md5:
+      - O8OCJJ5v8g6z5cbxRGMo/Q==
+      Host:
+      - some_bucket_name.s3.amazonaws.com
+      X-Amz-Date:
+      - 20190612T191924Z
+      X-Amz-Content-Sha256:
+      - a9dd9c33939f8d7bb7afcb9e305efe73db94e36647ca3395ccd62061df3d2397
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190612/us-east-1/s3/aws4_request,
+        SignedHeaders=content-md5;expect;host;user-agent;x-amz-content-sha256;x-amz-date,
+        Signature=<SignatureValue>
+      Content-Length:
+      - '43'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - Ly+nU51AM72BqcU2JxxGR0LeedznIzN1F1u4lwA3QFMYqgGGb54fn+sh5pb34HioSSMjSKjX2wo=
+      X-Amz-Request-Id:
+      - F674C04706CACD4A
+      Date:
+      - Wed, 12 Jun 2019 19:19:25 GMT
+      Etag:
+      - '"3bc382249e6ff20eb3e5c6f1446328fd"'
+      Content-Length:
+      - '0'
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 12 Jun 2019 19:19:24 GMT
+- request:
+    method: get
+    uri: https://some_bucket_name.s3.amazonaws.com/?delimiter=/&encoding-type=url&prefix=rex/releases/
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-s3/1.30.0
+      Host:
+      - some_bucket_name.s3.amazonaws.com
+      X-Amz-Date:
+      - 20190612T191924Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190612/us-east-1/s3/aws4_request,
+        SignedHeaders=host;user-agent;x-amz-content-sha256;x-amz-date, Signature=<SignatureValue>
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - VMQR0W0Q3Rown/YD/6S1bKb6uzKEgGd2JY9jQEr+9U5hNxgdyi/6brX4MTMYG6f7XwQUYws+p4o=
+      X-Amz-Request-Id:
+      - 5FBA51DF2B1529C5
+      Date:
+      - Wed, 12 Jun 2019 19:19:26 GMT
+      X-Amz-Bucket-Region:
+      - us-east-1
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?>
+        <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>some_bucket_name</Name><Prefix>rex/releases/</Prefix><Marker></Marker><MaxKeys>1000</MaxKeys><Delimiter>/</Delimiter><EncodingType>url</EncodingType><IsTruncated>false</IsTruncated><CommonPrefixes><Prefix>rex/releases/alpha/</Prefix></CommonPrefixes><CommonPrefixes><Prefix>rex/releases/beta/</Prefix></CommonPrefixes></ListBucketResult>
+    http_version: 
+  recorded_at: Wed, 12 Jun 2019 19:19:25 GMT
+- request:
+    method: get
+    uri: https://some_bucket_name.s3.amazonaws.com/rex/releases/alpha/rex/release.json
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-s3/1.30.0
+      Host:
+      - some_bucket_name.s3.amazonaws.com
+      X-Amz-Date:
+      - 20190612T191925Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190612/us-east-1/s3/aws4_request,
+        SignedHeaders=host;user-agent;x-amz-content-sha256;x-amz-date, Signature=<SignatureValue>
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Amz-Request-Id:
+      - 065DEC311C1B022B
+      X-Amz-Id-2:
+      - WjU2ErejRNmUJMRjy9l6y4xi7lEA6MjdursEYCGfCCWZwF6hjikgPSvXw91roi6uLauN39iP6Dw=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 12 Jun 2019 19:19:25 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?>
+        <Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><Key>rex/releases/alpha/rex/release.json</Key><RequestId>065DEC311C1B022B</RequestId><HostId>WjU2ErejRNmUJMRjy9l6y4xi7lEA6MjdursEYCGfCCWZwF6hjikgPSvXw91roi6uLauN39iP6Dw=</HostId></Error>
+    http_version: 
+  recorded_at: Wed, 12 Jun 2019 19:19:26 GMT
+- request:
+    method: get
+    uri: https://some_bucket_name.s3.amazonaws.com/?delimiter=/&encoding-type=url&prefix=rex/releases/alpha/
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-s3/1.30.0
+      Host:
+      - some_bucket_name.s3.amazonaws.com
+      X-Amz-Date:
+      - 20190612T191926Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190612/us-east-1/s3/aws4_request,
+        SignedHeaders=host;user-agent;x-amz-content-sha256;x-amz-date, Signature=<SignatureValue>
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - byhZxCRekqwKY6O5ZHFuB0/F9s4N2HSSx4g4/MwBuLm/ukJx2O7ZyfSh2CpzdfJDdpb+A+X78Bk=
+      X-Amz-Request-Id:
+      - 20E76B9FEFD8BEF6
+      Date:
+      - Wed, 12 Jun 2019 19:19:27 GMT
+      X-Amz-Bucket-Region:
+      - us-east-1
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?>
+        <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>some_bucket_name</Name><Prefix>rex/releases/alpha/</Prefix><Marker></Marker><MaxKeys>1000</MaxKeys><Delimiter>/</Delimiter><EncodingType>url</EncodingType><IsTruncated>false</IsTruncated><CommonPrefixes><Prefix>rex/releases/alpha/1/</Prefix></CommonPrefixes></ListBucketResult>
+    http_version: 
+  recorded_at: Wed, 12 Jun 2019 19:19:26 GMT
+- request:
+    method: get
+    uri: https://some_bucket_name.s3.amazonaws.com/rex/releases/alpha/1/rex/release.json
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-s3/1.30.0
+      Host:
+      - some_bucket_name.s3.amazonaws.com
+      X-Amz-Date:
+      - 20190612T191926Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190612/us-east-1/s3/aws4_request,
+        SignedHeaders=host;user-agent;x-amz-content-sha256;x-amz-date, Signature=<SignatureValue>
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - nJH6JfhDVVLGZnqbEf9PvQG3GfrRNzZZVk48o7M169Fik5a2x6t6FLxnzfKWNtz6S+1x+9SbBIQ=
+      X-Amz-Request-Id:
+      - 40A05041AECE4B7D
+      Date:
+      - Wed, 12 Jun 2019 19:19:28 GMT
+      Last-Modified:
+      - Wed, 12 Jun 2019 19:19:25 GMT
+      Etag:
+      - '"495d221d01d094995ad94d5f1fdfd63c"'
+      Accept-Ranges:
+      - bytes
+      Content-Type:
+      - ''
+      Content-Length:
+      - '75'
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: '{"books":{"uid1":{"defaultVersion":"1.2"},"uid2":{"defaultVersion":"1.1"}}}'
+    http_version: 
+  recorded_at: Wed, 12 Jun 2019 19:19:27 GMT
+- request:
+    method: get
+    uri: https://some_bucket_name.s3.amazonaws.com/rex/releases/beta/rex/release.json
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-s3/1.30.0
+      Host:
+      - some_bucket_name.s3.amazonaws.com
+      X-Amz-Date:
+      - 20190612T191927Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190612/us-east-1/s3/aws4_request,
+        SignedHeaders=host;user-agent;x-amz-content-sha256;x-amz-date, Signature=<SignatureValue>
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Amz-Request-Id:
+      - 55D76799A12FF114
+      X-Amz-Id-2:
+      - qD9Ph3W1Kn2qvsLTtnQZloax0Al4V8St15GRVy9TSo7suSmk1N/cobipNb8XRCOqIHcEgyMEiZ8=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 12 Jun 2019 19:19:27 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?>
+        <Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><Key>rex/releases/beta/rex/release.json</Key><RequestId>55D76799A12FF114</RequestId><HostId>qD9Ph3W1Kn2qvsLTtnQZloax0Al4V8St15GRVy9TSo7suSmk1N/cobipNb8XRCOqIHcEgyMEiZ8=</HostId></Error>
+    http_version: 
+  recorded_at: Wed, 12 Jun 2019 19:19:28 GMT
+- request:
+    method: get
+    uri: https://some_bucket_name.s3.amazonaws.com/?delimiter=/&encoding-type=url&prefix=rex/releases/beta/
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-s3/1.30.0
+      Host:
+      - some_bucket_name.s3.amazonaws.com
+      X-Amz-Date:
+      - 20190612T191928Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190612/us-east-1/s3/aws4_request,
+        SignedHeaders=host;user-agent;x-amz-content-sha256;x-amz-date, Signature=<SignatureValue>
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - Wh9EGy/MDs55bLHQ63gbtcq5x8hFZD8F72a9lqpWmqWRtVD4Fgzvf4DvyoLOI7FM/zZYU2eg1Pc=
+      X-Amz-Request-Id:
+      - D4EAAD5D1CB9B5F3
+      Date:
+      - Wed, 12 Jun 2019 19:19:29 GMT
+      X-Amz-Bucket-Region:
+      - us-east-1
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?>
+        <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>some_bucket_name</Name><Prefix>rex/releases/beta/</Prefix><Marker></Marker><MaxKeys>1000</MaxKeys><Delimiter>/</Delimiter><EncodingType>url</EncodingType><IsTruncated>false</IsTruncated><CommonPrefixes><Prefix>rex/releases/beta/foo/</Prefix></CommonPrefixes></ListBucketResult>
+    http_version: 
+  recorded_at: Wed, 12 Jun 2019 19:19:28 GMT
+- request:
+    method: get
+    uri: https://some_bucket_name.s3.amazonaws.com/rex/releases/beta/foo/rex/release.json
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-s3/1.30.0
+      Host:
+      - some_bucket_name.s3.amazonaws.com
+      X-Amz-Date:
+      - 20190612T191928Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190612/us-east-1/s3/aws4_request,
+        SignedHeaders=host;user-agent;x-amz-content-sha256;x-amz-date, Signature=<SignatureValue>
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Amz-Request-Id:
+      - 6456A508618A7DDD
+      X-Amz-Id-2:
+      - B+2VZNqF2xkJRCmyMNmhEzYhnyKNadOrBIYsv6ZdvBf87GVnOSvFxbSjbeQIoGRP+OI1AuTXkm0=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 12 Jun 2019 19:19:29 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?>
+        <Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><Key>rex/releases/beta/foo/rex/release.json</Key><RequestId>6456A508618A7DDD</RequestId><HostId>B+2VZNqF2xkJRCmyMNmhEzYhnyKNadOrBIYsv6ZdvBf87GVnOSvFxbSjbeQIoGRP+OI1AuTXkm0=</HostId></Error>
+    http_version: 
+  recorded_at: Wed, 12 Jun 2019 19:19:29 GMT
+- request:
+    method: get
+    uri: https://some_bucket_name.s3.amazonaws.com/?delimiter=/&encoding-type=url&prefix=rex/releases/beta/foo/
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-s3/1.30.0
+      Host:
+      - some_bucket_name.s3.amazonaws.com
+      X-Amz-Date:
+      - 20190612T191929Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190612/us-east-1/s3/aws4_request,
+        SignedHeaders=host;user-agent;x-amz-content-sha256;x-amz-date, Signature=<SignatureValue>
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - A9FayR3kuqlSrfPLO/RbDCliWHvSaYhSL2WoDXz8m61LhVxn/u0s4+jTutlCt17zl7mu3kOSJIA=
+      X-Amz-Request-Id:
+      - 0502B78EAFC92717
+      Date:
+      - Wed, 12 Jun 2019 19:19:30 GMT
+      X-Amz-Bucket-Region:
+      - us-east-1
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?>
+        <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>some_bucket_name</Name><Prefix>rex/releases/beta/foo/</Prefix><Marker></Marker><MaxKeys>1000</MaxKeys><Delimiter>/</Delimiter><EncodingType>url</EncodingType><IsTruncated>false</IsTruncated><CommonPrefixes><Prefix>rex/releases/beta/foo/2/</Prefix></CommonPrefixes></ListBucketResult>
+    http_version: 
+  recorded_at: Wed, 12 Jun 2019 19:19:29 GMT
+- request:
+    method: get
+    uri: https://some_bucket_name.s3.amazonaws.com/rex/releases/beta/foo/2/rex/release.json
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-s3/1.30.0
+      Host:
+      - some_bucket_name.s3.amazonaws.com
+      X-Amz-Date:
+      - 20190612T191929Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190612/us-east-1/s3/aws4_request,
+        SignedHeaders=host;user-agent;x-amz-content-sha256;x-amz-date, Signature=<SignatureValue>
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Amz-Request-Id:
+      - A032D9AC039EB550
+      X-Amz-Id-2:
+      - Y/ak2WxRUSHDNcx0qyNbvjokM7eoUK1QCkj0XigTrwjL5B1ou8mFI5WWbcKG7E+Fh1kzyYNg8S8=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 12 Jun 2019 19:19:29 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?>
+        <Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><Key>rex/releases/beta/foo/2/rex/release.json</Key><RequestId>A032D9AC039EB550</RequestId><HostId>Y/ak2WxRUSHDNcx0qyNbvjokM7eoUK1QCkj0XigTrwjL5B1ou8mFI5WWbcKG7E+Fh1kzyYNg8S8=</HostId></Error>
+    http_version: 
+  recorded_at: Wed, 12 Jun 2019 19:19:30 GMT
+- request:
+    method: get
+    uri: https://some_bucket_name.s3.amazonaws.com/?delimiter=/&encoding-type=url&prefix=rex/releases/beta/foo/2/
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-s3/1.30.0
+      Host:
+      - some_bucket_name.s3.amazonaws.com
+      X-Amz-Date:
+      - 20190612T191930Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190612/us-east-1/s3/aws4_request,
+        SignedHeaders=host;user-agent;x-amz-content-sha256;x-amz-date, Signature=<SignatureValue>
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - AKWKGZ1mRRhtG9mnwwuKsV9YnalS50ed8AjbQz94CJM4rN352Vvtfg5GoHKp42lNVdescsTM3Ys=
+      X-Amz-Request-Id:
+      - E43B88A1824E1A37
+      Date:
+      - Wed, 12 Jun 2019 19:19:31 GMT
+      X-Amz-Bucket-Region:
+      - us-east-1
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?>
+        <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>some_bucket_name</Name><Prefix>rex/releases/beta/foo/2/</Prefix><Marker></Marker><MaxKeys>1000</MaxKeys><Delimiter>/</Delimiter><EncodingType>url</EncodingType><IsTruncated>false</IsTruncated><CommonPrefixes><Prefix>rex/releases/beta/foo/2/bar/</Prefix></CommonPrefixes></ListBucketResult>
+    http_version: 
+  recorded_at: Wed, 12 Jun 2019 19:19:30 GMT
+- request:
+    method: get
+    uri: https://some_bucket_name.s3.amazonaws.com/rex/releases/beta/foo/2/bar/rex/release.json
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-s3/1.30.0
+      Host:
+      - some_bucket_name.s3.amazonaws.com
+      X-Amz-Date:
+      - 20190612T191930Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190612/us-east-1/s3/aws4_request,
+        SignedHeaders=host;user-agent;x-amz-content-sha256;x-amz-date, Signature=<SignatureValue>
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Amz-Request-Id:
+      - 8559D210FDF46006
+      X-Amz-Id-2:
+      - eigfXCSheRfsVA+tVLIR861a9ij/XnzhUgzA2Nw6KCivW0pdl5k671aJLXVCGVJEO+6S4/mpEUw=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 12 Jun 2019 19:19:30 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?>
+        <Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><Key>rex/releases/beta/foo/2/bar/rex/release.json</Key><RequestId>8559D210FDF46006</RequestId><HostId>eigfXCSheRfsVA+tVLIR861a9ij/XnzhUgzA2Nw6KCivW0pdl5k671aJLXVCGVJEO+6S4/mpEUw=</HostId></Error>
+    http_version: 
+  recorded_at: Wed, 12 Jun 2019 19:19:31 GMT
+- request:
+    method: get
+    uri: https://some_bucket_name.s3.amazonaws.com/?delimiter=/&encoding-type=url&prefix=rex/releases/beta/foo/2/bar/
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-s3/1.30.0
+      Host:
+      - some_bucket_name.s3.amazonaws.com
+      X-Amz-Date:
+      - 20190612T191931Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190612/us-east-1/s3/aws4_request,
+        SignedHeaders=host;user-agent;x-amz-content-sha256;x-amz-date, Signature=<SignatureValue>
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - 7C+GKk3TSBK1bQZiVPkiXIjG3HH7bFyz7I8jzPcSSXfD4gknkd8WAH84K/kFMyPwTIBQfnW1EzM=
+      X-Amz-Request-Id:
+      - AE2D818447BCED2A
+      Date:
+      - Wed, 12 Jun 2019 19:19:32 GMT
+      X-Amz-Bucket-Region:
+      - us-east-1
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?>
+        <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>some_bucket_name</Name><Prefix>rex/releases/beta/foo/2/bar/</Prefix><Marker></Marker><MaxKeys>1000</MaxKeys><Delimiter>/</Delimiter><EncodingType>url</EncodingType><IsTruncated>false</IsTruncated><CommonPrefixes><Prefix>rex/releases/beta/foo/2/bar/3/</Prefix></CommonPrefixes></ListBucketResult>
+    http_version: 
+  recorded_at: Wed, 12 Jun 2019 19:19:32 GMT
+- request:
+    method: get
+    uri: https://some_bucket_name.s3.amazonaws.com/rex/releases/beta/foo/2/bar/3/rex/release.json
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-s3/1.30.0
+      Host:
+      - some_bucket_name.s3.amazonaws.com
+      X-Amz-Date:
+      - 20190612T191932Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190612/us-east-1/s3/aws4_request,
+        SignedHeaders=host;user-agent;x-amz-content-sha256;x-amz-date, Signature=<SignatureValue>
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - fNEsKkAaLYn5Sh4XFxLCbhSdsD7irIV67iBQy/phQB6oaHQ+1lihtSXf8d9RqSw9+LcAP5uUKps=
+      X-Amz-Request-Id:
+      - 9B791276379F716A
+      Date:
+      - Wed, 12 Jun 2019 19:19:33 GMT
+      Last-Modified:
+      - Wed, 12 Jun 2019 19:19:25 GMT
+      Etag:
+      - '"3bc382249e6ff20eb3e5c6f1446328fd"'
+      Accept-Ranges:
+      - bytes
+      Content-Type:
+      - ''
+      Content-Length:
+      - '43'
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: '{"books":{"uid3":{"defaultVersion":"2.4"}}}'
+    http_version: 
+  recorded_at: Wed, 12 Jun 2019 19:19:32 GMT
+- request:
+    method: get
+    uri: https://some_bucket_name.s3.amazonaws.com/?encoding-type=url&versions
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-s3/1.30.0
+      Host:
+      - some_bucket_name.s3.amazonaws.com
+      X-Amz-Date:
+      - 20190612T191932Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190612/us-east-1/s3/aws4_request,
+        SignedHeaders=host;user-agent;x-amz-content-sha256;x-amz-date, Signature=<SignatureValue>
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - maoKy27ir1l1NaJKQT46EkfSKv1j02Pay8SF2eYBr6SqcFnxX4MC2wNsG4WxhmKoHyfE6Fc9n+A=
+      X-Amz-Request-Id:
+      - 111301A20B0CAEDA
+      Date:
+      - Wed, 12 Jun 2019 19:19:34 GMT
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?>
+        <ListVersionsResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>some_bucket_name</Name><Prefix></Prefix><KeyMarker></KeyMarker><VersionIdMarker></VersionIdMarker><MaxKeys>1000</MaxKeys><EncodingType>url</EncodingType><IsTruncated>false</IsTruncated><Version><Key>rex/releases/alpha/1/rex/release.json</Key><VersionId>null</VersionId><IsLatest>true</IsLatest><LastModified>2019-06-12T19:19:25.000Z</LastModified><ETag>&quot;495d221d01d094995ad94d5f1fdfd63c&quot;</ETag><Size>75</Size><Owner><ID>6e0b5222eaecc8fba4de9d31646cd4b222bfe0630f7eac42fcb3132bdeb18fbc</ID><DisplayName>aws-dev-sandbox</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Version><Version><Key>rex/releases/beta/foo/2/bar/3/rex/release.json</Key><VersionId>null</VersionId><IsLatest>true</IsLatest><LastModified>2019-06-12T19:19:25.000Z</LastModified><ETag>&quot;3bc382249e6ff20eb3e5c6f1446328fd&quot;</ETag><Size>43</Size><Owner><ID>6e0b5222eaecc8fba4de9d31646cd4b222bfe0630f7eac42fcb3132bdeb18fbc</ID><DisplayName>aws-dev-sandbox</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Version></ListVersionsResult>
+    http_version: 
+  recorded_at: Wed, 12 Jun 2019 19:19:33 GMT
+- request:
+    method: post
+    uri: https://some_bucket_name.s3.amazonaws.com/?delete
+    body:
+      encoding: UTF-8
+      string: |
+        <Delete xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+          <Object>
+            <Key>rex/releases/alpha/1/rex/release.json</Key>
+            <VersionId>null</VersionId>
+          </Object>
+          <Object>
+            <Key>rex/releases/beta/foo/2/bar/3/rex/release.json</Key>
+            <VersionId>null</VersionId>
+          </Object>
+        </Delete>
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-s3/1.30.0
+      Expect:
+      - 100-continue
+      Content-Md5:
+      - 03LfhXmf/98npGCRbEokMw==
+      Host:
+      - some_bucket_name.s3.amazonaws.com
+      X-Amz-Date:
+      - 20190612T191933Z
+      X-Amz-Content-Sha256:
+      - 0b478969b8e7a033c3737ed6adbc6434a13f462bed4ac10a8fe6779ca397c72b
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190612/us-east-1/s3/aws4_request,
+        SignedHeaders=content-md5;expect;host;user-agent;x-amz-content-sha256;x-amz-date,
+        Signature=<SignatureValue>
+      Content-Length:
+      - '292'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - 6oozepiQ1KiEjKqFdFxv/3Ui4HwfBNi44pKTgWdGIMv9XFp8OtzP2pxGUNg9r6naASiHwL0AqXs=
+      X-Amz-Request-Id:
+      - CD1C7E06CD85C3CC
+      Date:
+      - Wed, 12 Jun 2019 19:19:34 GMT
+      Connection:
+      - close
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?>
+        <DeleteResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Deleted><Key>rex/releases/beta/foo/2/bar/3/rex/release.json</Key><VersionId>null</VersionId></Deleted><Deleted><Key>rex/releases/alpha/1/rex/release.json</Key><VersionId>null</VersionId></Deleted></DeleteResult>
+    http_version: 
+  recorded_at: Wed, 12 Jun 2019 19:19:33 GMT
+- request:
+    method: delete
+    uri: https://some_bucket_name.s3.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.44.1 ruby/2.5.0 x86_64-darwin16 aws-sdk-s3/1.30.0
+      Host:
+      - some_bucket_name.s3.amazonaws.com
+      X-Amz-Date:
+      - 20190612T191933Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AWS_ACCESS_KEY_ID/20190612/us-east-1/s3/aws4_request,
+        SignedHeaders=host;user-agent;x-amz-content-sha256;x-amz-date, Signature=<SignatureValue>
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      X-Amz-Id-2:
+      - G5I6N4wa4k4jxfitESDa0KETkycMQAOpprJjTQboC1EC6Cc2aLxOmDixorKnwnsuHpXsRGu9UsU=
+      X-Amz-Request-Id:
+      - B7E1F919F5F23DEB
+      Date:
+      - Wed, 12 Jun 2019 19:19:35 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 12 Jun 2019 19:19:34 GMT
 recorded_with: VCR 4.0.0
