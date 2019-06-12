@@ -6,28 +6,29 @@ class TempAwsEnv
 
   @@have_switched_to_temporary_credentials = false
 
-  attr_reader :sqs_queue_url
+  attr_reader :sqs_queue_url, :namespace
 
-  def self.make
+  def self.make(namespace="")
     switch_to_temporary_credentials
 
     begin
-      env = new()
+      env = new(namespace: namespace)
       yield(env)
     ensure
       env.cleanup!
     end
   end
 
-  def initialize(region: "us-east-1")
+  def initialize(region: "us-east-1", namespace: "")
     @region = region
     @buckets = []
     @es_domain_names_to_regions = {}
     @random_string_count = 0
+    @namespace = namespace
   end
 
   def create_bucket(name:, region: @region, filter_name: true)
-    filter_value(value: name, with: "some_bucket_name") if filter_name
+    filter_value(value: name, with: "some_bucket_name_#{namespace}") if filter_name
     Aws::S3::Bucket.new(name, client: Aws::S3::Client.new(region: region)).tap do |bucket|
       bucket.create
       @buckets.push(bucket)
