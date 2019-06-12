@@ -2,8 +2,7 @@ require 'elasticsearch'
 require 'typhoeus'
 require 'typhoeus/adapters/faraday'
 
-class OpenSearch::ElasticsearchClient
-
+class OsElasticsearchClient
   delegate_missing_to :@internal_client
 
   def self.instance

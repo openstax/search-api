@@ -1,9 +1,9 @@
 require 'rails_helper'
 require 'vcr_helper'
 
-require 'openstax/rex_releases'
+require 'rex/releases'
 
-RSpec.describe OpenSearch::ElasticsearchClient, vcr: VCR_OPTS do
+RSpec.describe OsElasticsearchClient, vcr: VCR_OPTS do
 
   before {
     # Even in VCR playback, the code freaks out if these aren't set (in

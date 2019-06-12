@@ -13,8 +13,8 @@ RSpec.describe EnqueueIndexJobs do
     let(:book2_to_index) { double(book_version_id: 'foo@2', in_demand: true, indexing_strategy_name: 'i1') }
 
     before do
-      allow_any_instance_of(OpenStax::RexReleases).to receive(:map).and_return(book_ids)
-      allow_any_instance_of(OpenStax::RexReleases).to receive(:load_releases)
+      allow_any_instance_of(Rex::Releases).to receive(:map).and_return(book_ids)
+      allow_any_instance_of(Rex::Releases).to receive(:load_releases)
       allow_any_instance_of(TodoJobsQueue).to receive(:count).and_return(2)
       allow(BookIndexState).to receive(:live).and_return([book1_to_index, book2_to_index])
     end
@@ -39,8 +39,8 @@ RSpec.describe EnqueueIndexJobs do
     let(:now_inactive_book) { double(book_version_id: 'foo@2', in_demand: false, indexing_strategy_name: 'I1') }
 
     before do
-      allow_any_instance_of(OpenStax::RexReleases).to receive(:map).and_return(released_book_ids)
-      allow_any_instance_of(OpenStax::RexReleases).to receive(:load_releases)
+      allow_any_instance_of(Rex::Releases).to receive(:map).and_return(released_book_ids)
+      allow_any_instance_of(Rex::Releases).to receive(:load_releases)
       allow_any_instance_of(TodoJobsQueue).to receive(:count).and_return(2)
       allow(BookIndexState).to receive(:live).and_return([book1_to_index, now_inactive_book])
     end

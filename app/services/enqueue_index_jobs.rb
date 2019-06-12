@@ -80,7 +80,7 @@ class EnqueueIndexJobs
 
   def released_book_ids
     @released_book_ids ||= begin
-      rex_releases = OpenStax::RexReleases.new
+      rex_releases = Rex::Releases.new
       rex_releases.map(&:books).flatten.uniq
     end
   end

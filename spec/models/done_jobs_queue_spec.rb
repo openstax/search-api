@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-require 'openstax/rex_releases'
+require 'rex/rex_releases'
 
 RSpec.describe DoneJobsQueue do
   let(:indexing_strategy_name) { "I1" }

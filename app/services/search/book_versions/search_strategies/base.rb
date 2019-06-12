@@ -6,7 +6,7 @@ module Search::BookVersions::SearchStrategies
     end
 
     def search(query_string:)
-      OpenSearch::ElasticsearchClient.instance.search(
+      OsElasticsearchClient.instance.search(
         index: @index_names.join(','),
         body: search_body(query_string).to_json
       )
