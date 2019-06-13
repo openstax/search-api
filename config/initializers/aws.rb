@@ -12,8 +12,20 @@ def aws_creds
   end
 end
 
-Aws.config.update(
-  {
+def use_aws?
+  !Rails.env.development? ||
+  ENV['USE_AWS'] ||
+  (ENV['AWS_ACCESS_KEY_ID'] && ENV['AWS_SECRET_ACCESS_KEY'])
+end
+
+# Don't force AWS usage in development unless some env vars are set.  Configuring AWS
+# in development when these vars are not set causes a long delay when loading the rails
+# environment, because the code tries to load the instance profile credentials and that
+# has to timeout before failing.
+
+if use_aws?
+  Aws.config.update({
     region: ENV.fetch('REGION'),
     credentials: aws_creds
   })
+end

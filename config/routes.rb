@@ -9,9 +9,12 @@ Rails.application.routes.draw do
       default: true
     ) do
 
-      get :search, to: 'search#search'
+      get :swagger, to: 'swagger/docs#json'
 
-      get :temp_build_index, to: 'search#temp_build_index'
+      get :prototype, to: 'prototype#search'
+      get :temp_build_index, to: 'prototype#temp_build_index'
+
+      get :search, to: 'search#search'
 
       resources :diagnostics, only: [] do
         get :exception, on: :collection

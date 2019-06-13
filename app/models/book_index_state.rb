@@ -34,7 +34,7 @@ class BookIndexState
     end
   end
 
-  table name: Rails.application.secrets.dynamodb[:index_state_table_name].parameterize.underscore.to_sym,
+  table name: Rails.application.secrets.dynamodb[:index_state_table_name],
         key: :book_version_id
 
   range :indexing_strategy_name

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-require 'openstax/rex_releases'
+require 'rex/releases'
 
 RSpec.describe TodoJobsQueue do
   let(:indexing_strategy_name) { "I1" }

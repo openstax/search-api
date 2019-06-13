@@ -18,8 +18,8 @@ RSpec.describe Search::BookVersions::Index, vcr: VCR_OPTS do
   subject(:index) { described_class.new(book_version_id: cnx_book_id) }
 
   def delete_index
-    if OpenSearch::ElasticsearchClient.instance.indices.exists? index: index.name
-      OpenSearch::ElasticsearchClient.instance.indices.delete index: index.name
+    if OsElasticsearchClient.instance.indices.exists? index: index.name
+      OsElasticsearchClient.instance.indices.delete index: index.name
     end
   end
 
@@ -29,7 +29,7 @@ RSpec.describe Search::BookVersions::Index, vcr: VCR_OPTS do
   describe "#create" do
     it 'creates the index' do
       index.create
-      expect(OpenSearch::ElasticsearchClient.instance.indices.exists?(index: index.name)).to be_truthy
+      expect(OsElasticsearchClient.instance.indices.exists?(index: index.name)).to be_truthy
     end
   end
 
@@ -51,16 +51,16 @@ RSpec.describe Search::BookVersions::Index, vcr: VCR_OPTS do
       index.populate
       sleep 1 if VCR.current_cassette.try!(:recording?)  # wait for ES to finish
 
-      expect(OpenSearch::ElasticsearchClient.instance.count(index: index.name)["count"]).to eq 8
+      expect(OsElasticsearchClient.instance.count(index: index.name)["count"]).to eq 8
     end
   end
 
   describe "#delete" do
     it 'deletes the index' do
       index.create
-      expect(OpenSearch::ElasticsearchClient.instance.indices.exists?(index: index.name)).to be_truthy
+      expect(OsElasticsearchClient.instance.indices.exists?(index: index.name)).to be_truthy
       index.delete
-      expect(OpenSearch::ElasticsearchClient.instance.indices.exists?(index: index.name)).to be_falsey
+      expect(OsElasticsearchClient.instance.indices.exists?(index: index.name)).to be_falsey
     end
   end
 

@@ -45,7 +45,7 @@ gem 'dotenv-rails'
 
 gem "openstax_path_prefixer", github: "openstax/path_prefixer", ref: "b6d8f45d8"
 
-gem "openstax_aws", github: "openstax/aws-ruby", ref: '1554be9d36df9f8129'
+gem "openstax_aws", github: "openstax/aws-ruby", ref: '1554be9d36'
 
 # More concise, one-liner logs (better for production)
 gem "lograge"
@@ -54,7 +54,9 @@ gem 'sentry-raven'
 
 gem 'nokogiri'
 
-gem 'openstax_cnx', github: 'openstax/cnx-ruby', ref: '4dad4ea04d2'
+gem 'openstax_cnx', github: 'openstax/cnx-ruby', ref: '4f2b08e'
+
+gem "openstax_swagger", github: 'openstax/swagger-rails', ref: '0ad77d306d2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

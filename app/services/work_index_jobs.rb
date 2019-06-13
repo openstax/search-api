@@ -38,10 +38,12 @@ class WorkIndexJobs
                        status: DoneIndexJob::STATUS_SUCCESSFUL,
                        es_stats: es_stats,
                        time_took: time_took)
-    rescue InvalidIndexingStrategy
+    rescue InvalidIndexingStrategy => ex
+      Raven.capture_exception(ex)
       enqueue_done_job(job: job,
                        status: DoneIndexJob::STATUS_INVALID_INDEXING_STRATEGY)
     rescue => ex
+      Raven.capture_exception(ex)
       enqueue_done_job(job: job,
                        status: DoneIndexJob::STATUS_OTHER_ERROR,
                        message: ex.message)

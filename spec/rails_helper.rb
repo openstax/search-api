@@ -24,7 +24,7 @@ Rails.application.load_tasks unless defined?(Rake::Task) && Rake::Task.task_defi
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
-Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
+Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f unless f.ends_with?("_spec.rb") }
 
 RSpec.configure do |config|
   # RSpec Rails can automatically mix in different behaviours to your tests
@@ -47,9 +47,17 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
+  config.include ApiV0Helpers, api: :v0
+  ApiV0Helpers.more_rspec_config(config)
+
+  config.include ResponseHelpers, type: :request
 end
 
 # Placed here, (not in spec_helper) because rails environment is needed first
 if Rails.application.secrets.dynamodb.nil?
   Rails.application.secrets[:dynamodb] = { index_state_table_name: 'test_indexing' }
+end
+
+def render_rescued_exceptions
+  allow(Rails.application.config).to receive(:consider_all_requests_local) { false }
 end

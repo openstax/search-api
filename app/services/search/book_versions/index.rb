@@ -17,7 +17,7 @@ module Search::BookVersions
     end
 
     def create
-      OpenSearch::ElasticsearchClient.instance.indices.create(index: name, body: @indexing_strategy.index_metadata)
+      OsElasticsearchClient.instance.indices.create(index: name, body: @indexing_strategy.index_metadata)
     end
 
     # This method populates the index with pages from the book
@@ -34,21 +34,25 @@ module Search::BookVersions
     end
 
     def delete
-      OpenSearch::ElasticsearchClient.instance.indices.delete(index: name)
+      OsElasticsearchClient.instance.indices.delete(index: name)
     end
 
     def name
       "#{@book_version_id}_#{@indexing_strategy.version.downcase}"
     end
 
+    def exists?
+      OsElasticsearchClient.instance.indices.exists?(index: name)
+    end
+
     private
 
     def indices
-      @indices ||= OpenSearch::ElasticsearchClient.instance.indices
+      @indices ||= OsElasticsearchClient.instance.indices
     end
 
     def index_stats
-      es_stats = OpenSearch::ElasticsearchClient.instance.indices.stats(index: name)
+      es_stats = OsElasticsearchClient.instance.indices.stats(index: name)
       {
         num_docs_in_index: es_stats["indices"][name]['primaries']['docs']['count'],
         index_name: name

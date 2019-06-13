@@ -2,7 +2,7 @@ class DynamoidReset
   delegate :table_name, to: :class
 
   def self.table_name
-    Rails.application.secrets.dynamodb[:index_state_table_name].parameterize.underscore
+    Rails.application.secrets.dynamodb[:index_state_table_name]
   end
 
   KEY_SCHEMA =

@@ -7,6 +7,8 @@ class EnqueueIndexJobs
   end
 
   def call
+    info { "Starting..." }
+
     released_book_ids.each do |book_id|
       ACTIVE_INDEXING_STRATEGY_NAMES.each do |strategy_name|
         existing_book_indexing = find_book_indexing(book_id, strategy_name)
@@ -24,6 +26,8 @@ class EnqueueIndexJobs
     unneeded_book_indexings.each do |unneeded_book_indexing|
       enqueue_delete_index_job(unneeded_book_indexing)
     end
+
+    info { "Completed: #{stats}" }
 
     stats
   end
@@ -59,7 +63,7 @@ class EnqueueIndexJobs
 
     @new_create_index_jobs += 1
 
-    Rails.logger.info "EnqueueIndexJobs: Book version '#{book_id} #{indexing_strategy_name}' enqueued for indexing"
+    info { "Enqueued creation for '#{book_id} #{indexing_strategy_name}'" }
   end
 
   def enqueue_delete_index_job(book_indexing)
@@ -71,17 +75,25 @@ class EnqueueIndexJobs
 
     @new_delete_index_jobs += 1
 
-    Rails.logger.info "EnqueueIndexJobs: Book version '#{book_indexing.book_version_id} #{book_indexing.indexing_strategy_name}' enqueued for deleting"
+    info { "Enqueued deletion for '#{book_indexing.book_version_id} #{book_indexing.indexing_strategy_name}'" }
   end
 
   def released_book_ids
     @released_book_ids ||= begin
-      rex_releases = OpenStax::RexReleases.new
+      rex_releases = Rex::Releases.new
       rex_releases.map(&:books).flatten.uniq
     end
   end
 
   def new_jobs
     @new_delete_index_jobs + @new_create_index_jobs
+  end
+
+  def info
+    Rails.logger.info "#{self.class.log_prefix} #{yield}"
+  end
+
+  def self.log_prefix
+    "EnqueueIndexJobs:"
   end
 end

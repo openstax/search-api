@@ -35,14 +35,19 @@ module Search::BookVersions::I1
 
     def index_page(page:, index_name:)
       page.elements(element_classes: DESIRED_ELEMENTS_TO_DOCUMENTS.keys).each_with_index do |element, page_position|
-        document_class = DESIRED_ELEMENTS_TO_DOCUMENTS[element.class]
-        document = document_class.new(element: element,
-                                      page_position: page_position,
-                                      page_id: page.id)
+        begin
+          document_class = DESIRED_ELEMENTS_TO_DOCUMENTS[element.class]
+          document = document_class.new(element: element,
+                                        page_position: page_position,
+                                        page_id: page.id)
 
-        OpenSearch::ElasticsearchClient.instance.index(index: index_name,
-                                           type: document.type,
-                                           body: document.body)
+          OsElasticsearchClient.instance.index(index: index_name,
+                                               type:  document.type,
+                                               body:  document.body)
+        rescue ElementIdMissing => ex
+          Raven.capture_message(ex.message, :extra => element.to_json)
+          Rails.logger.error(ex)
+        end
       end
     end
 
