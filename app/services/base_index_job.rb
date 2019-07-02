@@ -21,6 +21,7 @@ class BaseIndexJob
 
   def call
     _call
+  ensure #it should always remove the job from the queue
     @cleanup_after_call.try(:call)
   end
 

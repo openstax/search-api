@@ -4,7 +4,8 @@ module Books::SearchStrategies::S1
     SUPPORTED_INDEX_STRATEGIES = [
       Books::IndexingStrategies::I1::Strategy
     ].map(&:short_name)
-    MAX_SEARCH_RESULTS = 50
+
+    MAX_SEARCH_RESULTS = 150
 
     def self.short_name
       "s1"

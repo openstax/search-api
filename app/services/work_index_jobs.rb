@@ -40,10 +40,12 @@ class WorkIndexJobs
                        time_took: time_took)
     rescue InvalidIndexingStrategy => ex
       Raven.capture_exception(ex)
+      Rails.logger.error(ex)
       enqueue_done_job(job: job,
                        status: DoneIndexJob::STATUS_INVALID_INDEXING_STRATEGY)
     rescue => ex
       Raven.capture_exception(ex)
+      Rails.logger.error(ex)
       enqueue_done_job(job: job,
                        status: DoneIndexJob::STATUS_OTHER_ERROR,
                        message: ex.message)
