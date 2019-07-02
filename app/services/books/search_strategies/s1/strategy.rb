@@ -1,7 +1,9 @@
-module Search::BookVersions::SearchStrategies
-  class S1 < Base
+module Books::SearchStrategies::S1
+  class Strategy < Base
 
-    SUPPORTED_INDEX_STRATEGIES = %w(i1)
+    SUPPORTED_INDEX_STRATEGIES = [
+      Books::IndexingStrategies::I1::Strategy
+    ].map(&:short_name)
     MAX_SEARCH_RESULTS = 50
 
     def self.short_name

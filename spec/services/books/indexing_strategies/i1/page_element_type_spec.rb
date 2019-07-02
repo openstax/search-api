@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Search::BookVersions::I1::PageElementDocument do
+RSpec.describe Books::IndexingStrategies::I1::PageElementDocument do
   let(:id) { "foo id" }
 
   let(:element) do
@@ -30,7 +30,7 @@ RSpec.describe Search::BookVersions::I1::PageElementDocument do
   describe "#initialize" do
     context "a valid object" do
       it 'will create a valid object' do
-        expect(page_element_document).to be_a_kind_of(Search::BookVersions::I1::PageElementDocument)
+        expect(page_element_document).to be_a_kind_of(Books::IndexingStrategies::I1::PageElementDocument)
       end
     end
 
@@ -38,7 +38,7 @@ RSpec.describe Search::BookVersions::I1::PageElementDocument do
       let(:id) { nil }
 
       it 'raises an exception of the element id is missing' do
-        expect { page_element_document }.to raise_error(Search::BookVersions::I1::ElementIdMissing)
+        expect { page_element_document }.to raise_error(Books::IndexingStrategies::I1::ElementIdMissing)
       end
     end
   end

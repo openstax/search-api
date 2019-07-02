@@ -1,12 +1,12 @@
-module Search::BookVersions
-  # Search::BookVersions::Index is the main interface into indexing a book version.
+module Books
+  # Books::Index is the main interface into indexing a book version.
   #
   # It uses a IndexingStrategy that defines what is indexed including the
   # index's inspect.
   #
-  # This class perf gueorms the "crud" actions on a book's index.
+  # This class performs the "crud" actions on a book's index.
   class Index
-    DEFAULT_INDEXING_STRATEGY = I1::IndexingStrategy
+    DEFAULT_INDEXING_STRATEGY = IndexingStrategies::I1::Strategy
 
     attr_reader :indexing_strategy
 
@@ -38,7 +38,7 @@ module Search::BookVersions
     end
 
     def name
-      "#{@book_version_id}_#{@indexing_strategy.version.downcase}"
+      "#{@book_version_id}_#{@indexing_strategy.short_name.downcase}"
     end
 
     def exists?

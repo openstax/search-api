@@ -16,7 +16,7 @@ RSpec.describe CreateIndexJob do
 
   describe '#_call' do
     it "recreates the index" do
-      expect_any_instance_of(Search::BookVersions::Index).to receive(:recreate).once
+      expect_any_instance_of(Books::Index).to receive(:recreate).once
 
       create_index_job.send(:_call)
     end

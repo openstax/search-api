@@ -3,7 +3,7 @@ require 'vcr_helper'
 
 RSpec.describe 'api v0 search requests', type: :request, api: :v0, vcr: VCR_OPTS do
   let(:book_version_id) { '14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1' }
-  let(:index) { Search::BookVersions::Index.new(book_version_id: book_version_id) }
+  let(:index) { Books::Index.new(book_version_id: book_version_id) }
 
   before(:each) do
     do_not_record_or_playback do

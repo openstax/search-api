@@ -1,4 +1,4 @@
-module Search::BookVersions::I1
+module Books::IndexingStrategies::I1
   class FigureDocument < PageElementDocument
 
     def initialize(element:, page_position:, page_id:)

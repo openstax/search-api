@@ -11,7 +11,7 @@ require 'vcr_helper'
 #          -v elasticsearch:/usr/share/elasticsearch/data
 #          -e "discovery.type=single-node"
 #          docker.elastic.co/elasticsearch/elasticsearch:6.3.2
-RSpec.describe Search::BookVersions::Index, vcr: VCR_OPTS do
+RSpec.describe Books::Index, vcr: VCR_OPTS do
   let(:cnx_book_id) { '14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1' }
   let(:test_book_json) { JSON.parse(file_fixture('mini.json').read) }
 

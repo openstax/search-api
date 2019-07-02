@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Search::BookVersions::I1::FigureDocument do
+RSpec.describe Books::IndexingStrategies::I1::FigureDocument do
   let(:caption)  { "test caption" }
   let(:alt_text) { "alt text" }
   let(:element) do

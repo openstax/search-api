@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Search::BookVersions::I1::ParagraphDocument do
+RSpec.describe Books::IndexingStrategies::I1::ParagraphDocument do
   let(:text) { "foo text" }
 
   let(:element) do

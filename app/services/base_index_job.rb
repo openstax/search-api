@@ -46,7 +46,7 @@ class BaseIndexJob
   end
 
   def index
-    @index ||= Search::BookVersions::Index.new(book_version_id: @book_version_id)
+    @index ||= Books::Index.new(book_version_id: @book_version_id)
   end
 
   def cleanup_after_call
