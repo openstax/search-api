@@ -37,6 +37,7 @@ module Books::SearchStrategies::S1
         },
         _source: %w(element_type element_id page_id page_position),
         highlight: {
+          number_of_fragments: 20,
           fields: {
             title: {},
             visible_content: {}

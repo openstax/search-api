@@ -34,7 +34,9 @@ RSpec.describe 'api v0 search requests', type: :request, api: :v0, vcr: VCR_OPTS
       before { render_rescued_exceptions }
 
       xit "errors for incompatible strategies" do
-        # How to test this one?
+        # This test should be filled in once we have a real test case for
+        # incompatible indexing and search strategies, so we understand better
+        # what the problem would be that we'd want to catch.
       end
 
       it "422s for unknown search strategy" do
@@ -54,5 +56,4 @@ RSpec.describe 'api v0 search requests', type: :request, api: :v0, vcr: VCR_OPTS
   def query(q: nil, index_strategy: nil, search_strategy: nil)
     "q=#{q}&index_strategy=#{index_strategy}&search_strategy=#{search_strategy}&books=14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1"
   end
-
 end
