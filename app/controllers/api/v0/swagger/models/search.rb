@@ -89,7 +89,7 @@ module Api::V0::Swagger::Models::Search
       key :description, "Shard stats from Elasticsearch"
     end
     property :hits do
-      key :required, [:total]
+      key :required, [:total, :hits]
       property :total do
         key :type, :integer
         key :readOnly, true
