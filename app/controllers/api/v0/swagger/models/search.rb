@@ -3,8 +3,8 @@ module Api::V0::Swagger::Models::Search
   include OpenStax::Swagger::SwaggerBlocksExtensions
 
   SUPPORTED_ELEMENT_TYPES = [
-    Books::I1::ParagraphDocument,
-    Books::I1::FigureDocument
+    Books::IndexingStrategies::I1::ParagraphDocument,
+    Books::IndexingStrategies::I1::FigureDocument
   ].map(&:element_type)
 
   swagger_schema :SearchResultHitHighlight do
