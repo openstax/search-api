@@ -25,6 +25,11 @@ RSpec.describe Books::SearchStrategies::S1::Strategy , type: :request, api: :v0,
       result = search_strategy.search(query_string: search_term)
       expect(result["hits"]["hits"].first["highlight"]["visible_content"].first).to include(search_term)
     end
+
+    it "has empty hits for a term not found" do
+      result = search_strategy.search(query_string: 'defnotthereforsure')
+      expect(result["hits"]["hits"]).to be_empty
+    end
   end
 
   context 'multiple indexes' do

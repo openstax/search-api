@@ -1,8 +1,8 @@
-module Books::SearchStrategies::S1
+module Books::SearchStrategies
   class Factory
 
     STRATEGY_CLASSES = [
-      Strategy
+      S1::Strategy
     ].freeze
 
     NAMES_TO_STRATEGY_CLASSES = STRATEGY_CLASSES.each_with_object({}) do |klass, hash|

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Books::SearchStrategies::S1::Factory do
+RSpec.describe Books::SearchStrategies::Factory do
   let(:book_version_ids) { ['foo@1.1'] }
 
   subject(:factory) {
@@ -21,7 +21,7 @@ RSpec.describe Books::SearchStrategies::S1::Factory do
       let(:search_strategy) { 's_foo' }
 
       it 'pulls out the caption from the figure' do
-        expect { factory }.to raise_error(Books::SearchStrategies::S1::UnknownSearchStrategy)
+        expect { factory }.to raise_error(Books::SearchStrategies::UnknownSearchStrategy)
       end
     end
 
@@ -29,7 +29,7 @@ RSpec.describe Books::SearchStrategies::S1::Factory do
       let(:index_strategy) { 'i_foo' }
 
       it 'pulls out the caption from the figure' do
-        expect { factory }.to raise_error(Books::SearchStrategies::S1::IncompatibleStrategies)
+        expect { factory }.to raise_error(Books::SearchStrategies::IncompatibleStrategies)
       end
     end
   end

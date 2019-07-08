@@ -1,5 +1,5 @@
 module Books
-  # Books::Index is the main interface into indexing a book version.
+  # Books::Index is the main interface into indexing a book.
   #
   # It uses a IndexingStrategy that defines what is indexed including the
   # index's inspect.

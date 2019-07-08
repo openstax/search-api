@@ -1,5 +1,5 @@
 module Books::SearchStrategies::S1
-  class Strategy < Base
+  class Strategy < Books::SearchStrategies::Base
 
     SUPPORTED_INDEX_STRATEGIES = [
       Books::IndexingStrategies::I1::Strategy

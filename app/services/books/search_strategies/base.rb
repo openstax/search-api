@@ -1,4 +1,4 @@
-module Books::SearchStrategies::S1
+module Books::SearchStrategies
   class Base
 
     def initialize(index_names:)
