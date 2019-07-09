@@ -1,8 +1,8 @@
 class Api::V0::SearchController < Api::V0::BaseController
 
   EXCEPTIONS_422 = [
-    Books::SearchStrategies::S1::UnknownSearchStrategy,
-    Books::SearchStrategies::S1::IncompatibleStrategies
+    Books::SearchStrategies::UnknownSearchStrategy,
+    Books::SearchStrategies::IncompatibleStrategies
   ].freeze
 
   EXCEPTIONS_422.each do |exception_class|
