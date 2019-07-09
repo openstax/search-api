@@ -1,0 +1,30 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:9200/14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1_i1/_search
+    body:
+      encoding: UTF-8
+      string: '{"size":150,"query":{"simple_query_string":{"fields":["title","visible_content"],"query":"Jupiter","flags":"WHITESPACE|PHRASE","minimum_should_match":"100%","default_operator":"AND"}},"_source":["element_type","element_id","page_id","page_position"],"highlight":{"fields":{"title":{},"visible_content":{}}}}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '134'
+    body:
+      encoding: UTF-8
+      string: '{"took":7,"timed_out":false,"_shards":{"total":1,"successful":1,"skipped":0,"failed":0},"hits":{"total":0,"max_score":null,"hits":[]}}'
+    http_version: 
+  recorded_at: Tue, 02 Jul 2019 22:50:45 GMT
+recorded_with: VCR 4.0.0

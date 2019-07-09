@@ -1,10 +1,10 @@
-module Search::BookVersions::I1
+module Books::IndexingStrategies::I1
   # The indexing strategy is the encapsulation for the index's structure and
   # inspect (including index settings & mappings).
   #
   # The strategy also declares what page element objects it wants indexed.
-  class IndexingStrategy
-    VERSION = "I1"
+  class Strategy
+    SHORT_NAME = "i1"
     NUM_SHARDS = 1
     NUM_REPLICAS = 1
 
@@ -13,10 +13,10 @@ module Search::BookVersions::I1
       OpenStax::Cnx::V1::Figure => FigureDocument
     }
 
-    attr_reader :version
+    delegate :short_name, to: :class
 
-    def initialize
-      @version = VERSION
+    def self.short_name
+      SHORT_NAME
     end
 
     def index_metadata

@@ -1,8 +1,11 @@
-module Search::BookVersions::SearchStrategies
-  class S1 < Base
+module Books::SearchStrategies::S1
+  class Strategy < Books::SearchStrategies::Base
 
-    SUPPORTED_INDEX_STRATEGIES = %w(i1)
-    MAX_SEARCH_RESULTS = 50
+    SUPPORTED_INDEX_STRATEGIES = [
+      Books::IndexingStrategies::I1::Strategy
+    ].map(&:short_name)
+
+    MAX_SEARCH_RESULTS = 150
 
     def self.short_name
       "s1"
@@ -34,6 +37,7 @@ module Search::BookVersions::SearchStrategies
         },
         _source: %w(element_type element_id page_id page_position),
         highlight: {
+          number_of_fragments: 20,
           fields: {
             title: {},
             visible_content: {}

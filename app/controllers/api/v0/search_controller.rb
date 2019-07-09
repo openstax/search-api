@@ -1,8 +1,8 @@
 class Api::V0::SearchController < Api::V0::BaseController
 
   EXCEPTIONS_422 = [
-    Search::BookVersions::SearchStrategies::UnknownSearchStrategy,
-    Search::BookVersions::SearchStrategies::IncompatibleStrategies
+    Books::SearchStrategies::UnknownSearchStrategy,
+    Books::SearchStrategies::IncompatibleStrategies
   ].freeze
 
   EXCEPTIONS_422.each do |exception_class|
@@ -64,7 +64,7 @@ class Api::V0::SearchController < Api::V0::BaseController
   def search
     started_at = Time.now
 
-    search_strategy_instance = Search::BookVersions::SearchStrategies::Factory.build(
+    search_strategy_instance = Books::SearchStrategies::Factory.build(
       book_version_ids: params.require(:books).split(','),
       index_strategy: params.require(:index_strategy),
       search_strategy: params.require(:search_strategy),

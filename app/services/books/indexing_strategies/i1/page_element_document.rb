@@ -1,5 +1,4 @@
-module Search::BookVersions::I1
-
+module Books::IndexingStrategies::I1
   class ElementIdMissing < StandardError
     def initialize(element_type:, page_id:)
       super("page_id #{page_id} missing element id for element #{element_type}")

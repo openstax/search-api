@@ -1,4 +1,4 @@
-module Search::BookVersions::SearchStrategies
+module Books::SearchStrategies
   class UnknownSearchStrategy < StandardError
     def initialize(search_strategy)
       super("Unknown search strategy: #{search_strategy}")

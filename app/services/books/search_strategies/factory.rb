@@ -1,8 +1,8 @@
-module Search::BookVersions::SearchStrategies
+module Books::SearchStrategies
   class Factory
 
     STRATEGY_CLASSES = [
-      S1
+      S1::Strategy
     ].freeze
 
     NAMES_TO_STRATEGY_CLASSES = STRATEGY_CLASSES.each_with_object({}) do |klass, hash|
@@ -11,7 +11,7 @@ module Search::BookVersions::SearchStrategies
 
     def self.build(book_version_ids:, index_strategy:, search_strategy:, options: {})
       index_names = book_version_ids.map do |book_version_id|
-        index = Search::BookVersions::Index.new(book_version_id: book_version_id)
+        index = Books::Index.new(book_version_id: book_version_id)
         index.name
       end
 

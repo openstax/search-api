@@ -21,6 +21,7 @@ class BaseIndexJob
 
   def call
     _call
+  ensure #it should always remove the job from the queue
     @cleanup_after_call.try(:call)
   end
 
@@ -46,7 +47,7 @@ class BaseIndexJob
   end
 
   def index
-    @index ||= Search::BookVersions::Index.new(book_version_id: @book_version_id)
+    @index ||= Books::Index.new(book_version_id: @book_version_id)
   end
 
   def cleanup_after_call

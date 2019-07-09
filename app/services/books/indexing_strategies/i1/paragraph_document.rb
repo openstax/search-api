@@ -1,6 +1,5 @@
-module Search::BookVersions::I1
+module Books::IndexingStrategies::I1
   class ParagraphDocument < PageElementDocument
-
     def initialize(element:, page_position:, page_id:)
       super(element: element,
             element_type: self.class.element_type,
@@ -15,6 +14,5 @@ module Search::BookVersions::I1
     def visible_content
       element.text
     end
-
   end
 end

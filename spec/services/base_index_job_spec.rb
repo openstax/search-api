@@ -17,6 +17,15 @@ RSpec.describe BaseIndexJob do
 
       base_index_job.call
     end
+
+    context "when an exception happens inside _call" do
+      it "calls cleanup afterwards" do
+        allow_any_instance_of(described_class).to receive(:_call).and_raise(Exception)
+        expect(test).to receive(:foobar).once
+
+        expect{ base_index_job.call }.to raise_error(Exception)
+      end
+    end
   end
 
   describe '#remove_associated_book_index_state' do

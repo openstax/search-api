@@ -12,7 +12,7 @@ RSpec.describe DeleteIndexJob do
 
   describe '#call' do
     it "calls to delete the index" do
-      expect_any_instance_of(Search::BookVersions::Index).to receive(:delete).once
+      expect_any_instance_of(Books::Index).to receive(:delete).once
 
       delete_index_job.call
     end
