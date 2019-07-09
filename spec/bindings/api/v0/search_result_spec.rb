@@ -28,7 +28,7 @@ RSpec.describe Api::V0::Bindings::SearchResult do
             },
             highlight: {
               visible_content: [
-                "In 2006, Pluto was <em>demoted</em> to a ‘dwarf planet’ after scientists revised their definition of what constitutes"
+                "In 2006, Pluto was <strong>demoted</strong> to a ‘dwarf planet’ after scientists revised their definition of what constitutes"
               ]
             }
           }

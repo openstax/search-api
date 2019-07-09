@@ -6,7 +6,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"size":150,"query":{"simple_query_string":{"fields":["title","visible_content"],"query":"\"Recall
-        that an atom\"","flags":"WHITESPACE|PHRASE","minimum_should_match":"100%","default_operator":"AND"}},"_source":["element_type","element_id","page_id","page_position"],"highlight":{"number_of_fragments":20,"fields":{"title":{},"visible_content":{}}}}'
+        that an atom\"","flags":"WHITESPACE|PHRASE","minimum_should_match":"100%","default_operator":"AND"}},"_source":["element_type","element_id","page_id","page_position"],"highlight":{"number_of_fragments":20,"pre_tags":["\u003cstrong\u003e"],"post_tags":["\u003c/strong\u003e"],"fields":{"title":{},"visible_content":{}}}}'
     headers:
       User-Agent:
       - Faraday v0.15.3
@@ -22,12 +22,12 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Content-Length:
-      - '575'
+      - '607'
     body:
       encoding: UTF-8
-      string: '{"took":29,"timed_out":false,"_shards":{"total":1,"successful":1,"skipped":0,"failed":0},"hits":{"total":1,"max_score":9.08708,"hits":[{"_index":"14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1_i1","_type":"page_element","_id":"gGyPs2sBamw8xuX-g3la","_score":9.08708,"_source":{"page_id":"2c60e072-7665-49b9-a2c9-2736b72b533c@8","element_id":"fs-id2113058","element_type":"paragraph","page_position":3},"highlight":{"visible_content":["<em>Recall</em>
-        <em>that</em> <em>an</em> <em>atom</em> typically has the same number of positively
-        charged protons and negatively charged"]}}]}}'
+      string: '{"took":36,"timed_out":false,"_shards":{"total":1,"successful":1,"skipped":0,"failed":0},"hits":{"total":1,"max_score":9.08708,"hits":[{"_index":"14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1_i1","_type":"page_element","_id":"_2xOuWsBamw8xuX-QeKG","_score":9.08708,"_source":{"page_id":"2c60e072-7665-49b9-a2c9-2736b72b533c@8","element_id":"fs-id2113058","element_type":"paragraph","page_position":3},"highlight":{"visible_content":["<strong>Recall</strong>
+        <strong>that</strong> <strong>an</strong> <strong>atom</strong> typically
+        has the same number of positively charged protons and negatively charged"]}}]}}'
     http_version: 
-  recorded_at: Wed, 03 Jul 2019 19:27:09 GMT
+  recorded_at: Tue, 09 Jul 2019 21:35:14 GMT
 recorded_with: VCR 4.0.0

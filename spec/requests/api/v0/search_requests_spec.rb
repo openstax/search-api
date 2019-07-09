@@ -27,7 +27,7 @@ RSpec.describe 'api v0 search requests', type: :request, api: :v0, vcr: VCR_OPTS
         element_type: "paragraph",
         page_position: 3
       )
-      expect(json[:hits][:hits][0][:highlight][:visible_content][0]).to start_with "<em>Recall</em>"
+      expect(json[:hits][:hits][0][:highlight][:visible_content][0]).to start_with "<strong>Recall</strong>"
     end
 
     context "client errors" do
