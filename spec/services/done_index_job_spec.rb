@@ -34,7 +34,6 @@ RSpec.describe DoneIndexJob do
         let(:status) { described_class::STATUS_HTTP_ERROR }
 
         it 'sends a message to Raven and sends a mark http error to book index state' do
-          expect(Raven).to receive(:capture_message)
           expect(book_index_state).to receive(:mark_as_http_error)
 
           done_index_job.call
@@ -45,7 +44,6 @@ RSpec.describe DoneIndexJob do
         let(:status) { described_class::STATUS_OTHER_ERROR }
 
         it 'sends a message to Raven and removes the associated book index state' do
-          expect(Raven).to receive(:capture_message)
           expect_any_instance_of(CreateIndexJob).to receive(:remove_associated_book_index_state)
 
           done_index_job.call

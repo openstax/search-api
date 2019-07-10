@@ -2,7 +2,6 @@ require 'rails_helper'
 require 'vcr_helper'
 
 amazon_api_header_matcher = lambda do |request_1, request_2|
-  # puts "request1 x-amz-target #{request_1.headers["X-Amz-Target"]}, request2 x-amz-target #{request_2.headers["X-Amz-Target"]}"
   request_1.headers["X-Amz-Target"] == request_2.headers["X-Amz-Target"]
 end
 

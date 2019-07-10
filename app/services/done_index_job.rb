@@ -69,11 +69,9 @@ class DoneIndexJob < BaseIndexJob
       ran_job.cleanup_when_done
     else
       if http_error?
-        Raven.capture_message("Openstax http error", :extra => inspect)
         book_index_state = find_associated_book_index_state
         book_index_state.mark_as_http_error
       else
-        Raven.capture_message("Job in Error Found in Done Queue", :extra => inspect)
         ran_job.remove_associated_book_index_state
       end
     end
