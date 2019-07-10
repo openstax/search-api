@@ -17,6 +17,7 @@ class WorkIndexJobs
 
   def call
     job = @todo_jobs_queue.read
+
     if job.nil?
       @definitely_out_of_work = true
       return job_stats
@@ -43,6 +44,11 @@ class WorkIndexJobs
       Rails.logger.error("Invalid indexing strategy for #{job.to_json}. #{ex.message}")
       enqueue_done_job(job: job,
                        status: DoneIndexJob::STATUS_INVALID_INDEXING_STRATEGY)
+    rescue OpenStax::HTTPError => ex
+      Raven.capture_exception(ex)
+      Rails.logger.error("OpenStax HTTP error #{job.to_json}. #{ex.message}")
+      enqueue_done_job(job: job,
+                       status: DoneIndexJob::STATUS_HTTP_ERROR)
     rescue => ex
       Raven.capture_exception(ex)
       Rails.logger.error("Exception occurred on #{job.to_json}. #{ex.message}")

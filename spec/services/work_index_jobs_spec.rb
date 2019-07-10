@@ -56,16 +56,14 @@ RSpec.describe WorkIndexJobs do
       end
     end
 
-    context 'the job has an invalid indexing version' do
-      let(:indexing_strategy_name) { 'invalid' }
-
+    context 'the job raises a http error' do
       before do
+        allow(create_job).to receive(:call).and_raise(OpenStax::HTTPError)
         allow_any_instance_of(TodoJobsQueue).to receive(:read).and_return(create_job)
       end
 
-      it 'doesnt call createindexjob & adds to the done queue' do
-        expect_any_instance_of(CreateIndexJob).to_not receive(:call)
-        expect_any_instance_of(DoneJobsQueue).to receive(:write).once
+      it 'writes a done job with http error status' do
+        expect_any_instance_of(described_class).to receive(:enqueue_done_job).with(job: anything, status: DoneIndexJob::STATUS_HTTP_ERROR).once
         work_index_jobs.call
       end
     end

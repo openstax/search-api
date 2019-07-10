@@ -2,6 +2,7 @@ require 'rails_helper'
 require 'vcr_helper'
 
 amazon_api_header_matcher = lambda do |request_1, request_2|
+  # puts "request1 x-amz-target #{request_1.headers["X-Amz-Target"]}, request2 x-amz-target #{request_2.headers["X-Amz-Target"]}"
   request_1.headers["X-Amz-Target"] == request_2.headers["X-Amz-Target"]
 end
 
@@ -33,6 +34,7 @@ RSpec.describe BookIndexState, vcr: VCR_OPTS.merge!({match_requests_on: [:method
     let(:book_id1) { 'book@1' }
     let(:book_id2) { 'book@2' }
     let(:book_id3) { 'book@3' }
+    let(:book_id4) { 'book@4' }
 
     def init_test
       book_index_state.new(state: BookIndexState::STATE_CREATE_PENDING,
@@ -47,6 +49,10 @@ RSpec.describe BookIndexState, vcr: VCR_OPTS.merge!({match_requests_on: [:method
                            book_version_id: book_id3,
                            indexing_strategy_name: indexing_strategy_name,
                            message: 'message 3').save!
+      book_index_state.new(state: BookIndexState::STATE_HTTP_ERROR,
+                           book_version_id: book_id4,
+                           indexing_strategy_name: indexing_strategy_name,
+                           message: 'message 4').save!
     end
 
     it 'finds only live documents, not the deleting ones' do
@@ -54,8 +60,8 @@ RSpec.describe BookIndexState, vcr: VCR_OPTS.merge!({match_requests_on: [:method
         env.create_dynamodb_table
         init_test
 
-        expect(BookIndexState.all.count).to eq 3
-        expect(BookIndexState.live.count).to eq 2
+        expect(BookIndexState.all.count).to eq 4
+        expect(BookIndexState.live.count).to eq 3
       end
     end
   end
