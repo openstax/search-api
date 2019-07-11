@@ -9,9 +9,11 @@ class BookIndexState
 
   class StatusLog
     ACTIONS = [
-      ACTION_CREATE  = 'enqueued_create',
-      ACTION_CREATED = 'index_created',
-      ACTION_DELETE_PENDING = "index_delete_pending"
+      ACTION_CREATE  = 'enqueued create',
+      ACTION_CREATED = 'index created',
+      ACTION_INDEX_ERROR   = 'index error',
+      ACTION_HTTP_ERROR    = 'http error',
+      ACTION_DELETE_PENDING = "index delete pending"
     ]
 
     attr_reader :action, :at
@@ -48,6 +50,7 @@ class BookIndexState
   STATES = [
     STATE_CREATE_PENDING = "create pending",
     STATE_DELETE_PENDING = "delete pending",
+    STATE_HTTP_ERROR = "http error",
     STATE_CREATED = "created"
   ]
   VALID_INDEXING_STRATEGY_NAMES = %w(I1)
@@ -78,6 +81,13 @@ class BookIndexState
   def mark_created
     self.state = STATE_CREATED
     self.status_log << StatusLog.new(action: StatusLog::ACTION_CREATED)
+    save!
+  end
+
+  def mark_as_http_error
+    self.state = STATE_HTTP_ERROR
+    self.status_log << StatusLog.new(action: StatusLog::ACTION_HTTP_ERROR)
+    self.status_log << StatusLog.new(action: StatusLog::ACTION_INDEX_ERROR)
     save!
   end
 
