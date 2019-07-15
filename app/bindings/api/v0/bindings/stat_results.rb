@@ -13,21 +13,31 @@ Swagger Codegen version: 2.4.7
 require 'date'
 
 module Api::V0::Bindings
-  class SearchResultHitHighlight
-    # The highlights in visible content
-    attr_accessor :visible_content
+  class StatResults
+    # How long the request took (ms)
+    attr_accessor :overall_took_ms
+
+    # Current version of Elasticsearch
+    attr_accessor :es_version
+
+    # The book indexes
+    attr_accessor :book_indexes
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'visible_content' => :'visible_content'
+        :'overall_took_ms' => :'overall_took_ms',
+        :'es_version' => :'es_version',
+        :'book_indexes' => :'book_indexes'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'visible_content' => :'Array<String>'
+        :'overall_took_ms' => :'Integer',
+        :'es_version' => :'String',
+        :'book_indexes' => :'Array<StatBookIndexResult>'
       }
     end
 
@@ -39,9 +49,17 @@ module Api::V0::Bindings
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'visible_content')
-        if (value = attributes[:'visible_content']).is_a?(Array)
-          self.visible_content = value
+      if attributes.has_key?(:'overall_took_ms')
+        self.overall_took_ms = attributes[:'overall_took_ms']
+      end
+
+      if attributes.has_key?(:'es_version')
+        self.es_version = attributes[:'es_version']
+      end
+
+      if attributes.has_key?(:'book_indexes')
+        if (value = attributes[:'book_indexes']).is_a?(Array)
+          self.book_indexes = value
         end
       end
     end
@@ -50,8 +68,8 @@ module Api::V0::Bindings
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @visible_content.nil?
-        invalid_properties.push('invalid value for "visible_content", visible_content cannot be nil.')
+      if @es_version.nil?
+        invalid_properties.push('invalid value for "es_version", es_version cannot be nil.')
       end
 
       invalid_properties
@@ -60,7 +78,7 @@ module Api::V0::Bindings
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @visible_content.nil?
+      return false if @es_version.nil?
       true
     end
 
@@ -69,7 +87,9 @@ module Api::V0::Bindings
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          visible_content == o.visible_content
+          overall_took_ms == o.overall_took_ms &&
+          es_version == o.es_version &&
+          book_indexes == o.book_indexes
     end
 
     # @see the `==` method
@@ -81,7 +101,7 @@ module Api::V0::Bindings
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [visible_content].hash
+      [overall_took_ms, es_version, book_indexes].hash
     end
 
     # Builds the object from hash

@@ -13,21 +13,31 @@ Swagger Codegen version: 2.4.7
 require 'date'
 
 module Api::V0::Bindings
-  class SearchResultHitHighlight
-    # The highlights in visible content
-    attr_accessor :visible_content
+  class StatBookIndexResult
+    # The ID of the book
+    attr_accessor :id
+
+    # The num of docs in the index
+    attr_accessor :num_docs
+
+    # The state of the index
+    attr_accessor :state
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'visible_content' => :'visible_content'
+        :'id' => :'id',
+        :'num_docs' => :'num_docs',
+        :'state' => :'state'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'visible_content' => :'Array<String>'
+        :'id' => :'String',
+        :'num_docs' => :'String',
+        :'state' => :'String'
       }
     end
 
@@ -39,10 +49,16 @@ module Api::V0::Bindings
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'visible_content')
-        if (value = attributes[:'visible_content']).is_a?(Array)
-          self.visible_content = value
-        end
+      if attributes.has_key?(:'id')
+        self.id = attributes[:'id']
+      end
+
+      if attributes.has_key?(:'num_docs')
+        self.num_docs = attributes[:'num_docs']
+      end
+
+      if attributes.has_key?(:'state')
+        self.state = attributes[:'state']
       end
     end
 
@@ -50,8 +66,12 @@ module Api::V0::Bindings
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @visible_content.nil?
-        invalid_properties.push('invalid value for "visible_content", visible_content cannot be nil.')
+      if @id.nil?
+        invalid_properties.push('invalid value for "id", id cannot be nil.')
+      end
+
+      if @num_docs.nil?
+        invalid_properties.push('invalid value for "num_docs", num_docs cannot be nil.')
       end
 
       invalid_properties
@@ -60,7 +80,8 @@ module Api::V0::Bindings
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @visible_content.nil?
+      return false if @id.nil?
+      return false if @num_docs.nil?
       true
     end
 
@@ -69,7 +90,9 @@ module Api::V0::Bindings
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          visible_content == o.visible_content
+          id == o.id &&
+          num_docs == o.num_docs &&
+          state == o.state
     end
 
     # @see the `==` method
@@ -81,7 +104,7 @@ module Api::V0::Bindings
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [visible_content].hash
+      [id, num_docs, state].hash
     end
 
     # Builds the object from hash
