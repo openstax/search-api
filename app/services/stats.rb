@@ -1,7 +1,7 @@
 class Stats
   DEFAULT_STAT = {
-    state:"not found!",
-    num_docs: "not found!"
+    state:"not found",
+    num_docs: "not found"
   }
   BOOK_INDEX_MATCH = /[\w-]+@\w+.+_+.+/
 
