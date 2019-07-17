@@ -1,8 +1,8 @@
-module Api::V0::Swagger::Models::Stat
+module Api::V0::Swagger::Models::Info
   include Swagger::Blocks
   include OpenStax::Swagger::SwaggerBlocksExtensions
 
-  swagger_schema :StatBookIndexResult do
+  swagger_schema :InfoBookIndexResult do
     key :required, [:id, :num_docs]
     property :id do
       key :type, :string
@@ -14,6 +14,11 @@ module Api::V0::Swagger::Models::Stat
       key :readOnly, true
       key :description, "The num of docs in the index"
     end
+    property :created_at do
+      key :type, :string
+      key :readOnly, true
+      key :description, "The (elasticsearch) created_at time"
+    end
     property :state do
       key :type, :string
       key :readOnly, true
@@ -21,7 +26,7 @@ module Api::V0::Swagger::Models::Stat
     end
   end
 
-  swagger_schema :StatResults do
+  swagger_schema :InfoResults do
     key :required, [:overall_took, :es_version]
     property :overall_took_ms do
       key :type, :integer
@@ -37,7 +42,7 @@ module Api::V0::Swagger::Models::Stat
       key :type, :array
       key :description, "The book indexes"
       items do
-        key :'$ref', :StatBookIndexResult
+        key :'$ref', :InfoBookIndexResult
       end
     end
   end

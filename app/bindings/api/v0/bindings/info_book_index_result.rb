@@ -13,12 +13,15 @@ Swagger Codegen version: 2.4.7
 require 'date'
 
 module Api::V0::Bindings
-  class StatBookIndexResult
+  class InfoBookIndexResult
     # The ID of the book
     attr_accessor :id
 
     # The num of docs in the index
     attr_accessor :num_docs
+
+    # The (elasticsearch) created_at time
+    attr_accessor :created_at
 
     # The state of the index
     attr_accessor :state
@@ -28,6 +31,7 @@ module Api::V0::Bindings
       {
         :'id' => :'id',
         :'num_docs' => :'num_docs',
+        :'created_at' => :'created_at',
         :'state' => :'state'
       }
     end
@@ -37,6 +41,7 @@ module Api::V0::Bindings
       {
         :'id' => :'String',
         :'num_docs' => :'String',
+        :'created_at' => :'String',
         :'state' => :'String'
       }
     end
@@ -55,6 +60,10 @@ module Api::V0::Bindings
 
       if attributes.has_key?(:'num_docs')
         self.num_docs = attributes[:'num_docs']
+      end
+
+      if attributes.has_key?(:'created_at')
+        self.created_at = attributes[:'created_at']
       end
 
       if attributes.has_key?(:'state')
@@ -92,6 +101,7 @@ module Api::V0::Bindings
       self.class == o.class &&
           id == o.id &&
           num_docs == o.num_docs &&
+          created_at == o.created_at &&
           state == o.state
     end
 
@@ -104,7 +114,7 @@ module Api::V0::Bindings
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, num_docs, state].hash
+      [id, num_docs, created_at, state].hash
     end
 
     # Builds the object from hash

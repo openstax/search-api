@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'api v0 stats requests', type: :request, api: :v0 do
+RSpec.describe 'api v0 info requests', type: :request, api: :v0 do
   let(:stats) {
     {
       es_version: "6.7.2",
@@ -19,12 +19,12 @@ RSpec.describe 'api v0 stats requests', type: :request, api: :v0 do
   }
 
   before do
-    allow_any_instance_of(Stats).to receive(:call).and_return(stats)
+    allow_any_instance_of(IndexInfo).to receive(:call).and_return(stats)
   end
 
-  context "#stats" do
-    it "returns stats" do
-      api_get 'stats'
+  context "#info" do
+    it "returns info" do
+      api_get 'info'
       expect(response).to have_http_status(:ok)
 
       json = json_response

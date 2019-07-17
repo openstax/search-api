@@ -10,6 +10,12 @@ module Books
 
     attr_reader :indexing_strategy
 
+    delegate :index_name, to: :class
+
+    def self.index_name(book_version_id:, indexing_strategy_short_name:)
+      "#{book_version_id}_#{indexing_strategy_short_name.downcase}"
+    end
+
     def initialize(book_version_id: nil,
                    indexing_strategy: DEFAULT_INDEXING_STRATEGY)
       @book_version_id = book_version_id
@@ -38,7 +44,8 @@ module Books
     end
 
     def name
-      "#{@book_version_id}_#{@indexing_strategy.short_name.downcase}"
+      index_name(book_version_id: @book_version_id,
+                 indexing_strategy_short_name: @indexing_strategy.short_name)
     end
 
     def exists?

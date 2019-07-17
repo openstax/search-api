@@ -13,7 +13,7 @@ Swagger Codegen version: 2.4.7
 require 'date'
 
 module Api::V0::Bindings
-  class StatResults
+  class InfoResults
     # How long the request took (ms)
     attr_accessor :overall_took_ms
 
@@ -37,7 +37,7 @@ module Api::V0::Bindings
       {
         :'overall_took_ms' => :'Integer',
         :'es_version' => :'String',
-        :'book_indexes' => :'Array<StatBookIndexResult>'
+        :'book_indexes' => :'Array<InfoBookIndexResult>'
       }
     end
 

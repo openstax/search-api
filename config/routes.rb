@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
       get :search, to: 'search#search'
 
-      get :stats, to: 'stats#stats'
+      get :info, to: 'info#info'
 
       resources :diagnostics, only: [] do
         get :exception, on: :collection
