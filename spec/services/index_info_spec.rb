@@ -19,6 +19,10 @@ RSpec.describe IndexInfo, vcr: VCR_OPTS do
   subject(:info_service) { described_class.new }
 
   describe "#call" do
+    let(:iso8601_regex) {
+      /^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z)?$/
+    }
+
     context "elasticsearch and dynamodb records both exist" do
       it "gets the info" do
         TempAwsEnv.make do |env|
@@ -28,8 +32,9 @@ RSpec.describe IndexInfo, vcr: VCR_OPTS do
 
           info = info_service.call
 
-          expect(info[:book_indexes].first).to match(hash_including({id: book_index_name}))
-          expect(info[:book_indexes].first).to match(hash_including({state: "create pending"}))
+          book_info = info[:book_indexes].detect{|index| index[:id] == book_index_name}
+          expect(book_info[:state]).to eq 'create pending'
+          expect(book_info[:created_at]).to match iso8601_regex
         end
       end
     end
@@ -41,8 +46,9 @@ RSpec.describe IndexInfo, vcr: VCR_OPTS do
 
           info = info_service.call
 
-          expect(info[:book_indexes].first).to match(hash_including({id: book_index_name}))
-          expect(info[:book_indexes].first).to match(hash_including({state: "not found"}))
+          book_info = info[:book_indexes].detect{|index| index[:id] == book_index_name}
+          expect(book_info[:state]).to eq 'not found'
+          expect(book_info[:created_at]).to match iso8601_regex
         end
       end
     end

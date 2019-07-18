@@ -24,9 +24,10 @@ class IndexInfo
   end
 
   def all_the_books
-    es_indices
+    filtered_es_indices
     dynamo_books
-    @book_indexes.map{|k,v| v.merge(id: k)}
+    result = @book_indexes.map{|k,v| v.merge(id: k)}
+    result.sort_by{|book_index| book_index[:created_at]}.reverse
   end
 
   def dynamo_books
@@ -42,8 +43,8 @@ class IndexInfo
     end
   end
 
-  def es_indices
-    es_indices = OsElasticsearchClient.instance.indices.stats["indices"]
+  def filtered_es_indices
+    es_indices = all_es_indices.stats["indices"]
     es_indices.each do |es_index|
       index_name = es_index.first
       if BOOK_INDEX_MATCH.match?(index_name)
@@ -59,9 +60,13 @@ class IndexInfo
   end
 
   def es_created_at(index_name)
-    index = OsElasticsearchClient.instance.indices.get(index: index_name)
+    index = all_es_indices.get(index: index_name)
     es_created_at_ms = index[index_name]["settings"]["index"]["creation_date"]
-    DateTime.strptime((es_created_at_ms.to_i/1000).to_s,'%s')
+    Time.at(es_created_at_ms.to_i/1000).utc.iso8601
+  end
+
+  def all_es_indices
+    @all_es_indices ||= OsElasticsearchClient.instance.indices
   end
 
   def update_stat(index:, value_sym:, value:)

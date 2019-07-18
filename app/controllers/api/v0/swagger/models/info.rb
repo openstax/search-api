@@ -17,7 +17,7 @@ module Api::V0::Swagger::Models::Info
     property :created_at do
       key :type, :string
       key :readOnly, true
-      key :description, "The (elasticsearch) created_at time"
+      key :description, "The (elasticsearch) created_at time. Originates in  ISO 8601 format."
     end
     property :state do
       key :type, :string
