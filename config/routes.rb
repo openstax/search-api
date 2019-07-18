@@ -11,10 +11,9 @@ Rails.application.routes.draw do
 
       get :swagger, to: 'swagger/docs#json'
 
-      get :prototype, to: 'prototype#search'
-      get :temp_build_index, to: 'prototype#temp_build_index'
-
       get :search, to: 'search#search'
+
+      get :info, to: 'info#info'
 
       resources :diagnostics, only: [] do
         get :exception, on: :collection

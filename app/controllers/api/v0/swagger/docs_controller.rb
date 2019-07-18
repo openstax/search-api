@@ -41,6 +41,8 @@ class Api::V0::Swagger::DocsController < ApplicationController
     Api::V0::SearchController,
     Api::V0::Swagger::Models::Search,
     Api::V0::Swagger::Models::Error,
+    Api::V0::InfoController,
+    Api::V0::Swagger::Models::Info,
     self,
   ].freeze
 
