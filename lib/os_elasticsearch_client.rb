@@ -43,7 +43,10 @@ class OsElasticsearchClient
       url: url,
       log: false,
       transport_options: {
-        request: { timeout: 5 }
+        request: {
+          open_timeout: 5,
+          timeout: 20
+        }
       }
     }
   end
