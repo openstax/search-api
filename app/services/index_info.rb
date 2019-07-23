@@ -27,7 +27,7 @@ class IndexInfo
     filtered_es_indices
     dynamo_books
     result = @book_indexes.map{|k,v| v.merge(id: k)}
-    result.sort_by{|book_index| book_index[:created_at]}.reverse
+    result.sort_by{|book_index| book_index[:id]}
   end
 
   def dynamo_books

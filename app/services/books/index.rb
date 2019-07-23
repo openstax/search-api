@@ -22,25 +22,31 @@ module Books
       @indexing_strategy = indexing_strategy.new
     end
 
-    def create
-      OsElasticsearchClient.instance.indices.create(index: name, body: @indexing_strategy.index_metadata)
+    def create(with_wait: false)
+      Rails.logger.debug("Books::Index#create #{name} called")
+      OsElasticsearchClient.instance.indices.create(index: name,
+                                                    body: @indexing_strategy.index_metadata)
+      wait_until(:exists?) if with_wait
     end
 
     # This method populates the index with pages from the book
     def populate
+      Rails.logger.debug("Books::Index#populate #{name} called")
       @indexing_strategy.index(book: book, index_name: name)
 
       index_stats
     end
 
     def recreate
-      delete rescue Elasticsearch::Transport::Transport::Errors::NotFound
-      create
+      delete(with_wait: true) rescue Elasticsearch::Transport::Transport::Errors::NotFound
+      create(with_wait: true)
       populate
     end
 
-    def delete
+    def delete(with_wait: false)
+      Rails.logger.debug("Books::Index#delete #{name} called")
       OsElasticsearchClient.instance.indices.delete(index: name)
+      wait_until(:not_exists?) if with_wait
     end
 
     def name
@@ -52,7 +58,21 @@ module Books
       OsElasticsearchClient.instance.indices.exists?(index: name)
     end
 
+    def not_exists?
+      !OsElasticsearchClient.instance.indices.exists?(index: name)
+    end
+
     private
+
+    def wait_until(this_happens)
+      tries = 1
+      until self.send(this_happens) || tries > 5  do
+        Rails.logger.debug("Waiting for #{name} 1 sec for #{name} to #{this_happens.to_s}, tries: #{tries}")
+        sleep(2)
+        tries += 1
+      end
+      Rails.logger.debug("Exiting waiting for #{name} to #{this_happens.to_s} after tries: #{tries}")
+    end
 
     def indices
       @indices ||= OsElasticsearchClient.instance.indices
