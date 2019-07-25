@@ -8,6 +8,11 @@ module Books
   class Index
     DEFAULT_INDEXING_STRATEGY = IndexingStrategies::I1::Strategy
 
+    class IndexResourceNotReadyError < StandardError; end
+
+    WAIT_UNTIL_MAX_TRIES = 30
+    WAIT_UNTIL_TRIES_INTERVAL_SEC = 2
+
     attr_reader :indexing_strategy
 
     delegate :index_name, to: :class
@@ -22,7 +27,7 @@ module Books
       @indexing_strategy = indexing_strategy.new
     end
 
-    def create(with_wait: false)
+    def create(with_wait: true)
       Rails.logger.debug("Books::Index#create #{name} called")
       OsElasticsearchClient.instance.indices.create(index: name,
                                                     body: @indexing_strategy.index_metadata)
@@ -38,12 +43,12 @@ module Books
     end
 
     def recreate
-      delete(with_wait: true) rescue Elasticsearch::Transport::Transport::Errors::NotFound
-      create(with_wait: true)
+      delete rescue Elasticsearch::Transport::Transport::Errors::NotFound
+      create
       populate
     end
 
-    def delete(with_wait: false)
+    def delete(with_wait: true)
       Rails.logger.debug("Books::Index#delete #{name} called")
       OsElasticsearchClient.instance.indices.delete(index: name)
       wait_until(:not_exists?) if with_wait
@@ -66,12 +71,17 @@ module Books
 
     def wait_until(this_happens)
       tries = 1
-      until self.send(this_happens) || tries > 5  do
-        Rails.logger.debug("Waiting for #{name} 1 sec for #{name} to #{this_happens.to_s}, tries: #{tries}")
-        sleep(2)
+      until self.send(this_happens) || tries > WAIT_UNTIL_MAX_TRIES  do
+        Rails.logger.debug("Books::Index. Waiting #{WAIT_UNTIL_TRIES_INTERVAL_SEC} secs for #{name} to #{this_happens.to_s}, num_tries so far: #{tries}")
+        sleep(WAIT_UNTIL_TRIES_INTERVAL_SEC)
         tries += 1
       end
-      Rails.logger.debug("Exiting waiting for #{name} to #{this_happens.to_s} after tries: #{tries}")
+
+      if tries >= WAIT_UNTIL_MAX_TRIES
+        raise IndexResourceNotReadyError.new("Books::Index. #{name}:#{this_happens.to_s} failed after #{tries} tries.")
+      end
+
+      Rails.logger.debug("Books::Index. Exiting waiting for #{name} to #{this_happens.to_s} after tries: #{tries}")
     end
 
     def indices

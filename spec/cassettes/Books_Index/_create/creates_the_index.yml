@@ -15,9 +15,14 @@ http_interactions:
       - ''
   response:
     status:
-      code: 200
-      message: OK
+      code: 404
+      message: Not Found
     headers:
+      Warning:
+      - 299 Elasticsearch-6.7.2-56c6e48 "[types removal] The parameter include_type_name
+        should be explicitly specified in get indices requests to prepare for 7.0.
+        In 7.0 include_type_name will default to 'false', which means responses will
+        omit the type name in mapping definitions."
       Content-Type:
       - application/json; charset=UTF-8
       Content-Length:
@@ -26,34 +31,7 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 03 Jul 2019 19:27:09 GMT
-- request:
-    method: delete
-    uri: http://localhost:9200/14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1_i1
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v0.15.3
-      Content-Type:
-      - application/json
-      Expect:
-      - ''
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json; charset=UTF-8
-      Content-Length:
-      - '21'
-    body:
-      encoding: UTF-8
-      string: '{"acknowledged":true}'
-    http_version: 
-  recorded_at: Wed, 03 Jul 2019 19:27:09 GMT
+  recorded_at: Thu, 25 Jul 2019 17:15:19 GMT
 - request:
     method: put
     uri: http://localhost:9200/14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1_i1
@@ -72,6 +50,11 @@ http_interactions:
       code: 200
       message: OK
     headers:
+      Warning:
+      - 299 Elasticsearch-6.7.2-56c6e48 "[types removal] The parameter include_type_name
+        should be explicitly specified in create index requests to prepare for 7.0.
+        In 7.0 include_type_name will default to 'false', and requests are expected
+        to omit the type name in mapping definitions."
       Content-Type:
       - application/json; charset=UTF-8
       Content-Length:
@@ -80,7 +63,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"acknowledged":true,"shards_acknowledged":true,"index":"14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1_i1"}'
     http_version: 
-  recorded_at: Wed, 03 Jul 2019 19:27:09 GMT
+  recorded_at: Thu, 25 Jul 2019 17:15:19 GMT
 - request:
     method: head
     uri: http://localhost:9200/14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1_i1
@@ -99,6 +82,11 @@ http_interactions:
       code: 200
       message: OK
     headers:
+      Warning:
+      - 299 Elasticsearch-6.7.2-56c6e48 "[types removal] The parameter include_type_name
+        should be explicitly specified in get indices requests to prepare for 7.0.
+        In 7.0 include_type_name will default to 'false', which means responses will
+        omit the type name in mapping definitions."
       Content-Type:
       - application/json; charset=UTF-8
       Content-Length:
@@ -107,7 +95,7 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 03 Jul 2019 19:27:09 GMT
+  recorded_at: Thu, 25 Jul 2019 17:15:19 GMT
 - request:
     method: head
     uri: http://localhost:9200/14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1_i1
@@ -126,6 +114,11 @@ http_interactions:
       code: 200
       message: OK
     headers:
+      Warning:
+      - 299 Elasticsearch-6.7.2-56c6e48 "[types removal] The parameter include_type_name
+        should be explicitly specified in get indices requests to prepare for 7.0.
+        In 7.0 include_type_name will default to 'false', which means responses will
+        omit the type name in mapping definitions."
       Content-Type:
       - application/json; charset=UTF-8
       Content-Length:
@@ -134,7 +127,39 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 03 Jul 2019 19:27:09 GMT
+  recorded_at: Thu, 25 Jul 2019 17:15:19 GMT
+- request:
+    method: head
+    uri: http://localhost:9200/14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1_i1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Warning:
+      - 299 Elasticsearch-6.7.2-56c6e48 "[types removal] The parameter include_type_name
+        should be explicitly specified in get indices requests to prepare for 7.0.
+        In 7.0 include_type_name will default to 'false', which means responses will
+        omit the type name in mapping definitions."
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Thu, 25 Jul 2019 17:15:19 GMT
 - request:
     method: delete
     uri: http://localhost:9200/14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1_i1
@@ -161,5 +186,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"acknowledged":true}'
     http_version: 
-  recorded_at: Wed, 03 Jul 2019 19:27:09 GMT
+  recorded_at: Thu, 25 Jul 2019 17:15:19 GMT
 recorded_with: VCR 4.0.0
