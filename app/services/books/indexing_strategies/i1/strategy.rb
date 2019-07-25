@@ -32,9 +32,7 @@ module Books::IndexingStrategies::I1
     end
 
     def total_number_of_elements_to_index(book:)
-      num_total = 0
-      book.root_book_part.pages.each{|page| num_total += page.elements(element_classes: DESIRED_ELEMENTS_TO_DOCUMENTS.keys).count }
-      num_total
+      book.root_book_part.pages.map{|page| page.elements(element_classes: DESIRED_ELEMENTS_TO_DOCUMENTS.keys).count }.sum
     end
 
     private
