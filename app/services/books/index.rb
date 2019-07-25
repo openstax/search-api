@@ -8,6 +8,11 @@ module Books
   class Index
     DEFAULT_INDEXING_STRATEGY = IndexingStrategies::I1::Strategy
 
+    class IndexResourceNotReadyError < StandardError; end
+
+    WAIT_UNTIL_MAX_TRIES = 30
+    WAIT_UNTIL_TRIES_INTERVAL_SEC = 2
+
     attr_reader :indexing_strategy
 
     delegate :index_name, to: :class
@@ -22,12 +27,16 @@ module Books
       @indexing_strategy = indexing_strategy.new
     end
 
-    def create
-      OsElasticsearchClient.instance.indices.create(index: name, body: @indexing_strategy.index_metadata)
+    def create(with_wait: true)
+      Rails.logger.debug("Books::Index#create #{name} called")
+      OsElasticsearchClient.instance.indices.create(index: name,
+                                                    body: @indexing_strategy.index_metadata)
+      wait_until(:exists?) if with_wait
     end
 
     # This method populates the index with pages from the book
     def populate
+      Rails.logger.debug("Books::Index#populate #{name} called")
       @indexing_strategy.index(book: book, index_name: name)
 
       index_stats
@@ -39,8 +48,10 @@ module Books
       populate
     end
 
-    def delete
+    def delete(with_wait: true)
+      Rails.logger.debug("Books::Index#delete #{name} called")
       OsElasticsearchClient.instance.indices.delete(index: name)
+      wait_until(:not_exists?) if with_wait
     end
 
     def name
@@ -52,7 +63,26 @@ module Books
       OsElasticsearchClient.instance.indices.exists?(index: name)
     end
 
+    def not_exists?
+      !OsElasticsearchClient.instance.indices.exists?(index: name)
+    end
+
     private
+
+    def wait_until(this_happens)
+      tries = 1
+      until self.send(this_happens) || tries > WAIT_UNTIL_MAX_TRIES  do
+        Rails.logger.debug("Books::Index. Waiting #{WAIT_UNTIL_TRIES_INTERVAL_SEC} secs for #{name} to #{this_happens.to_s}, num_tries so far: #{tries}")
+        sleep(WAIT_UNTIL_TRIES_INTERVAL_SEC)
+        tries += 1
+      end
+
+      if tries >= WAIT_UNTIL_MAX_TRIES
+        raise IndexResourceNotReadyError.new("Books::Index. #{name}:#{this_happens.to_s} failed after #{tries} tries.")
+      end
+
+      Rails.logger.debug("Books::Index. Exiting waiting for #{name} to #{this_happens.to_s} after tries: #{tries}")
+    end
 
     def indices
       @indices ||= OsElasticsearchClient.instance.indices
