@@ -1,0 +1,104 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: http://localhost:9200/foobar_name
+    body:
+      encoding: UTF-8
+      string: '{"settings":{"index":{"number_of_shards":1,"number_of_replicas":1},"analysis":{"analyzer":"simple"}},"mappings":{},"page_element":{"properties":{"element_type":{"type":"text"},"element_id":{"type":"text"},"page_id":{"type":"text"},"page_position":{"type":"integer"},"title":{"type":"text"},"visible_content":{"type":"text"},"hidden_content":{"type":"text"}}}}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Warning:
+      - 299 Elasticsearch-6.7.2-56c6e48 "[types removal] The parameter include_type_name
+        should be explicitly specified in create index requests to prepare for 7.0.
+        In 7.0 include_type_name will default to 'false', and requests are expected
+        to omit the type name in mapping definitions."
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '70'
+    body:
+      encoding: UTF-8
+      string: '{"acknowledged":true,"shards_acknowledged":true,"index":"foobar_name"}'
+    http_version: 
+  recorded_at: Thu, 25 Jul 2019 21:38:43 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/foobar_name/foobar_type
+    body:
+      encoding: UTF-8
+      string: "      <p xmlns=\"http://www.w3.org/1999/xhtml\" id=\"fs-id2269442\">\n
+        \       Algebra uses numbers and symbols to represent words and ideas. Let’s
+        look at the numbers first. The most\n        basic numbers used in algebra
+        are those we use to count objects: \n        <math xmlns=\"http://www.w3.org/1998/Math/MathML\"
+        display=\"inline\">\n          <semantics>\n             <mrow>\n               <mn>1</mn>\n
+        \            </mrow>\n             <annotation-xml encoding=\"MathML-Content\">\n
+        \               <mrow>\n                  <mn>1</mn>\n                </mrow>\n
+        \             </annotation-xml>\n           </semantics>\n        </math>
+        \n        and so on. These are called the <span data-type=\"term\">counting
+        numbers</span>. The notation “…” is\n        called an ellipsis, which is
+        another way to show “and so on”, or that the pattern continues endlessly.\n
+        \       Counting numbers are also called natural numbers.\n       </p>\n"
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '313'
+    body:
+      encoding: UTF-8
+      string: '{"error":{"root_cause":[{"type":"mapper_parsing_exception","reason":"failed
+        to parse"}],"type":"mapper_parsing_exception","reason":"failed to parse","caused_by":{"type":"not_x_content_exception","reason":"Compressor
+        detection can only be called on some xcontent bytes or compressed xcontent
+        bytes"}},"status":400}'
+    http_version: 
+  recorded_at: Thu, 25 Jul 2019 21:38:43 GMT
+- request:
+    method: get
+    uri: http://localhost:9200/14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1_i1/_search
+    body:
+      encoding: UTF-8
+      string: '{"size":150,"query":{"simple_query_string":{"fields":["title","visible_content"],"query":"cytokinesis","flags":"WHITESPACE|PHRASE","minimum_should_match":"100%","default_operator":"AND"}},"_source":["element_type","element_id","page_id","page_position"],"highlight":{"number_of_fragments":20,"pre_tags":["\u003cstrong\u003e"],"post_tags":["\u003c/strong\u003e"],"fields":{"title":{},"visible_content":{}}}}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '3739'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJ0b29rIjo2OCwidGltZWRfb3V0IjpmYWxzZSwiX3NoYXJkcyI6eyJ0b3RhbCI6MSwic3VjY2Vzc2Z1bCI6MSwic2tpcHBlZCI6MCwiZmFpbGVkIjowfSwiaGl0cyI6eyJ0b3RhbCI6OCwibWF4X3Njb3JlIjo5Ljg3OTIwMSwiaGl0cyI6W3siX2luZGV4IjoiMTRmYjRhZDctMzlhMS00ZWVlLWFiNmUtM2VmMjQ4MmUzZTIyQDE1LjFfaTEiLCJfdHlwZSI6InBhZ2VfZWxlbWVudCIsIl9pZCI6InBqRWhLbXdCOU56bkxNM3A0U05PIiwiX3Njb3JlIjo5Ljg3OTIwMSwiX3NvdXJjZSI6eyJwYWdlX2lkIjoiZWEyYTJlY2YtNDI2OC00YjcwLWIzNzEtODI4ODhjNDY2ZDQ3QDgiLCJlbGVtZW50X2lkIjoiZnMtaWQxMTcwNzE2IiwiZWxlbWVudF90eXBlIjoicGFyYWdyYXBoIiwicGFnZV9wb3NpdGlvbiI6MTd9LCJoaWdobGlnaHQiOnsidmlzaWJsZV9jb250ZW50IjpbIkltYWdpbmUgYSBjZWxsIHRoYXQgY29tcGxldGVkIG1pdG9zaXMgYnV0IG5ldmVyIHVuZGVyd2VudCA8c3Ryb25nPmN5dG9raW5lc2lzPC9zdHJvbmc+LiIsIkluIHNvbWUgY2FzZXMsIGEgY2VsbCBtYXkgZGl2aWRlIGl0cyBnZW5ldGljIG1hdGVyaWFsIGFuZCBncm93IGluIHNpemUsIGJ1dCBmYWlsIHRvIHVuZGVyZ28gPHN0cm9uZz5jeXRva2luZXNpczwvc3Ryb25nPiJdfX0seyJfaW5kZXgiOiIxNGZiNGFkNy0zOWExLTRlZWUtYWI2ZS0zZWYyNDgyZTNlMjJAMTUuMV9pMSIsIl90eXBlIjoicGFnZV9lbGVtZW50IiwiX2lkIjoibHpFaEttd0I5TnpuTE0zcDRTTUMiLCJfc2NvcmUiOjkuMTMzNDI4LCJfc291cmNlIjp7InBhZ2VfaWQiOiJlYTJhMmVjZi00MjY4LTRiNzAtYjM3MS04Mjg4OGM0NjZkNDdAOCIsImVsZW1lbnRfaWQiOiJmcy1pZDIxMjc4MjQiLCJlbGVtZW50X3R5cGUiOiJwYXJhZ3JhcGgiLCJwYWdlX3Bvc2l0aW9uIjoyfSwiaGlnaGxpZ2h0Ijp7InZpc2libGVfY29udGVudCI6WyJ0dXJu4oCdIG9yIGN5Y2xlIG9mIHRoZSBjZWxsIGN5Y2xlIGNvbnNpc3RzIG9mIHR3byBnZW5lcmFsIHBoYXNlczogaW50ZXJwaGFzZSwgZm9sbG93ZWQgYnkgbWl0b3NpcyBhbmQgPHN0cm9uZz5jeXRva2luZXNpczwvc3Ryb25nPiIsIjxzdHJvbmc+Q3l0b2tpbmVzaXM8L3N0cm9uZz4gZGl2aWRlcyB0aGUgY3l0b3BsYXNtIGludG8gdHdvIGRpc3RpbmN0aXZlIGNlbGxzLiJdfX0seyJfaW5kZXgiOiIxNGZiNGFkNy0zOWExLTRlZWUtYWI2ZS0zZWYyNDgyZTNlMjJAMTUuMV9pMSIsIl90eXBlIjoicGFnZV9lbGVtZW50IiwiX2lkIjoiblRFaEttd0I5TnpuTE0zcDRTTWgiLCJfc2NvcmUiOjguNzM3NjY3LCJfc291cmNlIjp7InBhZ2VfaWQiOiJlYTJhMmVjZi00MjY4LTRiNzAtYjM3MS04Mjg4OGM0NjZkNDdAOCIsImVsZW1lbnRfaWQiOiJmcy1pZDEyODM2NjYiLCJlbGVtZW50X3R5cGUiOiJwYXJhZ3JhcGgiLCJwYWdlX3Bvc2l0aW9uIjo4fSwiaGlnaGxpZ2h0Ijp7InZpc2libGVfY29udGVudCI6WyI8c3Ryb25nPkN5dG9raW5lc2lzPC9zdHJvbmc+IHRoZW4gb2NjdXJzLCBkaXZpZGluZyB0aGUgY3l0b3BsYXNtIGFuZCBjZWxsIGJvZHkgaW50byB0d28gbmV3IGNlbGxzLiIsIlRoZSBwcm9jZXNzIGlzIHRoZW4gZm9sbG93ZWQgYnkgPHN0cm9uZz5jeXRva2luZXNpczwvc3Ryb25nPi4iXX19LHsiX2luZGV4IjoiMTRmYjRhZDctMzlhMS00ZWVlLWFiNmUtM2VmMjQ4MmUzZTIyQDE1LjFfaTEiLCJfdHlwZSI6InBhZ2VfZWxlbWVudCIsIl9pZCI6Im5qRWhLbXdCOU56bkxNM3A0U01sIiwiX3Njb3JlIjo4LjYzODkwOSwiX3NvdXJjZSI6eyJwYWdlX2lkIjoiZWEyYTJlY2YtNDI2OC00YjcwLWIzNzEtODI4ODhjNDY2ZDQ3QDgiLCJlbGVtZW50X2lkIjoiZmlnLWNoMDNfMDVfMDMiLCJlbGVtZW50X3R5cGUiOiJmaWd1cmUiLCJwYWdlX3Bvc2l0aW9uIjo5fSwiaGlnaGxpZ2h0Ijp7InZpc2libGVfY29udGVudCI6WyJGaWd1cmUgMy4zMiBDZWxsIERpdmlzaW9uOiBNaXRvc2lzIEZvbGxvd2VkIGJ5IDxzdHJvbmc+Q3l0b2tpbmVzaXM8L3N0cm9uZz4gVGhlIHN0YWdlcyBvZiBjZWxsIGRpdmlzaW9uIG92ZXJzZWUgdGhlIHNlcGFyYXRpb24iXX19LHsiX2luZGV4IjoiMTRmYjRhZDctMzlhMS00ZWVlLWFiNmUtM2VmMjQ4MmUzZTIyQDE1LjFfaTEiLCJfdHlwZSI6InBhZ2VfZWxlbWVudCIsIl9pZCI6InlERWhLbXdCOU56bkxNM3A1eU5uIiwiX3Njb3JlIjo3LjE1Njk1MSwiX3NvdXJjZSI6eyJwYWdlX2lkIjoiYTRjZDQxNjUtZWIwYy01MGQ3LWJjOTUtOWU2NTcyYTZmMTgyQDE1LjEiLCJlbGVtZW50X2lkIjoiZnMtaWQxMTc3NzY2IiwiZWxlbWVudF90eXBlIjoicGFyYWdyYXBoIiwicGFnZV9wb3NpdGlvbiI6N30sImhpZ2hsaWdodCI6eyJ2aXNpYmxlX2NvbnRlbnQiOlsiVGVsb3BoYXNlIGlzIGZvbGxvd2VkIGJ5IHRoZSBkaXZpc2lvbiBvZiB0aGUgY3l0b3BsYXNtICg8c3Ryb25nPmN5dG9raW5lc2lzPC9zdHJvbmc+KSwgd2hpY2ggZ2VuZXJhdGVzIHR3byBkYXVnaHRlciBjZWxscyJdfX0seyJfaW5kZXgiOiIxNGZiNGFkNy0zOWExLTRlZWUtYWI2ZS0zZWYyNDgyZTNlMjJAMTUuMV9pMSIsIl90eXBlIjoicGFnZV9lbGVtZW50IiwiX2lkIjoicERFaEttd0I5TnpuTE0zcDRTTkIiLCJfc2NvcmUiOjYuMjY3MjA3NiwiX3NvdXJjZSI6eyJwYWdlX2lkIjoiZWEyYTJlY2YtNDI2OC00YjcwLWIzNzEtODI4ODhjNDY2ZDQ3QDgiLCJlbGVtZW50X2lkIjoiZnMtaWQxODA0MzMyIiwiZWxlbWVudF90eXBlIjoicGFyYWdyYXBoIiwicGFnZV9wb3NpdGlvbiI6MTV9LCJoaWdobGlnaHQiOnsidmlzaWJsZV9jb250ZW50IjpbIkF0IHRoaXMgcG9pbnQsIHRoZSBjZWxsIGlzIGFscmVhZHkgYmVnaW5uaW5nIHRvIHNwbGl0IGluIGhhbGYgYXMgPHN0cm9uZz5jeXRva2luZXNpczwvc3Ryb25nPiBiZWdpbnMuIl19fSx7Il9pbmRleCI6IjE0ZmI0YWQ3LTM5YTEtNGVlZS1hYjZlLTNlZjI0ODJlM2UyMkAxNS4xX2kxIiwiX3R5cGUiOiJwYWdlX2VsZW1lbnQiLCJfaWQiOiJwVEVoS213QjlOem5MTTNwNFNOSSIsIl9zY29yZSI6Ni4yNjcyMDc2LCJfc291cmNlIjp7InBhZ2VfaWQiOiJlYTJhMmVjZi00MjY4LTRiNzAtYjM3MS04Mjg4OGM0NjZkNDdAOCIsImVsZW1lbnRfaWQiOiJmcy1pZDIyMDkwMTUiLCJlbGVtZW50X3R5cGUiOiJwYXJhZ3JhcGgiLCJwYWdlX3Bvc2l0aW9uIjoxNn0sImhpZ2hsaWdodCI6eyJ2aXNpYmxlX2NvbnRlbnQiOlsiZnVycm93IGlzIGEgY29udHJhY3RpbGUgYmFuZCBtYWRlIHVwIG9mIG1pY3JvZmlsYW1lbnRzIHRoYXQgZm9ybXMgYXJvdW5kIHRoZSBtaWRsaW5lIG9mIHRoZSBjZWxsIGR1cmluZyA8c3Ryb25nPmN5dG9raW5lc2lzPC9zdHJvbmc+Il19fSx7Il9pbmRleCI6IjE0ZmI0YWQ3LTM5YTEtNGVlZS1hYjZlLTNlZjI0ODJlM2UyMkAxNS4xX2kxIiwiX3R5cGUiOiJwYWdlX2VsZW1lbnQiLCJfaWQiOiI3akVqS213QjlOem5MTTNwaHk2RiIsIl9zY29yZSI6NC4xMjg2MDk3LCJfc291cmNlIjp7InBhZ2VfaWQiOiIwMTlmNDIzOC0zMjExLTQ5ZDMtOGE3Zi01NWE1N2U4ZGRjYTRAOCIsImVsZW1lbnRfaWQiOiJmcy1pZDE1MTQyMDciLCJlbGVtZW50X3R5cGUiOiJwYXJhZ3JhcGgiLCJwYWdlX3Bvc2l0aW9uIjozfSwiaGlnaGxpZ2h0Ijp7InZpc2libGVfY29udGVudCI6WyJSZWNhbGwgdGhhdCBzdGVtIGNlbGxzIHVuZGVyZ28gbWl0b3NpcyBwbHVzIDxzdHJvbmc+Y3l0b2tpbmVzaXM8L3N0cm9uZz4gKGNlbGx1bGFyIGRpdmlzaW9uKSB0byBnaXZlIHJpc2UgdG8gbmV3IGRhdWdodGVyIl19fV19fQ==
+    http_version: 
+  recorded_at: Thu, 25 Jul 2019 21:52:39 GMT
+recorded_with: VCR 4.0.0

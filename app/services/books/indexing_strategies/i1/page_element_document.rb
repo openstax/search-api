@@ -11,6 +11,8 @@ module Books::IndexingStrategies::I1
   class PageElementDocument
     attr_reader :element, :element_type, :element_id, :page_position, :page_id
 
+    MATHML_REPLACEMENT = "#{"\u2026"}"
+
     def self.mapping
       {
         page_element: {
@@ -37,6 +39,8 @@ module Books::IndexingStrategies::I1
         raise ElementIdMissing.new(element_type: element_type, page_id: page_id)
       end
       @element_id = element.id
+
+      replace_mathml_nodes
     end
 
     def type
@@ -53,6 +57,12 @@ module Books::IndexingStrategies::I1
         visible_content: visible_content,
         hidden_content: hidden_content
       }
+    end
+
+    def replace_mathml_nodes
+      element.node.xpath(".//math").each do |div|
+        div.replace("<span>#{MATHML_REPLACEMENT}</span>")
+      end
     end
 
     # Override these methods in specific element subclasses if appropriate
