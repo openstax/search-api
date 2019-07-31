@@ -8,6 +8,7 @@ RSpec.describe Books::IndexingStrategies::I1::FigureDocument do
       "OpenStax::Cnx::V1::Figure",
       caption: caption,
                id: 0,
+               node: double(xpath: []),
                alt_text: alt_text)
   end
 

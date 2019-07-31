@@ -78,11 +78,13 @@ RSpec.describe Books::SearchStrategies::S1::Strategy , type: :request, api: :v0,
       allow(OpenStax::Cnx::V1).to receive(:fetch).with(math_book_url).and_return(math_book_json)
       allow(OpenStax::Cnx::V1).to receive(:fetch).with(math_page_url).and_return(math_page_json)
 
-      index.recreate
-    end
-
-    after do
-      index.delete
+      do_not_record_or_playback do
+        if !index.exists?
+          index.create
+          index.populate
+          sleep(2)
+        end
+      end
     end
 
     it 'finds the search term in a paragraph w/out searching the mathml' do

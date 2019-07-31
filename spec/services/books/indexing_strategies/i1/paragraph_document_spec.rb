@@ -7,6 +7,7 @@ RSpec.describe Books::IndexingStrategies::I1::ParagraphDocument do
     figure = instance_double(
       "OpenStax::Cnx::V1::Paragraph",
       id: 0,
+      node: double(xpath: []),
       text: text)
   end
 
