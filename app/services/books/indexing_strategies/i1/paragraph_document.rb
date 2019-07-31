@@ -12,8 +12,6 @@ module Books::IndexingStrategies::I1
     end
 
     def visible_content
-      replace_mathml_nodes
-
       element.text
     end
   end

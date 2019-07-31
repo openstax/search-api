@@ -87,7 +87,7 @@ RSpec.describe Books::SearchStrategies::S1::Strategy , type: :request, api: :v0,
       end
     end
 
-    it 'finds the search term in a paragraph w/out searching the mathml' do
+    it 'finds the search term in a paragraph excluding the mathml' do
       result = search_strategy.search(query_string: paragraph_search_term)
 
       expect(result["hits"]["hits"].first["highlight"]["visible_content"].first.include?(paragraph_search_term)).to be_truthy
@@ -99,7 +99,7 @@ RSpec.describe Books::SearchStrategies::S1::Strategy , type: :request, api: :v0,
       expect(result["hits"]["hits"].count).to eq 0
     end
 
-    it 'finds the search term in a figure w/out searching the mathml' do
+    it 'finds the search term in a figure excluding the mathml' do
       result = search_strategy.search(query_string: figure_search_term)
 
       expect(result["hits"]["hits"].first["highlight"]["visible_content"].first.include?(figure_search_term)).to be_truthy
