@@ -1,0 +1,120 @@
+{
+  "googleAnalytics": [
+    "UA-30227798-5",
+    "UA-101537094-1"
+  ],
+  "version": "15.1",
+  "submitlog": "Applying recipe and baking | CP",
+  "abstract": "<div xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:c=\"http://cnx.rice.edu/cnxml\" xmlns:md=\"http://cnx.rice.edu/mdml\" xmlns:qml=\"http://cnx.rice.edu/qml/1.0\" xmlns:mod=\"http://cnx.rice.edu/#moduleIds\" xmlns:bib=\"http://bibtexml.sf.net/\" xmlns:data=\"http://dev.w3.org/html5/spec/#custom\"/>",
+  "revised": "2019-02-12T17:30:14Z",
+  "printStyle": "anatomy",
+  "roles": null,
+  "keywords": [],
+  "id": "54fb4ad7-39a1-4eee-ab6e-3ef2482e3e22",
+  "canonical": null,
+  "title": "Math",
+  "mediaType": "application/vnd.org.cnx.collection",
+  "canon_url": "https://cnx.org/contents/54fb4ad7-39a1-4eee-ab6e-3ef2482e3e22/Anatomy-and-Physiology",
+  "subjects": [
+    "Science and Technology"
+  ],
+  "legacy_id": "col11496",
+  "parentId": null,
+  "resources": [
+    {
+      "media_type": "text/xml",
+      "id": "5b84934529c31072a587824772b44b65df48af46",
+      "filename": "collection.xml"
+    }
+  ],
+  "publishers": [
+    {
+      "surname": "OpenStax College",
+      "suffix": "",
+      "firstname": "",
+      "title": "",
+      "fullname": "OpenStax",
+      "id": "OpenStaxCollege"
+    }
+  ],
+  "parent": {
+    "authors": [],
+    "shortId": null,
+    "version": "",
+    "id": null,
+    "title": null
+  },
+  "stateid": 1,
+  "parentTitle": null,
+  "shortId": "FPtK1zmh",
+  "authors": [
+    {
+      "surname": "OpenStax College",
+      "suffix": "",
+      "firstname": "",
+      "title": "",
+      "fullname": "OpenStax",
+      "id": "OpenStaxCollege"
+    }
+  ],
+  "parentVersion": "",
+  "legacy_version": "1.15",
+  "licensors": [
+    {
+      "surname": "University",
+      "suffix": "",
+      "firstname": "Rice",
+      "title": "",
+      "fullname": "Rice University",
+      "id": "OSCRiceUniversity"
+    }
+  ],
+  "language": "en",
+  "license": {
+    "url": "http://creativecommons.org/licenses/by/4.0/",
+    "code": "by",
+    "version": "4.0",
+    "name": "Creative Commons Attribution License"
+  },
+  "created": "2013-03-06T21:41:35Z",
+  "tree": {
+    "shortId": "FPtK1zmh@15.1",
+    "id": "54fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1",
+    "contents": [
+      {
+        "shortId": "raNQgZ7E@6",
+        "id": "ada35081-9ec4-4eb8-98b2-3ce350d5427f@6",
+        "title": "<span class=\"os-number\">1.1</span><span class=\"os-divider\"> </span><span class=\"os-text\">Math</span>"
+      }
+    ],
+    "title": "Math"
+  },
+  "doctype": "",
+  "buyLink": null,
+  "submitter": {
+    "surname": "Math",
+    "suffix": "",
+    "firstname": "CNX",
+    "title": "",
+    "fullname": "CNX Math",
+    "id": "cnxap"
+  },
+  "collated": true,
+  "baked": "2019-02-12T11:32:13.973943-06:00",
+  "parentAuthors": [],
+  "history": [
+    {
+      "changes": "Applying recipe and baking | CP",
+      "version": "15.1",
+      "revised": "2019-02-12T17:30:14Z",
+      "publisher": {
+        "surname": "Math",
+        "suffix": "",
+        "firstname": "CNX",
+        "title": "",
+        "fullname": "CNX Math",
+        "id": "cnxap"
+      }
+    }
+  ]
+}

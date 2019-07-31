@@ -5,6 +5,7 @@ RSpec.describe Books::IndexingStrategies::I1::PageElementDocument do
 
   let(:element) do
     instance_double("OpenStax::Cnx::V1::Paragraph",
+                    node: double(xpath: []),
                     id: id)
   end
 

@@ -1,0 +1,31 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:9200/54fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1_i1/_search
+    body:
+      encoding: UTF-8
+      string: '{"size":150,"query":{"simple_query_string":{"fields":["title","visible_content"],"query":"Einstein","flags":"WHITESPACE|PHRASE","minimum_should_match":"100%","default_operator":"AND"}},"_source":["element_type","element_id","page_id","page_position"],"highlight":{"number_of_fragments":20,"pre_tags":["\u003cstrong\u003e"],"post_tags":["\u003c/strong\u003e"],"fields":{"title":{},"visible_content":{}}}}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '571'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJ0b29rIjoxLCJ0aW1lZF9vdXQiOmZhbHNlLCJfc2hhcmRzIjp7InRvdGFsIjoxLCJzdWNjZXNzZnVsIjoxLCJza2lwcGVkIjowLCJmYWlsZWQiOjB9LCJoaXRzIjp7InRvdGFsIjoxLCJtYXhfc2NvcmUiOjIuMjU3MTE5MiwiaGl0cyI6W3siX2luZGV4IjoiNTRmYjRhZDctMzlhMS00ZWVlLWFiNmUtM2VmMjQ4MmUzZTIyQDE1LjFfaTEiLCJfdHlwZSI6InBhZ2VfZWxlbWVudCIsIl9pZCI6IjVqSGtTR3dCOU56bkxNM3BEV3dmIiwiX3Njb3JlIjoyLjI1NzExOTIsIl9zb3VyY2UiOnsicGFnZV9pZCI6ImFkYTM1MDgxLTllYzQtNGViOC05OGIyLTNjZTM1MGQ1NDI3ZkA2IiwiZWxlbWVudF9pZCI6ImZzLWlkMTE3MDU3MjE1MTAxMCIsImVsZW1lbnRfdHlwZSI6InBhcmFncmFwaCIsInBhZ2VfcG9zaXRpb24iOjF9LCJoaWdobGlnaHQiOnsidmlzaWJsZV9jb250ZW50IjpbIkdpdmVuIDxzdHJvbmc+RWluc3RlaW48L3N0cm9uZz4g4oCmIGFuZCBhbiBvdXRwdXQg4oCmIHdlIGFyZSBvZnRlbiBpbnRlcmVzdGVkIGluIGZpbmRpbmcgd2hhdCB2YWx1ZSBvciB2YWx1ZXMg4oCmIHdlcmUgbWFwcGVkIl19fV19fQ==
+    http_version: 
+  recorded_at: Wed, 31 Jul 2019 20:48:49 GMT
+recorded_with: VCR 4.0.0

@@ -1,0 +1,31 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:9200/54fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1_i1/_search
+    body:
+      encoding: UTF-8
+      string: '{"size":150,"query":{"simple_query_string":{"fields":["title","visible_content"],"query":"Malony","flags":"WHITESPACE|PHRASE","minimum_should_match":"100%","default_operator":"AND"}},"_source":["element_type","element_id","page_id","page_position"],"highlight":{"number_of_fragments":20,"pre_tags":["\u003cstrong\u003e"],"post_tags":["\u003c/strong\u003e"],"fields":{"title":{},"visible_content":{}}}}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '578'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJ0b29rIjoxLCJ0aW1lZF9vdXQiOmZhbHNlLCJfc2hhcmRzIjp7InRvdGFsIjoxLCJzdWNjZXNzZnVsIjoxLCJza2lwcGVkIjowLCJmYWlsZWQiOjB9LCJoaXRzIjp7InRvdGFsIjoxLCJtYXhfc2NvcmUiOjQuMjg2NzA0LCJoaXRzIjpbeyJfaW5kZXgiOiI1NGZiNGFkNy0zOWExLTRlZWUtYWI2ZS0zZWYyNDgyZTNlMjJAMTUuMV9pMSIsIl90eXBlIjoicGFnZV9lbGVtZW50IiwiX2lkIjoiNlRIa1NHd0I5TnpuTE0zcERXd3kiLCJfc2NvcmUiOjQuMjg2NzA0LCJfc291cmNlIjp7InBhZ2VfaWQiOiJhZGEzNTA4MS05ZWM0LTRlYjgtOThiMi0zY2UzNTBkNTQyN2ZANiIsImVsZW1lbnRfaWQiOiJDTlhfQ2FsY19GaWd1cmVfMDFfMDRfMDAxIiwiZWxlbWVudF90eXBlIjoiZmlndXJlIiwicGFnZV9wb3NpdGlvbiI6NH0sImhpZ2hsaWdodCI6eyJ2aXNpYmxlX2NvbnRlbnQiOlsiRmlndXJlIDEuMzdHaXZlbiA8c3Ryb25nPk1hbG9ueTwvc3Ryb25nPiDigKYgYW5kIGl0cyBpbnZlcnNlIOKApiBpZiBhbmQgb25seSBpZiDigKYgVGhlIHJhbmdlIG9mIOKApiBiZWNvbWVzIHRoZSBkb21haW4gb2Yg4oCmIGFuZCJdfX1dfX0=
+    http_version: 
+  recorded_at: Wed, 31 Jul 2019 20:48:49 GMT
+recorded_with: VCR 4.0.0

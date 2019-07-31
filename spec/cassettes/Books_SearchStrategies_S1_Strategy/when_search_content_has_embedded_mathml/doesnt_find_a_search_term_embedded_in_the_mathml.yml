@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: get
-    uri: http://localhost:9200/14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1_i1/_search
+    uri: http://localhost:9200/54fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1_i1/_search
     body:
       encoding: UTF-8
-      string: '{"size":150,"query":{"simple_query_string":{"fields":["title","visible_content"],"query":"defnotthereforsure","flags":"WHITESPACE|PHRASE","minimum_should_match":"100%","default_operator":"AND"}},"_source":["element_type","element_id","page_id","page_position"],"highlight":{"number_of_fragments":20,"pre_tags":["\u003cstrong\u003e"],"post_tags":["\u003c/strong\u003e"],"fields":{"title":{},"visible_content":{}}}}'
+      string: '{"size":150,"query":{"simple_query_string":{"fields":["title","visible_content"],"query":"Harlow","flags":"WHITESPACE|PHRASE","minimum_should_match":"100%","default_operator":"AND"}},"_source":["element_type","element_id","page_id","page_position"],"highlight":{"number_of_fragments":20,"pre_tags":["\u003cstrong\u003e"],"post_tags":["\u003c/strong\u003e"],"fields":{"title":{},"visible_content":{}}}}'
     headers:
       User-Agent:
       - Faraday v0.15.3
