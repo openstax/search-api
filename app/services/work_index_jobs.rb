@@ -30,6 +30,7 @@ class WorkIndexJobs
       Rails.logger.info("WorkIndexJobs: job #{job.class.to_s} #{job.to_json} started...")
 
       starting = Time.now
+
       es_stats = job.call
       time_took = Time.at(Time.now - starting).utc.strftime("%H:%M:%S")
 
@@ -40,27 +41,27 @@ class WorkIndexJobs
                        es_stats: es_stats,
                        time_took: time_took)
     rescue InvalidIndexingStrategy => ex
-      Raven.capture_exception(ex)
-      Rails.logger.error("Invalid indexing strategy for #{job.to_json}. #{ex.message}")
-      enqueue_done_job(job: job,
-                       status: DoneIndexJob::STATUS_INVALID_INDEXING_STRATEGY)
+      handle_error(exception: ex, job: job, status: DoneIndexJob::STATUS_INVALID_INDEXING_STRATEGY)
     rescue OpenStax::HTTPError => ex
-      Raven.capture_exception(ex)
-      Rails.logger.error("OpenStax HTTP error #{job.to_json}. #{ex.message}")
-      enqueue_done_job(job: job,
-                       status: DoneIndexJob::STATUS_HTTP_ERROR)
+      handle_error(exception: ex, job: job, status: DoneIndexJob::STATUS_HTTP_ERROR)
     rescue => ex
-      Raven.capture_exception(ex)
-      Rails.logger.error("Exception occurred on #{job.to_json}. #{ex.message}")
-      enqueue_done_job(job: job,
-                       status: DoneIndexJob::STATUS_OTHER_ERROR,
-                       message: ex.message)
+      handle_error(exception: ex, job: job, status: DoneIndexJob::STATUS_OTHER_ERROR)
     end
 
     job_stats
   end
 
   private
+
+  def handle_error(exception:, job:, status:)
+    Raven.capture_exception(exception, :extra => job.inspect)
+    Rails.logger.error("Error occurred for #{job.to_json}. #{exception.message}")
+    enqueue_done_job(job: job,
+                     status: status,
+                     message: [ exception.message,
+                                exception.backtrace.join("\n")].join("\n"))
+
+  end
 
   class InvalidIndexingStrategy < StandardError; end
 

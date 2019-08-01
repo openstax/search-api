@@ -38,18 +38,20 @@ class MonitorIndexJobs
 
         @processed_from_dead += 1
       rescue => ex
-        Raven.capture_exception(ex)
-        log_error("dead job error #{ex.message} process #{dead_job.inspect}")
+        Raven.capture_exception(ex, :extra => dead_job.inspect)
+        Rails.logger.error("dead job error #{ex.message} process #{dead_job.inspect}")
       end
     end
   end
 
   def reset_desired_capacity_if_needed
+    return unless Rails.env.production?
+
     todo_queue_size = @todo_jobs_queue.count
 
     if todo_queue_size > 0 && @worker_asg.desired_capacity == 0
       @worker_asg.increase_desired_capacity(by: todo_queue_size)
-      log_info("Resetting aws autoscaling desired capacity by #{todo_queue_size}")
+      Rails.logger.info("Resetting aws autoscaling desired capacity by #{todo_queue_size}")
       @desired_capacity_reset_by = todo_queue_size
     end
   end
@@ -68,14 +70,14 @@ class MonitorIndexJobs
       break if done_job.nil?
 
       begin
-        log_info("job #{done_job.class.to_s} #{done_job.to_json} started...")
+        Rails.logger.info("job #{done_job.class.to_s} #{done_job.to_json} started...")
 
         done_job.call
 
         @processed_from_done +=1
       rescue => ex
         Raven.capture_exception(ex)
-        log_error("done job error #{ex.message} process #{done_job.inspect}")
+        Rails.logger.error("done job error #{ex.message} process #{done_job.inspect}")
       end
     end
   end
