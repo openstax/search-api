@@ -78,6 +78,8 @@ class Api::V0::SearchController < Api::V0::BaseController
     response.overall_took = ((Time.now - started_at)*1000).round
 
     render json: response, status: :ok
+  rescue Elasticsearch::Transport::Transport::Errors::NotFound
+    render json: 'The specified resource was not found', status: 404
   end
 
 end
