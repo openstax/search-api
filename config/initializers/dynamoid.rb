@@ -6,4 +6,5 @@ require 'dynamoid'
 Dynamoid.configure do |config|
   config.namespace = ""   # no prefix; full table name set in secrets.yml
   config.timestamps = true
+  config.logger.level = :error
 end
