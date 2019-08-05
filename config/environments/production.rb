@@ -47,6 +47,9 @@ Rails.application.configure do
   # Prepend all log lines with the following tags.
   config.log_tags = [ :request_id ]
 
+  # Use default logging formatter so that PID and timestamp are not suppressed.
+  config.log_formatter = ::Logger::Formatter.new
+
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
 
@@ -73,16 +76,6 @@ Rails.application.configure do
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
-
-  config.lograge.enabled = true
-  config.log_tags = [ :remote_ip ]
-  config.lograge.base_controller_class = 'ActionController::API'
-  config.lograge.custom_options = lambda do |event|
-    exceptions = %w(controller action format id)
-    {
-      params: event.payload[:params].except(*exceptions)
-    }
-  end
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
