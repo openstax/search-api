@@ -6,10 +6,4 @@ require 'dynamoid'
 Dynamoid.configure do |config|
   config.namespace = ""   # no prefix; full table name set in secrets.yml
   config.timestamps = true
-
-  if Rails.env.development?
-    config.logger.level = :debug
-  else
-    config.logger.level = :warn
-  end
 end
