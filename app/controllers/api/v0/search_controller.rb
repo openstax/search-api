@@ -11,6 +11,10 @@ class Api::V0::SearchController < Api::V0::BaseController
     end
   end
 
+  rescue_from_unless_local Elasticsearch::Transport::Transport::Errors::NotFound do |_|
+    render json: 'The specified resource was not found', status: 404
+  end
+
   swagger_path '/search' do
     operation :get do
       key :summary, 'Run a search query'
@@ -78,8 +82,5 @@ class Api::V0::SearchController < Api::V0::BaseController
     response.overall_took = ((Time.now - started_at)*1000).round
 
     render json: response, status: :ok
-  rescue Elasticsearch::Transport::Transport::Errors::NotFound
-    render json: 'The specified resource was not found', status: 404
   end
-
 end

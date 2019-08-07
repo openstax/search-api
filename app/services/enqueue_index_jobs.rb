@@ -1,5 +1,7 @@
 # Indexes a book version thru the SQS queuing system
 class EnqueueIndexJobs
+  prefix_logger "EnqueueIndexJobs"
+
   def initialize
     @todo_jobs_queue = TodoJobsQueue.new
     @new_create_index_jobs = 0
@@ -7,7 +9,7 @@ class EnqueueIndexJobs
   end
 
   def call
-    info { "Starting..." }
+    log_info { "Starting..." }
 
     released_book_ids.each do |book_id|
       ACTIVE_INDEXING_STRATEGY_NAMES.each do |strategy_name|
@@ -27,7 +29,7 @@ class EnqueueIndexJobs
       enqueue_delete_index_job(unneeded_book_indexing)
     end
 
-    info { "Completed: #{stats}" }
+    log_info { "Completed: #{stats}" }
 
     stats
   end
@@ -63,7 +65,7 @@ class EnqueueIndexJobs
 
     @new_create_index_jobs += 1
 
-    info { "Enqueued creation for '#{book_id} #{indexing_strategy_name}'" }
+    log_info { "Enqueued creation for '#{book_id} #{indexing_strategy_name}'" }
   end
 
   def enqueue_delete_index_job(book_indexing)
@@ -75,7 +77,7 @@ class EnqueueIndexJobs
 
     @new_delete_index_jobs += 1
 
-    info { "Enqueued deletion for '#{book_indexing.book_version_id} #{book_indexing.indexing_strategy_name}'" }
+    log_info { "Enqueued deletion for '#{book_indexing.book_version_id} #{book_indexing.indexing_strategy_name}'" }
   end
 
   def released_book_ids
@@ -89,11 +91,4 @@ class EnqueueIndexJobs
     @new_delete_index_jobs + @new_create_index_jobs
   end
 
-  def info
-    Rails.logger.info "#{self.class.log_prefix} #{yield}"
-  end
-
-  def self.log_prefix
-    "EnqueueIndexJobs:"
-  end
 end

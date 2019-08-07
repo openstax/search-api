@@ -45,8 +45,6 @@ RSpec.describe MonitorIndexJobs do
         expect_any_instance_of(OpenStax::Aws::AutoScalingGroup).to receive(:desired_capacity).and_return(0)
         allow_any_instance_of(DoneJobsQueue).to receive(:read).and_return(nil)
         allow_any_instance_of(DeadLetterJobsQueue).to receive(:read).and_return(nil)
-
-        allow(Rails.env).to receive(:production?).and_return(true)
       end
 
       it 'sends a message to aws autoscalinggroup to increase desired capacity' do
