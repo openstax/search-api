@@ -58,8 +58,7 @@ class WorkIndexJobs
     Rails.logger.error("Error occurred for #{job.to_json}. #{exception.message}")
     enqueue_done_job(job: job,
                      status: status,
-                     message: [ exception.message,
-                                exception.backtrace.join("\n")].join("\n"))
+                     message: "#{exception.message}-#{exception.backtrace.join("\n")}")
 
   end
 
@@ -92,8 +91,8 @@ class WorkIndexJobs
 
   def job_stats
     {
-      num_index_jobs_processed: @stats[CreateIndexJob],
-      num_delete_index_jobs_processed: @stats[DeleteIndexJob]
+      index_jobs_processed_running_count: @stats[CreateIndexJob],
+      delete_index_jobs_processed_running_count: @stats[DeleteIndexJob]
     }
   end
 end
