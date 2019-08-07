@@ -29,6 +29,9 @@ gem "aws-sdk-sqs"
 # Versioned API tools
 gem "versionist"
 
+# https://github.com/lsegal/yard/security/advisories/GHSA-xfhh-rx56-rxcr
+gem "yard", ">= 0.9.20"
+
 # Access AWS dynamo db
 gem 'dynamoid'
 
