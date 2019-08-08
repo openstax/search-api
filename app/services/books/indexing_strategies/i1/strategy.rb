@@ -4,6 +4,8 @@ module Books::IndexingStrategies::I1
   #
   # The strategy also declares what page element objects it wants indexed.
   class Strategy
+    prefix_logger "Books::IndexingStrategies::I1::Strategy"
+
     SHORT_NAME = "i1"
     NUM_SHARDS = 1
     NUM_REPLICAS = 1
@@ -27,7 +29,7 @@ module Books::IndexingStrategies::I1
     end
 
     def index(book:, index_name:)
-      Rails.logger.info("I1::IndexingStrategy: Creating index #{index_name} with #{book.root_book_part.pages.count} pages")
+      log_info("Creating index #{index_name} with #{book.root_book_part.pages.count} pages")
       book.root_book_part.pages.each {|page| index_page(page: page, index_name: index_name) }
     end
 
@@ -50,7 +52,7 @@ module Books::IndexingStrategies::I1
                                                body:  document.body)
         rescue ElementIdMissing => ex
           Raven.capture_message(ex.message, :extra => element.to_json)
-          Rails.logger.error(ex)
+          log_error(ex)
         end
       end
     end

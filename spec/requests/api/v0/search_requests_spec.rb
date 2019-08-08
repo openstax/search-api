@@ -45,6 +45,12 @@ RSpec.describe 'api v0 search requests', type: :request, api: :v0, vcr: VCR_OPTS
         expect(json_response[:messages]).to include(/Unknown search strategy: booyah/)
       end
 
+      it "404s for unknown resource" do
+        api_get "search?#{query(q: "Blah", book_id: 'foobar', index_strategy: "i1", search_strategy: "s1")}"
+        expect(response).to have_http_status(404)
+        expect(response.body).to include('The specified resource was not found')
+      end
+
       it "422's for missing params" do
         api_get "search?q=blah"
         expect(response).to have_http_status(:unprocessable_entity)
@@ -53,7 +59,7 @@ RSpec.describe 'api v0 search requests', type: :request, api: :v0, vcr: VCR_OPTS
     end
   end
 
-  def query(q: nil, index_strategy: nil, search_strategy: nil)
-    "q=#{q}&index_strategy=#{index_strategy}&search_strategy=#{search_strategy}&books=14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1"
+  def query(q: nil, index_strategy: nil, search_strategy: nil, book_id: book_version_id)
+    "q=#{q}&index_strategy=#{index_strategy}&search_strategy=#{search_strategy}&books=#{book_id}"
   end
 end

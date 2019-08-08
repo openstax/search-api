@@ -16,6 +16,7 @@ RSpec.describe WorkIndexJobs do
   describe '#out_of_work?' do
     before do
       allow_any_instance_of(DoneJobsQueue).to receive(:write)
+      allow(create_job).to receive(:_call)
     end
 
     it 'signals correct out of work or not out of work' do
@@ -60,10 +61,11 @@ RSpec.describe WorkIndexJobs do
       before do
         allow(create_job).to receive(:call).and_raise(OpenStax::HTTPError)
         allow_any_instance_of(TodoJobsQueue).to receive(:read).and_return(create_job)
+        allow(create_job).to receive(:inspect)
       end
 
       it 'writes a done job with http error status' do
-        expect_any_instance_of(described_class).to receive(:enqueue_done_job).with(job: anything, status: DoneIndexJob::STATUS_HTTP_ERROR).once
+        expect_any_instance_of(described_class).to receive(:enqueue_done_job).once
         work_index_jobs.call
       end
     end

@@ -1,6 +1,5 @@
 # Monitor the Done jobs from the SQS queue
 class MonitorIndexJobs
-
   prefix_logger "MonitorIndexJobs"
 
   def initialize
@@ -38,13 +37,15 @@ class MonitorIndexJobs
 
         @processed_from_dead += 1
       rescue => ex
-        Raven.capture_exception(ex)
+        Raven.capture_exception(ex, :extra => dead_job.inspect)
         log_error("dead job error #{ex.message} process #{dead_job.inspect}")
       end
     end
   end
 
   def reset_desired_capacity_if_needed
+    return if Rails.env.development?
+
     todo_queue_size = @todo_jobs_queue.count
 
     if todo_queue_size > 0 && @worker_asg.desired_capacity == 0

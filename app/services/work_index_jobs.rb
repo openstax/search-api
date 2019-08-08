@@ -4,6 +4,8 @@
 # (1) CreateIndexJob - will (re)build the search index for this book version and indexing version
 # (2) DeleteIndexJob - will delete the search indexed for this unneeded book
 class WorkIndexJobs
+  prefix_logger "WorkIndexJobs"
+
   def initialize
     @todo_jobs_queue        = TodoJobsQueue.new
     @done_jobs_queue        = DoneJobsQueue.new
@@ -27,40 +29,40 @@ class WorkIndexJobs
 
     begin
       validate_indexing_strategy_name(job)
-      Rails.logger.info("WorkIndexJobs: job #{job.class.to_s} #{job.to_json} started...")
+      log_info("job #{job.class.to_s} #{job.to_json} started...")
 
       starting = Time.now
+
       es_stats = job.call
       time_took = Time.at(Time.now - starting).utc.strftime("%H:%M:%S")
 
-      Rails.logger.info("WorkIndexJobs: job #{job.class.to_s} #{job.to_json} took #{time_took} time.")
+      log_info("job #{job.class.to_s} #{job.to_json} took #{time_took} time.")
 
       enqueue_done_job(job: job,
                        status: DoneIndexJob::STATUS_SUCCESSFUL,
                        es_stats: es_stats,
                        time_took: time_took)
     rescue InvalidIndexingStrategy => ex
-      Raven.capture_exception(ex)
-      Rails.logger.error("Invalid indexing strategy for #{job.to_json}. #{ex.message}")
-      enqueue_done_job(job: job,
-                       status: DoneIndexJob::STATUS_INVALID_INDEXING_STRATEGY)
+      handle_error(exception: ex, job: job, status: DoneIndexJob::STATUS_INVALID_INDEXING_STRATEGY)
     rescue OpenStax::HTTPError => ex
-      Raven.capture_exception(ex)
-      Rails.logger.error("OpenStax HTTP error #{job.to_json}. #{ex.message}")
-      enqueue_done_job(job: job,
-                       status: DoneIndexJob::STATUS_HTTP_ERROR)
+      handle_error(exception: ex, job: job, status: DoneIndexJob::STATUS_HTTP_ERROR)
     rescue => ex
-      Raven.capture_exception(ex)
-      Rails.logger.error("Exception occurred on #{job.to_json}. #{ex.message}")
-      enqueue_done_job(job: job,
-                       status: DoneIndexJob::STATUS_OTHER_ERROR,
-                       message: ex.message)
+      handle_error(exception: ex, job: job, status: DoneIndexJob::STATUS_OTHER_ERROR)
     end
 
     job_stats
   end
 
   private
+
+  def handle_error(exception:, job:, status:)
+    Raven.capture_exception(exception, :extra => job.inspect)
+    log_error("Error occurred for #{job.to_json}. #{exception.message}")
+    enqueue_done_job(job: job,
+                     status: status,
+                     message: "#{exception.message}-#{exception.backtrace.join("\n")}")
+
+  end
 
   class InvalidIndexingStrategy < StandardError; end
 
@@ -91,8 +93,8 @@ class WorkIndexJobs
 
   def job_stats
     {
-      num_index_jobs_processed: @stats[CreateIndexJob],
-      num_delete_index_jobs_processed: @stats[DeleteIndexJob]
+      index_jobs_processed_running_count: @stats[CreateIndexJob],
+      delete_index_jobs_processed_running_count: @stats[DeleteIndexJob]
     }
   end
 end
