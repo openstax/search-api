@@ -27,17 +27,17 @@ module Books::IndexingStrategies::I1
       documents = BookDocs.new(book: book).docs
 
       log_info("Creating index #{index_name} with #{documents.count} documents")
-
-      documents.each {|document| index_document(document: document) }
+      documents.each {|document| index_document(document: document, index_name: index_name) }
+      log_info("Finished creating index #{index_name}")
     end
 
     def total_number_of_documents_to_index(book:)
-      BookDocumentIterator.new(book: book).docs.count
+      BookDocs.new(book: book).docs.count
     end
 
     private
 
-    def index_document(document:)
+    def index_document(document:, index_name:)
       begin
         OsElasticsearchClient.instance.index(index: index_name,
                                              type:  document.type,
@@ -47,23 +47,23 @@ module Books::IndexingStrategies::I1
         log_error(ex)
       end
     end
-  end
 
-  def settings
-    {
-      settings: {
-        index: {
-          number_of_shards: NUM_SHARDS,
-          number_of_replicas: NUM_REPLICAS
-        },
-        analysis: {
-          analyzer: :simple
+    def settings
+      {
+        settings: {
+          index: {
+            number_of_shards: NUM_SHARDS,
+            number_of_replicas: NUM_REPLICAS
+          },
+          analysis: {
+            analyzer: :simple
+          }
         }
       }
-    }
-  end
+    end
 
-  def mappings
-    { mappings: {} }.merge(PageElementDocument.mapping)
+    def mappings
+      { mappings: {} }.merge(PageElementDocument.mapping)
+    end
   end
 end

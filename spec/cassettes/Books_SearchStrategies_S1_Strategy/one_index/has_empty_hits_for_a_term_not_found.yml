@@ -24,7 +24,7 @@ http_interactions:
       - '134'
     body:
       encoding: UTF-8
-      string: '{"took":1,"timed_out":false,"_shards":{"total":1,"successful":1,"skipped":0,"failed":0},"hits":{"total":0,"max_score":null,"hits":[]}}'
+      string: '{"took":2,"timed_out":false,"_shards":{"total":1,"successful":1,"skipped":0,"failed":0},"hits":{"total":0,"max_score":null,"hits":[]}}'
     http_version: 
-  recorded_at: Wed, 31 Jul 2019 20:48:49 GMT
+  recorded_at: Tue, 13 Aug 2019 00:11:39 GMT
 recorded_with: VCR 4.0.0

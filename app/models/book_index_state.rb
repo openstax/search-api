@@ -73,6 +73,10 @@ class BookIndexState
     all.reject{ |doc| doc.deleting? }
   end
 
+  def self.created
+    live.select{ |doc| doc.created? }
+  end
+
   def initialize(*args)
     super
     self.in_demand = false
@@ -99,6 +103,10 @@ class BookIndexState
 
   def deleting?
     [STATE_DELETE_PENDING].include?(self.state)
+  end
+
+  def created?
+    [STATE_CREATED].include?(self.state)
   end
 
   def to_hash
