@@ -8,7 +8,7 @@ class Api::V0::InfoController < Api::V0::BaseController
       response 200 do
         key :description, 'Success.  Returns the index info.'
         schema do
-          key :'$ref', :InfoResult
+          key :'$ref', :InfoResults
         end
       end
       extend Api::V0::Swagger::ErrorResponses::UnprocessableEntityError
