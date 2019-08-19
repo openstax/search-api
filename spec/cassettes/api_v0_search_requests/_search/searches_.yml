@@ -22,12 +22,12 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Content-Length:
-      - '608'
+      - '610'
     body:
       encoding: UTF-8
-      string: '{"took":4,"timed_out":false,"_shards":{"total":1,"successful":1,"skipped":0,"failed":0},"hits":{"total":1,"max_score":9.083835,"hits":[{"_index":"14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1_i1","_type":"page_element","_id":"zjFfRWwB9NznLM3pUE98","_score":9.083835,"_source":{"page_id":"2c60e072-7665-49b9-a2c9-2736b72b533c@8","element_id":"fs-id2113058","element_type":"paragraph","page_position":3},"highlight":{"visible_content":["<strong>Recall</strong>
+      string: '{"took":156,"timed_out":false,"_shards":{"total":1,"successful":1,"skipped":0,"failed":0},"hits":{"total":1,"max_score":9.082203,"hits":[{"_index":"14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1_i1","_type":"page_element","_id":"bskMq2wB2NuZq8GSEI5w","_score":9.082203,"_source":{"page_id":"2c60e072-7665-49b9-a2c9-2736b72b533c@8","element_id":"fs-id2113058","element_type":"paragraph","page_position":3},"highlight":{"visible_content":["<strong>Recall</strong>
         <strong>that</strong> <strong>an</strong> <strong>atom</strong> typically
         has the same number of positively charged protons and negatively charged"]}}]}}'
     http_version: 
-  recorded_at: Thu, 01 Aug 2019 21:34:19 GMT
+  recorded_at: Mon, 19 Aug 2019 18:03:45 GMT
 recorded_with: VCR 4.0.0
