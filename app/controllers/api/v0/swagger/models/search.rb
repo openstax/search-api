@@ -46,7 +46,7 @@ module Api::V0::Swagger::Models::Search
   end
 
   swagger_schema :SearchResultHit do
-    key :required, [:_index, :_score, :_source]
+    key :required, [:_index, :_score, :_source, :highlight]
     property :_index do
       key :type, :string
       key :readOnly, true
