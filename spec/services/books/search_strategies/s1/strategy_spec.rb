@@ -26,6 +26,12 @@ RSpec.describe Books::SearchStrategies::S1::Strategy , type: :request, api: :v0,
       expect(result["hits"]["hits"].first["highlight"]["visible_content"].first).to include(search_term)
     end
 
+    it "doesnt find a hit in the preface page" do
+      # Welcome only in preface page
+      result = search_strategy.search(query_string: "Welcome")
+      expect(result["hits"]["hits"]).to be_empty
+    end
+
     it "has empty hits for a term not found" do
       result = search_strategy.search(query_string: 'defnotthereforsure')
       expect(result["hits"]["hits"]).to be_empty
