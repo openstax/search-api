@@ -12,6 +12,8 @@ module Books::IndexingStrategies::I1
     def docs
       @docs ||= begin
         @book.root_book_part.pages.each_with_object([]) do |page, accum|
+          next if page.preface? || page.index?
+
           page.
             elements(element_classes: DESIRED_ELEMENTS_TO_DOCUMENTS.keys).
             each_with_index { |element, page_position|

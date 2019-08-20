@@ -38,7 +38,10 @@ class BaseIndexJob
   end
 
   def inspect
-    to_hash.merge((find_associated_book_index_state || {}).to_hash)
+    # The book index state is not available on the worker, but is on the
+    # manager nodes.
+    index_state = find_associated_book_index_state rescue nil
+    to_hash.merge((index_state || {}).to_hash)
   end
 
   def find_associated_book_index_state
