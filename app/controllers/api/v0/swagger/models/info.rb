@@ -38,6 +38,11 @@ module Api::V0::Swagger::Models::Info
       key :readOnly, true
       key :description, "Current version of Elasticsearch"
     end
+    property :last_commit do
+      key :type, :string
+      key :readOnly, true
+      key :description, "Most recent git commit"
+    end
     property :book_indexes do
       key :type, :array
       key :description, "The book indexes"
