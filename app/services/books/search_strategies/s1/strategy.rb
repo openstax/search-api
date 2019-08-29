@@ -5,7 +5,7 @@ module Books::SearchStrategies::S1
       Books::IndexingStrategies::I1::Strategy
     ].map(&:short_name)
 
-    MAX_SEARCH_RESULTS = 150
+    MAX_SEARCH_RESULTS = 1000
 
     def self.short_name
       "s1"
