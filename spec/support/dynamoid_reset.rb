@@ -45,7 +45,7 @@ class DynamoidReset
     if VCR.current_cassette.try!(:recording?)
       {}
     else
-      { delay: 0 }
+      { delay: 100 }
     end
   end
 end

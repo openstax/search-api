@@ -2,14 +2,16 @@
 class MonitorIndexJobs
   prefix_logger "MonitorIndexJobs"
 
-  def initialize
-    @todo_jobs_queue     = TodoJobsQueue.new
-    @done_jobs_queue     = DoneJobsQueue.new
-    @dead_queue          = DeadLetterJobsQueue.new
+  def initialize(todo_url: Rails.application.secrets.sqs[:todo_jobs_queue_url],
+                 dead_url: Rails.application.secrets.sqs[:dead_jobs_queue_url],
+                 done_url: Rails.application.secrets.sqs[:done_jobs_queue_url])
+    @todo_jobs_queue     = TodoJobsQueue.new(url: todo_url)
+    @done_jobs_queue     = DoneJobsQueue.new(url: done_url)
+    @dead_queue          = DeadLetterJobsQueue.new(url: dead_url)
     @processed_from_done = 0
     @processed_from_dead = 0
     @desired_capacity_reset_by = 0
-    @worker_asg          = OpenStax::Aws::AutoScalingGroup.new(
+    @worker_asg = OpenStax::Aws::AutoScalingGroup.new(
       name: Rails.application.secrets[:search_worker_asg_name],
       region: ENV.fetch('REGION') )
   end
@@ -48,7 +50,7 @@ class MonitorIndexJobs
 
     todo_queue_size = @todo_jobs_queue.count
 
-    if todo_queue_size > 0 && @worker_asg.desired_capacity == 0
+    if todo_queue_size > 0 && @worker_asg&.desired_capacity == 0
       @worker_asg.increase_desired_capacity(by: todo_queue_size)
       log_info("Resetting aws autoscaling desired capacity by #{todo_queue_size}")
       @desired_capacity_reset_by = todo_queue_size
@@ -80,5 +82,4 @@ class MonitorIndexJobs
       end
     end
   end
-
 end

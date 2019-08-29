@@ -6,9 +6,10 @@
 class WorkIndexJobs
   prefix_logger "WorkIndexJobs"
 
-  def initialize
-    @todo_jobs_queue        = TodoJobsQueue.new
-    @done_jobs_queue        = DoneJobsQueue.new
+  def initialize(todo_url: Rails.application.secrets.sqs[:todo_jobs_queue_url],
+                 done_url: Rails.application.secrets.sqs[:done_jobs_queue_url])
+    @todo_jobs_queue        = TodoJobsQueue.new(url: todo_url)
+    @done_jobs_queue        = DoneJobsQueue.new(url: done_url)
     @stats                  = { DeleteIndexJob => 0, CreateIndexJob => 0 }
     @definitely_out_of_work = false
   end

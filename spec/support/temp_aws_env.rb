@@ -6,7 +6,7 @@ class TempAwsEnv
 
   @@have_switched_to_temporary_credentials = false
 
-  attr_reader :sqs_queue_url, :namespace
+  attr_reader :sqs_queue_url, :namespace, :buckets
 
   def self.make(namespace="")
     switch_to_temporary_credentials
@@ -25,6 +25,7 @@ class TempAwsEnv
     @es_domain_names_to_regions = {}
     @random_string_count = 0
     @namespace = namespace
+    @sqs_queue_urls = {}
   end
 
   def create_bucket(name:, region: @region, filter_name: true)
@@ -35,13 +36,22 @@ class TempAwsEnv
     end
   end
 
+  def delete_buckets
+    @buckets.each{|bucket| bucket.delete!}
+    @buckets = []
+  end
+
   def create_dynamodb_table
     @dynamo = DynamoidReset.new
     @dynamo.create
   end
 
+  def sqs_queue_url(name: 'test')
+    @sqs_queue_urls[name]
+  end
+
   def create_sqs(name: 'test')
-    @sqs_queue_url ||= Sqs.create_test_queue(name: name)
+    @sqs_queue_urls[name] = Sqs.create_test_queue(name: name)
   end
 
   def create_elasticsearch_domain(name:, region: @region, restrict_access_to_me: true, filter: true)
@@ -88,11 +98,13 @@ class TempAwsEnv
   end
 
   def cleanup!
-    @buckets.each{|bucket| bucket.delete!}
+    delete_buckets
 
     @dynamo.try(:delete)
 
-    Sqs.delete_test_queue(@sqs_queue_url) if @sqs_queue_url
+    @sqs_queue_urls.values.each do |sqs_queue_url|
+      Sqs.delete_test_queue(sqs_queue_url) if sqs_queue_url
+    end
 
     @es_domain_names_to_regions.each do |domain_name, region|
       aws_es_client(region).delete_elasticsearch_domain(domain_name: domain_name)
