@@ -9,7 +9,7 @@ VCR.configure do |c|
   c.allow_http_connections_when_no_cassette = false
   c.ignore_localhost = false
   c.preserve_exact_body_bytes { |http_message| !http_message.body.valid_encoding? }
-  # c.debug_logger = $stderr
+  c.debug_logger = $stderr
 
   # Turn on debug logging, works in Travis too tho in full runs results
   # in Travis build logs that are too large and cause a Travis error

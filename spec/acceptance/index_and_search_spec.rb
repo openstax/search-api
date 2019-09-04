@@ -1,4 +1,9 @@
 require 'rails_helper'
+require 'vcr_helper'
+
+amazon_api_header_matcher = lambda do |request_1, request_2|
+  request_1.headers["X-Amz-Target"] == request_2.headers["X-Amz-Target"]
+end
 
 # This test expects authentication to a AWS account and ElasticSearch running on
 # port 4003.
@@ -7,7 +12,7 @@ require 'rails_helper'
 # simulates what the cron jobs would do going thru normal indexing for 2 books.
 # It will assert that the indexes are created and search is successful. Checks for
 # happy path processing for 2 major use cases: normal indexing and removed indexing
-RSpec.describe 'api v0 search requests', type: :acceptance, api: :v0 do
+RSpec.describe 'Acceptance', type: :acceptance, api: :v0, vcr: VCR_OPTS.merge!({match_requests_on: [:method, :uri, amazon_api_header_matcher]}) do
   let(:book1_id) { "02040312-72c8-441e-a685-20e9333f3e1d" }
   let(:book1_version) { "12.6" }
   let(:book2_id) { "914ac66e-e1ec-486d-8a9c-97b0f7a99774" }
@@ -82,7 +87,7 @@ RSpec.describe 'api v0 search requests', type: :acceptance, api: :v0 do
     end
 
     it "indexes a release & searches" do
-      TempAwsEnv.make("acceptance_test_release1") do |env|
+      TempAwsEnv.make do |env|
         init_test(env)
 
         # Step #1 is to create a Rex release with both books
@@ -99,7 +104,8 @@ RSpec.describe 'api v0 search requests', type: :acceptance, api: :v0 do
         # the book(s) to ElasticSearch
         process_books(env)
         finish_up(env)
-        sleep(2) #sleep a bit to make sure the dust has settled
+
+        sleep(2) if VCR.current_cassette.try(:recording?)
 
         # Step #4 is to search the results.  Search each book for a relevant term
         # and verify the hits
@@ -120,7 +126,7 @@ RSpec.describe 'api v0 search requests', type: :acceptance, api: :v0 do
         # Step #7 is to run the job.
         process_books(env)
         finish_up(env)
-        sleep(2) #sleep a bit to make sure the dust has settled
+        sleep(2) if VCR.current_cassette.try(:recording?)
 
         # Step #8 is to search the results. Searching second book should result in a
         # missing index exception
