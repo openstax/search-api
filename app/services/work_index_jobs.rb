@@ -45,7 +45,11 @@ class WorkIndexJobs
     rescue InvalidIndexingStrategy => ex
       handle_error(exception: ex, job: job, status: DoneIndexJob::STATUS_INVALID_INDEXING_STRATEGY)
     rescue OpenStax::HTTPError => ex
-      handle_error(exception: ex, job: job, status: DoneIndexJob::STATUS_HTTP_ERROR)
+      if error_500?(ex)
+        handle_error(exception: ex, job: job, status: DoneIndexJob::STATUS_OTHER_ERROR)
+      else
+        handle_error(exception: ex, job: job, status: DoneIndexJob::STATUS_HTTP_ERROR)
+      end
     rescue => ex
       handle_error(exception: ex, job: job, status: DoneIndexJob::STATUS_OTHER_ERROR)
     end
@@ -54,6 +58,11 @@ class WorkIndexJobs
   end
 
   private
+
+  def error_500?(ex)
+    matches = ex.message.match(/(?<status_code>5\d\d)/)
+    matches.present?
+  end
 
   def handle_error(exception:, job:, status:)
     Raven.capture_exception(exception, :extra => job.inspect)

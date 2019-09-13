@@ -57,16 +57,47 @@ RSpec.describe WorkIndexJobs do
       end
     end
 
-    context 'the job raises a http error' do
+    context 'http errors' do
       before do
-        allow(create_job).to receive(:call).and_raise(OpenStax::HTTPError)
         allow_any_instance_of(TodoJobsQueue).to receive(:read).and_return(create_job)
+
         allow(create_job).to receive(:inspect)
+        allow_any_instance_of(Books::Index).to receive(:delete)
+        allow_any_instance_of(Books::Index).to receive(:create)
+
+        WebMock.disable_net_connect!
       end
 
-      it 'writes a done job with http error status' do
-        expect_any_instance_of(described_class).to receive(:enqueue_done_job).once
-        work_index_jobs.call
+      after do
+        WebMock.allow_net_connect!
+      end
+
+      context 'the job raises a 4xx' do
+        before do
+          stub_request(:get, /archive.cnx.org/).to_return(status: 405, headers: {})
+        end
+
+        it 'calls handle error with correct status' do
+          expect_any_instance_of(described_class)
+            .to receive(:handle_error)
+                  .with(exception: anything, job: anything, status: DoneIndexJob::STATUS_HTTP_ERROR)
+
+          work_index_jobs.call
+        end
+      end
+
+      context 'the job raises a 5xx' do
+        before do
+          stub_request(:get, /archive.cnx.org/).to_return(status: 503, headers: {})
+        end
+
+        it 'calls handle error with correct status' do
+          expect_any_instance_of(described_class)
+            .to receive(:handle_error)
+                  .with(exception: anything, job: anything, status: DoneIndexJob::STATUS_OTHER_ERROR)
+
+          work_index_jobs.call
+        end
       end
     end
   end
