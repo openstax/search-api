@@ -10,8 +10,10 @@ class DoneIndexJob < BaseIndexJob
   STATUS = [
     STATUS_SUCCESSFUL                = "successful",
     STATUS_INVALID_INDEXING_STRATEGY = "invalid indexing strategy",
-    STATUS_HTTP_ERROR                = "http error",
-    STATUS_OTHER_ERROR               = "other error"
+    STATUS_OTHER_ERROR               = "other error",
+    STATUS_HTTP_404_ERROR            = "http 404 error",
+    STATUS_HTTP_5XX_ERROR            = "http 5xx error",
+    STATUS_HTTP_OTHER_ERROR          = "http other error"
   ]
 
   def self.build_object(params:, cleanup_after_call:)
@@ -47,8 +49,12 @@ class DoneIndexJob < BaseIndexJob
     status == STATUS_SUCCESSFUL
   end
 
-  def http_error?
-    status == STATUS_HTTP_ERROR
+  # For some http errors, we dont retry.
+  #
+  # e.g, for 404s, we'd like for the book to stay in the index
+  # state w/ the error so we can find out why it's not in cnx content.
+  def job_error_to_not_retry?
+    status == STATUS_HTTP_404_ERROR
   end
 
   def as_json(*)
@@ -68,7 +74,7 @@ class DoneIndexJob < BaseIndexJob
     if successful?
       ran_job.cleanup_when_done
     else
-      if http_error?
+      if job_error_to_not_retry?
         book_index_state = find_associated_book_index_state
         book_index_state.mark_as_http_error
       else
