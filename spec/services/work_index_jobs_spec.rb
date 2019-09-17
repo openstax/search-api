@@ -57,6 +57,30 @@ RSpec.describe WorkIndexJobs do
       end
     end
 
+    context 'miscellaneous errors' do
+      let(:create_job) {
+        class CreateIndexJob
+          def call
+            1/0
+          end
+        end
+        CreateIndexJob.new
+      }
+
+      before do
+        allow_any_instance_of(TodoJobsQueue).to receive(:read).and_return(create_job)
+      end
+
+      it 'calls handle error with correct status' do
+        expect_any_instance_of(described_class)
+          .to receive(:handle_error)
+                .with(exception: anything, job: anything, status: DoneIndexJob::STATUS_OTHER_ERROR)
+        expect {
+          work_index_jobs.call
+        }.to_not raise_error(Exception)
+      end
+    end
+
     context 'http errors' do
       before do
         allow_any_instance_of(TodoJobsQueue).to receive(:read).and_return(create_job)
@@ -64,23 +88,17 @@ RSpec.describe WorkIndexJobs do
         allow(create_job).to receive(:inspect)
         allow_any_instance_of(Books::Index).to receive(:delete)
         allow_any_instance_of(Books::Index).to receive(:create)
-
-        WebMock.disable_net_connect!
       end
 
-      after do
-        WebMock.allow_net_connect!
-      end
-
-      context 'the job raises a 4xx' do
+      context 'the job raises a 404 error' do
         before do
-          stub_request(:get, /archive.cnx.org/).to_return(status: 405, headers: {})
+          stub_request(:get, /archive.cnx.org/).to_return(status: 404, headers: {})
         end
 
         it 'calls handle error with correct status' do
           expect_any_instance_of(described_class)
             .to receive(:handle_error)
-                  .with(exception: anything, job: anything, status: DoneIndexJob::STATUS_HTTP_ERROR)
+                  .with(exception: anything, job: anything, status: DoneIndexJob::STATUS_HTTP_404_ERROR)
 
           work_index_jobs.call
         end
@@ -94,7 +112,22 @@ RSpec.describe WorkIndexJobs do
         it 'calls handle error with correct status' do
           expect_any_instance_of(described_class)
             .to receive(:handle_error)
-                  .with(exception: anything, job: anything, status: DoneIndexJob::STATUS_OTHER_ERROR)
+                  .with(exception: anything, job: anything, status: DoneIndexJob::STATUS_HTTP_5XX_ERROR)
+
+          work_index_jobs.call
+        end
+      end
+
+      context 'the job raises a http other error (other than 404 and 5xx http errors' do
+        before do
+          # raise a 403 forbidden error
+          stub_request(:get, /archive.cnx.org/).to_return(status: 403 , headers: {})
+        end
+
+        it 'calls handle error with correct status' do
+          expect_any_instance_of(described_class)
+            .to receive(:handle_error)
+                  .with(exception: anything, job: anything, status: DoneIndexJob::STATUS_HTTP_OTHER_ERROR)
 
           work_index_jobs.call
         end

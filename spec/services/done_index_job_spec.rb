@@ -30,23 +30,32 @@ RSpec.describe DoneIndexJob do
     end
 
     context 'when not successful' do
-      context 'http error' do
-        let(:status) { described_class::STATUS_HTTP_ERROR }
+      context 'errors that keep the index around' do
+        let(:status) { described_class::STATUS_HTTP_404_ERROR }
 
         it 'sends a message to Raven and sends a mark http error to book index state' do
           expect(book_index_state).to receive(:mark_as_http_error)
-
           done_index_job.call
         end
       end
 
-      context 'other job error' do
-        let(:status) { described_class::STATUS_OTHER_ERROR }
+      context 'errors that remove the book index' do
+        context 'miscellaneous errors' do
+          let(:status) { described_class::STATUS_OTHER_ERROR }
 
-        it 'sends a message to Raven and removes the associated book index state' do
-          expect_any_instance_of(CreateIndexJob).to receive(:remove_associated_book_index_state)
+          it 'sends a message to Raven and removes the associated book index state' do
+            expect_any_instance_of(CreateIndexJob).to receive(:remove_associated_book_index_state)
+            done_index_job.call
+          end
+        end
 
-          done_index_job.call
+        context 'other than 404s' do
+          let(:status) { described_class::STATUS_HTTP_OTHER_ERROR }
+
+          it 'sends a message to Raven and removes the associated book index state' do
+            expect_any_instance_of(CreateIndexJob).to receive(:remove_associated_book_index_state)
+            done_index_job.call
+          end
         end
       end
     end

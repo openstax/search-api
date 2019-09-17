@@ -45,11 +45,7 @@ class WorkIndexJobs
     rescue InvalidIndexingStrategy => ex
       handle_error(exception: ex, job: job, status: DoneIndexJob::STATUS_INVALID_INDEXING_STRATEGY)
     rescue OpenStax::HTTPError => ex
-      if error_500?(ex)
-        handle_error(exception: ex, job: job, status: DoneIndexJob::STATUS_OTHER_ERROR)
-      else
-        handle_error(exception: ex, job: job, status: DoneIndexJob::STATUS_HTTP_ERROR)
-      end
+      handle_openstax_http_error(job, ex)
     rescue => ex
       handle_error(exception: ex, job: job, status: DoneIndexJob::STATUS_OTHER_ERROR)
     end
@@ -59,9 +55,18 @@ class WorkIndexJobs
 
   private
 
-  def error_500?(ex)
+  def handle_openstax_http_error(job, ex)
     matches = ex.message.match(/(?<status_code>5\d\d)/)
-    matches.present?
+    if matches.present?
+      handle_error(exception: ex, job: job, status: DoneIndexJob::STATUS_HTTP_5XX_ERROR)
+    else
+      matches = ex.message.match(/(?<status_code>404)/)
+      if matches.present?
+        handle_error(exception: ex, job: job, status: DoneIndexJob::STATUS_HTTP_404_ERROR)
+      else
+        handle_error(exception: ex, job: job, status: DoneIndexJob::STATUS_HTTP_OTHER_ERROR)
+      end
+    end
   end
 
   def handle_error(exception:, job:, status:)
