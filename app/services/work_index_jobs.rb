@@ -56,17 +56,19 @@ class WorkIndexJobs
   private
 
   def handle_openstax_http_error(job, ex)
-    matches = ex.message.match(/(?<status_code>5\d\d)/)
-    if matches.present?
-      handle_error(exception: ex, job: job, status: DoneIndexJob::STATUS_HTTP_5XX_ERROR)
-    else
-      matches = ex.message.match(/(?<status_code>404)/)
-      if matches.present?
-        handle_error(exception: ex, job: job, status: DoneIndexJob::STATUS_HTTP_404_ERROR)
+    status_code = ex.message.match(/(\d\d\d)/)[1].to_i
+
+    status_error =
+      case status_code
+      when 404
+        DoneIndexJob::STATUS_HTTP_404_ERROR
+      when 500..599
+        DoneIndexJob::STATUS_HTTP_5XX_ERROR
       else
-        handle_error(exception: ex, job: job, status: DoneIndexJob::STATUS_HTTP_OTHER_ERROR)
+        DoneIndexJob::STATUS_HTTP_OTHER_ERROR
       end
-    end
+
+    handle_error(exception: ex, job: job, status: status_error)
   end
 
   def handle_error(exception:, job:, status:)

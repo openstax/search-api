@@ -58,17 +58,17 @@ RSpec.describe WorkIndexJobs do
     end
 
     context 'miscellaneous errors' do
-      let(:create_job) {
-        class CreateIndexJob
+      let(:job_with_exception) {
+        class FooJob
           def call
             1/0
           end
         end
-        CreateIndexJob.new
+        FooJob.new
       }
 
       before do
-        allow_any_instance_of(TodoJobsQueue).to receive(:read).and_return(create_job)
+        allow_any_instance_of(TodoJobsQueue).to receive(:read).and_return(job_with_exception)
       end
 
       it 'calls handle error with correct status' do
