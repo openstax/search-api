@@ -12,7 +12,9 @@ module RescueFromUnlessLocal
     # exceptions (good in development) or rescue exceptions (good in production).  Because
     # the test of the setting is done at the moment the exception is being handled, we
     # can change the value in specs to test both the exception and the rescuing behavior.
-    def rescue_from_unless_local(*klasses, with: nil, &block)
+    # If send_to_sentry is true and the exception is not already going to be reraised,
+    # the exception will be captured off to Sentry.
+    def rescue_from_unless_local(*klasses, with: nil, send_to_sentry: false, &block)
       rescue_from(*klasses, with: with) do |exception|
         # This new_block assignment borrowed from pieces of ActiveSupport::Rescuable
         # The Symbol and Proc values of `with` have not been tested :-o
@@ -35,7 +37,12 @@ module RescueFromUnlessLocal
             end
           end
 
-        raise exception if Rails.application.config.consider_all_requests_local
+        if Rails.application.config.consider_all_requests_local
+          raise exception
+        elsif send_to_sentry
+          Raven.capture_exception(exception)
+        end
+
         instance_exec exception, &new_block
       end
     end
