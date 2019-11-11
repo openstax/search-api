@@ -2,7 +2,7 @@ class Api::V0::BaseController < ApplicationController
   include Swagger::Blocks
   include OpenStax::Swagger::Bind
 
-  rescue_from_unless_local StandardError do |exception|
+  rescue_from_unless_local StandardError, send_to_sentry: true do |exception|
     render json: binding_error(status_code: 500, messages: [exception.message]), status: 500
   end
 
