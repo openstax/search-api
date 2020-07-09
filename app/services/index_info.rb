@@ -14,6 +14,7 @@ class IndexInfo
 
   def results
     {
+      last_commit: last_commit,
       es_version: es_version,
       book_indexes: all_the_books
     }
@@ -21,6 +22,10 @@ class IndexInfo
 
   def es_version
     OsElasticsearchClient.instance.info["version"]["number"]
+  end
+
+  def last_commit
+    `git show --pretty=%H`.strip rescue "not available"
   end
 
   def all_the_books

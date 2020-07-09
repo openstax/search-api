@@ -2,8 +2,8 @@
 class EnqueueIndexJobs
   prefix_logger "EnqueueIndexJobs"
 
-  def initialize
-    @todo_jobs_queue = TodoJobsQueue.new
+  def initialize(todo_url: Rails.application.secrets.sqs[:todo_jobs_queue_url])
+    @todo_jobs_queue = TodoJobsQueue.new(url: todo_url)
     @new_create_index_jobs = 0
     @new_delete_index_jobs = 0
   end
@@ -90,5 +90,4 @@ class EnqueueIndexJobs
   def new_jobs
     @new_delete_index_jobs + @new_create_index_jobs
   end
-
 end
