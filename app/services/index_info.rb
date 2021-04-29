@@ -10,6 +10,14 @@ class IndexInfo
     results
   end
 
+  def basic
+    {
+      env_name: env_name,
+      ami_id: ami_id,
+      git_sha: git_sha
+    }
+  end
+
   private
 
   def results
@@ -73,5 +81,17 @@ class IndexInfo
     stat = @book_indexes.fetch(index, DEFAULT_INFO.dup)
     stat[value_sym] = value
     @book_indexes[index] = stat
+  end
+
+  def env_name
+    ENV['ENV_NAME'] || 'Not set'
+  end
+
+  def ami_id
+    ENV['AMI_ID'] || 'Not set'
+  end
+
+  def git_sha
+    `git show --pretty=%H -q`&.chomp || 'Not set'
   end
 end

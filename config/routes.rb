@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       get :search, to: 'search#search'
 
       get :info, to: 'info#info'
+      get "es-info", to: 'info#es_info'
 
       resources :diagnostics, only: [] do
         get :exception, on: :collection
