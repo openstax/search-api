@@ -1,0 +1,25 @@
+version: "3.7"
+services:
+  api:
+    build: .
+    networks:
+      - search 
+    ports:
+      - "4005:4005"
+    command: bash -c "rake about && bin/rails server -b '0.0.0.0' -p 4005"
+    volumes:
+      - .:/code
+      - /code/tmp
+      - /code/log
+  elasticsearch:
+    image: "elasticsearch:6.8.15"
+    networks:
+      - search 
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      - "discovery.type=single-node"
+
+networks:
+  search:
