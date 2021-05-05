@@ -22,9 +22,9 @@ RSpec.describe 'api v0 info requests', type: :request, api: :v0 do
     allow_any_instance_of(IndexInfo).to receive(:call).and_return(stats)
   end
 
-  context "#info" do
+  context "#es-info" do
     it "returns info" do
-      api_get 'info'
+      api_get 'es-info'
       expect(response).to have_http_status(:ok)
 
       json = json_response

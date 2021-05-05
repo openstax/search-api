@@ -13,36 +13,31 @@ Swagger Codegen version: 2.4.13
 require 'date'
 
 module Api::V0::Bindings
-  class InfoResults
-    # Name of deployed environment
-    attr_accessor :env_name
-
-    # Amazon machine image id
-    attr_accessor :ami_id
-
-    # Git sha
-    attr_accessor :git_sha
-
+  class EsInfoResults
     # How long the request took (ms)
     attr_accessor :overall_took_ms
+
+    # Current version of Elasticsearch
+    attr_accessor :es_version
+
+    # The book indexes
+    attr_accessor :book_indexes
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'env_name' => :'env_name',
-        :'ami_id' => :'ami_id',
-        :'git_sha' => :'git_sha',
-        :'overall_took_ms' => :'overall_took_ms'
+        :'overall_took_ms' => :'overall_took_ms',
+        :'es_version' => :'es_version',
+        :'book_indexes' => :'book_indexes'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'env_name' => :'String',
-        :'ami_id' => :'String',
-        :'git_sha' => :'String',
-        :'overall_took_ms' => :'Integer'
+        :'overall_took_ms' => :'Integer',
+        :'es_version' => :'String',
+        :'book_indexes' => :'Array<InfoBookIndexResult>'
       }
     end
 
@@ -54,20 +49,18 @@ module Api::V0::Bindings
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'env_name')
-        self.env_name = attributes[:'env_name']
-      end
-
-      if attributes.has_key?(:'ami_id')
-        self.ami_id = attributes[:'ami_id']
-      end
-
-      if attributes.has_key?(:'git_sha')
-        self.git_sha = attributes[:'git_sha']
-      end
-
       if attributes.has_key?(:'overall_took_ms')
         self.overall_took_ms = attributes[:'overall_took_ms']
+      end
+
+      if attributes.has_key?(:'es_version')
+        self.es_version = attributes[:'es_version']
+      end
+
+      if attributes.has_key?(:'book_indexes')
+        if (value = attributes[:'book_indexes']).is_a?(Array)
+          self.book_indexes = value
+        end
       end
     end
 
@@ -75,16 +68,8 @@ module Api::V0::Bindings
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @env_name.nil?
-        invalid_properties.push('invalid value for "env_name", env_name cannot be nil.')
-      end
-
-      if @ami_id.nil?
-        invalid_properties.push('invalid value for "ami_id", ami_id cannot be nil.')
-      end
-
-      if @git_sha.nil?
-        invalid_properties.push('invalid value for "git_sha", git_sha cannot be nil.')
+      if @es_version.nil?
+        invalid_properties.push('invalid value for "es_version", es_version cannot be nil.')
       end
 
       invalid_properties
@@ -93,9 +78,7 @@ module Api::V0::Bindings
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @env_name.nil?
-      return false if @ami_id.nil?
-      return false if @git_sha.nil?
+      return false if @es_version.nil?
       true
     end
 
@@ -104,10 +87,9 @@ module Api::V0::Bindings
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          env_name == o.env_name &&
-          ami_id == o.ami_id &&
-          git_sha == o.git_sha &&
-          overall_took_ms == o.overall_took_ms
+          overall_took_ms == o.overall_took_ms &&
+          es_version == o.es_version &&
+          book_indexes == o.book_indexes
     end
 
     # @see the `==` method
@@ -119,7 +101,7 @@ module Api::V0::Bindings
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [env_name, ami_id, git_sha, overall_took_ms].hash
+      [overall_took_ms, es_version, book_indexes].hash
     end
 
     # Builds the object from hash
