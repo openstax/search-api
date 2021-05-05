@@ -16,6 +16,18 @@ class Api::V0::InfoController < Api::V0::BaseController
     end
   end
 
+  def info
+    started_at = Time.now
+
+    info_results = EnvInfo.new.call
+
+    response = Api::V0::Bindings::InfoResults.new.build_from_hash(info_results.with_indifferent_access)
+
+    response.overall_took_ms = ((Time.now - started_at)*1000).round
+
+    render json: response, status: :ok
+  end
+
   swagger_path '/es-info' do
     operation :get do
       key :summary, 'Get info on indexes'
@@ -30,18 +42,6 @@ class Api::V0::InfoController < Api::V0::BaseController
       extend Api::V0::Swagger::ErrorResponses::UnprocessableEntityError
       extend Api::V0::Swagger::ErrorResponses::ServerError
     end
-  end
-
-  def info
-    started_at = Time.now
-
-    info_results = IndexInfo.new.basic
-
-    response = Api::V0::Bindings::InfoResults.new.build_from_hash(info_results.with_indifferent_access)
-
-    response.overall_took_ms = ((Time.now - started_at)*1000).round
-
-    render json: response, status: :ok
   end
   
   def es_info
