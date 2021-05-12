@@ -4,7 +4,8 @@ module Api::V0::Swagger::Models::Search
 
   SUPPORTED_ELEMENT_TYPES = [
     Books::IndexingStrategies::I1::ParagraphDocument,
-    Books::IndexingStrategies::I1::FigureDocument
+    Books::IndexingStrategies::I1::FigureDocument,
+    Books::IndexingStrategies::I1::KeyTermDocument
   ].map(&:element_type)
 
   swagger_schema :SearchResultHitHighlight do
