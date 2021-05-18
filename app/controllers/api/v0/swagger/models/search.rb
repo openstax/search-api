@@ -19,6 +19,11 @@ module Api::V0::Swagger::Models::Search
         key :description, "A highlight"
       end
     end
+    property :title do
+      key :type, :string
+      key :readOnly, true
+      key :description, "The title of this element."
+    end
   end
 
   swagger_schema :SearchResultHitSource do
