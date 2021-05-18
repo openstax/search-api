@@ -11,8 +11,12 @@ module Books::IndexingStrategies::I1
       "key_term"
     end
 
+    def title
+      element.term
+    end
+
     def visible_content
-      [element.term, element.description]
+      element.description
     end
   end
 end
