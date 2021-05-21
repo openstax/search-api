@@ -223,7 +223,8 @@ GEM
       pry (>= 0.10.4)
     psych (3.1.0)
     public_suffix (3.0.2)
-    puma (3.12.6)
+    puma (4.3.8)
+      nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
     rack-test (1.1.0)
@@ -355,7 +356,7 @@ DEPENDENCIES
   openstax_path_prefixer!
   openstax_swagger!
   pry-rails
-  puma (~> 3.12)
+  puma (~> 4.3)
   rails (~> 5.2.2)
   rspec-json_expectations
   rspec-rails (~> 3.8)
