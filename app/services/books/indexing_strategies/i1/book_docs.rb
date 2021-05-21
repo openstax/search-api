@@ -2,7 +2,8 @@ module Books::IndexingStrategies::I1
   class BookDocs
     DESIRED_ELEMENTS_TO_DOCUMENTS = {
       OpenStax::Cnx::V1::Paragraph => ParagraphDocument,
-      OpenStax::Cnx::V1::Figure => FigureDocument
+      OpenStax::Cnx::V1::Figure => FigureDocument,
+      OpenStax::Cnx::V1::KeyTerm => KeyTermDocument
     }
 
     def initialize(book:)
