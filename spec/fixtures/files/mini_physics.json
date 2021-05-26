@@ -1,0 +1,28 @@
+{
+  "id": "cce64fde-f448-43b8-ae88-27705cceb0da",
+  "version": "14.21",
+  "license": {
+    "url": "http://creativecommons.org/licenses/by/4.0/",
+    "code": "by",
+    "version": "4.0",
+    "name": "Creative Commons Attribution License"
+  },
+  "legacy_id": "col12081",
+  "legacy_version": "1.14",
+  "title": "Physics",
+  "revised": "2021-01-28T21:39:43.298223-06:00",
+  "tree": {
+    "id": "cce64fde-f448-43b8-ae88-27705cceb0da@14.21",
+    "title": "Physics",
+    "contents": [
+      {
+        "id": "5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11",
+        "title": "<span class=\"os-number\">1.1</span><span class=\"os-divider\"> </span><span data-type=\"\" itemprop=\"\" class=\"os-text\">Physics: Definitions and Applications</span>",
+        "slug": "1-1-physics-definitions-and-applications"
+      }
+    ],
+    "slug": "physics"
+  },
+  "slug": "physics",
+  "language": "en"
+}

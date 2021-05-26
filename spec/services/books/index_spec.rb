@@ -55,6 +55,34 @@ RSpec.describe Books::Index, vcr: VCR_OPTS do
     end
   end
 
+  describe "#hide_unwanted_items" do
+    # This page from Physics book contains .os-teacher elements that should not be indexed
+    # See https://github.com/openstax/unified/issues/1559
+    let(:physics_id) { 'cce64fde-f448-43b8-ae88-27705cceb0da@14.21' }
+    let(:physics_json) { JSON.parse(file_fixture('mini_physics.json').read) }
+    let(:physics_url) {
+      "https://archive.cnx.org/contents/cce64fde-f448-43b8-ae88-27705cceb0da@14.21"
+    }
+    let(:physics_page_url) {
+      "#{physics_url}:5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11"
+    }
+
+    subject(:index_physics) { described_class.new(book_version_id: physics_id) }
+
+    before do
+      allow(OpenStax::Cnx::V1).to receive(:fetch).with(physics_url).and_return(physics_json)
+      allow(OpenStax::Cnx::V1).to receive(:fetch).with(physics_page_url).and_call_original
+    end
+
+    it 'does not include unwanted elements in index' do
+      index_physics.create
+      index_physics.populate
+      sleep 1 if VCR.current_cassette.try!(:recording?)  # wait for ES to finish
+
+      expect(OsElasticsearchClient.instance.count(index: index_physics.name)["count"]).to eq 50
+    end
+  end
+
   describe "#delete" do
     it 'deletes the index' do
       index.create

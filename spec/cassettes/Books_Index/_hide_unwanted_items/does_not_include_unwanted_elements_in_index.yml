@@ -1,0 +1,2716 @@
+---
+http_interactions:
+- request:
+    method: head
+    uri: http://localhost:9200/14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1_i1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:57 GMT
+- request:
+    method: put
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1
+    body:
+      encoding: UTF-8
+      string: '{"settings":{"index":{"number_of_shards":1,"number_of_replicas":1},"analysis":{"analyzer":"simple"}},"mappings":{},"page_element":{"properties":{"element_type":{"type":"text"},"element_id":{"type":"text"},"page_id":{"type":"text"},"page_position":{"type":"integer"},"title":{"type":"text"},"visible_content":{"type":"text"},"hidden_content":{"type":"text"}}}}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '104'
+    body:
+      encoding: UTF-8
+      string: '{"acknowledged":true,"shards_acknowledged":true,"index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1"}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:57 GMT
+- request:
+    method: head
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:57 GMT
+- request:
+    method: get
+    uri: https://archive.cnx.org/contents/cce64fde-f448-43b8-ae88-27705cceb0da@14.21:5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - text/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - origin,dnt,accept-encoding,accept-language,keep-alive,user-agent,x-requested-with,if-modified-since,cache-control,content-type
+      Access-Control-Allow-Methods:
+      - GET, OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - max-age=31536000, public
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 26 May 2021 12:43:56 GMT
+      Etag:
+      - '"5clLCBpbR7Z1dS4hXtzd9w"'
+      Expires:
+      - Thu, 26 May 2022 12:43:56 GMT
+      Link:
+      - <https://cnx.org/contents/cce64fde-f448-43b8-ae88-27705cceb0da:5f0710fe-1028-4ac4-b8fd-b0a6c792c642/Physics:-Definitions-and-Applications>
+        ;rel="Canonical"
+      Server:
+      - waitress
+      X-Varnish-Status:
+      - cacheable - Cache-Control in backend response
+      X-Varnish-Backend:
+      - prod07_archive4
+      X-Varnish-Ttl:
+      - '31536000.000'
+      X-Varnish:
+      - 8951644 7628919
+      Age:
+      - '4742'
+      Via:
+      - 1.1 varnish-v4
+      X-Varnish-Cache:
+      - HIT
+      Accept-Ranges:
+      - bytes
+      Transfer-Encoding:
+      - chunked
+      Strict-Transport-Security:
+      - max-age=16000000
+    body:
+      encoding: ASCII-8BIT
+      string: '{"googleAnalytics": null, "version": "11", "submitlog": "bake", "abstract":
+        "<div xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:c=\"http://cnx.rice.edu/cnxml\"
+        xmlns:md=\"http://cnx.rice.edu/mdml\" xmlns:qml=\"http://cnx.rice.edu/qml/1.0\"
+        xmlns:mod=\"http://cnx.rice.edu/#moduleIds\" xmlns:bib=\"http://bibtexml.sf.net/\"
+        xmlns:data=\"http://dev.w3.org/html5/spec/#custom\"/>", "revised": "2020-09-02T00:05:57Z",
+        "printStyle": null, "roles": null, "keywords": ["theory of relativity", "nuclear
+        physics", "modern physics", "classical physics", "astronomy", "electricity",
+        "thermodynamics", "magnetism", "optics", "quantum mechanics", "kinematics",
+        "statics", "atom", "physics", "acoustics", "dynamics", "relativity"], "id":
+        "5f0710fe-1028-4ac4-b8fd-b0a6c792c642", "canonical": "cce64fde-f448-43b8-ae88-27705cceb0da",
+        "title": "Physics: Definitions and Applications", "mediaType": "application/vnd.org.cnx.module",
+        "canon_url": "https://cnx.org/contents/cce64fde-f448-43b8-ae88-27705cceb0da:5f0710fe-1028-4ac4-b8fd-b0a6c792c642/Physics:-Definitions-and-Applications",
+        "content": "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n  <body><div data-type=\"page\"
+        id=\"5f0710fe-1028-4ac4-b8fd-b0a6c792c642\" data-cnxml-to-html-ver=\"2.1.0\"
+        class=\"chapter-content-module\"><h2 data-type=\"document-title\" id=\"0\"><span
+        class=\"os-number\">1.1</span><span class=\"os-divider\"> </span><span data-type=\"\"
+        itemprop=\"\" class=\"os-text\">Physics: Definitions and Applications</span></h2>\n\n<div
+        data-type=\"note\" data-has-label=\"true\" id=\"fs-id1164353442294\" class=\"learning-objectives\"
+        data-label=\"\"><h3 class=\"os-title\" data-type=\"title\"><span class=\"os-title-label\">Section
+        Learning Objectives</span></h3><div class=\"os-note-body\">\n<p id=\"fs-id1164354696767\">By
+        the end of this section, you will be able to do the following:</p>\n<ul id=\"fs-id1164354531245\"><li>Describe
+        the definition, aims, and branches of physics</li>\n<li>Describe and distinguish
+        classical physics from modern physics and describe the importance of relativity,
+        quantum mechanics, and relativistic quantum mechanics in modern physics</li>\n<li>Describe
+        how aspects of physics are used in other sciences (e.g., biology, chemistry,
+        geology, etc.) as well as in everyday technology</li>\n</ul></div></div>\n\n\n\n<div
+        data-type=\"note\" id=\"fs-id1164354697240\" class=\"os-teacher\"><h3 class=\"os-title\"
+        data-type=\"title\"><span class=\"os-title-label\">Teacher Support</span></h3><div
+        class=\"os-note-body\"><h4 data-type=\"title\" id=\"2\" class=\"os-subtitle\"><span
+        class=\"os-subtitle-label\">Teacher Support</span></h4><p id=\"fs-id1164354656837\">The
+        learning objectives in this section will help your students master the following
+        standards:</p>\n<ul id=\"fs-id1164354596876\">\n<li>\n<span>(2)</span> <span>Scientific
+        processes. The student uses a systematic approach to answer scientific laboratory
+        and field investigative questions. The student is expected to:</span>\n<ul
+        id=\"fs-id1164565666468\">\n<li>\n<span>(A)</span> <span>know the definition
+        of science and understand that it has limitations, as specified in subsection
+        (b)(2) of this section;</span></li>\n\n</ul></li></ul>\n<ul id=\"fs-id1164567151945\"><li>\n<span>(3)</span>  <span>Scientific
+        processes. The student uses critical thinking, scientific reasoning, and problem
+        solving to make informed decisions within and outside the classroom. The student
+        is expected to:</span>\n<ul id=\"fs-id1164566038655\">\n\n<li>\n<span>(A)</span>
+        <span>in all fields of science, analyze, evaluate, and critique scientific
+        explanations by using empirical evidence, logical reasoning, and experimental
+        and observational testing, including examining all sides of scientific evidence
+        of those scientific explanations, so as to encourage critical thinking by
+        the student.</span></li>\n<li>\n<span>(B)</span> <span>communicate and apply
+        scientific information extracted from various sources such as current events,
+        news reports, published journal articles, and marketing materials;</span>\n</li>\n<li>\n<span>(C)</span>
+        <span>draw inferences based on data related to promotional materials for products
+        and services;</span></li>\n\n<li>\n<span>(D)</span> <span>explain the impacts
+        of the scientific contributions of a variety of historical and contemporary
+        scientists on scientific thought and society.</span></li>\n</ul></li></ul></div></div>\n\n<section
+        data-depth=\"1\" id=\"keyterms\"><h3 data-type=\"title\">Section Key Terms</h3>\n\n<div
+        class=\"os-table os-unstyled-container\"><table id=\"fs-id1164354601564\"
+        summary=\"Table A22  Dielectric constants\" class=\"unnumbered unstyled section-key-terms\"
+        data-label=\"\"><tbody>\n<tr>\n<td>atom</td>\n<td>classical physics</td>\n<td>modern
+        physics</td>\n</tr>\n<tr>\n<td>physics</td>\n<td>quantum mechanics</td>\n<td>theory
+        of relativity</td>\n</tr>\n</tbody></table></div></section>\n\n\n\n<!-- Test
+        test -->\n\n\n\n<div data-type=\"note\" id=\"fs-id1164354519605\" class=\"os-teacher\"><h3
+        class=\"os-title\" data-type=\"title\"><span class=\"os-title-label\">Teacher
+        Support</span></h3><div class=\"os-note-body\"><h4 data-type=\"title\" id=\"3\"
+        class=\"os-subtitle\"><span class=\"os-subtitle-label\">Teacher Support</span></h4><p
+        id=\"eip-id1167066848242\">To help meet the multimodal needs of classrooms
+        today, OpenStax Tutor\u2019s <em data-effect=\"italics\">Physics</em> provides
+        Teacher Support tips for on-level [OL], below-level [BL], and above-level
+        [AL] students.</p>\n<p id=\"fs-id1164353511379\"><span>[OL]</span>Pre-assessment
+        for this section could involve asking students the definition of matter, atoms,
+        electrons, protons, neutrons, subatomic particles, and energy. Students could
+        also be asked to name some prominent classical and modern physicists and to
+        describe some of their work in general terms.</p>\n<p id=\"fs-id1164354483165\"><span>[OL]</span>The
+        introduction and opening picture are meant to show students that the physical
+        laws governing their own everyday surroundings also govern the movement of
+        stars in a galaxy. Teachers could ask students how gravity affects life on
+        Earth. Students will likely mention how gravity keeps us on Earth\u2019s surface.
+        Prompt them, if necessary, to also think about Earth\u2019s orbital motion
+        around the sun. This motion allows Earth to bask in the warmth of the sun\u2019s
+        light. Without the Sun\u2019s gravity, Earth would continue moving in a straight
+        line and move away from the sun, while people would float off of Earth\u2019s
+        surface. The orbit of the moon could also be brought into this discussion,
+        because Earth\u2019s gravity keeps the moon moving around Earth rather than
+        continuing in a straight path.</p>\n</div></div><section data-depth=\"1\"
+        id=\"fs-id1164354587065\"><h3 data-type=\"title\">What Physics Is</h3><p id=\"fs-id1164353488300\">Think
+        about all of the technological devices that you use on a regular basis. Computers,
+        wireless internet, smart phones, tablets, global positioning system (GPS),
+        MP3 players, and satellite radio might come to mind. Next, think about the
+        most exciting modern technologies that you have heard about in the news, such
+        as trains that levitate above their tracks, <em data-effect=\"italics\">invisibility
+        cloaks</em> that bend light around them, and microscopic robots that fight
+        diseased cells in our bodies. All of these groundbreaking advancements rely
+        on the principles of <span data-type=\"term\" id=\"term1\" group-by=\"p\">physics</span>.</p>\n<p
+        id=\"fs-id1169316365038\">Physics is a branch of science. The word <em data-effect=\"italics\">science</em>
+        comes from a Latin word that means <em data-effect=\"italics\">having knowledge</em>,
+        and refers the knowledge of how the physical world operates, based on objective
+        evidence determined through observation and experimentation. A key requirement
+        of any scientific explanation of a natural phenomenon is that it must be testable;
+        one must be able to devise and conduct an experimental investigation that
+        either supports or refutes the explanation. It is important to note that some
+        questions fall outside the realm of science precisely because they deal with
+        phenomena that are not scientifically testable. This need for objective evidence
+        helps define the investigative process scientists follow, which will be described
+        later in this chapter.</p>\n<p id=\"fs-id1164354537908\">Physics is the science
+        aimed at describing the fundamental aspects of our universe. This includes
+        what things are in it, what properties of those things are noticeable, and
+        what processes those things or their properties undergo. In simpler terms,
+        physics attempts to describe the basic mechanisms that make our universe behave
+        the way it does. For example, consider a smart phone (<a href=\"#Figure_01_01_phone\"
+        class=\"autogenerated-content\">Figure 1.2</a>). Physics describes how electric
+        current interacts with the various circuits inside the device. This knowledge
+        helps engineers select the appropriate materials and circuit layout when building
+        the smart phone. Next, consider a GPS. Physics describes the relationship
+        between the speed of an object, the distance over which it travels, and the
+        time it takes to travel that distance. When you use a GPS device in a vehicle,
+        it utilizes these physics relationships to determine the travel time from
+        one location to another.</p>\n\n<div class=\"os-figure\"><figure id=\"Figure_01_01_phone\"><span
+        data-type=\"media\" id=\"fs-id1164354456903\" data-alt=\"A common smart phone
+        with a GPS function is shown.\">\n<img src=\"/resources/57c3519321bc710453652a8e6406834d7ad147f4\"
+        data-media-type=\"image/jpeg\" alt=\"A common smart phone with a GPS function
+        is shown.\" id=\"4\"/>\n</span>\n\n</figure><div class=\"os-caption-container\"><span
+        class=\"os-title-label\">Figure </span><span class=\"os-number\">1.2</span><span
+        class=\"os-divider\"> </span><span class=\"os-divider\"> </span><span class=\"os-caption\">Physics
+        describes the way that electric charge flows through the circuits of this
+        device. Engineers use their knowledge of physics to construct a smartphone
+        with features that consumers will enjoy, such as a GPS function. GPS uses
+        physics equations to determine the driving time between two locations on a
+        map. (@gletham GIS, Social, Mobile Tech Images)</span></div></div><div data-type=\"note\"
+        id=\"fs-id1164353513921\" class=\"os-teacher\"><h3 class=\"os-title\" data-type=\"title\"><span
+        class=\"os-title-label\">Teacher Support</span></h3><div class=\"os-note-body\"><h4
+        data-type=\"title\" id=\"5\" class=\"os-subtitle\"><span class=\"os-subtitle-label\">Teacher
+        Support</span></h4><p id=\"fs-id1164354530634\"><span>[AL]</span>Ask what
+        parts of a cell phone should contain conducting materials (wires, circuit
+        boards, etc.) versus insulating materials (e.g., places where electrical insulation
+        keeps humans from touching electrical circuits inside the phone).</p>\n<p
+        id=\"fs-id1164354468798\"><span>[AL]</span>You can delve into GPS usage at
+        this point by defining velocity = distance/time, discussing triangulation,
+        and/or discussing line of sight.</p>\n</div></div>\n\n<p id=\"fs-id1164354471453\">As
+        our technology evolved over the centuries, physics expanded into many branches.
+        Ancient peoples could only study things that they could see with the naked
+        eye or otherwise experience without the aid of scientific equipment. This
+        included the study of <span data-type=\"term\" class=\"no-emphasis\" id=\"term2\"
+        group-by=\"k\">kinematics</span>, which is the study of moving objects. For
+        example, ancient people often studied the apparent motion of objects in the
+        sky, such as the sun, moon, and stars. This is evident in the construction
+        of prehistoric astronomical observatories, such as Stonehenge in England (shown
+        in <a href=\"#Figure_01_01_Stonehenge\" class=\"autogenerated-content\">Figure
+        1.3</a>). </p>\n<div class=\"os-figure\"><figure id=\"Figure_01_01_Stonehenge\"><span
+        data-type=\"media\" id=\"fs-id1164354615229\" data-alt=\"A photograph of Stonehenge
+        shows large rocks sitting upright and other laying across the upright rocks.
+        Stonehenge functions as an ancient astronomical observatory, with certain
+        rocks in the monument aligning with the position of the Sun during the summer
+        and winter solstices. Other rocks align with the rising and setting of the
+        Moon during certain days of the year.\">\n<img src=\"/resources/361ccf872d135138635c3049c85aea80e59c8a9a\"
+        data-media-type=\"image/jpeg\" alt=\"A photograph of Stonehenge shows large
+        rocks sitting upright and other laying across the upright rocks. Stonehenge
+        functions as an ancient astronomical observatory, with certain rocks in the
+        monument aligning with the position of the Sun during the summer and winter
+        solstices. Other rocks align with the rising and setting of the Moon during
+        certain days of the year.\" id=\"6\"/>\n</span>\n\n</figure><div class=\"os-caption-container\"><span
+        class=\"os-title-label\">Figure </span><span class=\"os-number\">1.3</span><span
+        class=\"os-divider\"> </span><span class=\"os-divider\"> </span><span class=\"os-caption\">Stonehenge
+        is a monument located in England that was built between 3000 and 1000 B.C.
+        It functions as an ancient astronomical observatory, with certain rocks in
+        the monument aligning with the position of the sun during the summer and winter
+        solstices. Other rocks align with the rising and setting of the moon during
+        certain days of the year. (Citypeek, Wikimedia Commons)</span></div></div>\n\n<p
+        id=\"fs-id1164354617452\">Ancient people also studied <span data-type=\"term\"
+        class=\"no-emphasis\" id=\"term3\" group-by=\"s\">statics</span> and <span
+        data-type=\"term\" class=\"no-emphasis\" id=\"term4\" group-by=\"d\">dynamics</span>,
+        which focus on how objects start moving, stop moving, and change speed and
+        direction in response to forces that push or pull on the objects. This early
+        interest in kinematics and dynamics allowed humans to invent simple machines,
+        such as the lever, the pulley, the ramp, and the wheel. These simple machines
+        were gradually combined and integrated to produce more complicated machines,
+        such as wagons and cranes. Machines allowed humans to gradually do more work
+        more effectively in less time, allowing them to create larger and more complicated
+        buildings and structures, many of which still exist today from ancient times.</p>\n\n\n\n<p
+        id=\"fs-id1164354554377\">As technology advanced, the branches of physics
+        diversified even more. These include branches such as <span data-type=\"term\"
+        class=\"no-emphasis\" id=\"term5\" group-by=\"a\">acoustics</span>, the study
+        of sound, and <span data-type=\"term\" class=\"no-emphasis\" id=\"term6\"
+        group-by=\"o\">optics</span>, the study of the light. In 1608, the invention
+        of the telescope by a Germany spectacle maker, Hans Lippershey, led to huge
+        breakthroughs in astronomy\u2014the study of objects or phenomena in space.
+        One year later, in 1609, Galileo Galilei began the first studies of the solar
+        system and the universe using a telescope. During the Renaissance era, Isaac
+        Newton used observations made by Galileo to construct his three laws of motion.
+        These laws were the standard for studying kinematics and dynamics even today.</p>\n\n<p
+        id=\"fs-id1164354602999\">Another major branch of physics is <span data-type=\"term\"
+        class=\"no-emphasis\" id=\"term7\" group-by=\"t\">thermodynamics</span>, which
+        includes the study of thermal energy and the transfer of heat. James Prescott
+        Joule, an English physicist, studied the nature of heat and its relationship
+        to work. Joule\u2019s work helped lay the foundation for the first of three
+        laws of thermodynamics that describe how energy in our universe is transferred
+        from one object to another or transformed from one form to another. Studies
+        in thermodynamics were motivated by the need to make engines more efficient,
+        keep people safe from the elements, and preserve food.</p>\n\n<p id=\"fs-id1164354472610\">The
+        18<sup>th</sup> and 19<sup>th</sup> centuries also saw great strides in the
+        study of electricity and magnetism. <span data-type=\"term\" class=\"no-emphasis\"
+        id=\"term8\" group-by=\"E\">Electricity</span> involves the study of electric
+        charges and their movements. <span data-type=\"term\" class=\"no-emphasis\"
+        id=\"term9\" group-by=\"M\">Magnetism</span> had long ago been noticed as
+        an attractive force between a magnetized object and a metal like iron, or
+        between the opposite poles (North and South) of two magnetized objects. In
+        1820, Danish physicist Hans Christian Oersted showed that electric currents
+        create magnetic fields. In 1831, English inventor Michael Faraday showed that
+        moving a wire through a magnetic field could induce an electric current. These
+        studies led to the inventions of the electric motor and electric generator,
+        which revolutionized human life by bringing electricity and magnetism into
+        our machines.</p><p id=\"fs-id1164354540028\">The end of the 19<sup>th</sup>
+        century saw the discovery of radioactive substances by the French scientists
+        Marie and Pierre Curie. <span data-type=\"term\" class=\"no-emphasis\" id=\"term10\"
+        group-by=\"N\">Nuclear physics</span> involves studying the nuclei of <span
+        data-type=\"term\" id=\"term11\" group-by=\"a\">atoms</span>, the source of
+        nuclear radiation. In the 20<sup>th</sup> century, the study of nuclear physics
+        eventually led to the ability to split the nucleus of an atom, a process called
+        nuclear fission. This process is the basis for nuclear power plants and nuclear
+        weapons. Also, the field of <span data-type=\"term\" id=\"term12\" group-by=\"q\">quantum
+        mechanics</span>, which involves the mechanics of atoms and molecules, saw
+        great strides during the 20<sup>th</sup> century as our understanding of atoms
+        and subatomic particles increased (see below).</p>\n\n<p id=\"fs-id1164354528506\">Early
+        in the 20<sup>th</sup> century, Albert Einstein revolutionized several branches
+        of physics, especially relativity. Relativity revolutionized our understanding
+        of motion and the universe in general as described further in this chapter.
+        Now, in the 21<sup>st</sup> century, physicists continue to study these and
+        many other branches of physics.</p>\n\n<p id=\"fs-id1164354631526\">By studying
+        the most important topics in physics, you will gain analytical abilities that
+        will enable you to apply physics far beyond the scope of what can be included
+        in a single book. These analytical skills will help you to excel academically,
+        and they will also help you to think critically in any career you choose to
+        pursue.</p>\n</section><section data-depth=\"1\" id=\"fs-id1164354537940\"><h3
+        data-type=\"title\">Physics: Past and Present</h3>\n<p id=\"fs-id1164354879006\">The
+        word physics is thought to come from the Greek word <em data-effect=\"italics\">phusis</em>,
+        meaning nature. The study of nature later came to be called <em data-effect=\"italics\">natural
+        philosophy</em>. From ancient times through the Renaissance, natural philosophy
+        encompassed many fields, including astronomy, biology, chemistry, mathematics,
+        and medicine. Over the last few centuries, the growth of scientific knowledge
+        has resulted in ever-increasing specialization and branching of natural philosophy
+        into separate fields, with physics retaining the most basic facets. Physics,
+        as it developed from the Renaissance to the end of the 19<sup>th</sup> century,
+        is called <span data-type=\"term\" id=\"term13\" group-by=\"c\">classical
+        physics</span>. Revolutionary discoveries starting at the beginning of the
+        20<sup>th</sup> century transformed physics from classical physics to <span
+        data-type=\"term\" id=\"term14\" group-by=\"m\">modern physics</span>.</p>\n\n<div
+        data-type=\"note\" id=\"fs-id1164354556890\" class=\"os-teacher\"><h3 class=\"os-title\"
+        data-type=\"title\"><span class=\"os-title-label\">Teacher Support</span></h3><div
+        class=\"os-note-body\"><h4 data-type=\"title\" id=\"7\" class=\"os-subtitle\"><span
+        class=\"os-subtitle-label\">Teacher Support</span></h4><p id=\"fs-id1164354609833\"><span>[BL]</span>[EL]English
+        learners may need <em data-effect=\"italics\">philosophy</em> and <em data-effect=\"italics\">classical</em>
+        defined during this section. Relate the definition of classical physics to
+        the use of the word <em data-effect=\"italics\">classical</em> in a context
+        that is probably more familiar to students, such as classic films.</p>\n</div></div>\n\n<p
+        id=\"fs-id1164353401791\">Classical physics is not an exact description of
+        the universe, but it is an excellent approximation under the following conditions:
+        (1) matter must be moving at speeds less than about 1 percent of the speed
+        of light, (2) the objects dealt with must be large enough to be seen with
+        the naked eye, and (3) only weak gravity, such as that generated by Earth,
+        can be involved. Very small objects, such as atoms and molecules, cannot be
+        adequately explained by classical physics. These three conditions apply to
+        almost all of everyday experience. As a result, most aspects of classical
+        physics should make sense on an intuitive level.</p>\n\n<div data-type=\"note\"
+        id=\"fs-id1164354594058\" class=\"os-teacher\"><h3 class=\"os-title\" data-type=\"title\"><span
+        class=\"os-title-label\">Teacher Support</span></h3><div class=\"os-note-body\"><h4
+        data-type=\"title\" id=\"8\" class=\"os-subtitle\"><span class=\"os-subtitle-label\">Teacher
+        Support</span></h4><p id=\"fs-id1164354501431\"><span>[OL]</span>To better
+        relate to student experience, express the speed of light in units used while
+        driving a car, for example, 1.080 million km/h or 671 million miles per hour.
+        Relate this to the approximately eight minute trip that light takes to travel
+        150 billion kilometers (93 billion miles) from the Sun to the Earth.</p></div></div>\n\n<p
+        id=\"fs-id1164354658284\">Many laws of classical physics have been modified
+        during the 20<sup>th</sup> century, resulting in revolutionary changes in
+        technology, society, and our view of the universe. As a result, many aspects
+        of modern physics, which occur outside of the range of our everyday experience,
+        may seem bizarre or unbelievable. So why is most of this textbook devoted
+        to classical physics? There are two main reasons. The first is that knowledge
+        of classical physics is necessary to understand modern physics. The second
+        reason is that classical physics still gives an accurate description of the
+        universe under a wide range of everyday circumstances.</p>\n\n<p id=\"fs-id1164353401992\">Modern
+        physics includes two revolutionary theories: relativity and quantum mechanics.
+        These theories deal with the very fast and the very small, respectively. The
+        <span data-type=\"term\" id=\"term15\" group-by=\"t\">theory of relativity</span>
+        was developed by Albert Einstein in 1905. By examining how two observers moving
+        relative to each other would see the same phenomena, Einstein devised radical
+        new ideas about time and space. He came to the startling conclusion that the
+        measured length of an object travelling at high speeds (greater than about
+        one percent of the speed of light) is shorter than the same object measured
+        at rest. Perhaps even more bizarre is the idea the time for the same process
+        to occur is different depending on the motion of the observer. Time passes
+        more slowly for an object travelling at high speeds. A trip to the nearest
+        star system, Alpha Centauri, might take an astronaut 4.5 Earth years if the
+        ship travels near the speed of light. However, because time is slowed at higher
+        speeds, the astronaut would age only 0.5 years during the trip. Einstein\u2019s
+        ideas of relativity were accepted after they were confirmed by numerous experiments.</p>\n\n<p
+        id=\"fs-id1164354538885\">Gravity, the force that holds us to Earth, can also
+        affect time and space. For example, time passes more slowly on Earth\u2019s
+        surface than for objects farther from the surface, such as a satellite in
+        orbit. The very accurate clocks on global positioning satellites have to correct
+        for this. They slowly keep getting ahead of clocks at Earth\u2019s surface.
+        This is called time dilation, and it occurs because gravity, in essence, slows
+        down time.</p>\n\n<div data-type=\"note\" id=\"fs-id1164354564070\" class=\"os-teacher\"><h3
+        class=\"os-title\" data-type=\"title\"><span class=\"os-title-label\">Teacher
+        Support</span></h3><div class=\"os-note-body\"><h4 data-type=\"title\" id=\"9\"
+        class=\"os-subtitle\"><span class=\"os-subtitle-label\">Teacher Support</span></h4><p
+        id=\"fs-id1164354949787\"><span>[AL]</span>By saying that time passes more
+        slowly at near-light speeds or high gravity, it is important to mention that
+        people in both locations perceive the second as the same length of time.</p>\n</div></div>\n\n<p
+        id=\"fs-id1164354495139\">Large objects, like Earth, have strong enough gravity
+        to distort space. To visualize this idea, think about a bowling ball placed
+        on a trampoline. The bowling ball depresses or curves the surface of the trampoline.
+        If you rolled a marble across the trampoline, it would follow the surface
+        of the trampoline, roll into the depression caused by the bowling ball, and
+        hit the ball. Similarly, the Earth curves space around it in the shape of
+        a funnel. These curves in space due to the Earth cause objects to be attracted
+        to Earth (i.e., gravity).</p>\n\n<p id=\"fs-id1164354634189\">Because of the
+        way gravity affects space and time, Einstein stated that gravity affects the
+        space-time continuum, as illustrated in <a href=\"#Figure_01_01_Earth\" class=\"autogenerated-content\">Figure
+        1.4</a>. This is why time proceeds more slowly at Earth\u2019s surface than
+        in orbit. In black holes, whose gravity is hundreds of times that of Earth,
+        time passes so slowly that it would appear to a far-away observer to have
+        stopped!</p>\n\n<div class=\"os-figure\"><figure id=\"Figure_01_01_Earth\"><span
+        data-type=\"media\" id=\"fs-id1164354954207\" data-alt=\"An image of Earth
+        in outer space sitting in a mesh net is shown. The mesh is pushed downward
+        by the mass of Earth and arrows indicate that Earth is spinning. The image
+        illustrates Einstein\u2019s theory of relativity describes space and time
+        as an interweaved mesh.\">\n<img src=\"/resources/78139764c9cd3f28b132046e4254238d1f00f198\"
+        data-media-type=\"image/jpeg\" alt=\"An image of Earth in outer space sitting
+        in a mesh net is shown. The mesh is pushed downward by the mass of Earth and
+        arrows indicate that Earth is spinning. The image illustrates Einstein\u2019s
+        theory of relativity describes space and time as an interweaved mesh.\" id=\"10\"/>\n</span>\n\n</figure><div
+        class=\"os-caption-container\"><span class=\"os-title-label\">Figure </span><span
+        class=\"os-number\">1.4</span><span class=\"os-divider\"> </span><span class=\"os-divider\">
+        </span><span class=\"os-caption\">Einstein\u2019s theory of relativity describes
+        space and time as an interweaved mesh. Large objects, such as a planet, distort
+        space, causing objects to fall in toward the planet due to the action of gravity.
+        Large objects also distort time, causing time to proceed at a slower rate
+        near the surface of Earth compared with the area outside of the distorted
+        region of space-time.</span></div></div><div data-type=\"note\" id=\"fs-id1164354471806\"
+        class=\"os-teacher\"><h3 class=\"os-title\" data-type=\"title\"><span class=\"os-title-label\">Teacher
+        Support</span></h3><div class=\"os-note-body\"><h4 data-type=\"title\" id=\"11\"
+        class=\"os-subtitle\"><span class=\"os-subtitle-label\">Teacher Support</span></h4><p
+        id=\"fs-id1164354572756\"><span>[AL]</span>Black holes are much more dense
+        and massive than Earth. The greater an object\u2019s mass, the stronger the
+        gravitational field it produces, and the more that gravity slows down time.</p>\n</div></div>\n\n<p
+        id=\"fs-id1164354569346\">In summary, relativity says that in describing the
+        universe, it is important to realize that time, space and speed are not absolute.
+        Instead, they can appear different to different observers. Einstein\u2019s
+        ability to reason out relativity is even more amazing because we cannot see
+        the effects of relativity in our everyday lives.</p>\n\n<p id=\"fs-id1164354678126\">Quantum
+        mechanics is the second major theory of modern physics. Quantum mechanics
+        deals with the very small, namely, the subatomic particles that make up atoms.
+        Atoms (<a href=\"#Figure_01_01_gold\" class=\"autogenerated-content\">Figure
+        1.5</a>) are the smallest units of elements. However, atoms themselves are
+        constructed of even smaller subatomic particles, such as protons, neutrons
+        and electrons. Quantum mechanics strives to describe the properties and behavior
+        of these and other subatomic particles. Often, these particles do not behave
+        in the ways expected by classical physics. One reason for this is that they
+        are small enough to travel at great speeds, near the speed of light.</p><div
+        class=\"os-figure\"><figure id=\"Figure_01_01_gold\"><span data-type=\"media\"
+        id=\"fs-id1164354600655\" data-alt=\"An image of gold taken by a scanning
+        tunneling microscope shows individual gold atoms.\">\n<img src=\"/resources/6f19357688b65436879428f6d20146a022f21dcd\"
+        data-media-type=\"image/jpeg\" alt=\"An image of gold taken by a scanning
+        tunneling microscope shows individual gold atoms.\" id=\"12\"/>\n</span>\n\n</figure><div
+        class=\"os-caption-container\"><span class=\"os-title-label\">Figure </span><span
+        class=\"os-number\">1.5</span><span class=\"os-divider\"> </span><span class=\"os-divider\">
+        </span><span class=\"os-caption\">Using a scanning tunneling microscope (STM),
+        scientists can see the individual atoms that compose this sheet of gold. (Erwinrossen)</span></div></div><div
+        data-type=\"note\" id=\"fs-id1164354478289\" class=\"os-teacher\"><h3 class=\"os-title\"
+        data-type=\"title\"><span class=\"os-title-label\">Teacher Support</span></h3><div
+        class=\"os-note-body\"><h4 data-type=\"title\" id=\"13\" class=\"os-subtitle\"><span
+        class=\"os-subtitle-label\">Teacher Support</span></h4><p id=\"fs-id1164354696367\"><span>[OL]</span><span>[AL]</span>Assess
+        prior knowledge of subatomic particles by asking students if they have heard
+        of protons, electrons, neutrons, as well as quarks, Higgs-Boson particles,
+        and so on.</p>\n<p id=\"fs-id1164354531272\"><span>[AL]</span>Scanning electron
+        microscopes generate highly-detailed surface views of objects such as that
+        shown in <a href=\"#Figure_01_01_gold\" class=\"autogenerated-content\">Figure
+        1.5</a>. They scan the object\u2019s surface with beams of electrons to detect
+        the object\u2019s microscopic topography.</p></div></div><p id=\"fs-id1164354498230\">At
+        particle colliders (<a href=\"#Figure_01_01_collider\" class=\"autogenerated-content\">Figure
+        1.6</a>), such as the Large Hadron Collider on the France-Swiss border, particle
+        physicists can make subatomic particles travel at very high speeds within
+        a 27 kilometers (17 miles) long superconducting tunnel. They can then study
+        the properties of the particles at high speeds, as well as collide them with
+        each other to see how they exchange energy. This has led to many intriguing
+        discoveries such as the Higgs-Boson particle, which gives matter the property
+        of mass, and antimatter, which causes a huge energy release when it comes
+        in contact with matter.</p>\n\n<div class=\"os-figure\"><figure id=\"Figure_01_01_collider\"><span
+        data-type=\"media\" id=\"fs-id1164354502491\" data-alt=\"A photograph shows
+        a large collider, called the Fermilab, with a long tube that allows subatomic
+        particles to be accelerated.\">\n<img src=\"/resources/f13392d13d2d23ab60499d29b728ee62192ffdfe\"
+        data-media-type=\"image/jpeg\" alt=\"A photograph shows a large collider,
+        called the Fermilab, with a long tube that allows subatomic particles to be
+        accelerated.\" id=\"14\"/>\n</span>\n\n</figure><div class=\"os-caption-container\"><span
+        class=\"os-title-label\">Figure </span><span class=\"os-number\">1.6</span><span
+        class=\"os-divider\"> </span><span class=\"os-divider\"> </span><span class=\"os-caption\">Particle
+        colliders such as the Large Hadron Collider in Switzerland or Fermilab in
+        the United States (pictured here), have long tunnels that allows subatomic
+        particles to be accelerated to near light speed. (Andrius.v )</span></div></div><p
+        id=\"fs-id1164354608337\">Physicists are currently trying to unify the two
+        theories of modern physics, relativity and quantum mechanics, into a single,
+        comprehensive theory called relativistic quantum mechanics. Relating the behavior
+        of subatomic particles to gravity, time, and space will allow us to explain
+        how the universe works in a much more comprehensive way.</p>\n</section>\n\n\n\n<section
+        data-depth=\"1\" id=\"fs-id1164354562387\"><h3 data-type=\"title\">Application
+        of Physics</h3>\n<p id=\"fs-id1164354463964\">You need not be a scientist
+        to use physics. On the contrary, knowledge of physics is useful in everyday
+        situations as well as in nonscientific professions. For example, physics can
+        help you understand why you shouldn\u2019t put metal in the microwave (<a
+        href=\"#Figure_01_01_microwave\" class=\"autogenerated-content\">Figure 1.7</a>),
+        why a black car radiator helps remove heat in a car engine, and why a white
+        roof helps keep the inside of a house cool. The operation of a car\u2019s
+        ignition system, as well as the transmission of electrical signals through
+        our nervous system, are much easier to understand when you think about them
+        in terms of the basic physics of electricity.</p><div class=\"os-figure\"><figure
+        id=\"Figure_01_01_microwave\"><span data-type=\"media\" id=\"fs-id1164354562173\"
+        data-alt=\"A small, counter-top microwave oven is shown. Microwave ovens use
+        electromagnetic waves to heat food.\">\n<img src=\"/resources/040b01e95a606a0ae38d9f08d4551d054d09fd87\"
+        data-media-type=\"image/jpeg\" alt=\"A small, counter-top microwave oven is
+        shown. Microwave ovens use electromagnetic waves to heat food.\" id=\"15\"/>\n</span>\n\n</figure><div
+        class=\"os-caption-container\"><span class=\"os-title-label\">Figure </span><span
+        class=\"os-number\">1.7</span><span class=\"os-divider\"> </span><span class=\"os-divider\">
+        </span><span class=\"os-caption\">Why can''t you put metal in the microwave?
+        Microwaves are high-energy radiation that increases the movement of electrons
+        in metal. These moving electrons can create an electrical current, causing
+        sparking that can lead to a fire. (= MoneyBlogNewz)</span></div></div><div
+        data-type=\"note\" id=\"fs-id1164354563145\" class=\"os-teacher\"><h3 class=\"os-title\"
+        data-type=\"title\"><span class=\"os-title-label\">Teacher Support</span></h3><div
+        class=\"os-note-body\"><h4 data-type=\"title\" id=\"16\" class=\"os-subtitle\"><span
+        class=\"os-subtitle-label\">Teacher Support</span></h4><p id=\"fs-id1164354537532\"><span>[AL]</span>It
+        is hazardous to put metal in the microwave because metal reflects microwaves,
+        which, when free to bounce around the oven, can damage the oven. Also, the
+        metal in the microwave oven gets very hot and begins generating an electrical
+        field. This electrical field ionizes the air surrounding the metal, creating
+        sparks.</p>\n</div></div>\n\n<p id=\"fs-id1164354555274\">Physics is the foundation
+        of many important scientific disciplines. For example, chemistry deals with
+        the interactions of atoms and molecules. Not surprisingly, chemistry is rooted
+        in atomic and molecular physics. Most branches of engineering are also applied
+        physics. In architecture, physics is at the heart of determining structural
+        stability, acoustics, heating, lighting, and cooling for buildings. Parts
+        of geology, the study of nonliving parts of Earth, rely heavily on physics;
+        including radioactive dating, earthquake analysis, and heat transfer across
+        Earth\u2019s surface. Indeed, some disciplines, such as biophysics and geophysics,
+        are hybrids of physics and other disciplines.</p>\n\n<div data-type=\"note\"
+        id=\"fs-id1164354608360\" class=\"os-teacher\"><h3 class=\"os-title\" data-type=\"title\"><span
+        class=\"os-title-label\">Teacher Support</span></h3><div class=\"os-note-body\"><h4
+        data-type=\"title\" id=\"17\" class=\"os-subtitle\"><span class=\"os-subtitle-label\">Teacher
+        Support</span></h4><p id=\"fs-id1164353400524\"><span>[BL]</span>[EL]Students
+        may need <em data-effect=\"italics\">acoustics</em> to be explained as the
+        properties of a room or structure that determine how sound is transmitted
+        within it.</p>\n</div></div>\n\n<p id=\"fs-id1164354626125\">Physics also
+        describes the chemical processes that power the human body. Physics is involved
+        in medical diagnostics, such as x-rays, magnetic resonance imaging (MRI),
+        and ultrasonic blood flow measurements (<a href=\"#Figure_01_01_eye\" class=\"autogenerated-content\">Figure
+        1.8</a>). Medical therapy Physics also has many applications in biology, the
+        study of life. For example, physics describes how cells can protect themselves
+        using their cell walls and cell membranes (<a href=\"#Figure_01_01_cell\"
+        class=\"autogenerated-content\">Figure 1.9</a>). Medical therapy sometimes
+        directly involves physics, such as in using X-rays to diagnose health conditions.
+        Physics can also explain what we perceive with our senses, such as how the
+        ears detect sound or the eye detects color.</p><div class=\"os-figure\"><figure
+        id=\"Figure_01_01_eye\"><span data-type=\"media\" id=\"fs-id1164354603843\"
+        data-alt=\"An MRI image of a brain is shown. This type of photography uses
+        electromagnetic radiation to produce images.\">\n<img src=\"/resources/af4ef9e0ad684b95aacfa347f5e82f36a219fd76\"
+        data-media-type=\"image/jpeg\" alt=\"An MRI image of a brain is shown. This
+        type of photography uses electromagnetic radiation to produce images.\" id=\"18\"/>\n</span>\n\n</figure><div
+        class=\"os-caption-container\"><span class=\"os-title-label\">Figure </span><span
+        class=\"os-number\">1.8</span><span class=\"os-divider\"> </span><span class=\"os-divider\">
+        </span><span class=\"os-caption\">Magnetic resonance imaging (MRI) uses electromagnetic
+        waves to yield an image of the brain, which doctors can use to find diseased
+        regions. (Rashmi Chawla, Daniel Smith, and Paul E. Marik)</span></div></div><div
+        class=\"os-figure\"><figure id=\"Figure_01_01_cell\"><span data-type=\"media\"
+        id=\"fs-id1164354591439\" data-alt=\"A group of onion cells is shown. Each
+        cell has a visible cell wall and nucleus.\">\n<img src=\"/resources/07a0778e83fbb2216f286eab6f52e110be1ed0b5\"
+        data-media-type=\"image/jpeg\" alt=\"A group of onion cells is shown. Each
+        cell has a visible cell wall and nucleus.\" id=\"19\"/>\n</span>\n\n</figure><div
+        class=\"os-caption-container\"><span class=\"os-title-label\">Figure </span><span
+        class=\"os-number\">1.9</span><span class=\"os-divider\"> </span><span class=\"os-divider\">
+        </span><span class=\"os-caption\">Physics, chemistry, and biology help describe
+        the properties of cell walls in plant cells, such as the onion cells seen
+        here. (Umberto Salvagnin)</span></div></div><div data-type=\"note\" id=\"fs-id1164354605777\"
+        class=\"os-teacher\"><h3 class=\"os-title\" data-type=\"title\"><span class=\"os-title-label\">Teacher
+        Support</span></h3><div class=\"os-note-body\"><h4 data-type=\"title\" id=\"20\"
+        class=\"os-subtitle\"><span class=\"os-subtitle-label\">Teacher Support</span></h4><p
+        id=\"fs-id1164354531660\"><span>[BL]</span>Cell membranes (found in the cells
+        of all organisms) control the transport of materials into and out of a cell.
+        Cell walls (found in plant cells, fungus cells, bacteria, and plant-like microbes)
+        mainly provide structure and support.</p>\n<p id=\"fs-id1164354497453\"><span>[AL]</span>X-rays
+        easily penetrate skin and soft tissues but are absorbed to a far greater extent
+        by bone. This produces an image where bones within the body are clearly visible
+        while soft tissue is not. MRI scans for the magnetic properties of atoms within
+        the body, allowing the solid versus empty areas within the body to be visualized.
+        Ultrasonic blood flow measurements use sound waves and the Doppler effect
+        to measure blood flow speed and volume.</p>\n</div></div>\n\n<div data-type=\"note\"
+        id=\"fs-id1164354635018\" class=\"boundless-physics\"><h3 class=\"os-title\"
+        data-type=\"title\"><span class=\"os-title-label\">Boundless Physics</span></h3><div
+        class=\"os-note-body\"><h4 data-type=\"title\" id=\"21\" class=\"os-subtitle\"><span
+        class=\"os-subtitle-label\">The Physics of Landing on a Comet</span></h4><p
+        id=\"fs-id1164354555075\">On November 12, 2014, the European Space Agency\u2019s
+        Rosetta spacecraft (shown in <a href=\"#Figure_01_01_Rosetta\" class=\"autogenerated-content\">Figure
+        1.10</a>) became the first ever to reach and orbit a comet. Shortly after,
+        Rosetta\u2019s rover, Philae, landed on the comet, representing the first
+        time humans have ever landed a space probe on a comet.</p><div class=\"os-figure\"><figure
+        id=\"Figure_01_01_Rosetta\"><span data-type=\"media\" id=\"fs-id1164354626090\"
+        data-alt=\"An image of the Rosetta spacecraft is shown. It has large solar
+        panels and is hovering over a comet.\">\n<img src=\"/resources/dc640298b8bb5a5321f96c7eb22c1c9e0b48dcb3\"
+        data-media-type=\"image/jpeg\" alt=\"An image of the Rosetta spacecraft is
+        shown. It has large solar panels and is hovering over a comet.\" id=\"22\"/>\n</span>\n\n</figure><div
+        class=\"os-caption-container\"><span class=\"os-title-label\">Figure </span><span
+        class=\"os-number\">1.10</span><span class=\"os-divider\"> </span><span class=\"os-divider\">
+        </span><span class=\"os-caption\">The Rosetta spacecraft, with its large and
+        revolutionary solar panels, carried the Philae lander to a comet. The lander
+        then detached and landed on the comet\u2019s surface. (European Space Agency)</span></div></div><p
+        id=\"fs-id1164354468641\">After traveling 6.4 billion kilometers starting
+        from its launch on Earth, Rosetta landed on the comet 67P/Churyumov-Gerasimenko,
+        which is only 4 kilometers wide. Physics was needed to successfully plot the
+        course to reach such a small, distant, and rapidly moving target. Rosetta\u2019s
+        path to the comet was not straight forward. The probe first had to travel
+        to Mars so that Mars\u2019s gravity could accelerate it and divert it in the
+        exact direction of the comet. </p><p id=\"fs-id1164354594416\">This was not
+        the first time humans used gravity to power our spaceships. Voyager 2, a space
+        probe launched in 1977, used the gravity of Saturn to <em data-effect=\"italics\">slingshot</em>
+        over to Uranus and Neptune (illustrated in <a href=\"#Figure_01_01_solar\"
+        class=\"autogenerated-content\">Figure 1.11</a>), providing the first pictures
+        ever taken of these planets. Now, almost 40 years after its launch, Voyager
+        2 is at the very edge of our solar system and is about to enter interstellar
+        space. Its sister ship, Voyager 1 (illustrated in <a href=\"#Figure_01_01_solar\"
+        class=\"autogenerated-content\">Figure 1.11</a>), which was also launched
+        in 1977, is already there.</p><p id=\"fs-id1164354871882\">To listen to the
+        sounds of interstellar space or see images that have been transmitted back
+        from the Voyager I or to learn more about the Voyager mission, visit the <a
+        href=\"https://openstax.org/l/28voyager\">Voyager\u2019s Mission website</a>.</p><div
+        class=\"os-figure\"><figure id=\"Figure_01_01_solar\"><span data-type=\"media\"
+        id=\"fs-id1164354656384\" data-alt=\"Two diagrams are shown. The diagram on
+        the left illustrates the path of the Voyager 2 spacecraft starting at Earth
+        on August 20th, 1977. The following labels describe the path: Jupiter on July
+        9th, 1979, Saturn on August 25th, 1981, Uranus on January 24th, 1986, and
+        Neptune on August 25th, 1989. The diagram on the right illustrates the Voyager
+        1 space probe.\">\n<img src=\"/resources/6b474578077a7ec489c16acda95525e6283a124b\"
+        data-media-type=\"image/jpeg\" alt=\"Two diagrams are shown. The diagram on
+        the left illustrates the path of the Voyager 2 spacecraft starting at Earth
+        on August 20th, 1977. The following labels describe the path: Jupiter on July
+        9th, 1979, Saturn on August 25th, 1981, Uranus on January 24th, 1986, and
+        Neptune on August 25th, 1989. The diagram on the right illustrates the Voyager
+        1 space probe.\" id=\"23\"/>\n</span>\n\n</figure><div class=\"os-caption-container\"><span
+        class=\"os-title-label\">Figure </span><span class=\"os-number\">1.11</span><span
+        class=\"os-divider\"> </span><span class=\"os-divider\"> </span><span class=\"os-caption\">a)
+        Voyager 2, launched in 1977, used the gravity of Saturn to slingshot over
+        to Uranus and Neptune. NASA b) A rendering of Voyager 1, the first space probe
+        to ever leave our solar system and enter interstellar space. NASA</span></div></div><p
+        id=\"fs-id1164354626383\">Both Voyagers have electrical power generators based
+        on the decay of radioisotopes. These generators have served them for almost
+        40 years. Rosetta, on the other hand, is solar-powered. In fact, Rosetta became
+        the first space probe to travel beyond the asteroid belt by relying only on
+        solar cells for power generation.</p>\n\n<p id=\"fs-id1164353487283\">At 800
+        million kilometers from the sun, Rosetta receives sunlight that is only 4
+        percent as strong as on Earth. In addition, it is very cold in space. Therefore,
+        a lot of physics went into developing Rosetta\u2019s low-intensity low-temperature
+        solar cells.</p>\n\n<p id=\"fs-id1164354501460\">In this sense, the Rosetta
+        project nicely shows the huge range of topics encompassed by physics: from
+        modeling the movement of gigantic planets over huge distances within our solar
+        systems, to learning how to generate electric power from low-intensity light.
+        Physics is, by far, the broadest field of science.</p>\n\n<div data-type=\"exercise\"
+        id=\"fs-id1164353440258\" class=\"os-exercise grasp-check unnumbered\"><h3
+        data-type=\"title\" class=\"os-title\"><span class=\"os-title-label\">Grasp
+        Check</span></h3>\n\n<div data-type=\"problem\" id=\"fs-id1164354827183\"><div
+        class=\"os-problem-container \">\n<!--<para id=\"fs-id1164354551967\">\n<link
+        class=\"os-embed\" url=\"#ost/api/ex/k12phys-ch01-ex001\"/></para>-->\n\n<p
+        id=\"fs-id1164566952986\">What characteristics of the solar system would have
+        to be known or calculated in order to send a probe to a distant planet, such
+        as Jupiter?</p>\n<ol id=\"fs-id1164564735175\" type=\"a\">\n<li>the effects
+        due to the light from the distant stars</li>\n<li>the effects due to the air
+        in the solar system</li>\n<li>the effects due to the gravity from the other
+        planets</li>\n<li>the effects due to the cosmic microwave background radiation</li>\n</ol>\n</div></div>\n</div>\n</div></div>\n\n<div
+        data-type=\"note\" id=\"fs-id1164354520787\" class=\"os-teacher\"><h3 class=\"os-title\"
+        data-type=\"title\"><span class=\"os-title-label\">Teacher Support</span></h3><div
+        class=\"os-note-body\"><h4 data-type=\"title\" id=\"24\" class=\"os-subtitle\"><span
+        class=\"os-subtitle-label\">Teacher Support</span></h4><p id=\"fs-id1164354537086\">This
+        passage describes the physics behind getting the Rosetta and Voyager probes
+        across the solar system using gravitational sling shots. In addition, the
+        physics behind the power systems of these probes is compared. This is meant
+        to reinforce how physics applies over wide ranges, from the immense distances
+        in our universe to the tiny sizes of subatomic particles.</p>\n<p id=\"fs-id1164353500231\">Answers
+        to the Grasp Check may vary. A sample answer: You would have to how the target
+        planet moves to know when to launch the probe so it actually reaches the planet.
+        You would also need to know and account for the effects of gravity from other
+        planets during the path followed during its journey.</p>\n</div></div>\n\n<p
+        id=\"fs-id1164354633460\">In summary, physics studies many of the most basic
+        aspects of science. A knowledge of physics is, therefore, necessary to understand
+        all other sciences. This is because physics explains the most basic ways in
+        which our universe works. However, it is not necessary to formally study all
+        applications of physics. A knowledge of the basic laws of physics will be
+        most useful to you, so that you can use them to solve some everyday problems.
+        In this way, the study of physics can improve your problem-solving skills.</p>\n</section>\n\n\n\n<section
+        data-depth=\"1\" id=\"fs-id1164354609936\" class=\"check-understanding\"><h3
+        data-type=\"title\">Check Your Understanding</h3>\n<div data-type=\"exercise\"
+        id=\"fs-id1163726129615\" class=\"\"><div data-type=\"problem\" id=\"fs-id1163725943168\"><span
+        class=\"os-number\">1</span><span class=\"os-divider\">.</span><div class=\"os-problem-container
+        \">\n<p id=\"fs-id1163726057676\">Which of the following is <em data-effect=\"italics\">not</em>
+        an essential feature of scientific explanations?</p>\n<ol id=\"fs-id1163726024717\"
+        type=\"a\" data-mark-prefix=\"(\" data-mark-suffix=\")\">\n<li>They must be
+        subject to testing.</li>\n<li>They strictly pertain to the physical world.</li>\n<li>Their
+        validity is judged based on objective observations.</li>\n<li>Once supported
+        by observation, they can be viewed as a fact.</li>\n</ol>\n</div></div></div><div
+        data-type=\"exercise\" id=\"fs-id1163726267118\" class=\"\"><div data-type=\"problem\"
+        id=\"fs-id1163726138185\"><span class=\"os-number\">2</span><span class=\"os-divider\">.</span><div
+        class=\"os-problem-container \">\n<p id=\"fs-id1163726411016\">Which of the
+        following does <em data-effect=\"italics\">not</em> represent a question that
+        can be answered by science?</p>\n<ol id=\"fs-id1163726241132\" type=\"a\"
+        data-mark-prefix=\"(\" data-mark-suffix=\")\">\n<li>How much energy is released
+        in a given nuclear chain reaction?</li>\n<li>Can a nuclear chain reaction
+        be controlled?</li>\n<li>Should uncontrolled nuclear reactions be used for
+        military applications?</li>\n<li>What is the half-life of a waste product
+        of a nuclear reaction?</li>\n</ol>\n</div></div></div><div data-type=\"exercise\"
+        id=\"fs-id1164564910765\" class=\"\">\n<div data-type=\"problem\" id=\"fs-id1164564959672\"><span
+        class=\"os-number\">3</span><span class=\"os-divider\">.</span><div class=\"os-problem-container
+        \">\n<p id=\"fs-id1164562050282\">What are the three conditions under which
+        classical physics provides an excellent description of our universe?</p>\n<ol
+        id=\"fs-id1164563565180\" type=\"a\">\n<li>\n<ol id=\"fs-id1164561125656\"
+        type=\"1\">\n<li>Matter is moving at speeds less than about 1 percent of the
+        speed of light</li>\n<li>Objects dealt with must be large enough to be seen
+        with the naked eye.</li>\n<li>Strong electromagnetic fields are involved.</li>\n</ol></li>\n<li>\n<ol
+        id=\"fs-id1164564970695\" type=\"1\">\n<li>Matter is moving at speeds less
+        than about 1 percent of the speed of light.</li>\n<li>Objects dealt with must
+        be large enough to be seen with the naked eye.</li>\n<li>Only weak gravitational
+        fields are involved.</li></ol>\n</li>\n<li>\n<ol id=\"fs-id1164562109199\"
+        type=\"1\">\n<li>Matter is moving at great speeds, comparable to the speed
+        of light.</li>\n<li>Objects dealt with are large enough to be seen with the
+        naked eye.</li>\n<li>Strong gravitational fields are involved.</li></ol>\n</li>\n<li>\n<ol
+        id=\"fs-id1164565054090\" type=\"1\">\n<li>Matter is moving at great speeds,
+        comparable to the speed of light.</li>\n<li>Objects are just large enough
+        to be visible through the most powerful telescope.</li>\n<li>Only weak gravitational
+        fields are involved.</li></ol>\n</li>\n</ol>\n</div></div>\n</div>\n<div data-type=\"exercise\"
+        id=\"eip-225\" class=\"\"><div data-type=\"problem\" id=\"eip-706\"><span
+        class=\"os-number\">4</span><span class=\"os-divider\">.</span><div class=\"os-problem-container
+        \">\n  <p id=\"eip-275\">\nWhy is the Greek word for nature appropriate in
+        describing the field of physics?\n  </p>\n\n<ol id=\"eip-id1168638601828\"
+        type=\"a\" data-mark-prefix=\"(\" data-mark-suffix=\")\"><li>Physics is a
+        natural science that studies life and living organism on habitable planets
+        like Earth.\n</li>\n<li>Physics is a natural science that studies the laws
+        and principles of our universe.</li>\n<li>Physics is a physical science that
+        studies the composition, structure, and changes of matter in our universe.\n</li>\n<li>Physics
+        is a social science that studies the social behavior of living beings on habitable
+        planets like Earth.</li></ol>\n</div></div>\n</div><div data-type=\"exercise\"
+        id=\"eip-560\" class=\"\"><div data-type=\"problem\" id=\"eip-928\"><span
+        class=\"os-number\">5</span><span class=\"os-divider\">.</span><div class=\"os-problem-container
+        \">\n  <p id=\"eip-971\">\nWhich aspect of the universe is studied by quantum
+        mechanics?</p>\n<ol id=\"eip-id1168639791896\" type=\"a\" data-mark-prefix=\"(\"
+        data-mark-suffix=\")\"><li>objects at the galactic level</li>\n<li>objects
+        at the classical level</li>\n<li>objects at the subatomic level</li>\n<li>objects
+        at all levels, from subatomic to galactic</li></ol>\n</div></div></div><div
+        data-type=\"note\" id=\"fs-id1164354635124\" class=\"os-teacher\"><h3 class=\"os-title\"
+        data-type=\"title\"><span class=\"os-title-label\">Teacher Support</span></h3><div
+        class=\"os-note-body\"><h4 data-type=\"title\" id=\"25\" class=\"os-subtitle\"><span
+        class=\"os-subtitle-label\">Teacher Support</span></h4><p id=\"fs-id1164354528796\">Use
+        the Check Your Understanding questions to assess students\u2019 mastery of
+        the sections learning objectives. If students are struggling with a specific
+        objective, the Check Your Understanding will help identify the source of the
+        problem and direct students to the relevant content.</p></div></div>\n</section>\n\n\n\n\n\n\n\n<!--<section
+        id=\"fs-id1164354562058\" class=\"extended-response\">\n<title>Test Prep Extended
+        Response</title>\n<exercise id=\"fs-id1164354757688\" class=\"os-exercise\">\n<problem
+        id=\"fs-id1164354882903\"><para id=\"fs-id1164354633622\"><link class=\"os-embed\"
+        url=\"#ost/api/ex/k12phys-ch03-ex023\"/></para></problem>\n</exercise>\n<exercise
+        id=\"fs-id1164354522117\" class=\"os-exercise\">\n<problem id=\"fs-id1164354535804\"><para
+        id=\"fs-id1164354657028\"><link class=\"os-embed\" url=\"#ost/api/ex/k12phys-ch03-ex024\"/></para></problem>\n</exercise>\n<exercise
+        id=\"fs-id1164354871806\" class=\"os-exercise\">\n<problem id=\"fs-id1164353353195\"><para
+        id=\"fs-id1164354659588\"><link class=\"os-embed\" url=\"#ost/api/ex/k12phys-ch03-ex025\"/></para></problem>\n</exercise>\n</section>-->\n\n\n  </div></body>\n</html>\n",
+        "subjects": ["Science and Technology"], "legacy_id": "m54057", "parentId":
+        null, "resources": [{"media_type": "image/jpeg", "id": "040b01e95a606a0ae38d9f08d4551d054d09fd87",
+        "filename": "CNX_HSPhysics_01_01_microwave.jpg"}, {"media_type": "image/jpeg",
+        "id": "07a0778e83fbb2216f286eab6f52e110be1ed0b5", "filename": "CNX_HSPhysics_01_01_cell.jpg"},
+        {"media_type": "text/html", "id": "25673d913165a383711e728c6c9f15e269ce495a",
+        "filename": "index.cnxml.html"}, {"media_type": "image/jpeg", "id": "361ccf872d135138635c3049c85aea80e59c8a9a",
+        "filename": "CNX_HSPhysics_01_01_Stonehenge.jpg"}, {"media_type": "image/jpeg",
+        "id": "57c3519321bc710453652a8e6406834d7ad147f4", "filename": "CNX_HSPhysics_01_01_phone.jpg"},
+        {"media_type": "image/jpeg", "id": "6b474578077a7ec489c16acda95525e6283a124b",
+        "filename": "CNX_HSPhysics_01_01_solar.jpg"}, {"media_type": "image/jpeg",
+        "id": "6f19357688b65436879428f6d20146a022f21dcd", "filename": "CNX_HSPhysics_01_01_gold.jpg"},
+        {"media_type": "image/jpeg", "id": "78139764c9cd3f28b132046e4254238d1f00f198",
+        "filename": "CNX_HSPhysics_01_01_Earth.jpg"}, {"media_type": "text/xml", "id":
+        "7fc6a930ce9b236990a13c1ee1a297eba3dee15b", "filename": "index.cnxml"}, {"media_type":
+        "image/jpeg", "id": "af4ef9e0ad684b95aacfa347f5e82f36a219fd76", "filename":
+        "CNX_HSPhysics_01_01_eye.jpg"}, {"media_type": "image/jpeg", "id": "dc640298b8bb5a5321f96c7eb22c1c9e0b48dcb3",
+        "filename": "CNX_HSPhysics_01_01_Rosetta.jpg"}, {"media_type": "image/jpeg",
+        "id": "f13392d13d2d23ab60499d29b728ee62192ffdfe", "filename": "CNX_HSPhysics_01_01_collider.jpg"}],
+        "publishers": [{"surname": "OpenStax College", "suffix": "", "firstname":
+        "", "title": "", "fullname": "OpenStax", "id": "OpenStaxCollege"}, {"surname":
+        "HS Physics", "suffix": "", "firstname": "OpenStax", "title": "", "fullname":
+        "OpenStax College", "id": "cnxhsphys"}], "parent": {"authors": [], "shortId":
+        null, "version": "", "id": null, "title": null}, "stateid": 1, "parentTitle":
+        null, "shortId": "XwcQ_hAo", "authors": [{"surname": "OpenStax College", "suffix":
+        "", "firstname": "", "title": "", "fullname": "OpenStax", "id": "OpenStaxCollege"}],
+        "parentVersion": "", "legacy_version": "1.11", "licensors": [{"surname": "University",
+        "suffix": "", "firstname": "Rice", "title": "", "fullname": "Rice University",
+        "id": "OSCRiceUniversity"}], "language": "en", "license": {"url": "http://creativecommons.org/licenses/by/4.0/",
+        "code": "by", "version": "4.0", "name": "Creative Commons Attribution License"},
+        "created": "2015-04-06T11:19:27Z", "doctype": "", "buyLink": null, "submitter":
+        {"surname": "OpenStax College", "suffix": "", "firstname": "", "title": "",
+        "fullname": "OpenStax", "id": "OpenStaxCollege"}, "baked": null, "parentAuthors":
+        [], "history": [{"changes": "bake", "version": "11", "revised": "2020-09-02T00:05:57Z",
+        "publisher": {"surname": "OpenStax College", "suffix": "", "firstname": "",
+        "title": "", "fullname": "OpenStax", "id": "OpenStaxCollege"}}, {"changes":
+        "footnote republish", "version": "10", "revised": "2020-08-31T23:52:49Z",
+        "publisher": {"surname": "OpenStax College", "suffix": "", "firstname": "",
+        "title": "", "fullname": "OpenStax", "id": "OpenStaxCollege"}}, {"changes":
+        "orphaned punctuation andlink revision", "version": "9", "revised": "2020-03-25T20:52:29Z",
+        "publisher": {"surname": "OpenStax College", "suffix": "", "firstname": "",
+        "title": "", "fullname": "OpenStax", "id": "OpenStaxCollege"}}, {"changes":
+        "Check Your Understanding consistency", "version": "8", "revised": "2020-03-17T15:20:49Z",
+        "publisher": {"surname": "OpenStax College", "suffix": "", "firstname": "",
+        "title": "", "fullname": "OpenStax", "id": "OpenStaxCollege"}}, {"changes":
+        "section key terms consistent titles", "version": "7", "revised": "2020-02-25T20:20:29Z",
+        "publisher": {"surname": "OpenStax College", "suffix": "", "firstname": "",
+        "title": "", "fullname": "OpenStax", "id": "OpenStaxCollege"}}, {"changes":
+        "created module", "version": "6", "revised": "2020-02-25T16:28:42Z", "publisher":
+        {"surname": "HS Physics", "suffix": "", "firstname": "OpenStax", "title":
+        "", "fullname": "OpenStax College", "id": "cnxhsphys"}}, {"changes": "created
+        module", "version": "5", "revised": "2020-02-24T21:04:41Z", "publisher": {"surname":
+        "HS Physics", "suffix": "", "firstname": "OpenStax", "title": "", "fullname":
+        "OpenStax College", "id": "cnxhsphys"}}, {"changes": "created module", "version":
+        "4", "revised": "2020-02-24T20:22:08Z", "publisher": {"surname": "HS Physics",
+        "suffix": "", "firstname": "OpenStax", "title": "", "fullname": "OpenStax
+        College", "id": "cnxhsphys"}}, {"changes": "created module", "version": "3",
+        "revised": "2020-02-24T17:10:05Z", "publisher": {"surname": "HS Physics",
+        "suffix": "", "firstname": "OpenStax", "title": "", "fullname": "OpenStax
+        College", "id": "cnxhsphys"}}, {"changes": ".", "version": "2", "revised":
+        "2016-09-30T20:23:31Z", "publisher": {"surname": "HS Physics", "suffix": "",
+        "firstname": "OpenStax", "title": "", "fullname": "OpenStax College", "id":
+        "cnxhsphys"}}, {"changes": "Created module", "version": "1", "revised": "2015-04-06T16:19:45Z",
+        "publisher": {"surname": "HS Physics", "suffix": "", "firstname": "OpenStax",
+        "title": "", "fullname": "OpenStax College", "id": "cnxhsphys"}}]}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","element_id":"fs-id1164354696767","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":0,"title":null,"visible_content":"By
+        the end of this section, you will be able to do the following:","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/tNH8qHkBueriSeI2Ui7i"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '220'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"tNH8qHkBueriSeI2Ui7i","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":0,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","element_id":"fs-id1164353488300","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":1,"title":null,"visible_content":"Think
+        about all of the technological devices that you use on a regular basis. Computers,
+        wireless internet, smart phones, tablets, global positioning system (GPS),
+        MP3 players, and satellite radio might come to mind. Next, think about the
+        most exciting modern technologies that you have heard about in the news, such
+        as trains that levitate above their tracks, invisibility cloaks that bend
+        light around them, and microscopic robots that fight diseased cells in our
+        bodies. All of these groundbreaking advancements rely on the principles of
+        physics.","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/tdH8qHkBueriSeI2Uy4G"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '220'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"tdH8qHkBueriSeI2Uy4G","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":1,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","element_id":"fs-id1169316365038","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":2,"title":null,"visible_content":"Physics
+        is a branch of science. The word science comes from a Latin word that means
+        having knowledge, and refers the knowledge of how the physical world operates,
+        based on objective evidence determined through observation and experimentation.
+        A key requirement of any scientific explanation of a natural phenomenon is
+        that it must be testable; one must be able to devise and conduct an experimental
+        investigation that either supports or refutes the explanation. It is important
+        to note that some questions fall outside the realm of science precisely because
+        they deal with phenomena that are not scientifically testable. This need for
+        objective evidence helps define the investigative process scientists follow,
+        which will be described later in this chapter.","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/ttH8qHkBueriSeI2Uy4R"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '220'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"ttH8qHkBueriSeI2Uy4R","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":2,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","element_id":"fs-id1164354537908","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":3,"title":null,"visible_content":"Physics
+        is the science aimed at describing the fundamental aspects of our universe.
+        This includes what things are in it, what properties of those things are noticeable,
+        and what processes those things or their properties undergo. In simpler terms,
+        physics attempts to describe the basic mechanisms that make our universe behave
+        the way it does. For example, consider a smart phone (Figure 1.2). Physics
+        describes how electric current interacts with the various circuits inside
+        the device. This knowledge helps engineers select the appropriate materials
+        and circuit layout when building the smart phone. Next, consider a GPS. Physics
+        describes the relationship between the speed of an object, the distance over
+        which it travels, and the time it takes to travel that distance. When you
+        use a GPS device in a vehicle, it utilizes these physics relationships to
+        determine the travel time from one location to another.","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/t9H8qHkBueriSeI2Uy4a"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '220'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"t9H8qHkBueriSeI2Uy4a","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":3,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"figure","element_id":"Figure_01_01_phone","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":4,"title":null,"visible_content":"Figure
+        1.2  Physics describes the way that electric charge flows through the circuits
+        of this device. Engineers use their knowledge of physics to construct a smartphone
+        with features that consumers will enjoy, such as a GPS function. GPS uses
+        physics equations to determine the driving time between two locations on a
+        map. (@gletham GIS, Social, Mobile Tech Images)","hidden_content":"A common
+        smart phone with a GPS function is shown."}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/uNH8qHkBueriSeI2Uy4k"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '220'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"uNH8qHkBueriSeI2Uy4k","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":4,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","element_id":"fs-id1164354471453","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":5,"title":null,"visible_content":"As
+        our technology evolved over the centuries, physics expanded into many branches.
+        Ancient peoples could only study things that they could see with the naked
+        eye or otherwise experience without the aid of scientific equipment. This
+        included the study of kinematics, which is the study of moving objects. For
+        example, ancient people often studied the apparent motion of objects in the
+        sky, such as the sun, moon, and stars. This is evident in the construction
+        of prehistoric astronomical observatories, such as Stonehenge in England (shown
+        in Figure 1.3). ","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/udH8qHkBueriSeI2Uy5D"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '220'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"udH8qHkBueriSeI2Uy5D","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":5,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"figure","element_id":"Figure_01_01_Stonehenge","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":6,"title":null,"visible_content":"Figure
+        1.3  Stonehenge is a monument located in England that was built between 3000
+        and 1000 B.C. It functions as an ancient astronomical observatory, with certain
+        rocks in the monument aligning with the position of the sun during the summer
+        and winter solstices. Other rocks align with the rising and setting of the
+        moon during certain days of the year. (Citypeek, Wikimedia Commons)","hidden_content":"A
+        photograph of Stonehenge shows large rocks sitting upright and other laying
+        across the upright rocks. Stonehenge functions as an ancient astronomical
+        observatory, with certain rocks in the monument aligning with the position
+        of the Sun during the summer and winter solstices. Other rocks align with
+        the rising and setting of the Moon during certain days of the year."}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/utH8qHkBueriSeI2Uy5N"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '220'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"utH8qHkBueriSeI2Uy5N","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":6,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","element_id":"fs-id1164354617452","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":7,"title":null,"visible_content":"Ancient
+        people also studied statics and dynamics, which focus on how objects start
+        moving, stop moving, and change speed and direction in response to forces
+        that push or pull on the objects. This early interest in kinematics and dynamics
+        allowed humans to invent simple machines, such as the lever, the pulley, the
+        ramp, and the wheel. These simple machines were gradually combined and integrated
+        to produce more complicated machines, such as wagons and cranes. Machines
+        allowed humans to gradually do more work more effectively in less time, allowing
+        them to create larger and more complicated buildings and structures, many
+        of which still exist today from ancient times.","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/u9H8qHkBueriSeI2Uy5W"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '220'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"u9H8qHkBueriSeI2Uy5W","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":7,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","element_id":"fs-id1164354554377","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":8,"title":null,"visible_content":"As
+        technology advanced, the branches of physics diversified even more. These
+        include branches such as acoustics, the study of sound, and optics, the study
+        of the light. In 1608, the invention of the telescope by a Germany spectacle
+        maker, Hans Lippershey, led to huge breakthroughs in astronomy—the study of
+        objects or phenomena in space. One year later, in 1609, Galileo Galilei began
+        the first studies of the solar system and the universe using a telescope.
+        During the Renaissance era, Isaac Newton used observations made by Galileo
+        to construct his three laws of motion. These laws were the standard for studying
+        kinematics and dynamics even today.","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/vNH8qHkBueriSeI2Uy5n"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '220'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"vNH8qHkBueriSeI2Uy5n","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":8,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","element_id":"fs-id1164354602999","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":9,"title":null,"visible_content":"Another
+        major branch of physics is thermodynamics, which includes the study of thermal
+        energy and the transfer of heat. James Prescott Joule, an English physicist,
+        studied the nature of heat and its relationship to work. Joule’s work helped
+        lay the foundation for the first of three laws of thermodynamics that describe
+        how energy in our universe is transferred from one object to another or transformed
+        from one form to another. Studies in thermodynamics were motivated by the
+        need to make engines more efficient, keep people safe from the elements, and
+        preserve food.","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/vdH8qHkBueriSeI2Uy55"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '220'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"vdH8qHkBueriSeI2Uy55","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":9,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","element_id":"fs-id1164354472610","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":10,"title":null,"visible_content":"The
+        18th and 19th centuries also saw great strides in the study of electricity
+        and magnetism. Electricity involves the study of electric charges and their
+        movements. Magnetism had long ago been noticed as an attractive force between
+        a magnetized object and a metal like iron, or between the opposite poles (North
+        and South) of two magnetized objects. In 1820, Danish physicist Hans Christian
+        Oersted showed that electric currents create magnetic fields. In 1831, English
+        inventor Michael Faraday showed that moving a wire through a magnetic field
+        could induce an electric current. These studies led to the inventions of the
+        electric motor and electric generator, which revolutionized human life by
+        bringing electricity and magnetism into our machines.","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/vtH8qHkBueriSeI2Uy6M"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '221'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"vtH8qHkBueriSeI2Uy6M","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":10,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","element_id":"fs-id1164354540028","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":11,"title":null,"visible_content":"The
+        end of the 19th century saw the discovery of radioactive substances by the
+        French scientists Marie and Pierre Curie. Nuclear physics involves studying
+        the nuclei of atoms, the source of nuclear radiation. In the 20th century,
+        the study of nuclear physics eventually led to the ability to split the nucleus
+        of an atom, a process called nuclear fission. This process is the basis for
+        nuclear power plants and nuclear weapons. Also, the field of quantum mechanics,
+        which involves the mechanics of atoms and molecules, saw great strides during
+        the 20th century as our understanding of atoms and subatomic particles increased
+        (see below).","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/v9H8qHkBueriSeI2Uy6e"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '221'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"v9H8qHkBueriSeI2Uy6e","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":11,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","element_id":"fs-id1164354528506","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":12,"title":null,"visible_content":"Early
+        in the 20th century, Albert Einstein revolutionized several branches of physics,
+        especially relativity. Relativity revolutionized our understanding of motion
+        and the universe in general as described further in this chapter. Now, in
+        the 21st century, physicists continue to study these and many other branches
+        of physics.","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/wNH8qHkBueriSeI2Uy6x"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '221'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"wNH8qHkBueriSeI2Uy6x","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":12,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","element_id":"fs-id1164354631526","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":13,"title":null,"visible_content":"By
+        studying the most important topics in physics, you will gain analytical abilities
+        that will enable you to apply physics far beyond the scope of what can be
+        included in a single book. These analytical skills will help you to excel
+        academically, and they will also help you to think critically in any career
+        you choose to pursue.","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/wdH8qHkBueriSeI2Uy7F"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '221'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"wdH8qHkBueriSeI2Uy7F","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":13,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","element_id":"fs-id1164354879006","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":14,"title":null,"visible_content":"The
+        word physics is thought to come from the Greek word phusis, meaning nature.
+        The study of nature later came to be called natural philosophy. From ancient
+        times through the Renaissance, natural philosophy encompassed many fields,
+        including astronomy, biology, chemistry, mathematics, and medicine. Over the
+        last few centuries, the growth of scientific knowledge has resulted in ever-increasing
+        specialization and branching of natural philosophy into separate fields, with
+        physics retaining the most basic facets. Physics, as it developed from the
+        Renaissance to the end of the 19th century, is called classical physics. Revolutionary
+        discoveries starting at the beginning of the 20th century transformed physics
+        from classical physics to modern physics.","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/wtH8qHkBueriSeI2Uy7Y"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '221'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"wtH8qHkBueriSeI2Uy7Y","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":14,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","element_id":"fs-id1164353401791","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":15,"title":null,"visible_content":"Classical
+        physics is not an exact description of the universe, but it is an excellent
+        approximation under the following conditions: (1) matter must be moving at
+        speeds less than about 1 percent of the speed of light, (2) the objects dealt
+        with must be large enough to be seen with the naked eye, and (3) only weak
+        gravity, such as that generated by Earth, can be involved. Very small objects,
+        such as atoms and molecules, cannot be adequately explained by classical physics.
+        These three conditions apply to almost all of everyday experience. As a result,
+        most aspects of classical physics should make sense on an intuitive level.","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/w9H8qHkBueriSeI2Uy7r"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '221'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"w9H8qHkBueriSeI2Uy7r","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":15,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","element_id":"fs-id1164354658284","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":16,"title":null,"visible_content":"Many
+        laws of classical physics have been modified during the 20th century, resulting
+        in revolutionary changes in technology, society, and our view of the universe.
+        As a result, many aspects of modern physics, which occur outside of the range
+        of our everyday experience, may seem bizarre or unbelievable. So why is most
+        of this textbook devoted to classical physics? There are two main reasons.
+        The first is that knowledge of classical physics is necessary to understand
+        modern physics. The second reason is that classical physics still gives an
+        accurate description of the universe under a wide range of everyday circumstances.","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/xNH8qHkBueriSeI2Uy79"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '221'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"xNH8qHkBueriSeI2Uy79","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":16,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","element_id":"fs-id1164353401992","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":17,"title":null,"visible_content":"Modern
+        physics includes two revolutionary theories: relativity and quantum mechanics.
+        These theories deal with the very fast and the very small, respectively. The
+        theory of relativity was developed by Albert Einstein in 1905. By examining
+        how two observers moving relative to each other would see the same phenomena,
+        Einstein devised radical new ideas about time and space. He came to the startling
+        conclusion that the measured length of an object travelling at high speeds
+        (greater than about one percent of the speed of light) is shorter than the
+        same object measured at rest. Perhaps even more bizarre is the idea the time
+        for the same process to occur is different depending on the motion of the
+        observer. Time passes more slowly for an object travelling at high speeds.
+        A trip to the nearest star system, Alpha Centauri, might take an astronaut
+        4.5 Earth years if the ship travels near the speed of light. However, because
+        time is slowed at higher speeds, the astronaut would age only 0.5 years during
+        the trip. Einstein’s ideas of relativity were accepted after they were confirmed
+        by numerous experiments.","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/xdH8qHkBueriSeI2VC4P"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '221'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"xdH8qHkBueriSeI2VC4P","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":17,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","element_id":"fs-id1164354538885","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":18,"title":null,"visible_content":"Gravity,
+        the force that holds us to Earth, can also affect time and space. For example,
+        time passes more slowly on Earth’s surface than for objects farther from the
+        surface, such as a satellite in orbit. The very accurate clocks on global
+        positioning satellites have to correct for this. They slowly keep getting
+        ahead of clocks at Earth’s surface. This is called time dilation, and it occurs
+        because gravity, in essence, slows down time.","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/xtH8qHkBueriSeI2VC4f"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '221'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"xtH8qHkBueriSeI2VC4f","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":18,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","element_id":"fs-id1164354495139","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":19,"title":null,"visible_content":"Large
+        objects, like Earth, have strong enough gravity to distort space. To visualize
+        this idea, think about a bowling ball placed on a trampoline. The bowling
+        ball depresses or curves the surface of the trampoline. If you rolled a marble
+        across the trampoline, it would follow the surface of the trampoline, roll
+        into the depression caused by the bowling ball, and hit the ball. Similarly,
+        the Earth curves space around it in the shape of a funnel. These curves in
+        space due to the Earth cause objects to be attracted to Earth (i.e., gravity).","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/x9H8qHkBueriSeI2VC4u"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '221'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"x9H8qHkBueriSeI2VC4u","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":19,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","element_id":"fs-id1164354634189","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":20,"title":null,"visible_content":"Because
+        of the way gravity affects space and time, Einstein stated that gravity affects
+        the space-time continuum, as illustrated in Figure 1.4. This is why time proceeds
+        more slowly at Earth’s surface than in orbit. In black holes, whose gravity
+        is hundreds of times that of Earth, time passes so slowly that it would appear
+        to a far-away observer to have stopped!","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/yNH8qHkBueriSeI2VC47"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '221'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"yNH8qHkBueriSeI2VC47","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":20,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"figure","element_id":"Figure_01_01_Earth","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":21,"title":null,"visible_content":"Figure
+        1.4  Einstein’s theory of relativity describes space and time as an interweaved
+        mesh. Large objects, such as a planet, distort space, causing objects to fall
+        in toward the planet due to the action of gravity. Large objects also distort
+        time, causing time to proceed at a slower rate near the surface of Earth compared
+        with the area outside of the distorted region of space-time.","hidden_content":"An
+        image of Earth in outer space sitting in a mesh net is shown. The mesh is
+        pushed downward by the mass of Earth and arrows indicate that Earth is spinning.
+        The image illustrates Einstein’s theory of relativity describes space and
+        time as an interweaved mesh."}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/ydH8qHkBueriSeI2VC5S"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '221'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"ydH8qHkBueriSeI2VC5S","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":21,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","element_id":"fs-id1164354569346","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":22,"title":null,"visible_content":"In
+        summary, relativity says that in describing the universe, it is important
+        to realize that time, space and speed are not absolute. Instead, they can
+        appear different to different observers. Einstein’s ability to reason out
+        relativity is even more amazing because we cannot see the effects of relativity
+        in our everyday lives.","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/ytH8qHkBueriSeI2VC5d"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '221'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"ytH8qHkBueriSeI2VC5d","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":22,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","element_id":"fs-id1164354678126","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":23,"title":null,"visible_content":"Quantum
+        mechanics is the second major theory of modern physics. Quantum mechanics
+        deals with the very small, namely, the subatomic particles that make up atoms.
+        Atoms (Figure 1.5) are the smallest units of elements. However, atoms themselves
+        are constructed of even smaller subatomic particles, such as protons, neutrons
+        and electrons. Quantum mechanics strives to describe the properties and behavior
+        of these and other subatomic particles. Often, these particles do not behave
+        in the ways expected by classical physics. One reason for this is that they
+        are small enough to travel at great speeds, near the speed of light.","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/y9H8qHkBueriSeI2VC5m"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '221'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"y9H8qHkBueriSeI2VC5m","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":23,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"figure","element_id":"Figure_01_01_gold","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":24,"title":null,"visible_content":"Figure
+        1.5  Using a scanning tunneling microscope (STM), scientists can see the individual
+        atoms that compose this sheet of gold. (Erwinrossen)","hidden_content":"An
+        image of gold taken by a scanning tunneling microscope shows individual gold
+        atoms."}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/zNH8qHkBueriSeI2VC5w"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '221'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"zNH8qHkBueriSeI2VC5w","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":24,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","element_id":"fs-id1164354498230","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":25,"title":null,"visible_content":"At
+        particle colliders (Figure 1.6), such as the Large Hadron Collider on the
+        France-Swiss border, particle physicists can make subatomic particles travel
+        at very high speeds within a 27 kilometers (17 miles) long superconducting
+        tunnel. They can then study the properties of the particles at high speeds,
+        as well as collide them with each other to see how they exchange energy. This
+        has led to many intriguing discoveries such as the Higgs-Boson particle, which
+        gives matter the property of mass, and antimatter, which causes a huge energy
+        release when it comes in contact with matter.","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/zdH8qHkBueriSeI2VC55"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '221'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"zdH8qHkBueriSeI2VC55","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":25,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"figure","element_id":"Figure_01_01_collider","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":26,"title":null,"visible_content":"Figure
+        1.6  Particle colliders such as the Large Hadron Collider in Switzerland or
+        Fermilab in the United States (pictured here), have long tunnels that allows
+        subatomic particles to be accelerated to near light speed. (Andrius.v )","hidden_content":"A
+        photograph shows a large collider, called the Fermilab, with a long tube that
+        allows subatomic particles to be accelerated."}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/ztH8qHkBueriSeI2VC6D"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '221'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"ztH8qHkBueriSeI2VC6D","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":26,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","element_id":"fs-id1164354608337","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":27,"title":null,"visible_content":"Physicists
+        are currently trying to unify the two theories of modern physics, relativity
+        and quantum mechanics, into a single, comprehensive theory called relativistic
+        quantum mechanics. Relating the behavior of subatomic particles to gravity,
+        time, and space will allow us to explain how the universe works in a much
+        more comprehensive way.","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/z9H8qHkBueriSeI2VC6L"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '221'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"z9H8qHkBueriSeI2VC6L","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":27,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","element_id":"fs-id1164354463964","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":28,"title":null,"visible_content":"You
+        need not be a scientist to use physics. On the contrary, knowledge of physics
+        is useful in everyday situations as well as in nonscientific professions.
+        For example, physics can help you understand why you shouldn’t put metal in
+        the microwave (Figure 1.7), why a black car radiator helps remove heat in
+        a car engine, and why a white roof helps keep the inside of a house cool.
+        The operation of a car’s ignition system, as well as the transmission of electrical
+        signals through our nervous system, are much easier to understand when you
+        think about them in terms of the basic physics of electricity.","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/0NH8qHkBueriSeI2VC60"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '221'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"0NH8qHkBueriSeI2VC60","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":28,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"figure","element_id":"Figure_01_01_microwave","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":29,"title":null,"visible_content":"Figure
+        1.7  Why can''t you put metal in the microwave? Microwaves are high-energy
+        radiation that increases the movement of electrons in metal. These moving
+        electrons can create an electrical current, causing sparking that can lead
+        to a fire. (= MoneyBlogNewz)","hidden_content":"A small, counter-top microwave
+        oven is shown. Microwave ovens use electromagnetic waves to heat food."}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/0dH8qHkBueriSeI2VC7B"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '221'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"0dH8qHkBueriSeI2VC7B","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":29,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","element_id":"fs-id1164354555274","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":30,"title":null,"visible_content":"Physics
+        is the foundation of many important scientific disciplines. For example, chemistry
+        deals with the interactions of atoms and molecules. Not surprisingly, chemistry
+        is rooted in atomic and molecular physics. Most branches of engineering are
+        also applied physics. In architecture, physics is at the heart of determining
+        structural stability, acoustics, heating, lighting, and cooling for buildings.
+        Parts of geology, the study of nonliving parts of Earth, rely heavily on physics;
+        including radioactive dating, earthquake analysis, and heat transfer across
+        Earth’s surface. Indeed, some disciplines, such as biophysics and geophysics,
+        are hybrids of physics and other disciplines.","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/0tH8qHkBueriSeI2VC7O"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '221'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"0tH8qHkBueriSeI2VC7O","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":30,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","element_id":"fs-id1164354626125","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":31,"title":null,"visible_content":"Physics
+        also describes the chemical processes that power the human body. Physics is
+        involved in medical diagnostics, such as x-rays, magnetic resonance imaging
+        (MRI), and ultrasonic blood flow measurements (Figure 1.8). Medical therapy
+        Physics also has many applications in biology, the study of life. For example,
+        physics describes how cells can protect themselves using their cell walls
+        and cell membranes (Figure 1.9). Medical therapy sometimes directly involves
+        physics, such as in using X-rays to diagnose health conditions. Physics can
+        also explain what we perceive with our senses, such as how the ears detect
+        sound or the eye detects color.","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/09H8qHkBueriSeI2VC7Y"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '221'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"09H8qHkBueriSeI2VC7Y","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":31,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"figure","element_id":"Figure_01_01_eye","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":32,"title":null,"visible_content":"Figure
+        1.8  Magnetic resonance imaging (MRI) uses electromagnetic waves to yield
+        an image of the brain, which doctors can use to find diseased regions. (Rashmi
+        Chawla, Daniel Smith, and Paul E. Marik)","hidden_content":"An MRI image of
+        a brain is shown. This type of photography uses electromagnetic radiation
+        to produce images."}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/1NH8qHkBueriSeI2VC7h"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '221'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"1NH8qHkBueriSeI2VC7h","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":32,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"figure","element_id":"Figure_01_01_cell","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":33,"title":null,"visible_content":"Figure
+        1.9  Physics, chemistry, and biology help describe the properties of cell
+        walls in plant cells, such as the onion cells seen here. (Umberto Salvagnin)","hidden_content":"A
+        group of onion cells is shown. Each cell has a visible cell wall and nucleus."}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/1dH8qHkBueriSeI2VC7r"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '221'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"1dH8qHkBueriSeI2VC7r","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":33,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","element_id":"fs-id1164354555075","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":34,"title":null,"visible_content":"On
+        November 12, 2014, the European Space Agency’s Rosetta spacecraft (shown in
+        Figure 1.10) became the first ever to reach and orbit a comet. Shortly after,
+        Rosetta’s rover, Philae, landed on the comet, representing the first time
+        humans have ever landed a space probe on a comet.","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/1tH8qHkBueriSeI2VC71"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '221'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"1tH8qHkBueriSeI2VC71","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":34,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"figure","element_id":"Figure_01_01_Rosetta","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":35,"title":null,"visible_content":"Figure
+        1.10  The Rosetta spacecraft, with its large and revolutionary solar panels,
+        carried the Philae lander to a comet. The lander then detached and landed
+        on the comet’s surface. (European Space Agency)","hidden_content":"An image
+        of the Rosetta spacecraft is shown. It has large solar panels and is hovering
+        over a comet."}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/19H8qHkBueriSeI2VS4C"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '221'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"19H8qHkBueriSeI2VS4C","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":35,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","element_id":"fs-id1164354468641","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":36,"title":null,"visible_content":"After
+        traveling 6.4 billion kilometers starting from its launch on Earth, Rosetta
+        landed on the comet 67P/Churyumov-Gerasimenko, which is only 4 kilometers
+        wide. Physics was needed to successfully plot the course to reach such a small,
+        distant, and rapidly moving target. Rosetta’s path to the comet was not straight
+        forward. The probe first had to travel to Mars so that Mars’s gravity could
+        accelerate it and divert it in the exact direction of the comet. ","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/2NH8qHkBueriSeI2VS4O"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '221'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"2NH8qHkBueriSeI2VS4O","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":36,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","element_id":"fs-id1164354594416","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":37,"title":null,"visible_content":"This
+        was not the first time humans used gravity to power our spaceships. Voyager
+        2, a space probe launched in 1977, used the gravity of Saturn to slingshot
+        over to Uranus and Neptune (illustrated in Figure 1.11), providing the first
+        pictures ever taken of these planets. Now, almost 40 years after its launch,
+        Voyager 2 is at the very edge of our solar system and is about to enter interstellar
+        space. Its sister ship, Voyager 1 (illustrated in Figure 1.11), which was
+        also launched in 1977, is already there.","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/2dH8qHkBueriSeI2VS4Y"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '221'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"2dH8qHkBueriSeI2VS4Y","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":37,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","element_id":"fs-id1164354871882","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":38,"title":null,"visible_content":"To
+        listen to the sounds of interstellar space or see images that have been transmitted
+        back from the Voyager I or to learn more about the Voyager mission, visit
+        the Voyager’s Mission website.","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/2tH8qHkBueriSeI2VS4g"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '221'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"2tH8qHkBueriSeI2VS4g","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":38,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"figure","element_id":"Figure_01_01_solar","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":39,"title":null,"visible_content":"Figure
+        1.11  a) Voyager 2, launched in 1977, used the gravity of Saturn to slingshot
+        over to Uranus and Neptune. NASA b) A rendering of Voyager 1, the first space
+        probe to ever leave our solar system and enter interstellar space. NASA","hidden_content":"Two
+        diagrams are shown. The diagram on the left illustrates the path of the Voyager
+        2 spacecraft starting at Earth on August 20th, 1977. The following labels
+        describe the path: Jupiter on July 9th, 1979, Saturn on August 25th, 1981,
+        Uranus on January 24th, 1986, and Neptune on August 25th, 1989. The diagram
+        on the right illustrates the Voyager 1 space probe."}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/29H8qHkBueriSeI2VS4p"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '221'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"29H8qHkBueriSeI2VS4p","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":39,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","element_id":"fs-id1164354626383","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":40,"title":null,"visible_content":"Both
+        Voyagers have electrical power generators based on the decay of radioisotopes.
+        These generators have served them for almost 40 years. Rosetta, on the other
+        hand, is solar-powered. In fact, Rosetta became the first space probe to travel
+        beyond the asteroid belt by relying only on solar cells for power generation.","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/3NH8qHkBueriSeI2VS4x"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '221'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"3NH8qHkBueriSeI2VS4x","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":40,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","element_id":"fs-id1164353487283","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":41,"title":null,"visible_content":"At
+        800 million kilometers from the sun, Rosetta receives sunlight that is only
+        4 percent as strong as on Earth. In addition, it is very cold in space. Therefore,
+        a lot of physics went into developing Rosetta’s low-intensity low-temperature
+        solar cells.","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/3dH8qHkBueriSeI2VS46"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '221'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"3dH8qHkBueriSeI2VS46","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":41,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","element_id":"fs-id1164354501460","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":42,"title":null,"visible_content":"In
+        this sense, the Rosetta project nicely shows the huge range of topics encompassed
+        by physics: from modeling the movement of gigantic planets over huge distances
+        within our solar systems, to learning how to generate electric power from
+        low-intensity light. Physics is, by far, the broadest field of science.","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/3tH8qHkBueriSeI2VS5L"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '221'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"3tH8qHkBueriSeI2VS5L","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":42,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","element_id":"fs-id1164566952986","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":43,"title":null,"visible_content":"What
+        characteristics of the solar system would have to be known or calculated in
+        order to send a probe to a distant planet, such as Jupiter?","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/39H8qHkBueriSeI2VS5g"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '221'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"39H8qHkBueriSeI2VS5g","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":43,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","element_id":"fs-id1164354633460","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":44,"title":null,"visible_content":"In
+        summary, physics studies many of the most basic aspects of science. A knowledge
+        of physics is, therefore, necessary to understand all other sciences. This
+        is because physics explains the most basic ways in which our universe works.
+        However, it is not necessary to formally study all applications of physics.
+        A knowledge of the basic laws of physics will be most useful to you, so that
+        you can use them to solve some everyday problems. In this way, the study of
+        physics can improve your problem-solving skills.","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/4NH8qHkBueriSeI2VS50"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '221'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"4NH8qHkBueriSeI2VS50","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":44,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","element_id":"fs-id1163726057676","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":45,"title":null,"visible_content":"Which
+        of the following is not an essential feature of scientific explanations?","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/4dH8qHkBueriSeI2VS6H"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '221'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"4dH8qHkBueriSeI2VS6H","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":45,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","element_id":"fs-id1163726411016","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":46,"title":null,"visible_content":"Which
+        of the following does not represent a question that can be answered by science?","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/4tH8qHkBueriSeI2VS6W"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '221'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"4tH8qHkBueriSeI2VS6W","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":46,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","element_id":"fs-id1164562050282","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":47,"title":null,"visible_content":"What
+        are the three conditions under which classical physics provides an excellent
+        description of our universe?","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/49H8qHkBueriSeI2VS6i"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '221'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"49H8qHkBueriSeI2VS6i","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":47,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","element_id":"eip-275","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":48,"title":null,"visible_content":"\nWhy
+        is the Greek word for nature appropriate in describing the field of physics?\n  ","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/5NH8qHkBueriSeI2VS60"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '221'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"5NH8qHkBueriSeI2VS60","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":48,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: post
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/page_element
+    body:
+      encoding: UTF-8
+      string: '{"element_type":"paragraph","element_id":"eip-971","page_id":"5f0710fe-1028-4ac4-b8fd-b0a6c792c642@11","page_position":49,"title":null,"visible_content":"\nWhich
+        aspect of the universe is studied by quantum mechanics?","hidden_content":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/cce64fde-f448-43b8-ae88-27705cceb0da%4014.21_i1/page_element/5dH8qHkBueriSeI2VS7C"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '221'
+    body:
+      encoding: UTF-8
+      string: '{"_index":"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1","_type":"page_element","_id":"5dH8qHkBueriSeI2VS7C","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":49,"_primary_term":1}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: get
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/_stats
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '8336'
+    body:
+      encoding: UTF-8
+      string: '{"_shards":{"total":2,"successful":1,"failed":0},"_all":{"primaries":{"docs":{"count":34,"deleted":0},"store":{"size_in_bytes":42868},"indexing":{"index_total":50,"index_time_in_millis":62,"index_current":0,"index_failed":0,"delete_total":0,"delete_time_in_millis":0,"delete_current":0,"noop_update_total":0,"is_throttled":false,"throttle_time_in_millis":0},"get":{"total":0,"time_in_millis":0,"exists_total":0,"exists_time_in_millis":0,"missing_total":0,"missing_time_in_millis":0,"current":0},"search":{"open_contexts":0,"query_total":0,"query_time_in_millis":0,"query_current":0,"fetch_total":0,"fetch_time_in_millis":0,"fetch_current":0,"scroll_total":0,"scroll_time_in_millis":0,"scroll_current":0,"suggest_total":0,"suggest_time_in_millis":0,"suggest_current":0},"merges":{"current":0,"current_docs":0,"current_size_in_bytes":0,"total":0,"total_time_in_millis":0,"total_docs":0,"total_size_in_bytes":0,"total_stopped_time_in_millis":0,"total_throttled_time_in_millis":0,"total_auto_throttle_in_bytes":20971520},"refresh":{"total":3,"total_time_in_millis":26,"listeners":0},"flush":{"total":0,"periodic":0,"total_time_in_millis":0},"warmer":{"current":0,"total":2,"total_time_in_millis":0},"query_cache":{"memory_size_in_bytes":0,"total_count":0,"hit_count":0,"miss_count":0,"cache_size":0,"cache_count":0,"evictions":0},"fielddata":{"memory_size_in_bytes":0,"evictions":0},"completion":{"size_in_bytes":0},"segments":{"count":1,"memory_in_bytes":3571,"terms_memory_in_bytes":2868,"stored_fields_memory_in_bytes":312,"term_vectors_memory_in_bytes":0,"norms_memory_in_bytes":320,"points_memory_in_bytes":3,"doc_values_memory_in_bytes":68,"index_writer_memory_in_bytes":533432,"version_map_memory_in_bytes":0,"fixed_bit_set_memory_in_bytes":0,"max_unsafe_auto_id_timestamp":-1,"file_sizes":{}},"translog":{"operations":50,"size_in_bytes":36219,"uncommitted_operations":50,"uncommitted_size_in_bytes":36219,"earliest_last_modified_age":0},"request_cache":{"memory_size_in_bytes":0,"evictions":0,"hit_count":0,"miss_count":0},"recovery":{"current_as_source":0,"current_as_target":0,"throttle_time_in_millis":0}},"total":{"docs":{"count":34,"deleted":0},"store":{"size_in_bytes":42868},"indexing":{"index_total":50,"index_time_in_millis":62,"index_current":0,"index_failed":0,"delete_total":0,"delete_time_in_millis":0,"delete_current":0,"noop_update_total":0,"is_throttled":false,"throttle_time_in_millis":0},"get":{"total":0,"time_in_millis":0,"exists_total":0,"exists_time_in_millis":0,"missing_total":0,"missing_time_in_millis":0,"current":0},"search":{"open_contexts":0,"query_total":0,"query_time_in_millis":0,"query_current":0,"fetch_total":0,"fetch_time_in_millis":0,"fetch_current":0,"scroll_total":0,"scroll_time_in_millis":0,"scroll_current":0,"suggest_total":0,"suggest_time_in_millis":0,"suggest_current":0},"merges":{"current":0,"current_docs":0,"current_size_in_bytes":0,"total":0,"total_time_in_millis":0,"total_docs":0,"total_size_in_bytes":0,"total_stopped_time_in_millis":0,"total_throttled_time_in_millis":0,"total_auto_throttle_in_bytes":20971520},"refresh":{"total":3,"total_time_in_millis":26,"listeners":0},"flush":{"total":0,"periodic":0,"total_time_in_millis":0},"warmer":{"current":0,"total":2,"total_time_in_millis":0},"query_cache":{"memory_size_in_bytes":0,"total_count":0,"hit_count":0,"miss_count":0,"cache_size":0,"cache_count":0,"evictions":0},"fielddata":{"memory_size_in_bytes":0,"evictions":0},"completion":{"size_in_bytes":0},"segments":{"count":1,"memory_in_bytes":3571,"terms_memory_in_bytes":2868,"stored_fields_memory_in_bytes":312,"term_vectors_memory_in_bytes":0,"norms_memory_in_bytes":320,"points_memory_in_bytes":3,"doc_values_memory_in_bytes":68,"index_writer_memory_in_bytes":533432,"version_map_memory_in_bytes":0,"fixed_bit_set_memory_in_bytes":0,"max_unsafe_auto_id_timestamp":-1,"file_sizes":{}},"translog":{"operations":50,"size_in_bytes":36219,"uncommitted_operations":50,"uncommitted_size_in_bytes":36219,"earliest_last_modified_age":0},"request_cache":{"memory_size_in_bytes":0,"evictions":0,"hit_count":0,"miss_count":0},"recovery":{"current_as_source":0,"current_as_target":0,"throttle_time_in_millis":0}}},"indices":{"cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1":{"primaries":{"docs":{"count":34,"deleted":0},"store":{"size_in_bytes":42868},"indexing":{"index_total":50,"index_time_in_millis":62,"index_current":0,"index_failed":0,"delete_total":0,"delete_time_in_millis":0,"delete_current":0,"noop_update_total":0,"is_throttled":false,"throttle_time_in_millis":0},"get":{"total":0,"time_in_millis":0,"exists_total":0,"exists_time_in_millis":0,"missing_total":0,"missing_time_in_millis":0,"current":0},"search":{"open_contexts":0,"query_total":0,"query_time_in_millis":0,"query_current":0,"fetch_total":0,"fetch_time_in_millis":0,"fetch_current":0,"scroll_total":0,"scroll_time_in_millis":0,"scroll_current":0,"suggest_total":0,"suggest_time_in_millis":0,"suggest_current":0},"merges":{"current":0,"current_docs":0,"current_size_in_bytes":0,"total":0,"total_time_in_millis":0,"total_docs":0,"total_size_in_bytes":0,"total_stopped_time_in_millis":0,"total_throttled_time_in_millis":0,"total_auto_throttle_in_bytes":20971520},"refresh":{"total":3,"total_time_in_millis":26,"listeners":0},"flush":{"total":0,"periodic":0,"total_time_in_millis":0},"warmer":{"current":0,"total":2,"total_time_in_millis":0},"query_cache":{"memory_size_in_bytes":0,"total_count":0,"hit_count":0,"miss_count":0,"cache_size":0,"cache_count":0,"evictions":0},"fielddata":{"memory_size_in_bytes":0,"evictions":0},"completion":{"size_in_bytes":0},"segments":{"count":1,"memory_in_bytes":3571,"terms_memory_in_bytes":2868,"stored_fields_memory_in_bytes":312,"term_vectors_memory_in_bytes":0,"norms_memory_in_bytes":320,"points_memory_in_bytes":3,"doc_values_memory_in_bytes":68,"index_writer_memory_in_bytes":533432,"version_map_memory_in_bytes":0,"fixed_bit_set_memory_in_bytes":0,"max_unsafe_auto_id_timestamp":-1,"file_sizes":{}},"translog":{"operations":50,"size_in_bytes":36219,"uncommitted_operations":50,"uncommitted_size_in_bytes":36219,"earliest_last_modified_age":0},"request_cache":{"memory_size_in_bytes":0,"evictions":0,"hit_count":0,"miss_count":0},"recovery":{"current_as_source":0,"current_as_target":0,"throttle_time_in_millis":0}},"total":{"docs":{"count":34,"deleted":0},"store":{"size_in_bytes":42868},"indexing":{"index_total":50,"index_time_in_millis":62,"index_current":0,"index_failed":0,"delete_total":0,"delete_time_in_millis":0,"delete_current":0,"noop_update_total":0,"is_throttled":false,"throttle_time_in_millis":0},"get":{"total":0,"time_in_millis":0,"exists_total":0,"exists_time_in_millis":0,"missing_total":0,"missing_time_in_millis":0,"current":0},"search":{"open_contexts":0,"query_total":0,"query_time_in_millis":0,"query_current":0,"fetch_total":0,"fetch_time_in_millis":0,"fetch_current":0,"scroll_total":0,"scroll_time_in_millis":0,"scroll_current":0,"suggest_total":0,"suggest_time_in_millis":0,"suggest_current":0},"merges":{"current":0,"current_docs":0,"current_size_in_bytes":0,"total":0,"total_time_in_millis":0,"total_docs":0,"total_size_in_bytes":0,"total_stopped_time_in_millis":0,"total_throttled_time_in_millis":0,"total_auto_throttle_in_bytes":20971520},"refresh":{"total":3,"total_time_in_millis":26,"listeners":0},"flush":{"total":0,"periodic":0,"total_time_in_millis":0},"warmer":{"current":0,"total":2,"total_time_in_millis":0},"query_cache":{"memory_size_in_bytes":0,"total_count":0,"hit_count":0,"miss_count":0,"cache_size":0,"cache_count":0,"evictions":0},"fielddata":{"memory_size_in_bytes":0,"evictions":0},"completion":{"size_in_bytes":0},"segments":{"count":1,"memory_in_bytes":3571,"terms_memory_in_bytes":2868,"stored_fields_memory_in_bytes":312,"term_vectors_memory_in_bytes":0,"norms_memory_in_bytes":320,"points_memory_in_bytes":3,"doc_values_memory_in_bytes":68,"index_writer_memory_in_bytes":533432,"version_map_memory_in_bytes":0,"fixed_bit_set_memory_in_bytes":0,"max_unsafe_auto_id_timestamp":-1,"file_sizes":{}},"translog":{"operations":50,"size_in_bytes":36219,"uncommitted_operations":50,"uncommitted_size_in_bytes":36219,"earliest_last_modified_age":0},"request_cache":{"memory_size_in_bytes":0,"evictions":0,"hit_count":0,"miss_count":0},"recovery":{"current_as_source":0,"current_as_target":0,"throttle_time_in_millis":0}}}}}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:02:59 GMT
+- request:
+    method: get
+    uri: http://localhost:9200/cce64fde-f448-43b8-ae88-27705cceb0da@14.21_i1/_count
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '72'
+    body:
+      encoding: UTF-8
+      string: '{"count":50,"_shards":{"total":1,"successful":1,"skipped":0,"failed":0}}'
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:03:00 GMT
+- request:
+    method: head
+    uri: http://localhost:9200/14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1_i1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 26 May 2021 14:03:00 GMT
+recorded_with: VCR 4.0.0
