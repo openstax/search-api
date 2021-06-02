@@ -37,13 +37,13 @@ RSpec.describe 'api v0 search requests', type: :request, api: :v0, vcr: VCR_OPTS
 
       json = json_response
       expect(json[:overall_took]).not_to be_nil
-      expect(json[:hits][:total]).to eq 25
+      expect(json[:hits][:total]).to eq 35
       expect(json[:hits][:hits][0][:_source]).to include(
         page_id: "ab65fdf7-9137-48d6-b949-5da675cda5e4@16",
         element_type: "paragraph",
         page_position: 9
       )
-      expect(json[:hits][:hits][0][:highlight][:visible_content][0]).to eq "The glycocalyces found in a <strong>person’s</strong> body are products of that <strong>person’s</strong> genetic makeup."
+      expect(json[:hits][:hits][0][:highlight][:visible_content][0]).to eq "The glycocalyces found in a <strong>person</strong>’<strong>s</strong> body are products of that <strong>person</strong>’<strong>s</strong> genetic makeup."
     end
 
     context "client errors" do

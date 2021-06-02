@@ -58,7 +58,7 @@ module Books::IndexingStrategies::I1
           analysis: {
             analyzer: {
               default: {
-                tokenizer: "standard",
+                tokenizer: "lowercase",
                 char_filter: [
                   "quotes"
                 ]
