@@ -14,6 +14,8 @@ module Books::IndexingStrategies::I1
         @book.root_book_part.pages.each_with_object([]) do |page, accum|
           next if page.preface? || page.index?
 
+          page.remove_elements(xpath: "//*[contains(@class, 'os-teacher')]")
+
           page.
             elements(element_classes: DESIRED_ELEMENTS_TO_DOCUMENTS.keys).
             each_with_index { |element, page_position|
