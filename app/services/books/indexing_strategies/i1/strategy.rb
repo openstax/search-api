@@ -56,7 +56,22 @@ module Books::IndexingStrategies::I1
             number_of_replicas: NUM_REPLICAS
           },
           analysis: {
-            analyzer: :simple
+            analyzer: {
+              default: {
+                tokenizer: "standard",
+                char_filter: [
+                  "quotes"
+                ]
+              }
+            },
+            char_filter: {
+              quotes: {
+                mappings: [
+                  "’=>'",
+                ],
+                type: "mapping"
+              }
+            }
           }
         }
       }
