@@ -1,4 +1,4 @@
-# require_relative '../vcr_helper_methods'
+require_relative './vcr_helper_methods'
 
 class TempAwsEnv
 
