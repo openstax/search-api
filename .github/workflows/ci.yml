@@ -7,6 +7,10 @@ jobs:
     name: Test
     runs-on: ubuntu-latest
     steps:
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@477b21f02be01bcb8030d50f37cfec92bfa615b6
+      with:
+        ruby-version: 2.6.5
     - uses: actions/checkout@v2
       with:
         ref: ${{ github.event.pull_request.head.sha }}
