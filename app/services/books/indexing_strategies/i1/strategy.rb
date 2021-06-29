@@ -61,6 +61,9 @@ module Books::IndexingStrategies::I1
                 tokenizer: "standard",
                 char_filter: [
                   "quotes"
+                ],
+                filter: [
+                  "lowercase"
                 ]
               }
             },
