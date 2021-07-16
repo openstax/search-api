@@ -8,7 +8,7 @@ module Rex
     def_delegators :@releases, :each, :map, :size, :count, :first, :last
 
     def initialize
-      @bucket = S3Bucket.new(
+      @bucket = Bucket.new(
         name: Rails.application.secrets.rex_release_bucket[:name],
         region: Rails.application.secrets.rex_release_bucket[:region]
       )
@@ -41,59 +41,6 @@ module Rex
         else
           # This is not the release folder, keep searching deeper
           load_release_folder(folder_prefix: release_folder)
-        end
-      end
-    end
-
-    class S3Bucket
-      attr_reader :name
-
-      def initialize(name:, region:)
-        @name = name
-        @region = region
-      end
-
-      def folders_under(folder:)
-        client.list_objects(bucket: @name, prefix: folder, delimiter: "/")
-              .common_prefixes
-              .map(&:prefix)
-      end
-
-      def file(key:)
-        S3File.new(key: key, client: client, bucket: self)
-      end
-
-      def client
-        @client ||= ::Aws::S3::Client.new(region: @region)
-      end
-    end
-
-    class S3File
-      def initialize(key:, client:, bucket:)
-        @key = key
-        @client = client
-        @bucket = bucket
-      end
-
-      def exists?
-        load != :does_not_exist
-      end
-
-      def object
-        load == :does_not_exist ? nil : load
-      end
-
-      def to_hash
-        exists? ? JSON.parse(object.body.read) : {}
-      end
-
-      protected
-
-      def load
-        @object ||= begin
-          @client.get_object(bucket: @bucket.name, key: @key)
-        rescue ::Aws::S3::Errors::NoSuchKey => ee
-          :does_not_exist
         end
       end
     end
