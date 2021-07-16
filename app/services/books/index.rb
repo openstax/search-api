@@ -11,7 +11,7 @@ module Books
     DEFAULT_INDEXING_STRATEGY = IndexingStrategies::I1::Strategy
     URL_BASE = "https://openstax.org"
     RAP_URL_BASE = "#{URL_BASE}/apps/archive"
-    LEGACY_URL_BASE = "#{URL_BASE}/contents"
+    LEGACY_URL = "#{URL_BASE}/contents"
 
     class IndexResourceNotReadyError < StandardError; end
 
@@ -111,7 +111,9 @@ module Books
         uuid_at_number, pipeline_version = @book_version_id.split('/').reverse
         pipeline_version ||= 'legacy'
 
-        archive_url = pipeline_version == "legacy" ? LEGACY_URL_BASE : RAP_URL_BASE
+        archive_url = pipeline_version == "legacy" ?
+                      LEGACY_URL :
+                      "#{RAP_URL_BASE}/#{pipeline}"
 
         OpenStax::Cnx::V1.with_archive_url(archive_url) do
           OpenStax::Cnx::V1::Book.new(id: uuid_at_number)
