@@ -5,7 +5,7 @@ RSpec.describe Rex::Release do
   describe '#books' do
     let(:book1) { { "uid1" => { "defaultVersion" => "1.2"} } }
     let(:book2) { { "uid2" => { "defaultVersion" => "1.1"} } }
-    let(:data) { { books: book1.merge(book2)}.to_json }
+    let(:data) { { books: book1.merge(book2) } }
     let(:instance) { described_class.new(id: 'id', data: data, config: config) }
 
     context 'when there is no config data' do

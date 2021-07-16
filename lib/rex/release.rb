@@ -6,7 +6,7 @@ module Rex
 
     def initialize(id:, data:, config:)
       @id = id
-      @data = data.is_a?(String) ? JSON.parse(data) : data
+      @data = data.with_indifferent_access
       @config = config
     end
 

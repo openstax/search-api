@@ -30,8 +30,8 @@ module Rex
         release_file = bucket.file(key: "#{release_folder}rex/release.json")
 
         if release_file.exists?
-          release_id = release_folder.match(/rex\/releases\/(.*)\//)[1]
           config_file = bucket.file(key: "#{release_folder}rex/config.json")
+          release_id = release_folder.match(/rex\/releases\/(.*)\//)[1]
 
           @releases.push(Release.new(
             id: release_id,
