@@ -16,7 +16,7 @@ http_interactions:
       Host:
       - some_bucket_name_not_a_release.s3.amazonaws.com
       X-Amz-Date:
-      - 20210716T162837Z
+      - 20210716T165933Z
       X-Amz-Security-Token:
       - AWS_SESSION_TOKEN
       X-Amz-Content-Sha256:
@@ -35,11 +35,11 @@ http_interactions:
       message: OK
     headers:
       X-Amz-Id-2:
-      - V2dXwKZN5o2L+77gWckBoTEL6pofOblBYY9QAR11U725B2jM2TC/6L/edyWMY6r/56aM66ERtOs=
+      - hHFRaMvoVriN3q8/Cksxfk1lzghVADGrUkuOOdw9a7DYOfR3N4sYc2nJZM2H4kQl06bopTjWHIM=
       X-Amz-Request-Id:
-      - D13C393HHSJ29B83
+      - 7N46DYZWEJWHXCKS
       Date:
-      - Fri, 16 Jul 2021 16:28:38 GMT
+      - Fri, 16 Jul 2021 16:59:34 GMT
       Location:
       - "/some_bucket_name_not_a_release"
       Server:
@@ -50,7 +50,7 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Fri, 16 Jul 2021 16:28:37 GMT
+  recorded_at: Fri, 16 Jul 2021 16:59:34 GMT
 - request:
     method: put
     uri: https://some_bucket_name_not_a_release.s3.amazonaws.com/rex/releases/alpha/1/rex/giraffe.json
@@ -71,7 +71,7 @@ http_interactions:
       Host:
       - some_bucket_name_not_a_release.s3.amazonaws.com
       X-Amz-Date:
-      - 20210716T162837Z
+      - 20210716T165934Z
       X-Amz-Security-Token:
       - AWS_SESSION_TOKEN
       X-Amz-Content-Sha256:
@@ -90,11 +90,11 @@ http_interactions:
       message: OK
     headers:
       X-Amz-Id-2:
-      - EMPGElYJXHblyZn3h1g3z6SwLbyRVsbvJ+uoTGIiW/Ic36q3CdzkBKzhD41L8Ox0CG34ry3xr/I=
+      - oexwYQ9I6n3mMrmPfkA7foUXQ5gHTHR0KNqA7KAT+4XEfNVVwoezEg8mo1cBg5sFdajhBqEGSU4=
       X-Amz-Request-Id:
-      - D136K9BYBJA4E1YG
+      - C244PB0CWS2SQ7RP
       Date:
-      - Fri, 16 Jul 2021 16:28:38 GMT
+      - Fri, 16 Jul 2021 16:59:35 GMT
       Etag:
       - '"495d221d01d094995ad94d5f1fdfd63c"'
       Server:
@@ -105,7 +105,7 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Fri, 16 Jul 2021 16:28:38 GMT
+  recorded_at: Fri, 16 Jul 2021 16:59:34 GMT
 - request:
     method: get
     uri: https://some_bucket_name_not_a_release.s3.amazonaws.com/?delimiter=/&encoding-type=url&prefix=rex/releases/
@@ -122,7 +122,7 @@ http_interactions:
       Host:
       - some_bucket_name_not_a_release.s3.amazonaws.com
       X-Amz-Date:
-      - 20210716T162838Z
+      - 20210716T165934Z
       X-Amz-Security-Token:
       - AWS_SESSION_TOKEN
       X-Amz-Content-Sha256:
@@ -141,11 +141,11 @@ http_interactions:
       message: OK
     headers:
       X-Amz-Id-2:
-      - jZh9ECQnvwwiRVx554uAZAoOOyjysAooKOeWsOSYCt2EpxJmUX0zzRWCRHdURx+LVldfdI2/ZQ0=
+      - SY5n0fpJm4RdJ6wNxHuSEKFsmZg+fLfC05gpL2piRq1wSYyNaYq5jDSql78OPexpXJSrsBI/hPg=
       X-Amz-Request-Id:
-      - FYBGY7AV3KVFV217
+      - C24C04EFAMQ4A3ZP
       Date:
-      - Fri, 16 Jul 2021 16:28:39 GMT
+      - Fri, 16 Jul 2021 16:59:35 GMT
       X-Amz-Bucket-Region:
       - us-east-1
       Content-Type:
@@ -160,7 +160,7 @@ http_interactions:
         <?xml version="1.0" encoding="UTF-8"?>
         <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>some_bucket_name_not_a_release</Name><Prefix>rex/releases/</Prefix><Marker></Marker><MaxKeys>1000</MaxKeys><Delimiter>/</Delimiter><EncodingType>url</EncodingType><IsTruncated>false</IsTruncated><CommonPrefixes><Prefix>rex/releases/alpha/</Prefix></CommonPrefixes></ListBucketResult>
     http_version: 
-  recorded_at: Fri, 16 Jul 2021 16:28:38 GMT
+  recorded_at: Fri, 16 Jul 2021 16:59:34 GMT
 - request:
     method: get
     uri: https://some_bucket_name_not_a_release.s3.amazonaws.com/rex/releases/alpha/rex/release.json
@@ -177,7 +177,7 @@ http_interactions:
       Host:
       - some_bucket_name_not_a_release.s3.amazonaws.com
       X-Amz-Date:
-      - 20210716T162838Z
+      - 20210716T165934Z
       X-Amz-Security-Token:
       - AWS_SESSION_TOKEN
       X-Amz-Content-Sha256:
@@ -196,24 +196,24 @@ http_interactions:
       message: Not Found
     headers:
       X-Amz-Request-Id:
-      - FYBSMMED8WP61E5W
+      - C241BBKS40QVCWDC
       X-Amz-Id-2:
-      - sMBGe0t5cFeelbGWkL1M6q3zwpS8mzPDerpHZydk4xeRgp1akotuzjXhgjRLa5+4GbK0uqYawrQ=
+      - MkNA46dcDCRLoAMo9gfM/Vh/6118yHKJMRwo+TvHNcPI1indyS8iigTg0LryZLX2rKOJ1SkoTfY=
       Content-Type:
       - application/xml
       Transfer-Encoding:
       - chunked
       Date:
-      - Fri, 16 Jul 2021 16:28:37 GMT
+      - Fri, 16 Jul 2021 16:59:34 GMT
       Server:
       - AmazonS3
     body:
       encoding: UTF-8
       string: |-
         <?xml version="1.0" encoding="UTF-8"?>
-        <Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><Key>rex/releases/alpha/rex/release.json</Key><RequestId>FYBSMMED8WP61E5W</RequestId><HostId>sMBGe0t5cFeelbGWkL1M6q3zwpS8mzPDerpHZydk4xeRgp1akotuzjXhgjRLa5+4GbK0uqYawrQ=</HostId></Error>
+        <Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><Key>rex/releases/alpha/rex/release.json</Key><RequestId>C241BBKS40QVCWDC</RequestId><HostId>MkNA46dcDCRLoAMo9gfM/Vh/6118yHKJMRwo+TvHNcPI1indyS8iigTg0LryZLX2rKOJ1SkoTfY=</HostId></Error>
     http_version: 
-  recorded_at: Fri, 16 Jul 2021 16:28:38 GMT
+  recorded_at: Fri, 16 Jul 2021 16:59:35 GMT
 - request:
     method: get
     uri: https://some_bucket_name_not_a_release.s3.amazonaws.com/?delimiter=/&encoding-type=url&prefix=rex/releases/alpha/
@@ -230,7 +230,7 @@ http_interactions:
       Host:
       - some_bucket_name_not_a_release.s3.amazonaws.com
       X-Amz-Date:
-      - 20210716T162838Z
+      - 20210716T165935Z
       X-Amz-Security-Token:
       - AWS_SESSION_TOKEN
       X-Amz-Content-Sha256:
@@ -249,11 +249,11 @@ http_interactions:
       message: OK
     headers:
       X-Amz-Id-2:
-      - KjsyBeeuMn/OFoLJSQ9TMYLh3InT7HId9uvInWhH4LjXmAyElJiMQE2BZFAflqes4G/64Fx76Sg=
+      - GC2AGqmpQWdwM3B30pkdCUtE/8USDrTLpRM7XClgXdnjBZsdnVJE4uDokReE6R5ZLfrZqfOgVHA=
       X-Amz-Request-Id:
-      - FYBGNFTMT1ZHP596
+      - 2N2CAA0Y6WZYZJMJ
       Date:
-      - Fri, 16 Jul 2021 16:28:39 GMT
+      - Fri, 16 Jul 2021 16:59:36 GMT
       X-Amz-Bucket-Region:
       - us-east-1
       Content-Type:
@@ -268,7 +268,7 @@ http_interactions:
         <?xml version="1.0" encoding="UTF-8"?>
         <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>some_bucket_name_not_a_release</Name><Prefix>rex/releases/alpha/</Prefix><Marker></Marker><MaxKeys>1000</MaxKeys><Delimiter>/</Delimiter><EncodingType>url</EncodingType><IsTruncated>false</IsTruncated><CommonPrefixes><Prefix>rex/releases/alpha/1/</Prefix></CommonPrefixes></ListBucketResult>
     http_version: 
-  recorded_at: Fri, 16 Jul 2021 16:28:39 GMT
+  recorded_at: Fri, 16 Jul 2021 16:59:35 GMT
 - request:
     method: get
     uri: https://some_bucket_name_not_a_release.s3.amazonaws.com/rex/releases/alpha/1/rex/release.json
@@ -285,7 +285,7 @@ http_interactions:
       Host:
       - some_bucket_name_not_a_release.s3.amazonaws.com
       X-Amz-Date:
-      - 20210716T162839Z
+      - 20210716T165935Z
       X-Amz-Security-Token:
       - AWS_SESSION_TOKEN
       X-Amz-Content-Sha256:
@@ -304,24 +304,24 @@ http_interactions:
       message: Not Found
     headers:
       X-Amz-Request-Id:
-      - 0X1KH0A46X91Y5ZM
+      - 2N23P3VKRF9ETMJR
       X-Amz-Id-2:
-      - MXWtVytSSELAh26TSxVWiYOMH2nbryifK/djwCKwKOlfkd9SmGnuEALCyMGTHDF9yvMJwIN2JSQ=
+      - 8rRt0kJzgND9PeIYzyTxMNUS4lISCN7IBqLzRsuSmuagrA4YPuBbxlMzffqSHN7sbqrFQSrPlaw=
       Content-Type:
       - application/xml
       Transfer-Encoding:
       - chunked
       Date:
-      - Fri, 16 Jul 2021 16:28:38 GMT
+      - Fri, 16 Jul 2021 16:59:35 GMT
       Server:
       - AmazonS3
     body:
       encoding: UTF-8
       string: |-
         <?xml version="1.0" encoding="UTF-8"?>
-        <Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><Key>rex/releases/alpha/1/rex/release.json</Key><RequestId>0X1KH0A46X91Y5ZM</RequestId><HostId>MXWtVytSSELAh26TSxVWiYOMH2nbryifK/djwCKwKOlfkd9SmGnuEALCyMGTHDF9yvMJwIN2JSQ=</HostId></Error>
+        <Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><Key>rex/releases/alpha/1/rex/release.json</Key><RequestId>2N23P3VKRF9ETMJR</RequestId><HostId>8rRt0kJzgND9PeIYzyTxMNUS4lISCN7IBqLzRsuSmuagrA4YPuBbxlMzffqSHN7sbqrFQSrPlaw=</HostId></Error>
     http_version: 
-  recorded_at: Fri, 16 Jul 2021 16:28:39 GMT
+  recorded_at: Fri, 16 Jul 2021 16:59:35 GMT
 - request:
     method: get
     uri: https://some_bucket_name_not_a_release.s3.amazonaws.com/?delimiter=/&encoding-type=url&prefix=rex/releases/alpha/1/
@@ -338,7 +338,7 @@ http_interactions:
       Host:
       - some_bucket_name_not_a_release.s3.amazonaws.com
       X-Amz-Date:
-      - 20210716T162839Z
+      - 20210716T165935Z
       X-Amz-Security-Token:
       - AWS_SESSION_TOKEN
       X-Amz-Content-Sha256:
@@ -357,11 +357,11 @@ http_interactions:
       message: OK
     headers:
       X-Amz-Id-2:
-      - 3mXXBqFzhvOvT78MMnkArv/uxXDFb3L6Wa5T+bAIfYj/+Mx8+W4Y4zpWJFJbDPeNRuD85In43JU=
+      - ah3VgLMQSzKMFTTTIIntyLMcBad7H9gEdo4KFwCciq7Klah0IqP8JUibbvQ43SdLVI97YdR6jrw=
       X-Amz-Request-Id:
-      - 0X1ZG5WCB9FKQW9S
+      - 2N20B61VTPQCEVMT
       Date:
-      - Fri, 16 Jul 2021 16:28:40 GMT
+      - Fri, 16 Jul 2021 16:59:36 GMT
       X-Amz-Bucket-Region:
       - us-east-1
       Content-Type:
@@ -376,7 +376,7 @@ http_interactions:
         <?xml version="1.0" encoding="UTF-8"?>
         <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>some_bucket_name_not_a_release</Name><Prefix>rex/releases/alpha/1/</Prefix><Marker></Marker><MaxKeys>1000</MaxKeys><Delimiter>/</Delimiter><EncodingType>url</EncodingType><IsTruncated>false</IsTruncated><CommonPrefixes><Prefix>rex/releases/alpha/1/rex/</Prefix></CommonPrefixes></ListBucketResult>
     http_version: 
-  recorded_at: Fri, 16 Jul 2021 16:28:39 GMT
+  recorded_at: Fri, 16 Jul 2021 16:59:35 GMT
 - request:
     method: get
     uri: https://some_bucket_name_not_a_release.s3.amazonaws.com/rex/releases/alpha/1/rex/rex/release.json
@@ -393,7 +393,7 @@ http_interactions:
       Host:
       - some_bucket_name_not_a_release.s3.amazonaws.com
       X-Amz-Date:
-      - 20210716T162839Z
+      - 20210716T165935Z
       X-Amz-Security-Token:
       - AWS_SESSION_TOKEN
       X-Amz-Content-Sha256:
@@ -412,24 +412,24 @@ http_interactions:
       message: Not Found
     headers:
       X-Amz-Request-Id:
-      - 0X1MZ23CTD3KEVRW
+      - D2TR53ACM288WVBM
       X-Amz-Id-2:
-      - t6JpC6XFYQKMx5mSAc9f7ESldL7iDOuFqiPHrBPlEb9Z2HVfvvcJRG4zWUkwfEsvaTXuYwS4Nds=
+      - 4gqUEPo9Ftsa/osXia3M8sZQLLOYaq4YelBVg/fOJbWHgQ+pjq5vgJcycv13OKDYZCHHYAjVquE=
       Content-Type:
       - application/xml
       Transfer-Encoding:
       - chunked
       Date:
-      - Fri, 16 Jul 2021 16:28:39 GMT
+      - Fri, 16 Jul 2021 16:59:35 GMT
       Server:
       - AmazonS3
     body:
       encoding: UTF-8
       string: |-
         <?xml version="1.0" encoding="UTF-8"?>
-        <Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><Key>rex/releases/alpha/1/rex/rex/release.json</Key><RequestId>0X1MZ23CTD3KEVRW</RequestId><HostId>t6JpC6XFYQKMx5mSAc9f7ESldL7iDOuFqiPHrBPlEb9Z2HVfvvcJRG4zWUkwfEsvaTXuYwS4Nds=</HostId></Error>
+        <Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><Key>rex/releases/alpha/1/rex/rex/release.json</Key><RequestId>D2TR53ACM288WVBM</RequestId><HostId>4gqUEPo9Ftsa/osXia3M8sZQLLOYaq4YelBVg/fOJbWHgQ+pjq5vgJcycv13OKDYZCHHYAjVquE=</HostId></Error>
     http_version: 
-  recorded_at: Fri, 16 Jul 2021 16:28:39 GMT
+  recorded_at: Fri, 16 Jul 2021 16:59:36 GMT
 - request:
     method: get
     uri: https://some_bucket_name_not_a_release.s3.amazonaws.com/?delimiter=/&encoding-type=url&prefix=rex/releases/alpha/1/rex/
@@ -446,7 +446,7 @@ http_interactions:
       Host:
       - some_bucket_name_not_a_release.s3.amazonaws.com
       X-Amz-Date:
-      - 20210716T162839Z
+      - 20210716T165936Z
       X-Amz-Security-Token:
       - AWS_SESSION_TOKEN
       X-Amz-Content-Sha256:
@@ -465,11 +465,11 @@ http_interactions:
       message: OK
     headers:
       X-Amz-Id-2:
-      - 0xDzAZTc7ZGXz8f14I7PaOMK4k6ZyvVKkjP+a28QSs06XcYFyWUI++Kzlfkj9Yz9N8Y5O5cjosM=
+      - 4GxZYkg/8CdBVAbpZz2OMd/S0hLmxhfzpJIlsG7TBYE/TkUB0ywSx+YFIVkIVYIy0KTNYCsdIc0=
       X-Amz-Request-Id:
-      - QHPT28NEXXEVP265
+      - D2TZGPFC9ZQZPGP6
       Date:
-      - Fri, 16 Jul 2021 16:28:41 GMT
+      - Fri, 16 Jul 2021 16:59:37 GMT
       X-Amz-Bucket-Region:
       - us-east-1
       Content-Type:
@@ -482,9 +482,9 @@ http_interactions:
       encoding: UTF-8
       string: |-
         <?xml version="1.0" encoding="UTF-8"?>
-        <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>some_bucket_name_not_a_release</Name><Prefix>rex/releases/alpha/1/rex/</Prefix><Marker></Marker><MaxKeys>1000</MaxKeys><Delimiter>/</Delimiter><EncodingType>url</EncodingType><IsTruncated>false</IsTruncated><Contents><Key>rex/releases/alpha/1/rex/giraffe.json</Key><LastModified>2021-07-16T16:28:38.000Z</LastModified><ETag>&quot;495d221d01d094995ad94d5f1fdfd63c&quot;</ETag><Size>75</Size><Owner><ID>6e0b5222eaecc8fba4de9d31646cd4b222bfe0630f7eac42fcb3132bdeb18fbc</ID><DisplayName>aws-dev-sandbox</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents></ListBucketResult>
+        <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>some_bucket_name_not_a_release</Name><Prefix>rex/releases/alpha/1/rex/</Prefix><Marker></Marker><MaxKeys>1000</MaxKeys><Delimiter>/</Delimiter><EncodingType>url</EncodingType><IsTruncated>false</IsTruncated><Contents><Key>rex/releases/alpha/1/rex/giraffe.json</Key><LastModified>2021-07-16T16:59:35.000Z</LastModified><ETag>&quot;495d221d01d094995ad94d5f1fdfd63c&quot;</ETag><Size>75</Size><Owner><ID>6e0b5222eaecc8fba4de9d31646cd4b222bfe0630f7eac42fcb3132bdeb18fbc</ID><DisplayName>aws-dev-sandbox</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents></ListBucketResult>
     http_version: 
-  recorded_at: Fri, 16 Jul 2021 16:28:40 GMT
+  recorded_at: Fri, 16 Jul 2021 16:59:36 GMT
 - request:
     method: get
     uri: https://some_bucket_name_not_a_release.s3.amazonaws.com/?encoding-type=url&versions
@@ -501,7 +501,7 @@ http_interactions:
       Host:
       - some_bucket_name_not_a_release.s3.amazonaws.com
       X-Amz-Date:
-      - 20210716T162840Z
+      - 20210716T165936Z
       X-Amz-Security-Token:
       - AWS_SESSION_TOKEN
       X-Amz-Content-Sha256:
@@ -520,11 +520,11 @@ http_interactions:
       message: OK
     headers:
       X-Amz-Id-2:
-      - RdQkWQwavcWjIinuuh0zwXD6JHg7enp+VldsejPMENw6MCwiyjF1B2hTLNpNWcwhHHQGbyV2zjs=
+      - R1UTSXKOTl4ucA+y45+I9rU3GT93JpiYKMMa6QTygWi5S3Q5Q67o1EgLc9+ufIm0q2gp+ila1PE=
       X-Amz-Request-Id:
-      - QHPV94V9FKRBN4P0
+      - D2TKGSJ9Q9W45AEK
       Date:
-      - Fri, 16 Jul 2021 16:28:41 GMT
+      - Fri, 16 Jul 2021 16:59:37 GMT
       Content-Type:
       - application/xml
       Transfer-Encoding:
@@ -535,9 +535,9 @@ http_interactions:
       encoding: UTF-8
       string: |-
         <?xml version="1.0" encoding="UTF-8"?>
-        <ListVersionsResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>some_bucket_name_not_a_release</Name><Prefix></Prefix><KeyMarker></KeyMarker><VersionIdMarker></VersionIdMarker><MaxKeys>1000</MaxKeys><EncodingType>url</EncodingType><IsTruncated>false</IsTruncated><Version><Key>rex/releases/alpha/1/rex/giraffe.json</Key><VersionId>null</VersionId><IsLatest>true</IsLatest><LastModified>2021-07-16T16:28:38.000Z</LastModified><ETag>&quot;495d221d01d094995ad94d5f1fdfd63c&quot;</ETag><Size>75</Size><Owner><ID>6e0b5222eaecc8fba4de9d31646cd4b222bfe0630f7eac42fcb3132bdeb18fbc</ID><DisplayName>aws-dev-sandbox</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Version></ListVersionsResult>
+        <ListVersionsResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>some_bucket_name_not_a_release</Name><Prefix></Prefix><KeyMarker></KeyMarker><VersionIdMarker></VersionIdMarker><MaxKeys>1000</MaxKeys><EncodingType>url</EncodingType><IsTruncated>false</IsTruncated><Version><Key>rex/releases/alpha/1/rex/giraffe.json</Key><VersionId>null</VersionId><IsLatest>true</IsLatest><LastModified>2021-07-16T16:59:35.000Z</LastModified><ETag>&quot;495d221d01d094995ad94d5f1fdfd63c&quot;</ETag><Size>75</Size><Owner><ID>6e0b5222eaecc8fba4de9d31646cd4b222bfe0630f7eac42fcb3132bdeb18fbc</ID><DisplayName>aws-dev-sandbox</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Version></ListVersionsResult>
     http_version: 
-  recorded_at: Fri, 16 Jul 2021 16:28:41 GMT
+  recorded_at: Fri, 16 Jul 2021 16:59:36 GMT
 - request:
     method: post
     uri: https://some_bucket_name_not_a_release.s3.amazonaws.com/?delete
@@ -564,7 +564,7 @@ http_interactions:
       Host:
       - some_bucket_name_not_a_release.s3.amazonaws.com
       X-Amz-Date:
-      - 20210716T162841Z
+      - 20210716T165936Z
       X-Amz-Security-Token:
       - AWS_SESSION_TOKEN
       X-Amz-Content-Sha256:
@@ -583,11 +583,11 @@ http_interactions:
       message: OK
     headers:
       X-Amz-Id-2:
-      - 7Y1XcYHEC8WeVigGK9qWEHyNGb1m4jZ/S1v3GNB0cwM8r1xcpzRtHu4ILRYlGWDGccbbivGCJtk=
+      - iKC4Ltti8Og7B3yMHYplItnHL1rkcQvMTqVUtIn6YP/d89zWm7gcZbxgDHUb001938dBNhZI9gI=
       X-Amz-Request-Id:
-      - G8KJK59BAZCWHEVZ
+      - D2TG7YTRQV0H9YFQ
       Date:
-      - Fri, 16 Jul 2021 16:28:42 GMT
+      - Fri, 16 Jul 2021 16:59:37 GMT
       Content-Type:
       - application/xml
       Transfer-Encoding:
@@ -602,7 +602,7 @@ http_interactions:
         <?xml version="1.0" encoding="UTF-8"?>
         <DeleteResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Deleted><Key>rex/releases/alpha/1/rex/giraffe.json</Key><VersionId>null</VersionId></Deleted></DeleteResult>
     http_version: 
-  recorded_at: Fri, 16 Jul 2021 16:28:41 GMT
+  recorded_at: Fri, 16 Jul 2021 16:59:37 GMT
 - request:
     method: delete
     uri: https://some_bucket_name_not_a_release.s3.amazonaws.com/
@@ -619,7 +619,7 @@ http_interactions:
       Host:
       - some_bucket_name_not_a_release.s3.amazonaws.com
       X-Amz-Date:
-      - 20210716T162841Z
+      - 20210716T165937Z
       X-Amz-Security-Token:
       - AWS_SESSION_TOKEN
       X-Amz-Content-Sha256:
@@ -638,16 +638,16 @@ http_interactions:
       message: No Content
     headers:
       X-Amz-Id-2:
-      - xkJxPkm5bg1tayOLn+jHzCWRgT3aBU0NoAhlFq8RvR0VBaCVTrNMXM4cAgvIX/omgIkeCvN9/Xo=
+      - ZM9eqe4wrmNQWGpocn1VfqmCjCOlUIzpP/G+p98sMmjE2kTPiCu3vlAG+CzlDsGWHI5qp9MDOao=
       X-Amz-Request-Id:
-      - G8KTWYVW6JAZ0ZPH
+      - T5KF226AQ5KV1XM6
       Date:
-      - Fri, 16 Jul 2021 16:28:42 GMT
+      - Fri, 16 Jul 2021 16:59:38 GMT
       Server:
       - AmazonS3
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Fri, 16 Jul 2021 16:28:41 GMT
+  recorded_at: Fri, 16 Jul 2021 16:59:37 GMT
 recorded_with: VCR 4.0.0

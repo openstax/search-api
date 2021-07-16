@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: put
-    uri: https://some_bucket_name_one_release.s3.amazonaws.com/
+    uri: https://some_bucket_name_one_release_no_config.s3.amazonaws.com/
     body:
       encoding: UTF-8
       string: ''
@@ -14,9 +14,9 @@ http_interactions:
       User-Agent:
       - aws-sdk-ruby3/3.44.1 ruby/2.6.5 x86_64-darwin19 aws-sdk-s3/1.30.0
       Host:
-      - some_bucket_name_one_release.s3.amazonaws.com
+      - some_bucket_name_one_release_no_config.s3.amazonaws.com
       X-Amz-Date:
-      - 20210716T162824Z
+      - 20210716T165921Z
       X-Amz-Security-Token:
       - AWS_SESSION_TOKEN
       X-Amz-Content-Sha256:
@@ -35,13 +35,13 @@ http_interactions:
       message: OK
     headers:
       X-Amz-Id-2:
-      - nkMEam6e0+fPmaw6eig2upreM8wl8c0A9Tlu7p6XQ/kaoxUBS4NONURoG+Q2yfPADImTz0yT728=
+      - PwYoKU57UgY2iZZwVwmjB7VOsZu6sXwfMKu+iohdg/wuj+TLAUMLYs4lP5rU6i9XLZQnKn83Zto=
       X-Amz-Request-Id:
-      - P6XF13Z69T3WF1EX
+      - 6Q5D751XVMZA4B1G
       Date:
-      - Fri, 16 Jul 2021 16:28:25 GMT
+      - Fri, 16 Jul 2021 16:59:22 GMT
       Location:
-      - "/some_bucket_name_one_release"
+      - "/some_bucket_name_one_release_no_config"
       Server:
       - AmazonS3
       Content-Length:
@@ -50,10 +50,10 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Fri, 16 Jul 2021 16:28:24 GMT
+  recorded_at: Fri, 16 Jul 2021 16:59:21 GMT
 - request:
     method: put
-    uri: https://some_bucket_name_one_release.s3.amazonaws.com/rex/releases/foobar/rex/release.json
+    uri: https://some_bucket_name_one_release_no_config.s3.amazonaws.com/rex/releases/foobar/rex/release.json
     body:
       encoding: UTF-8
       string: '{"books":{"uid1":{"defaultVersion":"1.2"},"uid2":{"defaultVersion":"1.1"}}}'
@@ -69,9 +69,9 @@ http_interactions:
       Content-Md5:
       - SV0iHQHQlJla2U1fH9/WPA==
       Host:
-      - some_bucket_name_one_release.s3.amazonaws.com
+      - some_bucket_name_one_release_no_config.s3.amazonaws.com
       X-Amz-Date:
-      - 20210716T162824Z
+      - 20210716T165921Z
       X-Amz-Security-Token:
       - AWS_SESSION_TOKEN
       X-Amz-Content-Sha256:
@@ -90,11 +90,11 @@ http_interactions:
       message: OK
     headers:
       X-Amz-Id-2:
-      - 7g1sbfBHdPTuJ9+BXie5srLakmmrLboZVXceUeB4wqWVbJxSuXAPISbugsx2rIPRvYDKDVVBde8=
+      - SEs8nPoTe4wDlXE2pX61FwwY2D5evic5hZkt4EkZWzAOpjdRptns9wJaLReM69ngr+moGEn/ggU=
       X-Amz-Request-Id:
-      - EMK29AMFPTKA03WY
+      - 6Q50RKWE7BVXNCPC
       Date:
-      - Fri, 16 Jul 2021 16:28:26 GMT
+      - Fri, 16 Jul 2021 16:59:22 GMT
       Etag:
       - '"495d221d01d094995ad94d5f1fdfd63c"'
       Server:
@@ -105,10 +105,10 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Fri, 16 Jul 2021 16:28:25 GMT
+  recorded_at: Fri, 16 Jul 2021 16:59:22 GMT
 - request:
     method: get
-    uri: https://some_bucket_name_one_release.s3.amazonaws.com/?delimiter=/&encoding-type=url&prefix=rex/releases/
+    uri: https://some_bucket_name_one_release_no_config.s3.amazonaws.com/?delimiter=/&encoding-type=url&prefix=rex/releases/
     body:
       encoding: UTF-8
       string: ''
@@ -120,9 +120,9 @@ http_interactions:
       User-Agent:
       - aws-sdk-ruby3/3.44.1 ruby/2.6.5 x86_64-darwin19 aws-sdk-s3/1.30.0
       Host:
-      - some_bucket_name_one_release.s3.amazonaws.com
+      - some_bucket_name_one_release_no_config.s3.amazonaws.com
       X-Amz-Date:
-      - 20210716T162825Z
+      - 20210716T165922Z
       X-Amz-Security-Token:
       - AWS_SESSION_TOKEN
       X-Amz-Content-Sha256:
@@ -141,11 +141,11 @@ http_interactions:
       message: OK
     headers:
       X-Amz-Id-2:
-      - "+8J8fGemwSbhV6DaLCU3MOeTFyc/5jjml5yIRo76gBHilM7iwP4tibb4608A8VcXJaVjPYCuRL4="
+      - MIWr081XTFKSuEf739KNRY9svTjCYxVmXrAILLaHhvThl+rPWyTyXB6hnmo+IRn0MAl2IkulJhM=
       X-Amz-Request-Id:
-      - EMKB0SGHNEMV7RZC
+      - KCKJYDZ438A15CYH
       Date:
-      - Fri, 16 Jul 2021 16:28:26 GMT
+      - Fri, 16 Jul 2021 16:59:23 GMT
       X-Amz-Bucket-Region:
       - us-east-1
       Content-Type:
@@ -158,12 +158,12 @@ http_interactions:
       encoding: UTF-8
       string: |-
         <?xml version="1.0" encoding="UTF-8"?>
-        <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>some_bucket_name_one_release</Name><Prefix>rex/releases/</Prefix><Marker></Marker><MaxKeys>1000</MaxKeys><Delimiter>/</Delimiter><EncodingType>url</EncodingType><IsTruncated>false</IsTruncated><CommonPrefixes><Prefix>rex/releases/foobar/</Prefix></CommonPrefixes></ListBucketResult>
+        <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>some_bucket_name_one_release_no_config</Name><Prefix>rex/releases/</Prefix><Marker></Marker><MaxKeys>1000</MaxKeys><Delimiter>/</Delimiter><EncodingType>url</EncodingType><IsTruncated>false</IsTruncated><CommonPrefixes><Prefix>rex/releases/foobar/</Prefix></CommonPrefixes></ListBucketResult>
     http_version: 
-  recorded_at: Fri, 16 Jul 2021 16:28:25 GMT
+  recorded_at: Fri, 16 Jul 2021 16:59:22 GMT
 - request:
     method: get
-    uri: https://some_bucket_name_one_release.s3.amazonaws.com/rex/releases/foobar/rex/release.json
+    uri: https://some_bucket_name_one_release_no_config.s3.amazonaws.com/rex/releases/foobar/rex/release.json
     body:
       encoding: UTF-8
       string: ''
@@ -175,9 +175,9 @@ http_interactions:
       User-Agent:
       - aws-sdk-ruby3/3.44.1 ruby/2.6.5 x86_64-darwin19 aws-sdk-s3/1.30.0
       Host:
-      - some_bucket_name_one_release.s3.amazonaws.com
+      - some_bucket_name_one_release_no_config.s3.amazonaws.com
       X-Amz-Date:
-      - 20210716T162825Z
+      - 20210716T165922Z
       X-Amz-Security-Token:
       - AWS_SESSION_TOKEN
       X-Amz-Content-Sha256:
@@ -196,13 +196,13 @@ http_interactions:
       message: OK
     headers:
       X-Amz-Id-2:
-      - ZeuZPlH3x0XtR6KxsHypSrWnFmA0n2PdsNfdN5ca4KccAeBiVief0OxLFxmHJMAVaytyDyiQdcM=
+      - jjirjaD7uGoQhKbqA0lut7XyQwOhpJBeuxzUnmlHN21YgKIbBhd375x6hrk0bncVCnlu3iT1QEo=
       X-Amz-Request-Id:
-      - EMKD5AEMD4EBSCE7
+      - KCKRJ4PHS0E4ZAZ2
       Date:
-      - Fri, 16 Jul 2021 16:28:26 GMT
+      - Fri, 16 Jul 2021 16:59:23 GMT
       Last-Modified:
-      - Fri, 16 Jul 2021 16:28:26 GMT
+      - Fri, 16 Jul 2021 16:59:22 GMT
       Etag:
       - '"495d221d01d094995ad94d5f1fdfd63c"'
       Accept-Ranges:
@@ -217,10 +217,10 @@ http_interactions:
       encoding: UTF-8
       string: '{"books":{"uid1":{"defaultVersion":"1.2"},"uid2":{"defaultVersion":"1.1"}}}'
     http_version: 
-  recorded_at: Fri, 16 Jul 2021 16:28:25 GMT
+  recorded_at: Fri, 16 Jul 2021 16:59:22 GMT
 - request:
     method: get
-    uri: https://some_bucket_name_one_release.s3.amazonaws.com/rex/releases/foobar/rex/config.json
+    uri: https://some_bucket_name_one_release_no_config.s3.amazonaws.com/rex/releases/foobar/rex/config.json
     body:
       encoding: UTF-8
       string: ''
@@ -232,9 +232,9 @@ http_interactions:
       User-Agent:
       - aws-sdk-ruby3/3.44.1 ruby/2.6.5 x86_64-darwin19 aws-sdk-s3/1.30.0
       Host:
-      - some_bucket_name_one_release.s3.amazonaws.com
+      - some_bucket_name_one_release_no_config.s3.amazonaws.com
       X-Amz-Date:
-      - 20210716T162825Z
+      - 20210716T165922Z
       X-Amz-Security-Token:
       - AWS_SESSION_TOKEN
       X-Amz-Content-Sha256:
@@ -253,27 +253,27 @@ http_interactions:
       message: Not Found
     headers:
       X-Amz-Request-Id:
-      - 9VCVEF3XN0BDR56B
+      - KCKYHRNHMDPZHVBR
       X-Amz-Id-2:
-      - 9dcDQHpWhehOApM28oDwCICjNHpNl2pqi5+cvubAMzGCA37ytLZVkUobKVsaiSHNh69htfjopWY=
+      - T24xAYOnCH1jCt5MZyOiKawtkrAuIWX0OCniWDnqas5QU/6Lq7KJ6QZ1FS2sAh4DCLkfJrBrHmg=
       Content-Type:
       - application/xml
       Transfer-Encoding:
       - chunked
       Date:
-      - Fri, 16 Jul 2021 16:28:25 GMT
+      - Fri, 16 Jul 2021 16:59:22 GMT
       Server:
       - AmazonS3
     body:
       encoding: UTF-8
       string: |-
         <?xml version="1.0" encoding="UTF-8"?>
-        <Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><Key>rex/releases/foobar/rex/config.json</Key><RequestId>9VCVEF3XN0BDR56B</RequestId><HostId>9dcDQHpWhehOApM28oDwCICjNHpNl2pqi5+cvubAMzGCA37ytLZVkUobKVsaiSHNh69htfjopWY=</HostId></Error>
+        <Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><Key>rex/releases/foobar/rex/config.json</Key><RequestId>KCKYHRNHMDPZHVBR</RequestId><HostId>T24xAYOnCH1jCt5MZyOiKawtkrAuIWX0OCniWDnqas5QU/6Lq7KJ6QZ1FS2sAh4DCLkfJrBrHmg=</HostId></Error>
     http_version: 
-  recorded_at: Fri, 16 Jul 2021 16:28:26 GMT
+  recorded_at: Fri, 16 Jul 2021 16:59:23 GMT
 - request:
     method: get
-    uri: https://some_bucket_name_one_release.s3.amazonaws.com/?encoding-type=url&versions
+    uri: https://some_bucket_name_one_release_no_config.s3.amazonaws.com/?encoding-type=url&versions
     body:
       encoding: UTF-8
       string: ''
@@ -285,9 +285,9 @@ http_interactions:
       User-Agent:
       - aws-sdk-ruby3/3.44.1 ruby/2.6.5 x86_64-darwin19 aws-sdk-s3/1.30.0
       Host:
-      - some_bucket_name_one_release.s3.amazonaws.com
+      - some_bucket_name_one_release_no_config.s3.amazonaws.com
       X-Amz-Date:
-      - 20210716T162826Z
+      - 20210716T165923Z
       X-Amz-Security-Token:
       - AWS_SESSION_TOKEN
       X-Amz-Content-Sha256:
@@ -306,11 +306,11 @@ http_interactions:
       message: OK
     headers:
       X-Amz-Id-2:
-      - joh+2ml/eXgR2WOVNm0RFFJcLn7JBhyL7T2BjWSnXNls9fyVRlKSGTc587dOaFgXYmdIfTiNHgM=
+      - IIB066LizR/f8y3Y+7FRIA9PSoPbaRr62jHYxzpTk2/er5N4akO4z3bYv8uIwHWrtfUVRlruK3Y=
       X-Amz-Request-Id:
-      - 9VCV0YJ7KCHN6X8B
+      - 39PAQAYQ990Z6EBN
       Date:
-      - Fri, 16 Jul 2021 16:28:27 GMT
+      - Fri, 16 Jul 2021 16:59:24 GMT
       Content-Type:
       - application/xml
       Transfer-Encoding:
@@ -321,12 +321,12 @@ http_interactions:
       encoding: UTF-8
       string: |-
         <?xml version="1.0" encoding="UTF-8"?>
-        <ListVersionsResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>some_bucket_name_one_release</Name><Prefix></Prefix><KeyMarker></KeyMarker><VersionIdMarker></VersionIdMarker><MaxKeys>1000</MaxKeys><EncodingType>url</EncodingType><IsTruncated>false</IsTruncated><Version><Key>rex/releases/foobar/rex/release.json</Key><VersionId>null</VersionId><IsLatest>true</IsLatest><LastModified>2021-07-16T16:28:26.000Z</LastModified><ETag>&quot;495d221d01d094995ad94d5f1fdfd63c&quot;</ETag><Size>75</Size><Owner><ID>6e0b5222eaecc8fba4de9d31646cd4b222bfe0630f7eac42fcb3132bdeb18fbc</ID><DisplayName>aws-dev-sandbox</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Version></ListVersionsResult>
+        <ListVersionsResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>some_bucket_name_one_release_no_config</Name><Prefix></Prefix><KeyMarker></KeyMarker><VersionIdMarker></VersionIdMarker><MaxKeys>1000</MaxKeys><EncodingType>url</EncodingType><IsTruncated>false</IsTruncated><Version><Key>rex/releases/foobar/rex/release.json</Key><VersionId>null</VersionId><IsLatest>true</IsLatest><LastModified>2021-07-16T16:59:22.000Z</LastModified><ETag>&quot;495d221d01d094995ad94d5f1fdfd63c&quot;</ETag><Size>75</Size><Owner><ID>6e0b5222eaecc8fba4de9d31646cd4b222bfe0630f7eac42fcb3132bdeb18fbc</ID><DisplayName>aws-dev-sandbox</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Version></ListVersionsResult>
     http_version: 
-  recorded_at: Fri, 16 Jul 2021 16:28:26 GMT
+  recorded_at: Fri, 16 Jul 2021 16:59:23 GMT
 - request:
     method: post
-    uri: https://some_bucket_name_one_release.s3.amazonaws.com/?delete
+    uri: https://some_bucket_name_one_release_no_config.s3.amazonaws.com/?delete
     body:
       encoding: UTF-8
       string: |
@@ -348,9 +348,9 @@ http_interactions:
       Content-Md5:
       - L7l/wH3WBXup2wyqQAmnAA==
       Host:
-      - some_bucket_name_one_release.s3.amazonaws.com
+      - some_bucket_name_one_release_no_config.s3.amazonaws.com
       X-Amz-Date:
-      - 20210716T162826Z
+      - 20210716T165923Z
       X-Amz-Security-Token:
       - AWS_SESSION_TOKEN
       X-Amz-Content-Sha256:
@@ -369,11 +369,11 @@ http_interactions:
       message: OK
     headers:
       X-Amz-Id-2:
-      - Rod4ylVCTmMruOsv9RRk7ibjP4HBITbccw6UdlcpdmTXjayf1ldg/kxAGIlRz9XPeRNlAYIC/Aw=
+      - oFqJrsTzpEXMicQ42x9s9OOgoEcac7uT3roeOq2mBAbQFyeGrHeenw6yrSrMe+9ZsKwgA5z2v1s=
       X-Amz-Request-Id:
-      - 9VCPWD6H5KXQ9EGP
+      - 39P9GQX20H3HYQ58
       Date:
-      - Fri, 16 Jul 2021 16:28:27 GMT
+      - Fri, 16 Jul 2021 16:59:24 GMT
       Content-Type:
       - application/xml
       Transfer-Encoding:
@@ -388,10 +388,10 @@ http_interactions:
         <?xml version="1.0" encoding="UTF-8"?>
         <DeleteResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Deleted><Key>rex/releases/foobar/rex/release.json</Key><VersionId>null</VersionId></Deleted></DeleteResult>
     http_version: 
-  recorded_at: Fri, 16 Jul 2021 16:28:27 GMT
+  recorded_at: Fri, 16 Jul 2021 16:59:23 GMT
 - request:
     method: delete
-    uri: https://some_bucket_name_one_release.s3.amazonaws.com/
+    uri: https://some_bucket_name_one_release_no_config.s3.amazonaws.com/
     body:
       encoding: UTF-8
       string: ''
@@ -403,9 +403,9 @@ http_interactions:
       User-Agent:
       - aws-sdk-ruby3/3.44.1 ruby/2.6.5 x86_64-darwin19 aws-sdk-s3/1.30.0
       Host:
-      - some_bucket_name_one_release.s3.amazonaws.com
+      - some_bucket_name_one_release_no_config.s3.amazonaws.com
       X-Amz-Date:
-      - 20210716T162827Z
+      - 20210716T165923Z
       X-Amz-Security-Token:
       - AWS_SESSION_TOKEN
       X-Amz-Content-Sha256:
@@ -424,16 +424,16 @@ http_interactions:
       message: No Content
     headers:
       X-Amz-Id-2:
-      - Q3QpN6/Meh77Ve9NCadwMrc+KZohMizoCLidui804YRl+Cssn/mfM846OijFId6UsscXgMC4zHM=
+      - 64IPuTNUJwXH0dCAphp8fEp465mzFkk2YfAzOk0IpQjxHfM1UWEh2D17fSj5LaEWvUQobVjZxBI=
       X-Amz-Request-Id:
-      - C0V45ZVC2TK8B9ES
+      - 39PFV1VY6J4K7MWD
       Date:
-      - Fri, 16 Jul 2021 16:28:28 GMT
+      - Fri, 16 Jul 2021 16:59:24 GMT
       Server:
       - AmazonS3
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Fri, 16 Jul 2021 16:28:27 GMT
+  recorded_at: Fri, 16 Jul 2021 16:59:24 GMT
 recorded_with: VCR 4.0.0

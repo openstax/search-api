@@ -20,7 +20,7 @@ RSpec.describe Rex::Releases, vcr: VCR_OPTS do
       it 'reads the release from S3' do
         stub_secrets
 
-        TempAwsEnv.make("one_release") do |env|
+        TempAwsEnv.make("one_release_no_config") do |env|
           bucket = env.create_bucket(name: fake_bucket_name, region: 'us-east-1')
 
           bucket.put_object(key: "rex/releases/foobar/rex/release.json", body: book_data1)
@@ -36,7 +36,7 @@ RSpec.describe Rex::Releases, vcr: VCR_OPTS do
       it 'reads the releases and config from S3' do
         stub_secrets
 
-        TempAwsEnv.make("one_release") do |env|
+        TempAwsEnv.make("one_release_yes_config") do |env|
           bucket = env.create_bucket(name: fake_bucket_name, region: 'us-east-1')
 
           bucket.put_object(key: "rex/releases/foobar/rex/release.json", body: book_data1)

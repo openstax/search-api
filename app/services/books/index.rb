@@ -108,7 +108,8 @@ module Books
 
     def book
       @book ||= begin
-        pipeline_version, uuid_at_number = @book_version_id.split('/')
+        uuid_at_number, pipeline_version = @book_version_id.split('/').reverse
+        pipeline_version ||= 'legacy'
 
         archive_url = pipeline_version == "legacy" ? LEGACY_URL_BASE : RAP_URL_BASE
 

@@ -18,11 +18,6 @@ http_interactions:
       code: 404
       message: Not Found
     headers:
-      Warning:
-      - 299 Elasticsearch-6.7.2-56c6e48 "[types removal] The parameter include_type_name
-        should be explicitly specified in get indices requests to prepare for 7.0.
-        In 7.0 include_type_name will default to 'false', which means responses will
-        omit the type name in mapping definitions."
       Content-Type:
       - application/json; charset=UTF-8
       Content-Length:
@@ -31,7 +26,7 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 13 Aug 2019 00:12:26 GMT
+  recorded_at: Fri, 16 Jul 2021 22:13:45 GMT
 - request:
     method: head
     uri: http://localhost:9200/14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22@15.1_i1
@@ -50,11 +45,6 @@ http_interactions:
       code: 404
       message: Not Found
     headers:
-      Warning:
-      - 299 Elasticsearch-6.7.2-56c6e48 "[types removal] The parameter include_type_name
-        should be explicitly specified in get indices requests to prepare for 7.0.
-        In 7.0 include_type_name will default to 'false', which means responses will
-        omit the type name in mapping definitions."
       Content-Type:
       - application/json; charset=UTF-8
       Content-Length:
@@ -63,5 +53,5 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 13 Aug 2019 00:12:26 GMT
+  recorded_at: Fri, 16 Jul 2021 22:13:45 GMT
 recorded_with: VCR 4.0.0
