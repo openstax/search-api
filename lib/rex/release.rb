@@ -2,20 +2,17 @@ require 'json'
 
 module Rex
   class Release
-    attr_reader :id, :data
+    attr_reader :id, :data, :config
 
-    def initialize(id:, data:)
+    def initialize(id:, data:, config:)
       @id = id
-      @data = data
-
-      if @data.is_a?(String)
-        @data = JSON.parse(@data)
-      end
+      @data = data.with_indifferent_access
+      @config = config
     end
 
     def books
       @books ||= @data["books"].map do |uuid, info|
-        "#{uuid}@#{info["defaultVersion"]}"
+        "#{config.pipeline_version || 'legacy'}/#{uuid}@#{info["defaultVersion"]}"
       end
     end
   end

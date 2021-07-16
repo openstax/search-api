@@ -126,16 +126,22 @@ class TempAwsEnv
 
       ENV['VCR_IGNORE_REQUESTS_TEMPORARILY'] = 'true'
 
-      ENV['AWS_MY_ARN'] = Aws::IAM::CurrentUser.new(region: "us-east-1").arn
-      filter_env_var('AWS_MY_ARN')
-
       sts_client = Aws::STS::Client.new(region: "us-east-1")
-      resp = sts_client.get_session_token({duration_seconds: 3600})
-      @@temporary_credentials = resp.credentials
+      identity = sts_client.get_caller_identity
+      already_in_temporary_role = identity.arn.match?(/:assumed-role\//)
 
-      ENV['AWS_ACCESS_KEY_ID'] = resp.credentials.access_key_id
-      ENV['AWS_SECRET_ACCESS_KEY'] = resp.credentials.secret_access_key
-      ENV['AWS_SESSION_TOKEN'] = resp.credentials.session_token
+      if !already_in_temporary_role
+        ENV['AWS_MY_ARN'] = Aws::IAM::CurrentUser.new(region: "us-east-1").arn
+        filter_env_var('AWS_MY_ARN')
+
+        resp = sts_client.get_session_token({duration_seconds: 3600})
+        @@temporary_credentials = resp.credentials
+
+        ENV['AWS_ACCESS_KEY_ID'] = resp.credentials.access_key_id
+        ENV['AWS_SECRET_ACCESS_KEY'] = resp.credentials.secret_access_key
+        ENV['AWS_SESSION_TOKEN'] = resp.credentials.session_token
+      end
+
       filter_env_var('AWS_ACCESS_KEY_ID')
       filter_env_var('AWS_SECRET_ACCESS_KEY')
       filter_env_var('AWS_SESSION_TOKEN')

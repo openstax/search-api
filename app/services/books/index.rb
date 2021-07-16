@@ -10,6 +10,9 @@ module Books
 
     DEFAULT_INDEXING_STRATEGY = IndexingStrategies::I1::Strategy
 
+    RAP_URL_BASE = "https://openstax.org/apps/archive"
+    LEGACY_URL = "https://openstax.org/contents"
+
     class IndexResourceNotReadyError < StandardError; end
 
     WAIT_UNTIL_MAX_TRIES = 30
@@ -105,7 +108,16 @@ module Books
 
     def book
       @book ||= begin
-        OpenStax::Cnx::V1::Book.new(id: @book_version_id)
+        uuid_at_number, pipeline_version = @book_version_id.split('/').reverse
+        pipeline_version ||= 'legacy'
+
+        archive_url = pipeline_version == "legacy" ?
+                      LEGACY_URL :
+                      "#{RAP_URL_BASE}/#{pipeline}"
+
+        OpenStax::Cnx::V1.with_archive_url(archive_url) do
+          OpenStax::Cnx::V1::Book.new(id: uuid_at_number)
+        end
       end
     end
   end
