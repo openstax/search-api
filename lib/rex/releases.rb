@@ -36,7 +36,7 @@ module Rex
           @releases.push(Release.new(
             id: release_id,
             data: release_file.to_hash,
-            config: config_file.to_hash
+            config: Config.new(data: config_file.to_hash)
           ))
         else
           # This is not the release folder, keep searching deeper

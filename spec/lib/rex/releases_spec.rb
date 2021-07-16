@@ -27,7 +27,7 @@ RSpec.describe Rex::Releases, vcr: VCR_OPTS do
 
           expect(instance.releases.map(&:id)).to contain_exactly('foobar')
           expect(instance.releases.first.books.count).to eq 2
-          expect(instance.releases.map(&:config).uniq).to eq [{}]
+          expect(instance.releases.map(&:config).map(&:pipeline_version).uniq).to eq [nil]
         end
       end
     end
@@ -44,7 +44,7 @@ RSpec.describe Rex::Releases, vcr: VCR_OPTS do
 
           expect(instance.releases.map(&:id)).to contain_exactly('foobar')
           expect(instance.releases.first.books.count).to eq 2
-          expect(instance.releases.map(&:config).uniq).to match [JSON.parse(config_data)]
+          expect(instance.releases.map(&:config).map(&:pipeline_version).uniq).to match ['101.42']
         end
       end
     end

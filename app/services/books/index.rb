@@ -9,9 +9,9 @@ module Books
     prefix_logger "Books::Index"
 
     DEFAULT_INDEXING_STRATEGY = IndexingStrategies::I1::Strategy
-    URL_BASE = "https://openstax.org"
-    RAP_URL_BASE = "#{URL_BASE}/apps/archive"
-    LEGACY_URL = "#{URL_BASE}/contents"
+
+    RAP_URL_BASE = "https://openstax.org/apps/archive"
+    LEGACY_URL = "https://openstax.org/contents"
 
     class IndexResourceNotReadyError < StandardError; end
 
