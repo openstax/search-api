@@ -11,20 +11,41 @@ RSpec.describe Rex::Releases, vcr: VCR_OPTS do
   let(:book3) { { "uid3" => { "defaultVersion" => "2.4"} } }
   let(:book_data1) { { books: book1.merge(book2)}.to_json }
   let(:book_data2) { { books: book3}.to_json }
+  let(:config_data) { { REACT_APP_ARCHIVE_URL: '/apps/archive/101.42'}.to_json }
 
   subject(:instance) { described_class.new }
 
   context 'one release' do
-    it 'reads the release from S3' do
-      stub_secrets
+    context 'no config file' do
+      it 'reads the release from S3' do
+        stub_secrets
 
-      TempAwsEnv.make("one_release") do |env|
-        bucket = env.create_bucket(name: fake_bucket_name, region: 'us-east-1')
+        TempAwsEnv.make("one_release") do |env|
+          bucket = env.create_bucket(name: fake_bucket_name, region: 'us-east-1')
 
-        bucket.put_object(key: "rex/releases/foobar/rex/release.json", body: book_data1)
+          bucket.put_object(key: "rex/releases/foobar/rex/release.json", body: book_data1)
 
-        expect(instance.releases.map(&:id)).to contain_exactly('foobar')
-        expect(instance.releases.first.books.count).to eq 2
+          expect(instance.releases.map(&:id)).to contain_exactly('foobar')
+          expect(instance.releases.first.books.count).to eq 2
+          expect(instance.releases.map(&:config).uniq).to eq [{}]
+        end
+      end
+    end
+
+    context 'a config file' do
+      it 'reads the releases and config from S3' do
+        stub_secrets
+
+        TempAwsEnv.make("one_release") do |env|
+          bucket = env.create_bucket(name: fake_bucket_name, region: 'us-east-1')
+
+          bucket.put_object(key: "rex/releases/foobar/rex/release.json", body: book_data1)
+          bucket.put_object(key: "rex/releases/foobar/rex/config.json", body: config_data)
+
+          expect(instance.releases.map(&:id)).to contain_exactly('foobar')
+          expect(instance.releases.first.books.count).to eq 2
+          expect(instance.releases.map(&:config).uniq).to match [JSON.parse(config_data)]
+        end
       end
     end
   end
